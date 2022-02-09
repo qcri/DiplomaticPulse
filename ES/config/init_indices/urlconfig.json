@@ -1,0 +1,780 @@
+{"index": {"_id": "4917fefc12484a580347ebab907cfa05d3cd8132"}}
+{"content_type": "html", "global": "//div[has-class(\"node-feed-item\")]", "url": "https://newyorkun.diplomatie.belgium.be", "us_date_format": null, "posted_date": "//div[has-class(\"meta submitted\")]//text()", "link": "//h3/a/@href", "tag": null, "title": "//h3/a/text()", "name": "Belgium", "link_follow": null, "statement": "//div[has-class(\"field-item even\")]"}
+
+{"index": {"_id": "f9a3351160469f1d1003f6dd480f1287edc6f448"}}
+{"global": "//div[has-class(\"view-content\")]/ul/li", "link_follow": null, "link": "//a//@href", "name": "Belgium", "statement": "//div[has-class(\"field-item even\")]", "tag": null, "title": "//a//text()", "content_type": "html", "posted_date": "//div[has-class(\"meta submitted\")]//text()", "url": "https://diplomatie.belgium.be/en/Newsroom/overview", "us_date_format": null}
+
+{"index": {"_id": "991a55013bc7ca477c0fb496fbcf92c99031561b"}}
+{"tag": null, "posted_date": "nill", "global": "//a[has-class(\"tabs-content__item\")]", "url": "https://mfa.gov.by/en/press/statements", "link_follow": null, "name": "Belarus", "us_date_format": null, "title": "//h2/text()", "link": "//@href", "statement": "//section[has-class(\"content-page\")]", "content_type": "html"}
+
+{"index": {"_id": "b948f4547da6ce22fa0c3062dc8df357a61ac598"}}
+{"statement": "//section[has-class(\"content-page\")]//p", "us_date_format": null, "name": "Belarus", "url": "https://mfa.gov.by/en/press/news_mfa", "link_follow": null, "link": "//a//@href", "posted_date": "//span[has-class(\"date _small\")]//text()", "content_type": "html", "title": "//h2//text()", "global": "//a[has-class(\"tabs-content__item\")]", "tag": null}
+
+{"index": {"_id": "a70fe16ec385f2a38d8c7c041dfabe44514dc1f6"}}
+{"title": "//h2/a/text()", "tag": null, "url": "https://www.gov.ls/news", "link_follow": null, "content_type": "html", "statement": "//div[has-class(\"post__content\")]/p", "us_date_format": null, "link": "//h2/a/@href", "name": "Lesotho", "posted_date": "//time/text()", "global": "//div[has-class(\"post-archive__grid\")]/div[has-class(\"lsvr-grid\")]/div//header"}
+
+{"index": {"_id": "0082dce35a005290728fa8e6c61b0fe92b66065c"}}
+{"global": "//article[has-class(\"itemView groupLeading itemIsFeatured\")]", "link": "//h2//a//@href", "tag": null, "us_date_format": "", "content_type": "html", "posted_date": "//time//@datetime", "name": "Andorra", "title": "//h2//a//text()", "url": "https://www.govern.ad/comunicats", "statement": "//div[has-class(\"itemFullText\")]//p", "link_follow": ""}
+
+{"index": {"_id": "18edc6e52906de1e1d1beb6fd05470fc2614f0ff"}}
+{"statement": "//div[has-class(\"penci-entry-content entry-content\")]/p", "url": "https://mfaft.gov.jm/jm/press-releases", "global": "//div[has-class(\"penci_post_content penci_mobj__body\")]", "content_type": "html", "name": "Jamaica", "tag": null, "link_follow": null, "link": "//a//@href", "posted_date": "//time//text()", "title": "//a//text()", "us_date_format": null}
+
+{"index": {"_id": "c8a988c36d5a21d61097ab59c91fad3fb029103b"}}
+{"name": "Timor-Leste", "content_type": "doc", "title": "//a//text()", "link": "//a//@href", "us_date_format": null, "url": "http://timor-leste.gov.tl/?cat=27&lang=en", "posted_date": "//div[has-class(\"docs_details\")]//span//text()", "tag": null, "link_follow": null, "global": "//div[has-class(\"docs_details\")]", "statement": null}
+
+{"index": {"_id": "d78b1cb1813e6c3f1ed11326e4e3efde30eeb5c4"}}
+{"statement": "//div[has-class(\"justifica\")]//p", "posted_date": "//div[has-class(\"docs_details\")]//span//text()", "global": "//div[has-class(\"docs_details\")]", "bs_element": null, "link": "//a//@href", "us_date_format": "", "link_follow": "", "url": "http://timor-leste.gov.tl/?cat=10&lang=en", "title": "//a//text()", "tag": null, "name": "Timor-Leste", "content_type": "html"}
+
+{"index": {"_id": "603bcf6b1e5c0620ee8e15788e9e0b51cf54cca4"}}
+{"url": "https://www.gco.gov.qa/en/media-centre/press-release", "link_follow": null, "us_date_format": null, "global": "//div[has-class(\"col-3 no-float press\")]", "link": "//a//@href", "content_type": "html", "posted_date": "//p[has-class(\"meta large\")]", "tag": null, "title": "//a//text()", "name": "Qatar", "statement": "//div[has-class(\"main\")]/p"}
+
+{"index": {"_id": "fbdde838227a98fb787adae0b61d3cde2502cb34"}}
+{"url": "https://mofa.gov.np/category/press-release", "posted_date": "//time[has-class(\"entry-date\")]/text()", "us_date_format": null, "link_follow": null, "tag": null, "statement": "//div[has-class(\"entry-content\")]//p", "global": "//article[has-class(\"post\")]//div[has-class(\"entry-container\")]/header", "link": "//h1/a/@href", "name": "Nepal", "title": "//h1/a/text()", "content_type": "html"}
+
+{"index": {"_id": "072494b426cff06da1019f93222fc80a31be6623"}}
+{"statement": "//div[has-class(\"publications_holder\")]/div[position()< last()-2]", "url": "https://www.mofa.go.ug/data/news", "us_date_format": null, "title": "//a//text()", "link_follow": null, "posted_date": "//span[has-class(\"caption\")]//text()", "name": "Uganda", "tag": null, "link": "//a//@href", "global": "//div[has-class(\"publications_holder\")]", "content_type": "html"}
+
+{"index": {"_id": "3c74f092a3a2e6c233b891f791f5db4c9d46455c"}}
+{"posted_date": "//div[has-class(\"date\")]/text()", "content_type": "html", "link": "//a/@href", "us_date_format": null, "url": "https://www.sgg.cg/fr/le-sgg/actualites.html", "tag": null, "statement": "//div[has-class(\"home_text\")]//div[has-class(\"card\")]//p", "title": "//a/text()", "link_follow": null, "global": "//div[has-class(\"colnews\")]", "name": "Congo"}
+
+{"index": {"_id": "ce1de02fbfe0465f09d92a1d3ace218a71ac001b"}}
+{"url": "https://mofa.gov.bs/category/latest-news", "posted_date": "nill", "statement": "//div[has-class(\"entry-content\")]", "name": "Bahamas", "content_type": "html", "link_follow": null, "tag": null, "us_date_format": null, "title": "//h1[has-class(\"entry-title\")]//text()", "global": "//div[has-class(\"col-md-10 nopadding\")]", "link": "//a//@href"}
+
+{"index": {"_id": "4e6eb2fa74d0142f17eef449ed988de75faa7f38"}}
+{"title": "//h3/a/text()", "tag": null, "url": "https://www.mfa.gov.lb/arabic/minister/activities", "global": "//div[has-class(\"listingNodes\")]/ul/li//tr/td[2]", "posted_date": "//div[has-class(\"updatedDate\")]//text()", "name": "Lebanon", "content_type": "html", "us_date_format": null, "link": "//h3/a/@href", "link_follow": null, "statement": "//div[@id=\"BodyPlaceHolder_divMain\"]/div[2]/div[not(has-class(\"footerPageContent\"))]//text()"}
+
+{"index": {"_id": "c71274877d3040f37e7eaa32a5b84f5bb631e104"}}
+{"content_type": "html", "posted_date": "//div[has-class(\"updatedDate\")]//text()", "us_date_format": null, "statement": "//div[@id=\"BodyPlaceHolder_divMain\"]/div[2]/div[not(has-class(\"footerPageContent\"))]//text()", "global": "//div[has-class(\"listingNodes\")]/ul/li//tr/td[2]", "link": "//h3/a/@href", "name": "Lebanon", "link_follow": null, "url": "https://www.mfa.gov.lb/arabic/minister/press-conferences", "title": "//h3/a/text()", "tag": null}
+
+{"index": {"_id": "f86147817a7a67da4c31d5f49593ed21bd987779"}}
+{"title": "//a//text()", "global": "//div[has-class(\"news_page_item\")]/a", "statement": "//div[has-class(\"node-body\")]//p", "link": "//a//@href", "content_type": "html", "posted_date": "//small[has-class(\"date\")]//text()", "url": "https://www.presidency.gov.sd/arb/news", "us_date_format": null, "name": "Sudan", "link_follow": null, "tag": null}
+
+{"index": {"_id": "d5a7a680258c62cfa61e7e3835849708bf397068"}}
+{"statement": "//div[has-class(\"col-md-12 selected_news\")]//p", "link": "//a//@href", "name": "Seychelles", "url": "https://www.mfa.gov.sc/news", "us_date_format": "", "tag": null, "posted_date": "//p[has-class(\"date\")]//text()", "global": "//article[has-class(\"custom_width12 col-xs-6 col-sm-4 col-md-3\")]", "title": "//a//text()", "content_type": "html", "link_follow": ""}
+
+{"index": {"_id": "864f5b4936b24271bf65c1d26716df80e0f5e1f6"}}
+{"posted_date": "//span[has-class(\"date\")]//text()", "link_follow": null, "title": "//a//text()", "statement": "//div[has-class(\"contentDetails\")]//p", "tag": null, "content_type": "html", "us_date_format": null, "url": "https://mfa.tj/en/main/information/mfa-statements", "global": "//ul[has-class(\"list-none list\")]/li", "name": "Tajikistan", "link": "//a//@href"}
+
+{"index": {"_id": "5fae4c2abfab6956743d5270060c58110ba975db"}}
+{"content_type": "html", "global": "//div[has-class(\"ns2-row\")]//div[has-class(\"ns2-inner\")]", "link": "//h4/a/@href", "title": "//h4/a/text()", "url": "https://www.mfaet.gov.sb/media-center/press-releases.html", "name": "Solomon Islands", "statement": "//div[@itemprop=\"articleBody\"]//p", "posted_date": "//dd[has-class(\"published\")]//@datetime", "us_date_format": null, "link_follow": null, "tag": null}
+
+{"index": {"_id": "29e3d98f1571857025d6bf2bce14c2b83aab8c1a"}}
+{"link": "//a/@href", "name": "Malta", "posted_date": "//a/span[1]/text()", "global": "//div[has-class(\"top-zone\")]//tr//div[has-class(\"item\")]", "us_date_format": null, "tag": null, "url": "https://foreignandeu.gov.mt/en/Government/Press%20Releases/Pages/Press-Releases.aspx", "link_follow": null, "content_type": "html", "statement": "//div[@id=\"ctl00_PlaceHolderMain_ctl06__ControlWrapper_RichHtmlField\"]//text()", "title": "//a/span[3]/text()"}
+
+{"index": {"_id": "5810674468f76d1c5b8337212e727fbbe9d41819"}}
+{"us_date_format": null, "title": "//a//text()", "content_type": "html", "statement": "//div[contains(@itemprop,\"articleBody\")]/p", "name": "Philippines", "link": "//a//@href", "tag": null, "link_follow": null, "posted_date": "//td[has-class(\"list-date small\")]//text()", "url": "https://dfa.gov.ph/dfa-news/dfa-releasesupdate", "global": "//*[@id=\"adminForm\"]/table/tbody//tr"}
+
+{"index": {"_id": "9759a8a7f083630ce7cc99feb7965ff6bdeca367"}}
+{"content_type": "html", "posted_date": "//div[@id=\"main\"]/div[has-class(\"rightalign\")][1]/text()", "us_date_format": null, "name": "Japan", "link_follow": null, "global": "//dd[has-class(\"linktext\")]/a", "tag": null, "statement": "//div[has-class(\"main-section\")]//text()", "url": "https://www.un.emb-japan.go.jp/itprtop_en/index.html", "title": "//text()", "link": "//@href"}
+
+{"index": {"_id": "b51420578ad03d8f9c61e66ce2ed668ddfe7b7ec"}}
+{"global": "//ul[has-class(\"link-list\")]/li/a", "name": "Japan", "posted_date": "//div[has-class(\"rightalign\")]//text()", "us_date_format": null, "link": "//@href", "title": "//text()", "statement": "//div[has-class(\"main-section\")]//text()", "content_type": "html", "url": "https://www.mofa.go.jp/press/release/index.html", "tag": null, "link_follow": null}
+
+{"index": {"_id": "4c16156e499a6bd770be868a824f1d4a411e9c36"}}
+{"title": "//text()", "us_date_format": null, "tag": null, "name": "Lao People's Democratic Republic", "url": "http://www.mofa.gov.la/index.php/statements", "link": "//@href", "posted_date": "nil", "content_type": "html", "statement": "//div[has-class(\"art-article\")]//text()", "link_follow": null, "global": "//table[has-class(\"category\")]/tbody/tr/td/a"}
+
+{"index": {"_id": "c36b159961b56584a090512c15fd2801fea00ce7"}}
+{"tag": null, "title": "//h1//text()", "posted_date": "//div[has-class(\"post-date author main-auth\")]//text()", "us_date_format": "", "global": "//div[has-class(\"article-elements row\")]", "statement": "//div[has-class(\"row\")]//p", "url": "https://hungarytoday.hu/category/politics/foreign-affairs", "link_follow": "", "content_type": "html", "name": "Hungary", "link": "//a//@href", "bs_element": ""}
+
+{"index": {"_id": "43e5fb62d09bfff58c9babbf3dee4be779ebfb35"}}
+{"us_date_format": "", "global": "//div[has-class(\"art-prev\")]/ul/li/a", "link": "//@href", "title": "//div[has-class(\"title\")]/text()", "link_follow": null, "name": "Poland", "tag": null, "statement": "//div[has-class(\"editor-content\")]/div//p", "posted_date": "//span[has-class(\"date\")]/text()", "content_type": "html", "url": "https://www.gov.pl/web/diplomacy/news-"}
+
+{"index": {"_id": "bbb6811a746269beca5918babce3d276f2d37aeb"}}
+{"posted_date": "//span[has-class(\"date\")]/text()", "tag": null, "title": "//div[has-class(\"title\")]/text()", "link_follow": null, "url": "https://www.gov.pl/web/onz", "content_type": "html", "link": "//@href", "name": "Poland", "us_date_format": null, "statement": "//div[has-class(\"editor-content\")]/div//p", "global": "//section[has-class(\"art-prev\")]/ul/li/a"}
+
+{"index": {"_id": "3d7b40360c71fad68135f32baffed7767e418f77"}}
+{"content_type": "html", "link_follow": null, "tag": null, "link": "//a[has-class(\"news__title-link\")]//@href", "global": "//li[has-class(\"news__item\")]", "posted_date": "//time[has-class(\"news__date\")]//text()", "name": "Kyrgyzstan", "title": "//a[has-class(\"news__title-link\")]//text()", "url": "https://mfa.gov.kg/en/Main-menu/Press-service/novosti", "us_date_format": null, "statement": "//div[has-class(\"article__body\")]//p"}
+
+{"index": {"_id": "7d833880b629258b2a6cf7ea9732bad02735775a"}}
+{"link_follow": null, "posted_date": "substring-after(//span[has-class(\"date-display-single\")]/text(), \",\")", "us_date_format": null, "title": "//h4/text()", "statement": "//div[has-class(\"view-content\")]//p", "name": "Bolivia", "link": "//a/@href", "url": "https://www.cancilleria.gob.bo/webmre/noticias", "tag": null, "global": "//div[has-class(\"views-row\")]", "content_type": "html"}
+
+{"index": {"_id": "61de660477f49d84c88f0857cd6e308ed561a29f"}}
+{"url": "https://www.un.int/honduras/es", "global": "//div[has-class(\"view-content\")]//article", "name": "Honduras", "statement": "//div[has-class(\"field-items\")]", "content_type": "html", "tag": null, "link": "//h2//a//@href", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "us_date_format": null, "title": "//h2//a//text()", "link_follow": null}
+
+{"index": {"_id": "c048cbefee357375113bfa5fa62b943b67b56d1a"}}
+{"link_follow": null, "tag": null, "us_date_format": null, "url": "https://mfa.gov.ua/en", "link": "//a//@href", "title": "//a//text()", "name": "Ukraine", "posted_date": "//div[has-class(\"page_title-desc\")]//text()", "content_type": "html", "statement": "//div[has-class(\"editor-content\")]//p", "global": "//div[has-class(\"main-item_content\")]"}
+
+{"index": {"_id": "47bec3abdff08bf3ab762e6df69bf165664ef77f"}}
+{"url": "https://www.foreignaffairs.gov.ng/news-press-releases", "link": "//h2//@href", "name": "Nigeria", "tag": null, "global": "//div[has-class(\"post-item-description\")]//h2", "content_type": "html", "link_follow": "", "posted_date": "//span[has-class(\"post-meta-date\")]//text()", "title": "//h2//text()", "statement": "//div[has-class(\"post-item-description\")]//p", "us_date_format": ""}
+
+{"index": {"_id": "e2e36e85f37e53c4cfe8f4a057a19e4fa3845119"}}
+{"us_date_format": null, "tag": null, "url": "https://www.foreignaffairs.gov.ng", "title": "//h2/a/text()", "posted_date": "substring-after(//span[has-class(\"post-meta-date\")]/text(), \"Posted on\")", "content_type": "html", "name": "Nigeria", "bs_element": null, "link": "//h2/a/@href", "global": "//div[has-class(\"post-item\")]//div[has-class(\"post-item-description\")]", "link_follow": null, "statement": "//div[has-class(\"post-item-description\")]/p"}
+
+{"index": {"_id": "a392e6e33b7541304f933884e25c6183168ed680"}}
+{"title": "//text()", "link_follow": null, "us_date_format": null, "content_type": "html", "statement": "//div[has-class(\"post-content\")]/p", "global": "//div[has-class(\"fusion-post-content post-content\")]", "link": "//a//@href", "posted_date": "//span[has-class(\"updated rich-snippet-hidden\")]//text()", "url": "https://www.foreign.gov.kn", "name": "Saint Kitts and Nevis", "tag": null}
+
+{"index": {"_id": "441627c675546393dfcc5a99ad0b6fafe37b117a"}}
+{"link": "//a/@href", "link_follow": null, "url": "https://www.minfor.gov.gy/category/press-releases", "name": "Guyana", "title": "//p[has-class(\"title\")]/a/text()", "us_date_format": null, "tag": "div", "posted_date": "substring-after(//div[has-class(\"date\")], span)", "statement": "//div[has-class(\"post-item-body\")]/p[.!=\"\\xa0\"]", "content_type": "html", "global": "//div[has-class(\"post-item-body\")]"}
+
+{"index": {"_id": "34038d1c6d798c287bb856f7b8ee7762119096a4"}}
+{"tag": null, "global": "//article[has-class(\"clearfix\")]//h4", "url": "https://www.eda.admin.ch/missions/mission-new-york/en/home/topics.html", "statement": "//div[has-class(\"speech-component speech\")]//p", "posted_date": "//div[has-class(\"speech-component speech\")]//small//text()", "title": "//a//text()", "name": "Switzerland", "link": "//a//@href", "content_type": "html", "us_date_format": null, "link_follow": null}
+
+{"index": {"_id": "cb370c3e7cc06f7e8ecabd1474b4687181ebfe3c"}}
+{"tag": null, "statement": "//div[has-class(\"news-component news\")]//p", "content_type": "html", "posted_date": "//div[has-class(\"news-component\")]//small//text()", "bs_element": null, "name": "Switzerland", "us_date_format": "", "link": "//a//@href", "url": "https://www.eda.admin.ch/eda/en/fdfa/fdfa/aktuell/news.html", "title": "//a//text()", "link_follow": null, "global": "//div[has-class(\"tabbody\")]//article[position() <last()-3]"}
+
+{"index": {"_id": "e03cdc7489c7757ecc3068ccc29347d52dc46337"}}
+{"link_follow": null, "name": "Central African Republic", "title": "//text()", "statement": "//div[has-class(\"content\")]/div[has-class(\"field--name-body field--type-text-with-summary\")]/p", "content_type": "html", "tag": null, "link": "//@href", "global": "//span[has-class(\"field-content\")]/a", "us_date_format": null, "url": "https://gouv.cf/les-actualites", "posted_date": "//div[has-class(\"field--name-field-date-creation\")]/time/text()"}
+
+{"index": {"_id": "ba68c217bab5d0fb84a6fb7336f8293e972ebdc1"}}
+{"global": "//li[has-class(\"desc\")]", "link": "//a//@href", "link_follow": null, "name": "Bahrain", "title": "//li//text()", "url": "https://www.mofa.gov.bh/Default.aspx?tabid=65&language=en-US", "posted_date": "substring-after(//div[has-class(\"bcrumbs\")],\"a\")", "tag": null, "us_date_format": null, "statement": "//div[has-class(\"DNNModuleContent ModSiteNewsDetailsC\")]/p", "content_type": "html"}
+
+{"index": {"_id": "ec19c5d44de2b50f1376531562d5ddbce8ff4c4f"}}
+{"url": "https://www.regierung.li/press-releases/?lang=en", "link": "//a//@href", "posted_date": "//div[has-class(\"date\")]//text()", "link_follow": null, "content_type": "html", "global": "//div[contains(@id,\"medienmitteilungencontainer\")]//a", "tag": null, "name": "Liechtenstein", "title": "//a//text()", "statement": "//div[has-class(\"newstext\")]/p", "us_date_format": null}
+
+{"index": {"_id": "0c3d1e324bc6e6ae4d7291c5c11e9d1f4dd2919c"}}
+{"posted_date": "//span[has-class(\"date-display-single\")]//text()", "name": "Fiji", "tag": null, "us_date_format": null, "bs_element": null, "global": "//div[has-class(\"views-row\")]", "link": "//a//@href", "content_type": "html", "link_follow": null, "title": "//a//text()", "statement": "//div[has-class(\"field-items\")]", "url": "https://www.un.int/fiji/statements_speeches"}
+
+{"index": {"_id": "d767627810d5f9859dfa1947608bdc8f3b5e6506"}}
+{"global": "//h1[has-class(\"elementor-heading-title elementor-size-default\")]", "url": "https://www.foreign.gov.bb/press-releases", "name": "Barbados", "us_date_format": null, "title": "//a//text()", "posted_date": "//span[has-class(\"elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date\")]//text()", "content_type": "html", "link_follow": null, "tag": null, "statement": "//*[@id=\"main\"]/div/div/section[2]/div/div/div/div/div/div/div", "link": "//a//@href"}
+
+{"index": {"_id": "93494c156c7bb807666d6fc1b3ccf51f30b610bb"}}
+{"name": "Iceland", "url": "https://www.government.is/news", "content_type": "html", "global": "//*[@id=\"main\"]/div[6]/div[1]/div/ul/li[1]/div", "us_date_format": null, "posted_date": "//span[has-class(\"news-startdate\")]//text()", "tag": null, "title": "//a//text()", "statement": "//section[has-class(\"single-news__content\")]//p", "link": "//a//@href", "link_follow": null}
+
+{"index": {"_id": "484c0db74fa62dd82f351f38b24758ad61d9c7e5"}}
+{"link": "//a//@href", "name": "Brunei Darussalam", "title": "//a//text()", "posted_date": "//div//text()", "link_follow": null, "tag": null, "us_date_format": null, "content_type": "html", "global": "//div[contains(@id, \"contentRow\")]//tr", "url": "http://www.mfa.gov.bn/Lists/News%20Headlines/News%20Highlights.aspx", "statement": "//td[has-class(\"ms-formbody Nbody\")]//div"}
+
+{"index": {"_id": "84100bbd6661ca64f50376fde1ad95f3c2516511"}}
+{"posted_date": "//td//text()", "title": "//a//text()", "link": "//a//@href", "tag": null, "global": "//tr[has-class(\"ms-alternating\")]", "link_follow": null, "content_type": "html", "name": "Brunei Darussalam", "statement": "//td[has-class(\"ms-formbody Nbody\")]/div", "url": "http://www.mfa.gov.bn/pages/PressRoom.aspx?archive=1", "us_date_format": null}
+
+{"index": {"_id": "2bf0043feedfabf2dd31430b3bca01922a216155"}}
+{"link": "//h4//a/@href", "name": "Republic of Moldova", "us_date_format": null, "title": "//h4//a/text()", "posted_date": "//div[has-class(\"field-content\")]//text()", "global": "//div[has-class(\"unformatted-list\")]/div", "link_follow": null, "url": "https://mfa.gov.md/en/press-release-types/comunicate-de-presa", "content_type": "html", "statement": "//article/div[has-class(\"content\")]", "tag": null}
+
+{"index": {"_id": "d7edaebb93ccd6f676902e22698057171e441633"}}
+{"us_date_format": null, "name": "Morocco", "content_type": "html", "url": "https://www.diplomatie.ma/fr/actualites", "tag": null, "global": "//div[has-class(\"container\")]//div[has-class(\"card-body\")]", "link_follow": null, "statement": "//div[has-class(\"actu-detail-article_txt\")]//text()", "posted_date": "//span[has-class(\"card-date date-ltr\")]/text()", "link": "//h5/span/a/@href", "title": "//h5/span/a/text()"}
+
+{"index": {"_id": "d792126be71128e919e8539d284c312beb8dce60"}}
+{"name": "Zimbabwe", "global": "//li[has-class(\"even\")]", "statement": "//div[has-class(\"itemBody\")]//div[position()>2]", "link": "//a//@href", "posted_date": "//span[has-class(\"moduleItemDateCreated\")]//text()", "content_type": "html", "link_follow": null, "url": "http://www.zimfa.gov.zw/index.php/media-centre/news", "tag": null, "us_date_format": null, "title": "//a[has-class(\"moduleItemTitle\")]//text()"}
+
+{"index": {"_id": "12c7969d09cdc2e1ad356c93804a9a6e2174c768"}}
+{"statement": "//div[@id=\"content\"]//div[has-class(\"entry-content\")]//p", "link_follow": null, "name": "Mali", "posted_date": "//time/text()", "link": "//header//a/@href", "url": "https://diplomatie.gouv.ml/category/communiques-de-presse", "title": "//header//a/text()", "us_date_format": null, "global": "//article//div[has-class(\"article-content\")]", "tag": null, "content_type": "html"}
+
+{"index": {"_id": "955b74f1e24436c77c9a01f6a01dd1a93b9ad4de"}}
+{"posted_date": "//span[2]//text()", "name": "Somalia", "url": "https://www.mfa.gov.so/press/news-and-media-releases", "link": "//a//@href", "global": "//div[has-class(\"post-header\")]", "bs_element": "", "us_date_format": "", "title": "//a//text()", "tag": null, "statement": "//div[has-class(\"post-content\")]//p", "content_type": "html", "link_follow": ""}
+
+{"index": {"_id": "8e18942b80cb6794034c12fe6f108424b5950705"}}
+{"name": "Luxembourg", "posted_date": "//time/span/text()", "us_date_format": null, "url": "https://newyork-un.mae.lu/en/actualites.html", "link_follow": null, "statement": "//div[has-class(\"news-content\")]//p", "global": "//li/article", "title": "//header//a/text()", "content_type": "html", "tag": null, "link": "//header//a/@href"}
+
+{"index": {"_id": "9d1803d799724e727366bc372470ba332804179f"}}
+{"name": "Luxembourg", "tag": null, "posted_date": "//time/span/text()", "link": "//header//a/@href", "content_type": "html", "link_follow": null, "us_date_format": null, "statement": "//div[has-class(\"news-content\")]//p", "url": "https://maee.gouvernement.lu/en/actualites.html", "title": "//header//a/text()", "global": "//li/article"}
+
+{"index": {"_id": "e039132fd8c99344d2b35f0152d7dbe969fa8533"}}
+{"url": "https://www.un.int/tuvalu", "title": "//h2//a//text()", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "tag": null, "link": "//h2//a//@href", "link_follow": null, "global": "//article[has-class(\"node node-news node-teaser clearfix\")]", "name": "Tuvalu", "statement": "//div[has-class(\"field-item even\")]//p", "content_type": "html", "us_date_format": null}
+
+{"index": {"_id": "7b9d73d7232d5f90d785644fab0ad11372f9bd77"}}
+{"link_follow": "", "content_type": "html", "url": "http://www.diplomatie.gouv.ne/index.php/le-ministere/actualites", "statement": "//div[has-class(\"sp-component-area-inner clearfix\")]//p", "name": "Niger", "posted_date": "nill", "title": "//a//text()", "link": "//a//@href", "us_date_format": "", "global": "//div[has-class(\"item_innerDiv clearfix\")]//h2", "tag": null}
+
+{"index": {"_id": "cd7c0fafa8a6f2f1124165f265fa1485b275babe"}}
+{"global": "//div[has-class(\"box-news\")]", "url": "https://www.rree.go.cr/index.php", "tag": null, "name": "Costa Rica", "us_date_format": null, "link": "//a//@href", "posted_date": "//span[has-class(\"metaDate\")]//text()", "statement": "//article[has-class(\"article animated fadeIn\")]/p", "title": "//a//text()", "content_type": "html", "link_follow": null}
+
+{"index": {"_id": "3bd44e12920fa5de53d9b084f9a2156687c75a89"}}
+{"link_follow": null, "name": "Benin", "title": "//div//h2/a/text()", "content_type": "html", "global": "//div[has-class(\"article relative half\")]", "url": "https://diplomatie.gouv.bj/actualites/categorie/comptes-rendus", "posted_date": "//time/text()", "tag": null, "us_date_format": null, "statement": "/html/body/div[1]/div[3]/div/div", "link": "//div//h2/a/@href"}
+
+{"index": {"_id": "ca95b039056154979b14936a3fa3864bdd1c1e0d"}}
+{"tag": null, "link_follow": null, "url": "https://news.un.org/en/tags/djibouti", "global": "//div[has-class(\"body-wrapper\")]", "us_date_format": null, "name": "Djibouti", "link": "//h1//@href", "statement": "//div[has-class(\"field-item even\")]/p", "content_type": "html", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "title": "//h1//text()"}
+
+{"index": {"_id": "c61cd958726d99a8689cc6e861186d2e19907307"}}
+{"url": "http://www.statehouse.gm/news?style=4_column", "content_type": "html", "link_follow": null, "tag": null, "statement": "//div[has-class(\"field-items\")]", "us_date_format": null, "global": "//div[has-class(\"news-wrap\")]", "posted_date": "//span[has-class(\"news-meta\")]//text()", "title": "//h5//a//text()", "link": "//h5//a//@href", "name": "Gambia"}
+
+{"index": {"_id": "f3a4000a9f29352fc0c0d037852605e1e92a753f"}}
+{"url": "https://foreign.gov.tt/resources/news", "title": "//h4//text()", "us_date_format": null, "posted_date": "//h6//text()", "link": "//a//@href", "tag": null, "statement": "//div[has-class(\"body\")]//p", "content_type": "html", "global": "//div[has-class(\"card-section\")]", "name": "Trinidad and Tobago", "link_follow": null}
+
+{"index": {"_id": "5d46ab6edc81d1d0597bfbef8baeace9d017e401"}}
+{"link_follow": null, "content_type": "html", "name": "Ghana", "tag": null, "title": "//h4//a//text()", "us_date_format": null, "statement": "//div[has-class(\"cs-editor-text\")]//p", "global": "//*[@id=\"main-content\"]/div/div[3]/div/div/div/div/div/div[1]/article", "posted_date": "//time//@datetime", "link": "//h4//a//@href", "url": "https://www.ghanamissionun.org"}
+
+{"index": {"_id": "5309ac2b69a813057c8028a87b7f6d451dd2af62"}}
+{"statement": "//div[has-class(\"cs-editor-text\")]", "name": "Ghana", "url": "https://www.ghanamissionun.org/statements-remarks", "global": "//div[has-class(\"blog-info-sec\")]", "us_date_format": null, "title": "//h2//a//text()", "posted_date": "//time//text()", "link": "//h2//a//@href", "content_type": "html", "link_follow": null, "tag": null}
+
+{"index": {"_id": "fa17c1bf692dfb3f381979eca176e5c58a91bece"}}
+{"global": "//ul[contains(@id, \"pressReleases\")]//li", "bs_element": "", "url": "https://ab.gov.ag/detail_page.php?page=2", "us_date_format": "", "tag": null, "link_follow": "", "statement": null, "name": "Antigua and Barbuda", "posted_date": "//a//text()", "link": "//a//@href", "content_type": "doc", "title": "//a"}
+
+{"index": {"_id": "2269a1449b72a53e73ff91c712622d5bc0f26876"}}
+{"statement": "//div[has-class(\"entry-content\")]//text()", "tag": null, "link": "//a/@href", "link_follow": null, "global": "//h4[has-class(\"srp-post-title\")]", "name": "Belize", "posted_date": "//time[has-class(\"entry-date\")]//text()", "url": "https://www.belizemission.com", "us_date_format": null, "title": "//a/text()", "content_type": "html"}
+
+{"index": {"_id": "c201ab2e0431718e7b8e32f2b565191dbac97482"}}
+{"statement": "//div[has-class(\"entry-content\")]/p", "global": "//h1[has-class(\"entry-title\")]", "tag": null, "name": "Belize", "posted_date": "//time[has-class(\"entry-date\")]//text()", "title": "//a//text()", "us_date_format": null, "link_follow": null, "content_type": "html", "link": "//a//@href", "url": "https://www.belizemission.com/news"}
+
+{"index": {"_id": "7a551b95f0b577113e4dd76b344daaead94289a4"}}
+{"global": "//div[has-class(\"col-md-6 news-block\")]", "name": "Gabon", "tag": null, "link_follow": null, "content_type": "html", "us_date_format": null, "url": "http://www.affaires-etrangeres.gouv.ga/presse/communiques", "statement": "//div[has-class(\"contentArticle\")]", "link": "//a//@href", "posted_date": "/html/body/div[3]/div/div[1]/section/small/text()[2]", "title": "//h5//text()"}
+
+{"index": {"_id": "ad4d6ba9c78304a76a85df200c39cf099a0838c0"}}
+{"posted_date": "//span//text()", "link": "//a//@href", "global": "//div[has-class(\"col-md-6\")]", "content_type": "html", "link_follow": null, "title": "//a//text()", "statement": "//div[has-class(\"col-md-8\")]//text()", "name": "Bulgaria", "url": "https://www.mfa.bg/en/news", "tag": null, "us_date_format": null}
+
+{"index": {"_id": "3236e655eb14a0dc3213f710b212c8865c98a216"}}
+{"url": "https://www.samoagovt.ws/category/press-releases", "title": "//h2//a//text()", "link_follow": "", "global": "//div[has-class(\"post-title-holder\")]", "link": "//h2//a//@href", "tag": null, "us_date_format": "", "name": "Samoa", "statement": "//div[has-class(\"article_content clearfix entry-content\")]//p", "content_type": "html", "posted_date": "//span[has-class(\"icon-calendar date updated\")]//text()"}
+
+{"index": {"_id": "8aca619f5d215a8fd72748485cca015c533555c2"}}
+{"title": "//a//text()", "tag": null, "url": "https://diplomatie.gouv.tg/actualites", "statement": "//div[has-class(\"elementor-widget-container\")]//p", "link": "//a//@href", "posted_date": "//span[has-class(\"elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date\")]//text()", "global": "//div[has-class(\"elementor-template\")]", "link_follow": null, "name": "Togo", "content_type": "html", "us_date_format": null}
+
+{"index": {"_id": "eafe7145711f62fbb0d3e48e035e4386a92e5871"}}
+{"posted_date": "//div[has-class(\"date italic\")]//text()", "name": "Armenia", "title": "//a//text()", "link": "//a//@href", "statement": "//div[has-class(\"static-content\")]/p", "link_follow": null, "tag": null, "global": "//div[has-class(\"news-list-inner-box\")]", "content_type": "html", "us_date_format": null, "url": "https://www.mfa.am/en/press-releases"}
+
+{"index": {"_id": "652203a74d4ce35c6a40b915a14eb5ded7036e73"}}
+{"url": "http://www.foreign.gov.vc/foreign/index.php?option=com_content&view=category&id=24&Itemid=34", "link_follow": null, "statement": "//div[@itemprop=\"articleBody\"]//text()", "posted_date": "//td[2]/text()", "tag": null, "name": "Saint Vincent and the Grenadines", "us_date_format": null, "title": "//td[1]/a/text()", "content_type": "html", "link": "//td[1]/a/@href", "global": "//div[has-class(\"content-category\")]//table[has-class(\"category\")]//tr"}
+
+{"index": {"_id": "7bf698359e13c38a9679a41bca3a661ae0225567"}}
+{"global": "//div[has-class(\"grid grid-listing-actus\")]", "name": "Tunisia", "url": "https://www.diplomatie.gov.tn/en/press/news", "title": "//h5//a//text()", "link": "//h5//a//@href", "link_follow": null, "tag": null, "content_type": "html", "us_date_format": null, "posted_date": "//span[has-class(\"date\")]//text()", "statement": "//div[has-class(\"article\")]/div[position()>1]"}
+
+{"index": {"_id": "dc11ae37a4296dcff9992f0d306168c702718996"}}
+{"statement": "//div[has-class(\"ctn_page\")]//p", "posted_date": "//div[has-class(\"fechaPublicacion\")]/text()", "link": "//a/@href", "title": "//div[has-class(\"descNews\")]/text()", "us_date_format": null, "url": "https://www.mirex.gob.do/medios/noticias", "link_follow": null, "name": "Dominican Republic", "tag": null, "content_type": "html", "global": "//div[has-class(\"iten_news\")]"}
+
+{"index": {"_id": "d35179e272ac2acbfae4bd000c39ccd8a0ea961a"}}
+{"link": "//a//@href", "us_date_format": null, "content_type": "doc", "url": "https://www.gov.bw/press-releases", "tag": null, "link_follow": null, "title": "//a/text()", "statement": null, "posted_date": "//time//text()", "name": "Botswana", "global": "//div[has-class(\"servicesmi\")]"}
+
+{"index": {"_id": "b8d0359812c883d9aa05cdc4e1cc9dc7e3a7a083"}}
+{"global": "//div[has-class(\"views-field views-field-title\")]", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "link": "//a//@href", "name": "United Arab Emirates", "content_type": "html", "url": "https://www.un.int/uae/statements_speeches", "link_follow": null, "tag": null, "title": "//a//text()", "us_date_format": null, "statement": "//div[has-class(\"field-items\")]//p"}
+
+{"index": {"_id": "587e5fc7c5d52e70cbda59ef38a97c74a83d0539"}}
+{"name": "Mauritania", "statement": "//div[has-class(\"field-items\")]//text()", "us_date_format": null, "global": "//div[has-class(\"dia-post-inner dia-article\")]", "tag": null, "content_type": "html", "url": "https://www.diplomatie.gov.mr/?q=fr", "posted_date": "//span[has-class(\"dia-postdateicon\")]//text()", "link_follow": null, "link": "//a//@href", "title": "//a//text()"}
+
+{"index": {"_id": "017c6351530ac3b131aaaabe0a30250227fb1fad"}}
+{"content_type": "html", "global": "//div[has-class(\"view-content\")]/div//h2", "tag": null, "statement": "//div[has-class(\"field-items\")]//p", "name": "United Arab Emirates", "url": "https://www.un.int/uae/news", "link": "//@href", "us_date_format": null, "link_follow": null, "posted_date": "//span[has-class(\"date-display-single\")]//text()", "title": "//a//text()"}
+
+{"index": {"_id": "ae15618b0b5384b8eb14856df3274ad9f5634ab7"}}
+{"link_follow": null, "url": "http://www.goss-online.org/press.html", "posted_date": "//div[has-class(\"newsText\")]//text()", "content_type": "html", "name": "South Sudan", "global": "//div[has-class(\"smallText\")]", "tag": null, "us_date_format": null, "link": "//a//@href", "title": "//a//text()", "statement": "//div[has-class(\"contentText\")]/p"}
+
+{"index": {"_id": "471270fc9d41e6fb6d0548a8a9c335e15339be99"}}
+{"content_type": "html", "link": "//h2/a/@href", "name": "Croatia", "global": "//div[has-class(\"novost-prikaz\")]/div[has-class(\"content\")]", "statement": "//div[has-class(\"novost-detalji\")]/p/text()", "link_follow": null, "posted_date": "//h4/text()", "us_date_format": null, "tag": null, "url": "http://un.mfa.hr/en/news-and-announcements/speeches", "title": "//h2/a/text()"}
+
+{"index": {"_id": "6a9a6ad6edd4db11c3fe92c77a2d94dd71c23efa"}}
+{"statement": "//div[has-class(\"sadrzaj\")]/p/text()", "us_date_format": null, "name": "Croatia", "content_type": "html", "posted_date": "//h2/text()", "link_follow": null, "url": "http://www.mvep.hr/en/info-servis/press-releases", "tag": null, "title": "//h3/a/text()", "global": "//div[has-class(\"priopcenje-lista\")]/ul/li", "link": "//h3/a/@href"}
+
+{"index": {"_id": "950516f60c483de90ea1ea4b5611fb47bdfc811d"}}
+{"link_follow": null, "global": "//div[has-class(\"masonry-item views-row\")]", "title": "//span[has-class(\"field-content\")]//text()", "tag": null, "name": "Argentina", "content_type": "html", "link": "//a//@href", "statement": "//div[has-class(\"field-item even\")]/p", "url": "https://www.cancilleria.gob.ar/en/news", "posted_date": "//div[has-class(\"field-item even\")]/span//text()", "us_date_format": null}
+
+{"index": {"_id": "1e2aebec2a8e2a20f8edcd7964d4f6ad2dc1a829"}}
+{"name": "Kazakhstan", "us_date_format": "", "link_follow": "", "content_type": "html", "statement": "//section[has-class(\"content-embed\")]//p", "title": "//h2//a//text()", "global": "//div[has-class(\"teaser__content\")]", "link": "//h2//a//@href", "posted_date": "//span[has-class(\"meta__date\")]//text()", "tag": null, "url": "https://eurasianet.org/region/kazakhstan?gclid=Cj0KCQjwyZmEBhCpARIsALIzmnIDSmvtydrBx82sj0mZ9peUDSnQbRnlkyBSClmn5S7sg_X6o-a_OwMaAhAoEALw_wcB"}
+
+{"index": {"_id": "cd99318cadd129b3ad3b39a4cc68d17c5a5fca74"}}
+{"posted_date": "//div[has-class(\"lenta_news_time-rubric\")]//text()", "url": "https://www.inform.kz/en/politics_g41", "content_type": "html", "title": "//div[has-class(\"lenta_news_title\")]//a//text()", "link": "//a//@href", "statement": "//div[has-class(\"article_news_body\")]//p", "tag": null, "bs_element": null, "us_date_format": "", "global": "//div[has-class(\"lenta_news_block\")]", "link_follow": "", "name": "Kazakhstan"}
+
+{"index": {"_id": "5266aba0ef311f59c976dbd74bd9c438efc2b03a"}}
+{"link_follow": null, "statement": "//div[has-class(\"entry\")]/p", "link": "//a//@href", "us_date_format": null, "title": "//a//text()", "content_type": "html", "url": "https://www.mofa-ye.org/Pages/category/press-releases", "name": "Yemen", "posted_date": "//span[has-class(\"tie-date\")]//text()", "tag": null, "global": "//article[has-class(\"item-list\")]"}
+
+{"index": {"_id": "95059e2ef318eb031efe4fa83454d663a88f0aa3"}}
+{"name": "Monaco", "us_date_format": null, "global": "//div[has-class(\"content clearfix\")]", "posted_date": "//span[has-class(\"date\")]//text()", "statement": "//div[has-class(\"mainContent\")]/p", "tag": null, "url": "https://en.gouv.mc/Portail-du-Gouvernement", "link_follow": null, "content_type": "html", "title": "//a//text()", "link": "//a//@href"}
+
+{"index": {"_id": "45d9cbd471f9650f54c2962ab981f42fc5ef4cbf"}}
+{"tag": null, "posted_date": "//time//text()", "content_type": "html", "link_follow": "", "global": "//div[has-class(\"gem-c-image-card__text-wrapper\")]", "bs_element": "", "link": "//a//@href", "us_date_format": "", "title": "//a//text()", "statement": "//div[has-class(\"govspeak\")]//p", "url": "https://www.gov.uk/world/uk-mission-to-the-united-nations-new-york", "name": "United Kingdom of Great Britain and Northern Ireland"}
+
+{"index": {"_id": "f19cd043fcf7db2971b028203cf9809160e297d8"}}
+{"bs_element": "", "tag": null, "content_type": "html", "statement": "//div[has-class(\"govspeak\")]//p", "us_date_format": "", "title": "//a//text()", "link_follow": "", "link": "//a//@href", "url": "https://www.gov.uk/search/news-and-communications?organisations%5B%5D=foreign-commonwealth-office&parent=foreign-commonwealth-office", "name": "United Kingdom of Great Britain and Northern Ireland", "posted_date": "//time//text()", "global": "//li[has-class(\"gem-c-document-list__item\")]"}
+
+{"index": {"_id": "0bf82a8737794c70859dad8536a8ad845407a1d3"}}
+{"global": "//div[has-class(\"news row\")]", "statement": "//div[has-class(\"full-story row\")]", "posted_date": "//p[has-class(\"date\")]//text()", "link": "//h4/a//@href", "us_date_format": null, "tag": null, "content_type": "html", "link_follow": null, "url": "https://mfa.gov.ge/Home.aspx?lang=en-US", "title": "//h4//a//text()", "name": "Georgia"}
+
+{"index": {"_id": "3b7b333db20375dd1b063a3c5bd8b08f0fdc47bb"}}
+{"title": "//h4//a//text()", "link": "//h4/a//@href", "statement": "//div[has-class(\"full-story row\")]", "us_date_format": null, "name": "Georgia", "global": "//div[has-class(\"news row\")]", "posted_date": "//p[has-class(\"date\")]//text()", "link_follow": null, "content_type": "html", "tag": null, "url": "https://mfa.gov.ge/MainNav/MediaCenter/Statement.aspx?lang=en-US"}
+
+{"index": {"_id": "13dc1f5838b844cd5c6b394a7bce118644e60f50"}}
+{"name": "Senegal", "title": "//a//text()", "link_follow": "", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "statement": "//div[has-class(\"field-items\")]//p", "content_type": "html", "global": "//span[has-class(\"field-content\")]", "url": "https://www.sec.gouv.sn/actualit%C3%A9s", "link": "//a//@href", "bs_element": "", "us_date_format": "", "tag": null}
+
+{"index": {"_id": "330c5f8387047e9a3862e2cef332a9dc75c7f40e"}}
+{"title": "//h2/a/text()", "content_type": "html", "link": "//h2/a/@href", "global": "//div[has-class(\"view-content\")]/div/div[2]", "link_follow": null, "statement": "//div[has-class(\"content\")]//p", "tag": null, "posted_date": "//div[has-class(\"views-field-created\")]/text()", "us_date_format": null, "name": "Estonia", "url": "https://vm.ee/en/news"}
+
+{"index": {"_id": "436aaeecfefbfca339e3320c112499f7511222fc"}}
+{"tag": null, "link": "//h2/a/@href", "link_follow": null, "us_date_format": null, "content_type": "html", "global": "//div[has-class(\"view-content\")]/div/div[2]", "url": "https://vm.ee/en/news?title=&title_op=allwords&date=All&date_custom%5Bmin%5D=&date_custom%5Bmax%5D=&type%5B%5D=244", "title": "//h2/a/text()", "posted_date": "//div[has-class(\"views-field-created\")]/text()", "statement": "//div[has-class(\"content\")]//p/text()", "name": "Estonia"}
+
+{"index": {"_id": "93a0e226e42c7b703266e5603ea4d3ad287d67f1"}}
+{"title": "//h3/a/text()", "statement": "//div[has-class(\"content\")]//p/text()", "link": "//h3/a/@href", "url": "https://www.gov.si/en/state-authorities/ministries/ministry-of-foreign-affairs/news", "content_type": "html", "us_date_format": null, "posted_date": "//time/text()", "tag": null, "link_follow": null, "global": "//ul[has-class(\"news-list\")]/li[has-class(\"list-item\")]", "name": "Slovenia"}
+
+{"index": {"_id": "f538a253d28145f7071f9edacef2bb9ff24575cd"}}
+{"tag": null, "title": "//a//text()", "posted_date": "//time//@datetime", "statement": "//div[has-class(\"col-1\")]", "url": "https://www.government.se/press-releases", "global": "//div[has-class(\"sortcompact\")]", "us_date_format": null, "link_follow": null, "content_type": "html", "name": "Sweden", "link": "//a//@href"}
+
+{"index": {"_id": "2a02208fcaafe852a22adc4fc1aff724531f36b1"}}
+{"posted_date": "/html/body/div/div[2]/div/div/p//text()", "tag": null, "content_type": "html", "link_follow": null, "statement": "//div[has-class(\"typo-text-sm1 gray-dark\")]", "title": "//h3//text()", "url": "https://www.mofa.gov.kw/en/media-center/official-statements", "us_date_format": null, "name": "Kuwait", "link": "//a//@href", "global": "//div[has-class(\"news-item\")]"}
+
+{"index": {"_id": "8da6f71835f72ebaf503c50c5d747c0ff3454a6f"}}
+{"global": "//div[has-class(\"news-item\")]", "posted_date": "//p[has-class(\"news-details-date news-details-date-icon-img\")]//text()", "tag": null, "title": "//a//h3//text()", "link": "//a//@href", "url": "https://www.mofa.gov.kw/en/media-center/news", "us_date_format": null, "link_follow": null, "content_type": "html", "name": "Kuwait", "statement": "//div[has-class(\"typo-text-sm1 gray-dark\")]"}
+
+{"index": {"_id": "ccb0fe2bd5337f19ecff40a34d120c5a215c7d96"}}
+{"us_date_format": null, "link": "//a//@href", "posted_date": "nil", "link_follow": null, "global": "/html/body/div[1]/div[2]/div/div[3]/div[1]/div[3]/article//h2", "statement": "/html/body/div[1]/div[2]/div/div[3]/div[1]/article/div", "name": "Burundi", "title": "//a//text()", "content_type": "html", "tag": null, "url": "https://www.mae.gov.bi/category/actualites"}
+
+{"index": {"_id": "53d9ca75450d8c93ac745ffa75a0186ebcd74fcc"}}
+{"link_follow": "//a//@href", "bs_element": null, "url": "https://www.mofa.gov.zm", "posted_date": "//div[has-class(\"blog-info blog-date\")]//text()", "statement": "//div[has-class(\"gdlr-blog-content\")]", "title": "//a//text()", "tag": null, "name": "Zambia", "link": "//a//@href", "us_date_format": "", "content_type": "html", "global": "//div[has-class(\"widget widget_recent_entries\")]"}
+
+{"index": {"_id": "02a1a7b3c88e174635b9a27247b260696fef6356"}}
+{"title": "//text()", "tag": null, "name": "Maldives", "link_follow": null, "url": "https://www.gov.mv/en/search?organisation=ministry-of-foreign-affairs", "content_type": "html", "posted_date": "substring-after(//p[has-class(\"govmv-post-datetime\")]/text(),\"Published  : \")", "global": "//a[has-class(\"govmv-headline\")]", "statement": "//div[has-class(\"govmv-body\")][2]/p", "link": "//@href", "us_date_format": null}
+
+{"index": {"_id": "7838e6b26e2512b6a1a4b3949f179a1acd829ef3"}}
+{"bs_element": null, "link_follow": null, "title": "//a/text()", "name": "Maldives", "link": "//a/@href", "content_type": "html", "global": "//div[has-class(\"news__article-excerpt\")]", "statement": "//section[has-class(\"section\")][1]/div[has-class(\"content\")]//p", "url": "http://maldivesmission.com", "us_date_format": null, "tag": null, "posted_date": "substring-after(//section[has-class(\"page-meta\")]//div[has-class(\"content small\")]/p/text(), \":\")"}
+
+{"index": {"_id": "888c686dd095c26ae2b6b9c0101f02ab788c0977"}}
+{"link": "//a//@href", "global": "//span[has-class(\"govmv-caption-s\")]", "statement": "//div[has-class(\"govmv-body\")]//p", "title": "//a//text()", "tag": null, "content_type": "html", "link_follow": null, "url": "https://www.gov.mv/en/news-and-communications?category=4", "posted_date": "//*[@id=\"govmv-main-body\"]/div[2]/div[1]/p[1]", "name": "Maldives", "us_date_format": null}
+
+{"index": {"_id": "d3f7b8c700cd98dd0d98adfbbd7e71d1536cdb3f"}}
+{"global": "//div[has-class(\"col-sm-4\")]", "posted_date": "//p[has-class(\"date\")]//text()", "link_follow": "", "tag": null, "us_date_format": "", "name": "Thailand", "title": "//@title", "ssl": null, "link": "//a//@href", "content_type": "html", "url": "https://www.mfa.go.th/en/index", "statement": "//div[has-class(\"ContentDetailstyled__ContentDescription-sc-150bmwg-4 jWrYsI mb-3\")]", "bs_element": ""}
+
+{"index": {"_id": "7621feef6304f4ec41ab57d7bb97aee7b2dc5548"}}
+{"global": "//a[has-class(\"others-posts\")]", "us_date_format": null, "url": "https://www.governo.cv/noticias", "title": "//div[2]/h4/text()", "bs_element": null, "statement": "//div[has-class(\"content-post\")]", "name": "Cape Verde", "link_follow": null, "content_type": "html", "link": "//@href", "posted_date": "//time/text()", "ssl": null, "tag": null}
+
+{"index": {"_id": "153f02968bab70d0fe71ae8f3cef21029c5f390d"}}
+{"link_follow": null, "url": "https://pm.gov.ly/pm/index.php", "statement": "//*[@id=\"myPage\"]/div[2]/div[1]/div[2]/div[2]/div/div[1]/div[1]/article", "tag": null, "link": "//a//@href", "content_type": "html", "bs_element": null, "name": "Libya", "ssl": null, "posted_date": "//small[has-class(\"text-muted\")]//text()", "title": "//h1//text()", "us_date_format": "", "global": "//div[has-class(\"work-box\")]"}
+
+{"index": {"_id": "58bd215c55306c92945a2decb4bd4a33233e5c33"}}
+{"title": "//a/span/text()", "us_date_format": "", "link": "//a/@href", "link_follow": null, "url": "https://www.foreignaffairs.gov.mw", "tag": null, "global": "//div[has-class(\"newsinfo\")]", "content_type": "html", "ssl": null, "bs_element": null, "name": "Malawi", "posted_date": "nil", "statement": "//div[@itemprop=\"articleBody\"]"}
+
+{"index": {"_id": "4b3cc0c17a152e9eaa8d7f3470e78f4257f34ea9"}}
+{"link": "//a//@href", "url": "https://www.mea.gov.in/press-releases.htm?51/Press_Releases", "link_follow": "", "name": "India", "global": "//ul[has-class(\"commonListing\")]//li", "ssl": null, "title": "//a//text()", "posted_date": "//*[@id=\"ContentPlaceHolder1_UserPublications1_lblDate\"]//text()", "tag": null, "us_date_format": "", "bs_element": "", "content_type": "html", "statement": "//*[@id=\"ContentPlaceHolder1_UserPublications1_ltrlDesc\"]"}
+
+{"index": {"_id": "591097e40950a8e29d63a886a3da4f747f0cb6fe"}}
+{"title": "//a//text()", "global": "//*//article[has-class(\"item item-page\")]//li", "tag": null, "content_type": "html", "us_date_format": null, "posted_date": "nill", "link": "//a//@href", "link_follow": null, "bs_element": null, "statement": "//div[contains(@itemprop, \"articleBody\")]", "url": "http://www.gov.sz/index.php/news-a-events-sp-2126384341", "name": "Eswatini", "ssl": null}
+
+{"index": {"_id": "ccb358072ec2ad6e262bd53d4d353634c55d3365"}}
+{"us_date_format": "", "global": "//div[has-class(\"card-body pt-0\")]", "link": "//a//@href", "statement": "//div[has-class(\"col\")]//p", "bs_element": null, "name": "El Salvador", "posted_date": "//time[has-class(\"news-date\")]//text()", "title": "//a//text()", "ssl": null, "content_type": "html", "tag": null, "link_follow": null, "url": "https://rree.gob.sv/category/noticias"}
+
+{"index": {"_id": "6876a7daf443849d0b0f9e86d9d79b7b85a15e6e"}}
+{"bs_element": null, "posted_date": "nill", "content_type": "html", "link_follow": null, "url": "https://www.diplomatie.gouv.fr/en/french-foreign-policy", "ssl": null, "global": "//li[has-class(\"item-carte entry contenu hentry mtm\")]", "tag": null, "us_date_format": null, "statement": "//div[has-class(\"milieu mbm\")]//div//p", "name": "France", "link": "//a//@href", "title": "//span//text()"}
+
+{"index": {"_id": "9af4b99227fcb9ce7eb888a33f36eecb758b7d40"}}
+{"link_follow": null, "statement": "//div[has-class(\"texte surlignable\")]//p", "content_type": "html", "tag": null, "us_date_format": null, "link": "//a//@href", "title": "//a//@title", "global": "//li[has-class(\"has-picture\")]", "posted_date": "//p[has-class(\"date\")]//text()", "url": "https://onu.delegfrance.org", "name": "France"}
+
+{"index": {"_id": "c240009d67856fa73e0647d658bb9a808488bf72"}}
+{"tag": null, "title": "//a//text()", "link_follow": null, "content_type": "html", "global": "//li[has-class(\"has-picture\")]", "statement": "//div[has-class(\"texte surlignable\")]/p", "posted_date": "//p[has-class(\"date\")]//text()", "url": "https://onu.delegfrance.org/-France-at-the-United-Nations-", "us_date_format": null, "name": "France", "link": "//a//@href"}
+
+{"index": {"_id": "499fc2db31acdb5ccf07e11f4f63cd9b28a93eb8"}}
+{"us_date_format": null, "content_type": "html", "name": "Norway", "tag": null, "posted_date": "//small/text()", "url": "https://www.norway.no/en/missions/UN/news", "link_follow": null, "statement": "//div[has-class(\"np-main-body\")]/p", "title": "//h2/text()", "global": "//div[has-class(\"panels\")]/div[has-class(\"panel\")]/a", "link": "//@href"}
+
+{"index": {"_id": "97598b0d99a7613b23377997c1bb27887d50a097"}}
+{"tag": null, "posted_date": "//span[has-class(\"date\")]/text()", "global": "//ul[has-class(\"listing\")]/li[has-class(\"listItem\")]", "content_type": "html", "bs_element": null, "ssl": null, "link_follow": null, "statement": "//div[has-class(\"article-body\")]", "title": "//h2/a/text()", "name": "Norway", "us_date_format": null, "url": "https://www.regjeringen.no/en/whatsnew/news-and-press-releases/id2006120", "link": "//h2/a/@href"}
+
+{"index": {"_id": "762f20e91f1b53c402724a75e14758de580ebac2"}}
+{"content_type": "html", "us_date_format": null, "global": "//article[has-class(\"item\")]", "url": "https://www.canada.ca/en/news/advanced-news-search/news-results.html?_=1522088749128&typ=statements&dprtmnt=departmentofforeignaffairstradeanddevelopment&start=&end=", "link": "//a//@href", "name": "Canada", "title": "//a//text()", "posted_date": "//time//@datetime", "link_follow": null, "tag": null, "statement": "//div[has-class(\"cmp-text\")]/p"}
+
+{"index": {"_id": "c4e30b2b00980adb0fd29df9675d6a9d7345d695"}}
+{"url": "https://www.canada.ca/en/news/advanced-news-search/news-results.html?_=1522088684480&typ=newsreleases&dprtmnt=departmentofforeignaffairstradeanddevelopment&start=&end=", "content_type": "html", "global": "//article[has-class(\"item\")]", "name": "Canada", "link_follow": null, "title": "//a//text()", "statement": "//div[has-class(\"cmp-text\")]/p", "posted_date": "//time//@datetime", "us_date_format": null, "link": "//a//@href", "tag": null}
+
+{"index": {"_id": "0c2639a6acb4e42f982fa94474ed98850419081c"}}
+{"name": "Czech Republic", "link_follow": null, "url": "https://www.mzv.cz/jnp/en/issues_and_press/press_releases/index.html", "link": "//a//@href", "statement": "//div[has-class(\"article_content\")]", "posted_date": "//p[has-class(\"articleDate\")]//text()", "title": "//a//text()", "tag": null, "bs_element": null, "ssl": null, "us_date_format": null, "global": "//div[has-class(\"article_content with_illustration\")]//h2", "content_type": "html"}
+
+{"index": {"_id": "67c519ce25af9722d85bee473dbfd2a62de3725a"}}
+{"url": "https://www.mzv.cz/jnp/en/issues_and_press/mfa_statements/index.html", "name": "Czech Republic", "global": "//div[has-class(\"article_content with_illustration\")]", "link_follow": null, "title": "//h2/a/text()", "us_date_format": null, "tag": null, "content_type": "html", "statement": "//div[has-class(\"article_body\")]/p", "posted_date": "//p[has-class(\"articleDate\")]/text()", "link": "//h2/a/@href"}
+
+{"index": {"_id": "5a1884c20f2ed3f6617c8e894fed529df685f76b"}}
+{"global": "//ul[has-class(\"feeds-cont list-unstyled\")]//li", "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/un-onu/statements-declarations/index.aspx?lang=eng", "posted_date": "//text()", "name": "Canada", "bs_element": null, "us_date_format": null, "link": "//a//@href", "title": "//a//text()", "content_type": "html", "ssl": null, "link_follow": null, "statement": "//main[has-class(\"container\")]", "tag": null}
+
+{"index": {"_id": "8d1c0ef700fc8965660b1ed992f61d6342684211"}}
+{"us_date_format": "", "name": "Guinea", "link_follow": null, "ssl": null, "content_type": "html", "link": "//h3/a/@href", "posted_date": "//time/text()", "url": "http://infocommunication.gov.gn", "title": "//h3/a/text()", "tag": null, "global": "//div[has-class(\"td_module_2\")]", "statement": "//div[has-class(\"td-post-content\")]", "bs_element": null}
+
+{"index": {"_id": "cd9509958c81f72f6f624a9e02741591013a592f"}}
+{"link": "//a//@href", "ssl": null, "name": "Burkina Faso", "tag": null, "bs_element": null, "posted_date": "//@datetime", "statement": "//div[has-class(\"news-text-wrap\")]", "link_follow": null, "url": "https://www.mae.gov.bf/actualites/actualites", "title": "//a//@title", "us_date_format": null, "content_type": "html", "global": "//div[has-class(\"card-body\")]"}
+
+{"index": {"_id": "a3cf3fc8a694474d65ca77f011f59bffada3ab8f"}}
+{"bs_element": "", "posted_date": "//div[has-class(\"submitted\")]//text()", "us_date_format": "", "ssl": null, "content_type": "html", "statement": "//div[has-class(\"cke_editable clearfix text__text-content\")]//p", "name": "Latvia", "title": "//a//text()", "link": "//a//@href", "url": "https://www.mfa.gov.lv/en/united-nations", "global": "//*[@id=\"block-ministry-content\"]/div/div[2]/div/div[3]/div", "tag": null, "link_follow": ""}
+
+{"index": {"_id": "6ffb5eac39e60e43e67570f7c93de4255b599a10"}}
+{"bs_element": "", "tag": null, "link_follow": "", "content_type": "html", "url": "https://www.mfa.gov.lv/en/articles", "link": "//a//@href", "posted_date": "//div[has-class(\"submitted\")]//text()", "statement": "//div[has-class(\"cke_editable\")]", "global": "//div[has-class(\"views-row\")]//h3", "title": "//a//text()", "name": "Latvia", "us_date_format": "", "ssl": null}
+
+{"index": {"_id": "a04083ad9eb6fc584588acf2a1edbbdd48843f86"}}
+{"name": "Ecuador", "us_date_format": null, "link_follow": null, "ssl": null, "global": "//div[contains(@id, \"espacio-img\")]", "bs_element": null, "posted_date": "//section[contains(@id, \"postcontent\")]//b//text()", "tag": null, "content_type": "html", "link": "//a/@href", "title": "//a//h4//text()", "url": "https://www.cancilleria.gob.ec/category/noticias", "statement": "//section[@id=\"postcontent\"]//p"}
+
+{"index": {"_id": "732828265bce91d65517a1d37b7fc4e738db83b3"}}
+{"us_date_format": null, "posted_date": "//p[has-class(\"post-date\")]//@datetime", "link": "//h2/a//@href", "content_type": "html", "tag": null, "url": "https://www.mofa.gov.iq/category/spokesperson-en", "name": "Iraq", "statement": "//div[has-class(\"entry-inner\")]/p", "title": "//h2/a//text()", "global": "//div[has-class(\"post-inner post-hover\")]", "link_follow": null}
+
+{"index": {"_id": "7edac240021aba8634848a9006b4f419e650e729"}}
+{"tag": null, "posted_date": "//span[has-class(\"published\")]//text()", "name": "Iraq", "link_follow": null, "link": "//a//@href", "content_type": "html", "statement": "//div[has-class(\"entry-inner\")]/p", "global": "//div[has-class(\"hu-pad group\")]//h2", "us_date_format": null, "url": "https://www.mofa.gov.iq/en", "title": "//a//text()"}
+
+{"index": {"_id": "70ec3a240665f0531d4269651df251cfee9e3c69"}}
+{"name": "Grenada", "posted_date": "//span[has-class(\"post-created\")]//text()", "global": "//div[has-class(\"post-content text-left\")]", "statement": "//div[has-class(\"node__content clearfix\")]", "ssl": null, "bs_element": null, "us_date_format": "", "url": "https://www.gov.gd/mofa/news", "content_type": "html", "link": "//a//@href", "title": "//a//text()", "tag": null, "link_follow": null}
+
+{"index": {"_id": "9f87d109394b96a3d63db8b1a17f9f70c639417e"}}
+{"ssl": null, "name": "C\u00f4te d'Ivoire", "link": "//a//@href", "link_follow": "", "statement": "//div[has-class(\"td-post-content\")]", "url": "https://diplomatie.gouv.ci/salle-de-presse", "bs_element": "", "content_type": "html", "tag": null, "title": "//a//@title", "us_date_format": "", "posted_date": "//time//@datetime", "global": "//div[has-class(\"td-module-thumb\")]"}
+
+{"index": {"_id": "d87479f5c498c68a4aa3f9f6a7c46166d733e0ca"}}
+{"global": "//*//tbody//tr", "link_follow": "", "ssl": null, "us_date_format": "", "link": "//a//@href", "url": "https://news.gov.dm/news", "title": "//a//text()", "tag": null, "posted_date": "//td[has-class(\"list-date small\")]//text()", "content_type": "html", "name": "Dominica", "statement": "//*[@id=\"sp-component\"]/div/div[2]/div[3]", "bs_element": ""}
+
+{"index": {"_id": "4bd407fd699f191d5e7a51465f699aec8313c284"}}
+{"posted_date": "//li//text()", "title": "//a//text()", "global": "//ul[has-class(\"uk-list uk-list-line\")]/li", "ssl": null, "statement": "//div[has-class(\"container\")]//p", "us_date_format": "", "name": "Venezuela (Bolivarian Republic of)", "link_follow": "", "link": "//a//@href", "content_type": "html", "url": "http://mppre.gob.ve/comunicados", "bs_element": "", "tag": null}
+
+{"index": {"_id": "544c0e66f311bab35a4bd95147ace5bc1e6d387a"}}
+{"ssl": null, "statement": "//article[has-class(\"single-post\")]", "posted_date": "//span[has-class(\"date\")]/text()", "title": "//h4/a/text()", "us_date_format": "", "link": "//h4/a/@href", "url": "https://mission-indonesia.org/tag/press-release", "bs_element": "", "content_type": "html", "name": "Indonesia", "tag": null, "link_follow": "", "global": "//div[has-class(\"item\")]/div[has-class(\"contentbox\")]"}
+
+{"index": {"_id": "93c7d3a700162c22d340d054858a384a87bf32f7"}}
+{"global": "//div[has-class(\"item\")]/div[has-class(\"contentbox\")]", "posted_date": "//span[has-class(\"date\")]/text()", "link": "//h4/a/@href", "statement": "//article[has-class(\"single-post\")]", "ssl": null, "url": "https://mission-indonesia.org", "content_type": "html", "name": "Indonesia", "title": "//h4/a/text()", "link_follow": null, "bs_element": null, "us_date_format": null, "tag": null}
+
+{"index": {"_id": "d73b4a3b57575f1078511c29d25b930498f44322"}}
+{"bs_element": "", "content_type": "mixed", "url": "https://www.missionhaiti-oea.org/resolution-et-decisions", "us_date_format": "", "link_follow": "//div[has-class(\"entry-content\")]//a//@href", "statement": null, "tag": null, "name": "Haiti", "link": "//a//@href", "ssl": null, "global": "//div[has-class(\"post-content\")]", "title": "//a//text()", "posted_date": "//time//text()"}
+
+{"index": {"_id": "48cf3046f51a59d5bdb3cd4ef443d946ce73aa96"}}
+{"url": "https://mfa.gov.cy/speeches", "link": "//@href", "statement": "//div[has-class(\"row margin-top\")]//p", "global": "//div[has-class(\"UpcomingEventsRow\")]//p//a", "title": "//a//text()", "name": "Cyprus", "posted_date": "nill", "link_follow": "", "tag": null, "bs_element": "", "ssl": null, "content_type": "html", "us_date_format": ""}
+
+{"index": {"_id": "6865170bf2e720069dcb72001b08225a5e1ea6f4"}}
+{"content_type": "html", "tag": null, "link": "//h2/a/@href", "link_follow": null, "name": "Cyprus", "statement": "//div[has-class(\"entry-content\")]/p", "title": "//h2/a/text()", "us_date_format": null, "posted_date": "//span[has-class(\"date published time\")]/text()", "url": "https://www.cyprusun.org/?cat=57", "global": "//div[has-class(\"post\")]"}
+
+{"index": {"_id": "ec9e160336479ea363328280abe952d0fa5a3831"}}
+{"tag": null, "url": "https://mfa.gov.cy/press-releases", "statement": "//div[has-class(\"col-md-12\")]//p", "us_date_format": "", "link_follow": "", "content_type": "html", "title": "//p//a//text()", "ssl": null, "name": "Cyprus", "posted_date": "nill", "global": "//div[has-class(\"pressReleasesPageRow\")]", "bs_element": "", "link": "//a//@href"}
+
+{"index": {"_id": "59c4aab556f51a9ea0fef4f2326b439b046bfbe7"}}
+{"ssl": null, "statement": "/html/body/div[2]/div[2]/div/div[2]/div/div/div/div/div/div/div/div/div/div[2]/div[2]/div/div/p", "name": "Albania", "link_follow": null, "global": "//div[has-class(\"header article-header\")]", "content_type": "html", "tag": null, "url": "http://www.ambasadat.gov.al/united-nations/en", "link": "//h2//a//@href", "title": "//h2//a//text()", "bs_element": null, "us_date_format": "", "posted_date": "nill"}
+
+{"index": {"_id": "a7ec5f1ade95f6616c0938951685a774b7dbf052"}}
+{"us_date_format": "", "link": "//a//@href", "title": "//a//text()", "link_follow": null, "bs_element": null, "posted_date": "//div[has-class(\"dateDetalils\")]//text()", "global": "//div[has-class(\"descriptionList\")]", "url": "https://punetejashtme.gov.al/en/press-office/press-releases", "content_type": "html", "tag": null, "name": "Albania", "statement": "//div[has-class(\"pageDescription\")]//p"}
+
+{"index": {"_id": "b05e44530777909a249a1f687fc125666c348643"}}
+{"name": "Slovakia", "link": "//a//@href", "tag": null, "link_follow": "", "title": "//a//text()", "url": "https://www.mzv.sk/web/en", "us_date_format": "", "content_type": "html", "global": "//ul[has-class(\"tlacove-spravy\")]//li", "bs_element": "", "statement": "//div[has-class(\"aktualita_text\")]/p", "posted_date": "//div[has-class(\"aktualita_hlavicka\")]//text()"}
+
+{"index": {"_id": "bc71b7b12ad0fec7dbb1cfe581adf3da3da3bf82"}}
+{"ssl": null, "posted_date": "//div[has-class(\"aktualita_hlavicka\")]//text()", "tag": null, "us_date_format": "", "content_type": "html", "title": "//a//text()", "statement": "//div[has-class(\"aktualita_text\")]", "global": "//li[has-class(\"aktualita\")]", "url": "https://www.mzv.sk/web/unnewyork-en/news", "link": "//a//@href", "name": "Slovakia", "link_follow": "", "bs_element": ""}
+
+{"index": {"_id": "0b3b2f0efa35b673e1cc1faff4471fa29d3f7555"}}
+{"global": "//td[has-class(\"body\")]//td//p//strong", "name": "South Africa", "link": "//a//@href", "title": "//a//text()", "bs_element": null, "posted_date": "nill", "us_date_format": "", "link_follow": null, "content_type": "html", "url": "http://www.dirco.gov.za", "tag": null, "statement": "//td[has-class(\"body\")]/p"}
+
+{"index": {"_id": "3d68f7ebaa52a67a83add4de022ff326e2e63250"}}
+{"title": "//a//text()", "bs_element": null, "ssl": null, "posted_date": "//span[has-class(\"date-display-single\")]/text()", "url": "https://www.gov.za/speeches", "name": "South Africa", "tag": null, "content_type": "html", "statement": "//div[has-class(\"field-item even\")]//p", "link": "//a//@href", "global": "//div[has-class(\"view-content\")]//tbody//tr", "us_date_format": null, "link_follow": null}
+
+{"index": {"_id": "86d2febc31333380c252b23b777bf3912f87c407"}}
+{"us_date_format": "", "global": "//div[has-class(\"pt-cv-ifield\")]//h5", "statement": "//div[has-class(\"entry\")]", "ssl": null, "name": "Bhutan", "url": "https://www.mfa.gov.bt/?page_id=9101", "link": "//a//@href", "link_follow": null, "title": "//a//text()", "posted_date": "//span[has-class(\"tie-date\")]//text()", "tag": null, "content_type": "html", "bs_element": null}
+
+{"index": {"_id": "5dd9ae7008f7fede8cfe2471ee25afcf166f3a8d"}}
+{"us_date_format": "", "content_type": "html", "posted_date": "//div[has-class(\"tag data\")]//text()", "url": "https://governo.gov.ao/ao/noticias", "link": "//a//@href", "tag": null, "bs_element": "", "global": "//div[has-class(\"item\")]", "link_follow": "", "ssl": null, "name": "Angola", "statement": "//div[has-class(\"container small-container\")]", "title": "//a//text()"}
+
+{"index": {"_id": "b2b271e82ec09020ace5d8015e2a79bd91470c90"}}
+{"bs_element": "", "name": "Russian Federation", "us_date_format": "", "content_type": "html", "posted_date": "//time/@datetme", "ssl": null, "statement": "//div[has-class(\"article-content\")]//p", "link_follow": "", "url": "https://russiaun.ru/news/list/lang/en", "title": "//a//text()", "tag": null, "global": "//article[has-class(\"news-basic-tile__item\")]", "link": "//a//@href"}
+
+{"index": {"_id": "2a556c316b582ed429e7d6af05ec4d61287321df"}}
+{"posted_date": "//span//text()", "link_follow": null, "us_date_format": null, "statement": "//div[has-class(\"journal-content-article\")]/p", "name": "Finland", "link": "//a//@href", "title": "//a//h3//text()", "tag": null, "content_type": "html", "global": "//div[has-class(\"item span-row\")]", "url": "https://um.fi/press-releases"}
+
+{"index": {"_id": "bd636cdcfa139a2c965d6198b57efd11435553b9"}}
+{"us_date_format": "", "title": "//a//h3//text()", "name": "Finland", "url": "https://finlandabroad.fi/web/usa/foreign-ministry-s-press-releases", "ssl": null, "global": "//div[has-class(\"item span-row\")]", "content_type": "html", "statement": "//div[has-class(\"journal-content-article\")]//p", "bs_element": "", "link": "//a//@href", "link_follow": "", "posted_date": "//span[has-class(\"date\")]//text()", "tag": null}
+
+{"index": {"_id": "bfa381bf2f09ff6876fbafcf0dfa297067ce7d89"}}
+{"content_type": "html", "posted_date": "//span//text()", "name": "Finland", "link_follow": null, "link": "//a//@href", "us_date_format": null, "url": "https://um.fi/speeches", "title": "//a//h3//text()", "tag": null, "statement": "//div[has-class(\"journal-content-article\")]/p", "global": "//div[has-class(\"item span-row\")]"}
+
+{"index": {"_id": "c676eba192254c8a89c3a41e0c4e59568c7117b5"}}
+{"title": "//h3[has-class(\"title\")]", "statement": "//div[has-class(\"journal-content-article\")]/p", "link_follow": null, "tag": null, "global": "//div[has-class(\"item span-3\")]", "content_type": "html", "name": "Finland", "posted_date": "substring-before(//span//text(),\"/\")", "us_date_format": null, "link": "//a//@href", "url": "https://finlandabroad.fi/web/un/frontpage"}
+
+{"index": {"_id": "dfde9f5b4db041374deb06b760b13ec64042818c"}}
+{"global": "//div[has-class(\"item span-row\")]", "us_date_format": null, "link": "//a//@href", "title": "//a//h3//text()", "url": "https://um.fi/news", "content_type": "html", "posted_date": "//span//text()", "name": "Finland", "statement": "//div[has-class(\"journal-content-article\")]/p", "link_follow": null, "tag": null}
+
+{"index": {"_id": "9b262d04d15f9b3af494c6cb468e69fed99ddee9"}}
+{"us_date_format": "", "content_type": "html", "global": "//div[has-class(\"section_content\")]/a", "statement": "//div[has-class(\"section_articleInner_body_content--description\")]", "bs_element": "", "link": "//@href", "link_follow": "", "url": "https://www.mfa.gov.az/en/news", "posted_date": "//span[has-class(\"section_newsIn_item_content_information--date\")]//text()", "tag": null, "name": "Azerbaijan", "title": "//div[has-class(\"section_newsIn_item_content--header\")]//text()", "ssl": null}
+
+{"index": {"_id": "fafac6892e04307eac17e9ff53c30fed54e58b87"}}
+{"name": "Azerbaijan", "us_date_format": "", "link_follow": "", "url": "https://www.mfa.gov.az/en/category/statements", "statement": "//div[has-class(\"section_articleInner_body_content--description\")]", "global": "//div[has-class(\"section_content\")]/a", "ssl": null, "title": "//div[has-class(\"section_archive_item_content--header\")]//text()", "content_type": "html", "tag": null, "bs_element": "", "posted_date": "//span[has-class(\"section_archive_item_content_information--date\")]//text()", "link": "//@href"}
+
+{"index": {"_id": "c5d2022e9a7dfbfe72cc3dbfff0de217dd94795b"}}
+{"statement": "//div[has-class(\"clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item\")]//p", "posted_date": "//div[has-class(\"field field--name-node-post-date field--type-ds field--label-hidden field__item\")]//text()", "global": "//div[has-class(\"col-xs-12 col-sm-6 col-md-4 col-lg-3\")]", "link": "//a//@href", "title": "//a//text()", "tag": null, "bs_element": "", "name": "Mozambique", "link_follow": "", "content_type": "html", "ssl": null, "us_date_format": "", "url": "https://mozambique.iom.int/news"}
+
+{"index": {"_id": "ed54870c769f2795f99e4259ad951d1fd06c9c32"}}
+{"ssl": null, "name": "Nauru", "title": "//h4//a//text()", "posted_date": "//p[has-class(\"date marTopNeg4\")]/text()", "statement": " //div[has-class(\"articleContent\")]//p//text()", "us_date_format": "", "content_type": "html", "link_follow": "", "bs_element": "", "url": "http://naurugov.nr/government-information-office/media-release.aspx", "global": "//div[has-class(\"aNewsItem\")]//div", "link": "//h4//a//@href", "tag": null}
+
+{"index": {"_id": "e1ef1d7bdcb2316717d35b2dc5dfa6d4f8f1ec75"}}
+{"title": "//a//text()", "content_type": "html", "ssl": null, "bs_element": "", "us_date_format": "", "posted_date": "//div[has-class(\"clear\")]//span//text()", "name": "Syrian Arab Republic", "link": "//a//@href", "link_follow": "", "url": "http://mofaex.gov.sy", "statement": "//div[has-class(\"clear\")]", "tag": null, "global": "//div[has-class(\"sp_title\")]"}
+
+{"index": {"_id": "82851533092bab413b41b83ba5fd054bf4f91380"}}
+{"us_date_format": "", "global": "//div[has-class(\"boximg\")]", "statement": "//div[has-class(\"txt_content txt_grey mabo32 text-justify news-text-wrap\")]//p", "bs_element": "", "title": "//a//text()", "content_type": "html", "url": "https://www.gov.rw/news", "name": "Rwanda", "tag": null, "link_follow": "", "posted_date": "nill", "ssl": null, "link": "//a//@href"}
+
+{"index": {"_id": "4b4945e9558cba11343afdf197efb765f4169a0d"}}
+{"statement": "//div[has-class(\"field-items\")]", "link_follow": null, "us_date_format": null, "name": "Vanuatu", "posted_date": "//span[has-class(\"date-display-single\")]/text()", "url": "https://www.un.org/sg/en/countries/vanuatu", "global": "//section[has-class(\"block block-system clearfix\")]//a", "link": "//a//@href", "title": "//a//text()", "tag": null, "content_type": "html"}
+
+{"index": {"_id": "758b2e1a0686fe718f88820452e34298dcbe8eae"}}
+{"bs_element": "", "title": "//a//text()", "name": "Lithuania", "posted_date": "//span[has-class(\"date\")]/text()", "content_type": "html", "link": "//a//@href", "tag": null, "us_date_format": "", "link_follow": "", "statement": "//div[has-class(\"text\")]//p", "url": "https://urm.lt/default/en/news", "ssl": null, "global": "//div[has-class(\"news_descr\")]"}
+
+{"index": {"_id": "e1688439071318f7f77331fc1d06e6225a2dcbd8"}}
+{"us_date_format": "", "posted_date": "//div[has-class(\"c_date news_date\")]//span//text()", "content_type": "html", "global": "//div[has-class(\"news_descr\")]", "title": "//a//text()", "statement": "//div[has-class(\"text clear\")]//p", "link_follow": "", "link": "//a//@href", "bs_element": "", "ssl": null, "name": "Lithuania", "url": "https://mission-un-ny.mfa.lt/missionny/en/news", "tag": null}
+
+{"index": {"_id": "aba34b7c3af51adaddc6bb72cc4687acd09a378e"}}
+{"url": "https://mvp.gov.me/en/news", "statement": "//div[has-class(\"mainContent3\")]/*[not(self::h2) and not(self::div[has-class(\"detalji-hold\")])]//text()", "title": "//h2/a/text()", "link": "//h2/a/@href", "name": "Montenegro", "posted_date": "//div[has-class(\"date\")]/text()", "link_follow": null, "tag": null, "content_type": "html", "us_date_format": null, "global": "//div[has-class(\"mainContent2\")]/div[has-class(\"section\") or has-class(\"topnews-min\")]"}
+
+{"index": {"_id": "b1174a3c3bdd7e5ee1820ba908d5fc986d110ef4"}}
+{"statement": "//div[has-class(\"ui-article\")]", "bs_element": "", "title": "//a//text()", "ssl": null, "us_date_format": "", "global": "//article[has-class(\"w-full flex flex-col sm:flex-row flex-wrap\")]", "content_type": "html", "tag": null, "link_follow": "", "posted_date": "//span[has-class(\"font-light\")]//text()", "link": "//a//@href", "name": "Montenegro", "url": "https://www.gov.me/en/press"}
+
+{"index": {"_id": "8e731a6d80286c5fde31b8877c24b9489956cfef"}}
+{"tag": null, "url": "https://minrel.gob.cl/minrel/en", "ssl": null, "link": "//a//@href", "link_follow": "", "us_date_format": "", "title": "//a[has-class(\"titular\")]/text()", "bs_element": "", "name": "Chile", "content_type": "html", "statement": "//div[has-class(\"CUERPO\")]/p", "posted_date": "//span[has-class(\"fecha\")]/text()", "global": "//article[has-class(\"swiper-slide\")]"}
+
+{"index": {"_id": "d01b8e221e654be1e2c44c12b3171eef5ce9f36d"}}
+{"us_date_format": "", "statement": "//div[has-class(\"CUERPO\")]/p", "name": "Chile", "bs_element": "", "url": "https://minrel.gob.cl/minrel/en/press-room", "ssl": null, "posted_date": "//span[has-class(\"fecha\")]/text()", "content_type": "html", "link_follow": "", "global": "//div[has-class(\"auxi-art\")]", "title": "//a[has-class(\"titular\")]/text()", "link": "//a//@href", "tag": null}
+
+{"index": {"_id": "011b82f0c59986ebb06ec5d3987a36a266c2ea5f"}}
+{"url": "https://mfa.gov.lk/category/ministers-statements-ministers-statements", "link_follow": null, "name": "Sri Lanka", "statement": "//div[has-class(\"entry-content\")]//p", "global": "//article[has-class(\"post full-width\")]", "tag": null, "us_date_format": null, "content_type": "html", "posted_date": "//span[has-class(\"posted-on\")]//text()", "title": "//a//text()", "link": "//a//@href"}
+
+{"index": {"_id": "f68ae28077a6d25fa35f3c313227cd2d9ba39541"}}
+{"global": "//article[has-class(\"node node-news node-teaser clearfix\")]", "link": "//h2//a//@href", "content_type": "html", "bs_element": "", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "us_date_format": "", "tag": null, "title": "//h2//a//text()", "name": "Sri Lanka", "ssl": null, "link_follow": "", "statement": "//div[has-class(\"field-item even\")]//p", "url": "https://www.un.int/srilanka/news"}
+
+{"index": {"_id": "1ca18c1722761f6d4c9bf0846c5f32eeea527b61"}}
+{"ssl": null, "statement": "//div[has-class(\"article_text\")]", "posted_date": "//div[has-class(\"news_item\")]//span//text()", "name": "Equatorial Guinea", "bs_element": "", "tag": null, "us_date_format": "", "link": "//h3//a//@href", "title": "//h3//a//text()", "global": "//div[has-class(\"news_item\")]", "url": "https://www.guineaecuatorialpress.com/categorias/Noticias", "content_type": "html", "link_follow": ""}
+
+{"index": {"_id": "533dce7e6350d0b9118fd8a316662a2ca986752b"}}
+{"link": "//h3//a//@href", "name": "Equatorial Guinea", "link_follow": "", "bs_element": "", "tag": null, "content_type": "html", "statement": "//div[has-class(\"article_text\")]", "global": "//div[has-class(\"news_item\")]", "title": "//h3//a//text()", "ssl": null, "url": "https://www.guineaecuatorialpress.com/ultimas_noticias", "posted_date": "//div[has-class(\"news_item\")]//span//text()", "us_date_format": ""}
+
+{"index": {"_id": "7117eeb744439ec9fe208c8cb35ba5fe870d83d6"}}
+{"ssl": null, "tag": null, "global": "//div[has-class(\"post\")]/div[2]", "content_type": "html", "link_follow": "", "name": "Pakistan", "posted_date": "substring-after( substring-after(//p/span, \"|\"), \"|\")", "url": "https://mofa.gov.pk/category/press-releases", "statement": "//div[has-class(\"entryfull\")]/p", "title": "//h2//a//text()", "link": "//h2//a//@href", "bs_element": "", "us_date_format": ""}
+
+{"index": {"_id": "7492f6d54ab439fc17f6a710574ce11c8abe45b7"}}
+{"title": "//a//text()", "global": "//*[@id=\"container-statements\"]/ul/li", "tag": null, "link_follow": null, "ssl": null, "content_type": "html", "posted_date": "//b//text()", "name": "Pakistan", "us_date_format": null, "link": "//a//@href", "statement": "//div[contains(@id, \"secondary-page-content\")]/p", "bs_element": null, "url": "https://pakun.org"}
+
+{"index": {"_id": "b79cfda10854b6a0a2e96d2a840acd834aebf66f"}}
+{"content_type": "html", "url": "https://new-york-un.diplo.de/un-en/news-corner", "global": "//div[has-class(\"c-teaser--timeline is-headline\")]", "link_follow": null, "us_date_format": null, "link": "//a//@href", "posted_date": "//span[has-class(\"heading__meta\")]//text()", "name": "Germany", "title": "//a//@title", "tag": null, "statement": "//div[has-class(\"u-grid-row\")]//p"}
+
+{"index": {"_id": "fdb1e9d84e74b469688f8502dd2957eb7d3d6fd6"}}
+{"posted_date": "//span[has-class(\"heading__meta\")]//text()", "bs_element": "", "us_date_format": "", "content_type": "html", "tag": null, "title": "//span//text()", "url": "https://www.auswaertiges-amt.de/en/newsroom/news", "global": "//div[has-class(\"c-teaser--default is-image-headline\")]", "statement": "//div[has-class(\"c-rte--default\")]", "ssl": null, "name": "Germany", "link": "//a//@href", "link_follow": ""}
+
+{"index": {"_id": "81e8e28fcf78975b4c0a9eb1fa3b46c3cb2742fc"}}
+{"ssl": null, "content_type": "javascript_selenium", "url": "https://govmu.org/EN/Pages/ViewAllNews.aspx", "statement": "//div[has-class(\"cke_editable rte--read\")]//span", "posted_date": "//div[has-class(\"date\")]//text()", "bs_element": "", "link": "", "tag": null, "global": "div,more", "us_date_format": "", "title": "", "name": "Mauritius", "link_follow": ""}
+
+{"index": {"_id": "bfe1a2ab7bffe8b2ec6e7b04c4280efc303e028a"}}
+{"tag": null, "link_follow": "html.a", "us_date_format": "", "title": "span,text ng-binding", "global": "li,ng-scope", "name": "Mauritius", "url": "https://foreign.govmu.org/Pages/viewallcommunique.aspx", "statement": "nil", "posted_date": "html.a", "bs_element": "", "link": "html.a", "content_type": "javascript_selenium"}
+
+{"index": {"_id": "8f0f30de9617cc33d39015d191090e3c7fece9dd"}}
+{"global": "div,col-xs-12 col-sm-3", "us_date_format": "", "link_follow": "", "posted_date": "/html/body/div[3]/div[2]/div/span[3]//text()", "tag": null, "title": "html.a", "content_type": "javascript_selenium", "ssl": null, "link": "html.a", "name": "San Marino", "bs_element": "", "url": "https://www.esteri.sm/pub1/EsteriSM/en/Ufficio-Stampa/News-e-Comunicati.html", "statement": "//div[has-class(\"row\")]//p"}
+
+{"index": {"_id": "c9a702d09731a8283fb023e5a4628b04701b9270"}}
+{"link": "html.h2.a", "global": "div,article-data pr-0 col-8", "name": "Ethiopia", "url": "https://www.foreignaffairs.com/regions/ethiopia", "us_date_format": "", "bs_element": "html.h2.a,html.h2.a,html", "statement": "div,article-content-offset", "tag": null, "content_type": "javascript_selenium", "ssl": null, "posted_date": "html", "title": "html.h2.a", "link_follow": ""}
+
+{"index": {"_id": "adacb47e366f448112c3220f1de86201663f6245"}}
+{"global": "//li[has-class(\"timeline__item-wrapper\")]", "name": "Germany", "us_date_format": null, "url": "https://new-york-un.diplo.de/un-en/news-corner/-/2290000", "title": "//a//@title", "statement": "//div[has-class(\"c-rte--default\")]/div[1]", "link": "//a//@href", "tag": null, "link_follow": null, "posted_date": "//em[has-class(\"teaser__subline-pubdate\")]//text()", "content_type": "html"}
+
+{"index": {"_id": "34eeabec7ede6481c06f85b2ffc8cb3a6bd92e93"}}
+{"url": "https://mfa.uz/en/press/news", "statement": "div,base-content", "link": "html.a", "tag": null, "name": "Uzbekistan", "global": "div,medium-news__caption", "bs_element": "html.a,html.a,nill", "ssl": null, "us_date_format": "", "content_type": "javascript_selenium", "link_follow": "", "posted_date": "div,news-meta__date", "title": "html.a"}
+
+{"index": {"_id": "7aaa99619ffce662ce4f450f9abecab3dd658ac5"}}
+{"tag": null, "ssl": null, "us_date_format": "", "bs_element": "html.a,html.h2,html.span", "content_type": "javascript_selenium", "statement": "div,news-text-full", "url": "https://en.mfa.ir/portal/newsagencyshow/699", "global": "div,news-arch-item", "posted_date": "span,dateNews pull-right", "link_follow": null, "link": "html.a", "name": "Iran (Islamic Republic of)", "title": "html.h2"}
+
+{"index": {"_id": "625426ccc1adcf15023d036617b63723a4e1ed58"}}
+{"title": "html.a", "link_follow": null, "global": "h3,text-2xl font-bold inline", "url": "https://www.gob.pe/busquedas?contenido[]=noticias&institucion[]=rree&reason=sheet&sheet=1", "content_type": "javascript_selenium", "bs_element": "html.a,html.a,nill", "posted_date": "//div[has-class(\"institution-document\")]//p//text()", "statement": "//div[has-class(\"description\")]", "tag": null, "link": "html.a", "ssl": null, "us_date_format": null, "name": "Peru"}
+
+{"index": {"_id": "8ad0655c0f4e8ea7d7f83f787eaacd398ce5014d"}}
+{"url": "https://en.mfa.ir/portal/newsagencyshow/694", "ssl": null, "content_type": "javascript_selenium", "statement": "div,news-text-full", "bs_element": "html.a,html.h2,html.span", "link": "html.a", "title": "html.h2", "link_follow": null, "posted_date": "html.span", "name": "Iran (Islamic Republic of)", "tag": null, "us_date_format": "", "global": "div,news-arch-item"}
+
+{"index": {"_id": "2ef4ea5c6bfa18eeceedc3180c3500e6bc4a0ea9"}}
+{"statement": "div,content", "tag": null, "name": "North Macedonia", "global": "div,post-item", "link_follow": null, "bs_element": "html.a,html.a,nill", "us_date_format": null, "title": "html.a", "posted_date": "div,date", "content_type": "javascript_selenium", "ssl": null, "url": "https://www.mfa.gov.mk/en/page/13/latest-news?page=1", "link": "html.a"}
+
+{"index": {"_id": "2f2a2edbfb067597c4652b000d1f208913c9e023"}}
+{"us_date_format": null, "ssl": null, "url": "http://externalaffairs.govt.lc/news", "link_follow": null, "tag": null, "bs_element": null, "global": "li,rc-li font-bold", "title": "html.a", "content_type": "javascript_selenium", "posted_date": "div,rc-date font-normal", "link": "html.a", "statement": "div,newscontent", "name": "Saint Lucia"}
+
+{"index": {"_id": "b0d6f5dc789db086e1fbdf40cc1255d34191be1c"}}
+{"us_date_format": null, "name": "Austria", "ssl": null, "tag": null, "title": "html.a", "url": "https://www.bmeia.gv.at/en/the-ministry/press", "bs_element": null, "global": "div,pressrelease-item", "posted_date": "html.small", "link": "html.a", "link_follow": null, "content_type": "javascript_selenium", "statement": "//div[has-class(\"csc-frame csc-frame-default csc-default\")]//p"}
+
+{"index": {"_id": "c40e4d02018d80c85a0232459cbc5f5bf01a0e10"}}
+{"posted_date": "html.small", "statement": "//div[has-class(\"csc-frame csc-frame-default csc-default\")]//p", "link_follow": null, "us_date_format": null, "tag": null, "title": "html.a", "url": "https://www.bmeia.gv.at/oev-new-york/news/statements-and-speeches", "ssl": null, "bs_element": null, "global": "div,pressrelease-item", "name": "Austria", "link": "html.a", "content_type": "javascript_selenium"}
+
+{"index": {"_id": "d755f9d943e30eed37b8407d225f378671d1b123"}}
+{"bs_element": null, "us_date_format": "", "link": "html.a", "ssl": null, "name": "Austria", "link_follow": null, "global": "div,pressrelease-item", "content_type": "javascript_selenium", "posted_date": "html.small", "statement": "//div[has-class(\"csc-frame csc-frame-default csc-default\")]//p", "tag": null, "url": "https://www.bmeia.gv.at/en/the-ministry/press/speeches", "title": "html.a"}
+
+{"index": {"_id": "296a40cce2a36bd8b89cbca0086d5502c125806e"}}
+{"content_type": "javascript_selenium", "posted_date": "nill", "tag": null, "link_follow": null, "ssl": "true", "url": "https://mirco.gov.na", "name": "Namibia", "us_date_format": "", "title": "html.a", "global": "div,nlink", "statement": "nill", "link": "html.a", "bs_element": null}
+
+{"index": {"_id": "2800185163adb4e6c607f328af0a7ac003facfda"}}
+{"posted_date": "html.span", "url": "https://mfa.gov.jo", "link_follow": null, "tag": null, "content_type": "javascript_selenium", "name": "Jordan", "title": "html.h3.a", "link": "html.h3.a", "global": "div,newsbox", "statement": "div,marg", "bs_element": "html.h3.a,html.h3.a,html.span", "us_date_format": null, "ssl": null}
+
+{"index": {"_id": "4aea37ce5edddd85f8106c56fb41cc660bd528fa"}}
+{"name": "Bosnia and Herzegovina", "statement": "//div[has-class(\"pnlHtmlText\")]", "link": "html.a", "us_date_format": "MMDDYYYY", "title": "html.a", "link_follow": "", "global": "td,LINK_DESCRIPTION", "bs_element": "", "content_type": "javascript_selenium", "posted_date": "//p[has-class(\"date\")]//text()", "url": "https://www.vijeceministara.gov.ba/saopstenja/predsjedavajuci/govori_predsjedavajuceg/Archive.aspx?langTag=en-US&template_id=92&pageIndex=1", "tag": null, "ssl": null}
+
+{"index": {"_id": "370d898f3dfe9a54e5adc00129e99738e228bc17"}}
+{"posted_date": "html.div", "tag": "", "statement": "div,contentpaneopen_text", "global": "li,sectiontableentry1", "ssl": null, "link_follow": null, "url": "https://www.mfa.gr/en/current-affairs/statements-speeches", "bs_element": "html.a,html.a,html.div", "title": "html.a", "link": "html.a", "name": "Greece", "content_type": "javascript_selenium", "us_date_format": ""}
+
+{"index": {"_id": "e99f88ac3522cd9eb3f0e712e18921efb6e276c8"}}
+{"global": "//*[@id=\"sitecontent\"]/div[3]/div[1]/div/ul//li", "us_date_format": "", "tag": null, "posted_date": "//div[has-class(\"item_createdate\")]//text()", "name": "Greece", "link_follow": null, "title": "//a//text()", "content_type": "html", "statement": "//div[has-class(\"inside\")]//p", "link": "//a//@href", "url": "https://www.mfa.gr/missionsabroad/en/un-en/news"}
+
+{"index": {"_id": "0c8fc35e50b9f735e40826e6c1d146f0e4c4bece"}}
+{"us_date_format": "MMDDYYYY", "link": "html.a", "title": "html.a", "url": "https://www.vijeceministara.gov.ba/saopstenja/saopstenja/Archive.aspx?langTag=en-US&pageIndex=1", "ssl": null, "posted_date": "//p[has-class(\"date\")]//text()", "content_type": "javascript_selenium", "tag": null, "statement": "//div[has-class(\"pnlHtmlText\")]", "global": "td,LINK_DESCRIPTION", "link_follow": "", "bs_element": "", "name": "Bosnia and Herzegovina"}
+
+{"index": {"_id": "975cb2c1d6d12d0b2de677a8b913fc2610d41107"}}
+{"statement": "//article[has-class(\"press-release\")]/p", "global": "//div[has-class(\"news-listing-entry-text\")]", "us_date_format": null, "posted_date": "//p[has-class(\"news-date\")]/text()", "title": "//h3/a/text()", "tag": "p,prev-next", "bs_element": null, "ssl": null, "link": "//h3/a/@href", "name": "Ireland", "link_follow": null, "content_type": "html", "url": "https://www.dfa.ie/pmun/newyork/news-and-speeches"}
+
+{"index": {"_id": "d8c56c0c33a10a3da0d1fb72c062de1e3fc30d3b"}}
+{"url": "https://www.dfa.ie/news-and-media/press-releases", "name": "Ireland", "title": "//h3/a/text()", "link_follow": null, "content_type": "html", "statement": "//article[has-class(\"press-release\")]/p[position()<last()]", "posted_date": "//p[has-class(\"news-date\")]//text()", "tag": null, "us_date_format": null, "link": "//h3/a/@href", "global": "//div[has-class(\"news-listing-entry-text\")]"}
+
+{"index": {"_id": "0112b3bd47a29949b7249df55fd6cf943a758c41"}}
+{"bs_element": null, "statement": "article,item-page", "url": "https://www.diplomatie.gov.mg/index.php/actualites", "link_follow": null, "link": "html.h6.a", "content_type": "javascript_selenium", "ssl": null, "tag": null, "us_date_format": null, "name": "Madagascar", "posted_date": "nill", "global": "div,new-txt", "title": "html.h6.a"}
+
+{"index": {"_id": "5b952c64c39ef94cf23cdea3b03babff05d97362"}}
+{"tag": "", "url": "https://www.trademinister.gov.au", "title": "html.a", "us_date_format": "", "ssl": null, "content_type": "javascript_selenium", "link_follow": "", "posted_date": "//div[has-class(\"block block-ctools-block block-entity-fieldnodecreated\")]//span", "name": "Australia", "global": "div,views-field views-field-title", "link": "html.a", "bs_element": "", "statement": "div,page-layout__content"}
+
+{"index": {"_id": "d78ab8b368fae9fa824f643bab4fee9c742bd0cb"}}
+{"bs_element": "", "global": "li,views-row", "ssl": null, "statement": "div,block-region-content", "posted_date": "//div[has-class(\"block block-ctools-block block-entity-fieldnodecreated\")]//span", "link": "html.a", "content_type": "javascript_selenium", "title": "html.a", "url": "https://www.dfat.gov.au", "us_date_format": "", "name": "Australia", "link_follow": "", "tag": null}
+
+{"index": {"_id": "f31be6cad1348c48254423c4868022d6b957df21"}}
+{"bs_element": null, "us_date_format": "", "tag": null, "ssl": null, "global": "//div[has-class(\"item-list\")]/ul/li", "statement": "//div[has-class(\"block block-ctools-block block-entity-fieldnodebody\")]/div", "link": "//a//@href", "name": "Australia", "link_follow": null, "title": "//a//text()", "posted_date": "//li//div[3]//text()", "url": "https://www.foreignminister.gov.au", "content_type": "html"}
+
+{"index": {"_id": "9e1bb698895fb5af6b20a850ced8940e2f65eba7"}}
+{"title": "html.a", "us_date_format": "", "tag": "div,avada-social#div,social-bar-wrapper", "link_follow": "", "link": "html.a", "ssl": null, "name": "Oman", "bs_element": "", "url": "https://fm.gov.om/news/news", "content_type": "javascript_selenium", "global": "div,uplp-post-title", "posted_date": "span,updated rich-snippet-hidden", "statement": "div,fusion-text"}
+
+{"index": {"_id": "becb0596478de374aa1682452cece31b6ea2b3bd"}}
+{"us_date_format": "", "title": "html.a", "link": "html.a", "name": "Oman", "tag": "div,avada-social", "link_follow": "", "statement": "div,fusion-text fusion-text-13", "bs_element": "html.a,html.a,nill", "posted_date": "span,updated rich-snippet-hidden", "global": "div,uplp-post-title", "url": "https://fm.gov.om/news/statements", "ssl": null, "content_type": "javascript_selenium"}
+
+{"index": {"_id": "01a7181ccc0aa79b19a78bb9aa518303828e14e0"}}
+{"tag": null, "name": "Portugal", "ssl": null, "statement": "//div[@itemprop=\"articleBody\"]//p", "link": "//h3/a/@href", "title": "//h3/a/text()", "link_follow": "", "url": "https://portaldiplomatico.mne.gov.pt/en", "content_type": "html", "us_date_format": "", "global": "//ul[has-class(\"blog-home\")]/li/div/div", "bs_element": "", "posted_date": "//p[has-class(\"mod-articles-category-date\")]/text()"}
+
+{"index": {"_id": "982b5bce2e557b9775e5d1e7a8a6e0e617d6d315"}}
+{"content_type": "html", "title": "//h2//text()", "name": "Portugal", "us_date_format": "", "bs_element": null, "link": "//h2//@href", "statement": "//*[@id=\"main\"]/div/div/div[1]/div[2]/div[1]/h2", "posted_date": "//time//@datetime", "url": "https://onu.missaoportugal.mne.gov.pt/en", "global": "//div[has-class(\"col-md-6\")]//h2", "tag": null, "link_follow": ""}
+
+{"index": {"_id": "a44c205f6984089aa8b23cfab62235c67e3cf6a6"}}
+{"global": "//header[has-class(\"article-header clearfix\")]", "link": "//a//@href", "bs_element": "", "us_date_format": "", "statement": "//section[has-class(\"article-content clearfix\")]//p", "name": "Liberia", "link_follow": "", "url": "https://www.pmun.gov.lr", "posted_date": "//time//text()", "tag": null, "ssl": null, "content_type": "html", "title": "//a//text()"}
+
+{"index": {"_id": "b36a05368a2b792f833089b25a5b943b2a8e9235"}}
+{"us_date_format": "", "ssl": null, "bs_element": "", "name": "Liberia", "global": "//ol[contains(@id,\"doclist\")]/li", "url": "https://www.mofa.gov.lr/public2/2content.php?sub=23&related=7&third=23&pg=sp&pt=Speeches", "content_type": "doc", "tag": null, "link": "//@href", "statement": null, "title": "//a//text()", "link_follow": "", "posted_date": "/div[contains(@id,\"newsdate\")]"}
+
+{"index": {"_id": "60193fd161a227e4c1448885d2d73b3c18b60216"}}
+{"ssl": null, "name": "Romania", "title": "//a//text()", "link": "//a//@href", "content_type": "html", "global": "//div[has-class(\"left_part\")]", "statement": "//div[has-class(\"art\")]/p", "bs_element": null, "url": "https://www.mae.ro/en/actuality", "link_follow": null, "us_date_format": "", "tag": null, "posted_date": "//p[has-class(\"date\")]//text()"}
+
+{"index": {"_id": "863d5033c7fc88c5ba803693f880e5f33b0653dd"}}
+{"statement": "//div[has-class(\"art\")]//p", "tag": null, "global": "//div[has-class(\"art\")]", "title": "//h3//a//text()", "posted_date": "//p[has-class(\"date\")]//text()", "name": "Romania", "bs_element": "", "link": "//h3//a//@href", "ssl": null, "url": "https://mpnewyork.mae.ro/en/romania-news", "us_date_format": "MMDDYY", "content_type": "html", "link_follow": ""}
+
+{"index": {"_id": "59796887b337c077e80b1c47112ffb3bf073fc16"}}
+{"us_date_format": "", "posted_date": "//span[has-class(\"news_date\")]//text()", "global": "//a[has-class(\"news_title\")]", "link_follow": "", "title": "//a//text()", "content_type": "html", "statement": "//div[has-class(\"body_content\")]//span", "name": "Algeria", "bs_element": "", "link": "//a//@href", "ssl": null, "tag": null, "url": "http://www.mae.gov.dz/Nouvelles_2.aspx"}
+
+{"index": {"_id": "d4e33ad086d245e5e64a1344d5e8327a25e8e4d4"}}
+{"link": "//@href", "us_date_format": "MMDDYY", "global": "//div[has-class(\"ccm-block-page-list-pages\")]//a", "ssl": null, "url": "https://www.mre.gov.py/index.php/galeria/comunicados", "bs_element": null, "link_follow": null, "statement": "//div[has-class(\"section contenido_principal\")]/p", "name": "Paraguay", "content_type": "html", "posted_date": "//*[@id=\"ccm-layout-column-4\"]/div/blockquote//text()", "tag": null, "title": "//text()"}
+
+{"index": {"_id": "07c4fe8b5435ab40fc3f433317b0681c213f66d9"}}
+{"us_date_format": "MMDDYYYY", "content_type": "html", "ssl": null, "name": "Uruguay", "posted_date": "//div[has-class(\"Box-info\")]//text()", "link": "//a//@href", "title": "//a//text()", "statement": "//div[has-class(\"Page-document\")]", "link_follow": null, "bs_element": null, "tag": null, "url": "https://www.gub.uy/ministerio-relaciones-exteriores/comunicacion/noticias", "global": "//div[has-class(\"Media-body\")]"}
+
+{"index": {"_id": "0581801ea95d8f7a7e3d275598007106750faa75"}}
+{"global": "//div[has-class(\"node--content-container\")]", "link": "//h2/a/@href", "statement": "//div[has-class(\"text-formatted\")]/p", "name": "Cuba", "us_date_format": "MDY", "title": "//h2/a/span/text()", "content_type": "html", "link_follow": null, "posted_date": "(string(//div[has-class(\"submitted-date\")]))", "ssl": null, "url": "http://www.minrex.gob.cu/en/otras_noticias", "tag": null, "bs_element": null}
+
+{"index": {"_id": "48bdbf04739f751a5ed1743f075c2146fdef377b"}}
+{"ssl": null, "global": "//article[has-class(\"node-article-mision\")]", "link": "//header/h2/a/@href", "us_date_format": "MDY", "content_type": "html", "tag": null, "statement": "//div[has-class(\"field-name-body\")]//p", "bs_element": null, "url": "http://www.cubadiplomatica.cu/en/un", "posted_date": "(string(//div[has-class(\"submitted-date\")]))", "name": "Cuba", "link_follow": null, "title": "//header/h2/a/text()"}
+
+{"index": {"_id": "e45c602cdca91e782e1403b877907272fef662b4"}}
+{"statement": "//div[has-class(\"article-text\")]//p", "url": "https://www.mofa.gov.sa/sites/mofaen/ServicesAndInformation/news/MinistryNews/Pages/Default.aspx", "bs_element": "", "link": "//a//@href", "tag": null, "us_date_format": "MMDDYYYY", "link_follow": "", "content_type": "html", "posted_date": "//div[has-class(\"article-date\")]//text()", "title": "//a//text()", "ssl": null, "name": "Saudi Arabia", "global": "//div[has-class(\"rightPost\")]"}
+
+{"index": {"_id": "206182f68782425721cca82b1748cf8d94ddcb63"}}
+{"name": "Mongolia", "link_follow": "", "global": "//div[has-class(\"blog-bottom\")]", "us_date_format": "", "statement": "//div[has-class(\"entry-content uk-clearfix\")]", "ssl": null, "title": "//a/text()", "link": "//a//@href", "url": "https://mfa.gov.mn/en/news", "content_type": "html", "posted_date": "//div[has-class(\"tw-date\")]//text()", "bs_element": "", "tag": null}
+
+{"index": {"_id": "0886eac36d27a340f9851bf14efa46887a0226ad"}}
+{"content_type": "html", "tag": null, "bs_element": null, "url": "https://www.cancilleria.gov.co/newsroom/publiques", "posted_date": "//span[has-class(\"date-display-single\")]/text()", "global": "//div[has-class(\"views-row\")]", "title": "//h2/a/text()", "link_follow": null, "ssl": null, "link": "//h2/a/@href", "us_date_format": "MMDDYYYY", "statement": "//div[has-class(\"Cancilleria_article\")]/div[has-class(\"field-name-body\")]//p", "name": "Colombia"}
+
+{"index": {"_id": "7cb69857915aa4cfb4616359fc3e66111c6b772a"}}
+{"ssl": "true", "us_date_format": "", "tag": null, "name": "Cameroon", "global": "//div[has-class(\"post-style1\")]", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "statement": null, "url": "https://www.spm.gov.cm/site/?q=en/documentation/speeches", "bs_element": null, "link": "//h3//@href", "title": "//h3//text()", "link_follow": "//span[has-class(\"file\")]//@href", "content_type": "mixed"}
+
+{"index": {"_id": "b23f33c35ba9ec58b91e4ffbb739b69d475dc913"}}
+{"global": "//div[has-class(\"col-md-11\")]", "url": "https://www.spm.gov.cm/site/?q=en/news-categories/news", "link": "//h3//a//@href", "link_follow": null, "content_type": "html", "tag": null, "posted_date": "//div[has-class(\"date\")]//ul/li//text()", "us_date_format": null, "statement": "//div[has-class(\"field-item even\")]/p", "name": "Cameroon", "title": "//h3//a//text()"}
+
+{"index": {"_id": "7e15c971bf8dd0f6c9aaa40e80077c971c61ace1"}}
+{"url": "http://www.exteriores.gob.es/Portal/en/SalaDePrensa/Comunicados/Paginas/default.aspx", "statement": "//div[has-class(\"ms-rtestate-field\")]", "us_date_format": null, "title": "//div[has-class(\"enlace\")]/a/text()", "content_type": "html", "global": "//div[has-class(\"buscadorResultados\")]//li", "posted_date": "//div[has-class(\"fechaResultadoBusqueda\")]/span/text()", "name": "Spain", "link": "//div[has-class(\"enlace\")]/a/@href", "tag": "em", "link_follow": null}
+
+{"index": {"_id": "bfed52754f14020e3214eb6697231ddc48d847df"}}
+{"title": "//a//text()", "ssl": null, "posted_date": "//div[has-class(\"date fecha\")]//text()", "content_type": "html", "link_follow": "", "url": "http://www.exteriores.gob.es/Portal/en/Paginas/inicio.aspx", "tag": null, "name": "Spain", "global": "//div[has-class(\"articuloInfo\")]", "bs_element": "", "link": "//a//@href", "statement": "//div[has-class(\"contenidoLayout\")]", "us_date_format": ""}
+
+{"index": {"_id": "eb7d68db61ba4c7cf80bc8db934a7cd5e6b12e67"}}
+{"content_type": "html", "posted_date": "//div[has-class(\"fechaResultadoBusqueda\")]/span/text()", "tag": null, "name": "Spain", "us_date_format": "MMDDYYYY", "ssl": null, "title": "//div[has-class(\"enlace\")]/a/text()", "url": "http://www.exteriores.gob.es/Portal/es/SalaDePrensa/ElMinisterioInforma/Paginas/ElMinisteriinforma2.aspx", "link": "//div[has-class(\"enlace\")]/a/@href", "link_follow": null, "bs_element": null, "statement": "//div[has-class(\"contenidoLayout\")]", "global": "//div[has-class(\"margenResultadoBusqueda\")]"}
+
+{"index": {"_id": "010734b0c76c94c22a6d10e4a98086d28184f741"}}
+{"link": "//a//@href", "posted_date": "//span[has-class(\"FechaNoticiaFull\")]", "title": "//div[has-class(\"dxncItemHeader\")]//text()", "tag": null, "ssl": null, "statement": "//*[@id=\"ctl00_ContentPlaceHolder1_WebNoticiaFull1_Panel1\"]/table//p", "content_type": "html", "bs_element": null, "global": "//td[has-class(\"dxncItem\")]", "url": "https://www.minex.gob.gt/noticias", "name": "Guatemala", "us_date_format": "MMDDYYYY", "link_follow": null}
+
+{"index": {"_id": "ed7abb33859fdfade30573bb0e7f93db93cb9176"}}
+{"url": "https://mfa.gov.il/MFA/PressRoom/2021/Pages/default.aspx", "statement": "div,ms-rtestate-field", "link": "html.span", "bs_element": "", "link_follow": "", "posted_date": "html.span", "us_date_format": "", "global": "div,ContentAccumulatorsTextBox", "tag": null, "content_type": "javascript_selenium", "ssl": null, "name": "Israel", "title": "html.h2"}
+
+{"index": {"_id": "0ce4fdfa617ebcefbeadaf1d0e05cf8c37b1f7dd"}}
+{"tag": null, "link_follow": null, "bs_element": "html.a,html.h4,html.strong", "global": "span,mfa_wpTextContainer", "title": "html.h4", "ssl": null, "us_date_format": "MMDDYYYY", "posted_date": "html.strong", "url": "https://embassies.gov.il/un/NewsAndEvents/Pages/News.aspx", "name": "Israel", "link": "html.a", "content_type": "javascript_selenium", "statement": "div,ms-rtestate-field"}
+
+{"index": {"_id": "45b29344641f68100d705ac686cddb1ac0d5bef7"}}
+{"content_type": "html", "bs_element": null, "us_date_format": "", "tag": null, "cookies": null, "link_follow": "", "posted_date": "nil", "url": "https://www.mfa.gov.tm/en/news", "statement": "//div[has-class(\"news-show\")]//p", "global": "//div[has-class(\"row mb-30\")]", "link": "//a//@href", "ssl": null, "name": "Turkmenistan", "title": "//h5//text()"}
+
+{"index": {"_id": "f463eb5b4fb9665a27c2b26a3f91a9fd7e3c16d9"}}
+{"link": "//a//@href", "url": "https://www.mfa.gov.tm/en/articles?type=article", "link_follow": null, "title": "//h5[has-class(\"title\")]//text()", "content_type": "html", "statement": "//div[has-class(\"table-res\")]//p", "name": "Turkmenistan", "posted_date": "nill", "bs_element": null, "global": "//div[has-class(\"col-sm-12\")]", "tag": null, "us_date_format": null}
+
+{"index": {"_id": "0ac175648cc9301f9195d8ed237d7549c191fac3"}}
+{"global": "//div[has-class(\"documentContent\")]//tr", "title": "//a//text()", "tag": null, "url": "https://www.mofa.gov.vn/en/tt_baochi/pbnfn", "bs_element": "", "link_follow": "", "statement": "//div[has-class(\"plain\")]//p", "name": "Viet Nam", "content_type": "html", "ssl": null, "link": "//a//@href", "us_date_format": "", "posted_date": "//div[has-class(\"documentContent\")]//tr//td//text()"}
+
+{"index": {"_id": "5a9a7f077dc5937be140925a464b8156adcacdea"}}
+{"url": "https://www.mofa.go.kr/eng/brd/m_5674/list.do", "ssl": null, "tag": null, "link_follow": "", "statement": "//td[has-class(\"detail_body\")]//p", "content_type": "html", "title": "//a//text()", "global": "//div[has-class(\"table_list\")]//tbody/tr", "us_date_format": "", "bs_element": "", "name": "Republic of Korea", "cookies": "", "link": "//a//@href", "posted_date": "//td[4]/text()"}
+
+{"index": {"_id": "f65fc9963cb755346bee61fc3b146d8e94e94aaf"}}
+{"statement": "//div[has-class(\"field field--text\")]//p", "url": "https://www.mfa.gov.rs/en/press-service/actualities", "bs_element": "", "link": "//a//@href", "title": "//a//text()", "tag": null, "link_follow": "", "global": "//article[has-class(\"node node--news node--teaser\")]", "posted_date": "//div[has-class(\"field field--date\")]//text()", "name": "Serbia", "content_type": "html", "us_date_format": "", "ssl": null}
+
+{"index": {"_id": "57387044b33ac786eaa12405a4e760be3d400da0"}}
+{"content_type": "html", "url": "https://usun.usmission.gov", "us_date_format": null, "posted_date": "//p[has-class(\"blog-meta\")]//text()", "tag": null, "statement": "//div[has-class(\"entry-content\")]/p", "global": "//article[has-class(\"post type-post status-publish format-standard has-post-thumbnail hentry\")]", "name": "United States of America", "link_follow": null, "title": "//h2//text()", "link": "//h2//@href"}
+
+{"index": {"_id": "7f543f2c7d1e46199bffa6842ae8381e1028060e"}}
+{"link": "//h2//a//@href", "statement": "//div[has-class('container')]//p", "link_follow": null, "content_type": "html", "bs_element": null, "title": "//a[has-class('news-item__title')]", "ssl": null, "us_date_format": "", "name": "United States of America", "url": "https://www.whitehouse.gov/briefing-room", "posted_date": "//time//text()", "global": "//div[has-class(\"row justify-content-center articles-and-side-nav\")]//article", "tag": null}
+
+{"index": {"_id": "930c1dec3d0c3502ba6e0315d9998cbf2f544366"}}
+{"ssl": null, "link_follow": "", "statement": "//div[has-class(\"entry-content\")]//p", "content_type": "html", "tag": null, "bs_element": "", "url": "https://www.state.gov/press-releases", "us_date_format": "", "posted_date": "//span[contains(@dir,\"ltr\")]//text()", "title": "//a//text()", "name": "United States of America", "link": "//a//@href", "global": "//li[has-class(\"collection-result\")]", "cookies": null}
+
+{"index": {"_id": "12e500820d79394eebbf1918bcf494f1e14e58fa"}}
+{"content_type": "mixed", "statement": "//div[has-class(\"article content\")]//p", "tag": null, "us_date_format": "", "link_follow": "//a[has-class(\"download-chunk pdf\")]//@href", "ssl": null, "url": "https://www.permanentrepresentations.nl/documents", "link": "//@href", "global": "//a[has-class(\"publication\")]", "name": "Netherlands", "title": "//h3//text()", "cookies": null, "bs_element": "", "posted_date": "//p[has-class(\"meta\")]//text()"}
+
+{"index": {"_id": "58940a23def23ed77a51e164282c0f95df202d2e"}}
+{"link_follow": null, "content_type": "html", "posted_date": "//time/text()", "statement": "//div[has-class(\"entry-content\")]//text()", "url": "https://www.mfa.go.ke/?page_id=1858", "title": "//h3/a/text()", "global": "//ul[has-class(\"rpwe-ul\")]/li", "tag": null, "us_date_format": null, "link": "//h3/a/@href", "name": "Kenya"}
+
+{"index": {"_id": "7ebcd32c399933815e3c75306eae5e73921a16a5"}}
+{"cookies": null, "posted_date": "nill", "bs_element": null, "statement": "//div[has-class(\"entry-content\")]/p", "global": "//div[has-class(\"vc_tta-panel-body\")]//article", "link": "//a//@href", "ssl": null, "link_follow": null, "title": "//@title", "url": "https://www.mfa.go.ke", "tag": null, "content_type": "html", "us_date_format": null, "name": "Kenya"}
+
+{"index": {"_id": "5b23f6d22d278c4e80b356bdf5c32846d56e23d5"}}
+{"content_type": "html", "us_date_format": null, "link_follow": null, "ssl": null, "title": "//h4//a//text()", "statement": "//div[has-class(\"post-content\")]", "cookies": null, "bs_element": null, "link": "//h4//a//@href", "name": "Panama", "tag": null, "global": "//div[has-class(\"recent-posts-content\")]//h4", "url": "https://mire.gob.pa", "posted_date": "//span[has-class(\"updated\")]//text()"}
+
+{"index": {"_id": "1c99025e71eb7c11f1c6b848893c80cc8ac8f9d5"}}
+{"link": "//a/@href", "content_type": "html", "tag": null, "statement": "//div[has-class(\"richtxt\")]//text()", "us_date_format": null, "name": "Denmark", "global": "//ul[has-class(\"paging-list\")]/li", "posted_date": "//div[has-class(\"list-date\")]/text()", "url": "https://um.dk/en/news", "title": "//a/text()", "link_follow": null}
+
+{"index": {"_id": "89129d875e1529feeeb51a41436396c8d2d6dd65"}}
+{"global": "li,col-12 col-md-6 col-lg-4 col-third", "name": "Denmark", "posted_date": "//div[has-class(\"page-year page-metadata-content-item\")]", "us_date_format": "", "title": "//span[has-class(\"page-metadata-content-text\")]", "content_type": "javascript_selenium", "tag": null, "link_follow": "", "url": "https://fnnewyork.um.dk/en/news-from-the-mission", "ssl": null, "statement": "//div[has-class(\"row\")]//p", "bs_element": "", "cookies": null, "link": "html.a"}
+
+{"index": {"_id": "32682dae76ae8d76fa9e4423ae95348014f0a2a9"}}
+{"cookies": null, "posted_date": "nill", "title": "//a/text()", "ssl": null, "url": "https://www.fmprc.gov.cn/mfa_eng/zxxx_662805", "statement": "//div[has-class(\"content\")]//p", "global": "//div[has-class(\"newsLst_mod\")]/ul/li", "us_date_format": "", "tag": null, "link": "//a/@href", "link_follow": null, "bs_element": null, "name": "China", "content_type": "html"}
+
+{"index": {"_id": "4be8e603104467559e2462e8195edc28130f623a"}}
+{"ssl": null, "global": "//div[has-class(\"newsLst_mod\")]/ul/li", "link": "//a/@href", "title": "//a//text()", "name": "China", "content_type": "html", "us_date_format": "", "posted_date": "nill", "link_follow": null, "tag": null, "url": "https://www.fmprc.gov.cn/mfa_eng/xwfw_665399/s2510_665401/2511_665403", "bs_element": null, "statement": "//div[has-class(\"content\")]//p", "cookies": null}
+
+{"index": {"_id": "5dd5f981f74b450ab95e907d5b60413273927909"}}
+{"content_type": "html", "link_follow": null, "statement": "//div[has-class(\"entry clearfix\")]", "us_date_format": "", "link": "//a//@href", "ssl": null, "url": "https://www.mofa.gov.mm/category/mofa-news", "cookies": null, "tag": null, "title": "//a//text()", "posted_date": "//div[has-class(\"entry clearfix\")]//p[1]", "global": "//h2[has-class(\"entry-title post-title\")]", "name": "Myanmar", "bs_element": null}
+
+{"index": {"_id": "4a425cb502756399e3147959134802054e991960"}}
+{"link": "//@href", "name": "Myanmar", "statement": "//div[has-class(\"entry\")]", "title": "//text()", "link_follow": null, "us_date_format": "", "global": "//article[has-class(\"post\")]/h2/a", "bs_element": null, "content_type": "html", "cookies": null, "ssl": null, "posted_date": "//div[has-class(\"entry clearfix\")]//p[1]", "tag": null, "url": "https://www.mofa.gov.mm/category/press-release"}
+
+{"index": {"_id": "6e0ae64e9097d523af46ab5c8380b4fd7f75b3e9"}}
+{"link_follow": null, "global": "//table[has-class(\"bordered\")]", "ssl": null, "link": "//a//@href", "statement": "//div[contains(@id, \"printable_area\")]/div/p", "title": "//a//text()", "content_type": "html", "us_date_format": null, "cookies": null, "name": "Bangladesh", "url": "https://mofa.gov.bd/site/view/service_box_items/STATEMENTS/Statements", "posted_date": "//td[3]//text()", "tag": null, "bs_element": null}
+
+{"index": {"_id": "3adf64edc367db8ca5945634ae4345406e80ff2d"}}
+{"ssl": null, "global": "//div[has-class(\"entry clearfix\")]", "bs_element": "", "us_date_format": "", "link_follow": "", "statement": "//div[has-class(\"entry-content\")]", "posted_date": "//div[has-class(\"entry clearfix\")]//li//text()", "title": "//a//text()", "url": "http://www.mfa.gov.kp/article/category/statements", "content_type": "html", "cookies": "qtrans_front_language=en; PHPSESSID=l8gjgn46da64im3eu65o3gdjd7; csrf_rewqazxcvf_name=fff42115e13b95aab6e26565a0b121a1; ci_session=onlom4fhfnfb3brf7q7e9uj0vmucg0ot", "name": "Democratic People's Republic of Korea", "link": "//a//@href", "tag": null}
+
+{"index": {"_id": "3a0bac52b68ea7090d0263b37df2c7c1c6c3c5b5"}}
+{"global": "//td[has-class(\"desc_lista\")]", "name": "Italy", "statement": "//div[contains(@itemprop,\"articleBody\")]//p", "us_date_format": "MMDDYYYY", "link": "//a//@href", "title": "//a//text()", "content_type": "html", "url": "https://italyun.esteri.it/rappresentanza_onu/en/comunicazione/archivio-news", "ssl": null, "posted_date": "//p[has-class(\"dettagli_articolo_cont\")]//text()", "link_follow": "", "bs_element": "", "tag": null}
+
+{"index": {"_id": "bb955f1d993bedc6a1329d0ff50877b64d065180"}}
+{"statement": "//div[has-class(\"entry-content\")]", "content_type": "html", "posted_date": "//span[has-class(\"data\")]//text()", "global": "//div[has-class(\"card-body\")]", "link_follow": "", "link": "//a//@href", "us_date_format": "", "name": "Italy", "title": "//a//text()", "tag": null, "bs_element": "", "ssl": null, "url": "https://www.esteri.it/en/sala_stampa/archivionotizie/comunicati"}
+
+{"index": {"_id": "db9d1ab63e58792cab377141d048eb43a3d53821"}}
+{"tag": null, "cookies": null, "link_follow": "", "global": "//div[has-class(\"card-body\")]", "link": "//a//@href", "us_date_format": "", "title": "//a//text()", "statement": "//div[has-class(\"entry-content\")]", "name": "Italy", "url": "https://www.esteri.it/en/sala_stampa/archivionotizie/interviste", "content_type": "html", "posted_date": "//span[has-class(\"data\")]//text()", "ssl": null, "bs_element": ""}
+
+{"index": {"_id": "f81d0c01d5b646cbcccb7a065efd4df3c2568860"}}
+{"content_type": "mixed", "posted_date": "/html/body/div/main/div/div/div/div[3]/div/h6", "global": "/html/body/div/main/div/div[1]/div/div/a", "link_follow": "//div[has-class(\"download-container\")]//a//@href", "statement": "//div[has-class(\"post_detail_img\")]//h4", "ssl": "true", "us_date_format": "", "url": "https://www.mfaic.gov.kh/Media/Press%20Release", "name": "Cambodia", "cookies": "pll_language=en; Language=1", "link": "//@href", "title": "//p//text()", "bs_element": null, "tag": ""}
+
+{"index": {"_id": "8b77a81ae2ef4038cab0a5700aa55cadc9f3ff46"}}
+{"url": "https://statehouse.gov.sl/news", "global": "//h3[has-class(\"elementor-post__title\")]", "cookies": null, "bs_element": "", "statement": "//div[has-class(\"elementor-widget-container\")]", "title": "//a//text()", "us_date_format": "", "link": "//a//@href", "tag": null, "ssl": null, "link_follow": "", "content_type": "html", "name": "Sierra Leone", "posted_date": "//span[has-class(\"elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date\")]"}
+
+{"index": {"_id": "148be264738347873bdcabeddd98245d4f8096bd"}}
+{"tag": null, "title": "//a//text()", "link_follow": "", "link": "//a//@href", "url": "https://www.mfa.gov.af/press-releases.html", "bs_element": null, "name": "Afghanistan", "posted_date": "//span[has-class(\"itemDateCreated\")]//text()", "statement": "//div[has-class(\"itemFullText\")]//p", "global": "//div[has-class(\"catItemBody\")]//h3", "us_date_format": "", "content_type": "html", "ssl": null}
+
+{"index": {"_id": "8e96ee35ead41726f8f5a5af28890bded33294c1"}}
+{"tag": null, "us_date_format": "", "url": "https://mfa.gov.af/en/home-2", "title": "//h4//a//text()", "ssl": null, "link_follow": "", "name": "Afghanistan", "content_type": "html", "bs_element": "", "cookies": null, "global": "//div[has-class(\"post-content\")]", "link": "//h4//a//@href", "posted_date": "//span", "statement": "//div[has-class(\"entry-content clearfix\")]"}
+
+{"index": {"_id": "03868af064bef37a6fee472ceabf9da9534fb580"}}
+{"url": "https://www.gob.mx/sre/en/archivo/prensa", "ssl": null, "us_date_format": "", "link_follow": "", "cookies": null, "content_type": "html", "title": "//h2/text()", "bs_element": "", "link": "//a//@href", "name": "Mexico", "tag": null, "global": "//div[has-class(\"col-md-4\")]//article", "posted_date": "//time/text()", "statement": "//div[has-class(\"article-body\")]/p"}
+
+{"index": {"_id": "9b0bb9553a5bf3d2713aa44adb93224d11df7c93"}}
+{"global": "div,sub_lstitm", "link_follow": "", "link": "html.a", "posted_date": "nill", "ssl": null, "tag": null, "bs_element": "", "cookies": null, "url": "https://www.mfa.gov.tr/sub.en.mfa?7342a8d1-3117-42aa-8ddd-01adb5653889", "content_type": "javascript_selenium", "statement": "//div[has-class(\"info\")]//p", "us_date_format": "", "name": "Turkey", "title": "html.a"}
+
+{"index": {"_id": "a0b94a21ca33c18932492d5daa8b5cd28115927e"}}
+{"link_follow": "", "statement": "//div[has-class(\"info\")]//p", "title": "//a//text()", "posted_date": "nill", "us_date_format": "", "url": "https://www.mfa.gov.tr/sub.en.mfa?ad9093da-8e71-4678-a1b6-05f297baadc4", "name": "Turkey", "global": "//div[has-class(\"sub_lstitm\")]", "ssl": null, "bs_element": "", "link": "//a//@href", "content_type": "html", "tag": null}
+
+{"index": {"_id": "7b8af7d5dc390c27a042b145d22054085a9e677f"}}
+{"us_date_format": "", "content_type": "html", "title": "//a/text()", "statement": "//div[has-class(\"content\")]//p", "global": "//div[has-class(\"hot_lst\")]/ul/li", "name": "China", "ssl": null, "link_follow": null, "posted_date": "//div[has-class(\"date\")]//text()", "bs_element": null, "tag": null, "link": "//a/@href", "url": "https://www.fmprc.gov.cn/mfa_eng", "cookies": null}
+
+{"index": {"_id": "cb3f251854813be223a04ef572b7e552ee00da7f"}}
+{"name": "China", "link": "//a/@href", "ssl": null, "cookies": null, "link_follow": "", "title": "//a//text()", "content_type": "html", "bs_element": "", "tag": null, "url": "https://www.fmprc.gov.cn/mfa_eng/xwfw_665399/s2510_665401/2535_665405", "posted_date": "nill", "us_date_format": "", "statement": "//div[has-class(\"content\")]//p", "global": "//div[has-class(\"newsLst_mod\")]/ul/li"}
+
+{"index": {"_id": "3b3204e4d4f8319e9fa59d88a7b09d7b798615b1"}}
+{"link": "//a//@href", "statement": "//*[@id=\"parent-fieldname-text\"]/div", "name": "Brazil", "us_date_format": null, "cookies": null, "link_follow": null, "title": "//a//text()", "ssl": null, "content_type": "html", "global": "//article[has-class(\"tileItem visualIEFloatFix tile-collective-nitf-content\")]", "tag": null, "bs_element": null, "posted_date": "//span[has-class(\"value\")]//text()", "url": "https://www.gov.br/mre/en/contact-us/press-area/press-releases"}
+
+{"index": {"_id": "3d84156343bf22c61b46cbd55fe0949193c7737b"}}
+{"name": "Comoros", "tag": null, "us_date_format": null, "link_follow": null, "content_type": "doc", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "title": "//h2//a//text()", "url": "https://www.un.int/comoros", "statement": null, "link": "//span[has-class(\"file\")]//@href", "global": "//div[has-class(\"view-content\")]//article"}
+
+{"index": {"_id": "80352408a635cc97447f98ffdccf7e1ac3204ac0"}}
+{"name": "Comoros", "posted_date": "//time//@datetime", "global": "//div[has-class(\"col-md-4 col-sm-6\")]", "tag": null, "bs_element": null, "link_follow": null, "cookies": null, "title": "//div[has-class(\"panel-info-caption\")]//h4", "content_type": "html", "url": "https://beit-salam.km/actualit%C3%A9s", "us_date_format": null, "ssl": null, "statement": "//div[has-class(\"content-text\")]", "link": "//a//@href"}
+
+{"index": {"_id": "2d2721b9b720fe3538e7a21ff3e45a7bedcb076a"}}
+{"ssl": null, "statement": "//div[has-class(\"space\")]", "posted_date": "//span[has-class(\"date\")]/text()", "link_follow": null, "link": "//h3/a/@href", "bs_element": null, "cookies": null, "us_date_format": null, "title": "//h3/a/text()", "content_type": "html", "global": "//div[has-class(\"strip2\")]/div[has-class(\"sec2\")]", "tag": null, "name": "Singapore", "url": "https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos"}
+
+{"index": {"_id": "3c35be982d399d289d0ad42728ce7f943826c260"}}
+{"name": "Palau", "statement": null, "ssl": null, "us_date_format": "", "tag": null, "posted_date": "//span[has-class(\"post__meta-item--date\")]/text()", "title": "//h2/a/text()", "content_type": "doc", "link_follow": "//div[has-class(\"wp-block-image\")]//a//@href", "link": "//h2/a/@href", "url": "https://www.palaugov.pw/news", "global": "//article[has-class(\"post\")]//header", "bs_element": null, "cookies": null}
+
+{"index": {"_id": "beac8f8c19cf8ce055bfd5e24e03f1956f636eee"}}
+{"bs_element": "", "link": "//a//@href", "tag": null, "title": "//a//text()", "statement": null, "cookies": null, "posted_date": "nill", "link_follow": "", "name": "Micronesia (Federated States of)", "url": "https://www.fsmgov.org/fsmun/statemt.html", "ssl": null, "content_type": "doc", "us_date_format": "", "global": "/html/body/center//ul"}
+
+{"index": {"_id": "4cb70c65be28c2a6d1d863ff53bf6410c0188c03"}}
+{"url": "http://www.mfa.gov.kp", "cookies": "qtrans_front_language=en; PHPSESSID=l8gjgn46da64im3eu65o3gdjd7; csrf_rewqazxcvf_name=bad672b1ce679797c2848a3a91f43297; ci_session=0i3s77c12d8p43819pmr24j60s45uj9n", "posted_date": "//div[has-class(\"entry clearfix\")]//li//text()", "ssl": null, "tag": null, "us_date_format": "", "global": "//div[has-class(\"entry-title\")]", "statement": "//div[has-class(\"entry-content\")]", "title": "//a", "link": "//a//@href", "bs_element": "", "name": "Democratic People's Republic of Korea", "link_follow": "", "content_type": "html"}
+
+{"index": {"_id": "cd94e6088c86df23ae80427075a7a6081382cfe7"}}
+{"us_date_format": "MMDDYY", "statement": "//div[has-class(\"journal-content-article\")]", "link": "//td[1]/a/@href", "bs_element": null, "title": "//h3[has-class(\"header-title\")]//span//text()", "content_type": "html", "global": "//table/tbody/tr", "ssl": null, "url": "https://www.kln.gov.my/web/guest/press-releases", "link_follow": "//div[has-class(\"download\")]//a//@href", "cookies": "COOKIE_SUPPORT=true; _ga=GA1.3.422009163.1631539899; JSESSIONID=B0F49A9FFA54B32E8DF391FC8CA385E4; _gid=GA1.3.114092239.1640518121; _gat=1; GUEST_LANGUAGE_ID=en_US; sc_is_visitor_unique=rx8482502.1640518257.B06080A5A4444F537B4BABCC60C48E6A.26.24.23.22.18.18.14.13.10; LFR_SESSION_STATE_8523401=1640518258687", "tag": null, "name": "Malaysia", "posted_date": "//td[2]/text()"}
+

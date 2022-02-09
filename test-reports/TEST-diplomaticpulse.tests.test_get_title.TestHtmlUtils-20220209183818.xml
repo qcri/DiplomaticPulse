@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="diplomaticpulse.tests.test_get_title.TestHtmlUtils-20220209183818" skipped="0" tests="3" time="4.229" timestamp="2022-02-09T18:38:25">
+	<testcase classname="diplomaticpulse.tests.test_get_title.TestHtmlUtils" name="test_get_title1" time="0.000" timestamp="2022-02-09T18:38:20"/>
+	<testcase classname="diplomaticpulse.tests.test_get_title.TestHtmlUtils" name="test_get_title2" time="0.880" timestamp="2022-02-09T18:38:21"/>
+	<testcase classname="diplomaticpulse.tests.test_get_title.TestHtmlUtils" name="test_get_title3" time="3.349" timestamp="2022-02-09T18:38:25"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

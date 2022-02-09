@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: diplomaticpulse
+Version: 0.1.199
+Summary: Scrapy pipeline which allow you to store scrapy items in Elastic Search.
+Home-page: http://github.com/noplay/scrapy-elasticsearch
+Author: Julien Duponchelle
+Author-email: julien@duponchelle.info
+License: Apache License, Version 2.0
+Keywords: scrapy elastic search
+Platform: Any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+License-File: LICENCE
+
+UNKNOWN
+

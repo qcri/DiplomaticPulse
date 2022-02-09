@@ -1,0 +1,61 @@
+version: "3.5"
+
+volumes:
+  scrapyd_logs: {}
+   
+services:
+  es:
+    build: ./ES
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+
+    volumes:
+#      - ./es_data:/usr/share/elasticsearch/data
+      - ./ES/config/init_indices:/usr/share/elasticsearch/config/init_indices
+      - ./ES/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./ES/config/setup.sh:/usr/share/elasticsearch/config/setup.sh
+  dejavu:
+    image: appbaseio/dejavu
+    ports:
+      - "1358:1358"
+
+  scrapyd:
+    build: .
+    command: ./run_scrapyd.sh
+    volumes:
+      - .:/code
+      - scrapyd_logs:/scrapyd_logs
+    expose:
+      - "6800"
+    env_file:
+      - .env
+    links:
+      - es
+
+  runner:
+    build: .
+    command: python run.py --delay 60 --every 10 http://scrapyd:6800
+    volumes:
+      - .:/code
+    links:
+      - es
+      - scrapyd
+    env_file:
+      - .env
+
+  web:
+    build: ./scrapydweb
+    ports:
+      - "5000:5000"
+    volumes:
+      - scrapyd_logs:/mnt/logs
+    links:
+      - scrapyd
+    env_file:
+      - .env
+
+volumes:
+        scrapyd_logs:

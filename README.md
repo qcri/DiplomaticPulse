@@ -1,5 +1,5 @@
 
-# Diplomatic pulse   project
+# Diplomatic pulse 
 This repository should provide much of the structure and parsing code needed to crawl various web pages to extract news, released statements published by countries with very little effort.
 On launching scrapy crawlers, the diplomatic pulse system clones  our backend data (names and  websites XPATHs of member states of United Nations), extracts then follows all URLs. 
 

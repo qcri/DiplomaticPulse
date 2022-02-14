@@ -14,7 +14,7 @@ from diplomaticpulse.db.getUrlConfigs import DpElasticsearch
 from diplomaticpulse.website_status_tracker.status_tracker import WebsiteTracker
 import random
 from scrapy import signals
-from diplomaticpulse.utilities import (
+from diplomaticpulse.misc import (
     errback_http,
     cookies_utils,
     utils,
@@ -153,7 +153,7 @@ class HtmlSpider(scrapy.spiders.Spider):
             url_parent=self.start_urls[0],
         )
 
-        dict_html_blocks = html_parser.scraped_block_links(response, self.xpaths)
+        dict_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
         self.logger.info(
             "scraped html blocks  %s  from starting page", len(dict_html_blocks)
         )
@@ -217,7 +217,9 @@ class HtmlSpider(scrapy.spiders.Spider):
         Item_loader = ItemLoader(item=StatementItem(), response=response)
         Item_loader.default_input_processor = MapCompose(str())
         Item_loader.default_output_processor = TakeFirst()
-        statement = html_parser.get_response_content(response, self.xpaths["statement"])
+        statement = html_parser.get_html_response_content(
+            response, self.xpaths["statement"]
+        )
         Item_loader.add_value("statement", statement)
         title = html_parser.get_title(data["title"], response, self.xpaths)
         Item_loader.add_value("title", title)

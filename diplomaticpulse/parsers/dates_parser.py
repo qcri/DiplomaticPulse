@@ -34,7 +34,7 @@ exp_2 = (
 
 def fire_me(func_name, date_string):
     """
-    call function based on func_name
+    Call function based on func_name.
 
     Args
         func_list (list of function to call):
@@ -50,7 +50,7 @@ def fire_me(func_name, date_string):
 
 def parse_mydate(date_string, language):
     """
-    parse a string date and handles multiple formats
+    Parse a string date and handles multiple formats.
 
     Args
         date_string  (string):
@@ -84,7 +84,7 @@ def parse_mydate(date_string, language):
 
 def parse_non_english_date_string(date_string):
     """
-    parse a non englisg string date.
+    Parse a non englisg string date.
     eg: "Mardi 01 Décembre 2020"
 
     Args
@@ -110,7 +110,7 @@ def parse_non_english_date_string(date_string):
 
 def parse_default_date_string(date_string):
     """
-    parse a non englisg string date.
+    Parse a non englisg string date.
     eg: YYYY-MM-DD and DD-MM-YYYY
 
     Args
@@ -163,7 +163,8 @@ def parse_date_with_US_format(date_string):
 
 
 def date_with_MDY_format(date_string):
-    """parse a string date using user entry format  Feb032022
+    """
+    Function that parses a string date using specific entry format  Feb032022
 
     Args
         date_string : string
@@ -184,7 +185,7 @@ def date_with_MDY_format(date_string):
 
 
 def date_with_MMDDYYYY_format(date_string):
-    """parse a string date using user entry format  MM-DD-YYYY
+    """parse a string date using user entry format  MMDDYYYY
 
     Args
         date_string : string
@@ -206,7 +207,7 @@ def date_with_MMDDYYYY_format(date_string):
 
 
 def date_with_YYYYDDMM_format(date_string):
-    """parse a string date using user entry format  YYYY-DD-MM
+    """parse a string date using user entry format  YYYYDDMM
 
     Args
         date_string : string
@@ -229,7 +230,7 @@ def date_with_YYYYDDMM_format(date_string):
 
 
 def date_with_YYDDMM_format(date_string):
-    """parse a string date using user entry format  YY-DD-MM
+    """parse a string date using user entry format  YYDDMM
 
     Args
         date_string : string
@@ -244,17 +245,18 @@ def date_with_YYDDMM_format(date_string):
 
     """
     try:
-        return avoid_future_date(
-            dparser.parse(
-                date_string, fuzzy=True, dayfirst=False, yearfirst=True
-            ).strftime("%Y-%m-%d")
+        # convert it first to YYYYDDMM
+        date_string = datetime.datetime.strptime(date_string, "%y-%d-%m").strftime(
+            "%Y-%m-%d"
         )
-    except Exception:
+        return date_with_YYYYDDMM_format(date_string)
+    except Exception as ex:
+        print("ERROR: ", ex)
         return None
 
 
 def date_with_MMDDYY_format(date_string):
-    """parse a string date using user entry format MM-DD-YY
+    """parse a string date using user entry format MMDDYY
 
     Args
         date_string : string
@@ -383,7 +385,7 @@ def get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
              when it catches  error
 
     """
-    if posted_date is not  None:
+    if posted_date is not None:
         return posted_date
 
     try:
@@ -488,7 +490,7 @@ if __name__ == "__main__":
         "12-Mayo-2019",
         " el 13 de julio, 2020",
         "sam 14/07/2018 - 12:00",
-         "09 كانون الثاني 2022",
+        "09 كانون الثاني 2022",
     ]
 
     # dates=[{'language':"Russian",'dt':'09.01.2022'}]

@@ -8,9 +8,10 @@ from six import string_types
 from elasticsearch import Elasticsearch, helpers
 import types
 import logging
-from diplomaticpulse.utilities import utils
+from diplomaticpulse.misc import utils
 from diplomaticpulse.parsers import dates_parser
 import urllib3
+from typing import List, Any
 
 
 class ElasticSearchPipeline(object):

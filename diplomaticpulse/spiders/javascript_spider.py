@@ -12,7 +12,7 @@ from scrapy.exceptions import CloseSpider
 from diplomaticpulse.items import StatementItem
 from datetime import datetime
 from diplomaticpulse.db.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.utilities import (
+from diplomaticpulse.misc import (
     cookies_utils,
     utils,
 )
@@ -35,7 +35,7 @@ class SeleniumSpider(scrapy.Spider):
     """
 
     # spider name
-    name = "javascript_selenium"
+    name = "javascript"
 
     def __init__(self, url, *args, **kwargs):
         """

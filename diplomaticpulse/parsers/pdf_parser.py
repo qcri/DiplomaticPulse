@@ -1,6 +1,5 @@
-
 """
-  implements pdf parsing
+  implements pdf/images content parsing
 """
 import urllib.parse
 import urllib.request
@@ -19,7 +18,7 @@ import urllib3
 from PIL import Image
 import fitz
 import pytesseract
-from diplomaticpulse.utilities import utils
+from diplomaticpulse.misc import utils
 
 
 def parse_pdfminer(url, ignore_ssl_certficate):
@@ -127,7 +126,7 @@ def parse_pdfminer(url, ignore_ssl_certficate):
             dict(body)
 
 
-def text_from_image(file_):
+def get_text_from_pdf_image(file_):
     """
     parse pdf image content
 

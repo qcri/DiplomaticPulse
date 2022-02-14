@@ -51,7 +51,6 @@ def main(argv):
     output_dir = base_dir + test_dir + '/test-reports'
 
     input_dir = base_dir + test_dir
-    print('11111111', output_dir)
     tests = unittest.TestLoader().discover(input_dir, pattern)
     result = xmlrunner.XMLTestRunner(output=output_dir).run(tests)
 

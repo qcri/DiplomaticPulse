@@ -1,16 +1,16 @@
 """
-This module implements beautifulsoup parsing
+This module implements beautifulsoup object bs4 parsing
 """
 from urllib.parse import unquote
 import time
 from bs4 import BeautifulSoup
 
-from diplomaticpulse.parsers import html_parser, dates_parser
+from diplomaticpulse.parsers import dates_parser
 
 
-def get_soup(url, driver):
+def get_bs4_soup(url, driver):
     """
-    get Beautifulsoup soup object
+    Get Beautifulsoup soup object.
 
     Args
         url (string):
@@ -20,6 +20,7 @@ def get_soup(url, driver):
 
     Returns
         soup(object of beautifulsoup)
+
     """
     try:
         driver.get(url)
@@ -33,14 +34,12 @@ def get_soup(url, driver):
 
 def remove_unwanted_tags(url, driver, xpaths):
     """
-    remove unwanted tags element from html content
+    Remove unwanted tags element from html content.
 
     Args
-          url (string):
-              link URL
-        driver (Selenium driver):
-        xpaths (string):
-               unwated elements names
+        url (string):link URL
+        driver (Selenium driver): driver
+        xpaths dict(string):unwanted elements names
 
     Returns
          text (string):
@@ -48,9 +47,7 @@ def remove_unwanted_tags(url, driver, xpaths):
 
     """
     try:
-        if xpaths is None:
-            return None
-        soup = get_soup(url, driver)
+        soup = get_bs4_soup(url, driver)
         elements = xpaths["tags"].split("#")
         for elem in elements:
             tags = elem.split(",")
@@ -67,13 +64,13 @@ def remove_unwanted_tags(url, driver, xpaths):
         return None
 
 
-def get_data_from_blocks(response, xpaths, driver):
+def get_bs4_data_from_blocks(response, xpaths, driver):
     """
-    scrape article  html block (as see in page overview)
+    Scrape article  html block (as seen in page overview).
 
     Args
-        response (response type):
-            page html
+        response (response object):
+           html content
         xpaths dict(json):
             xpaths {
                 'global' : <page html block XPATH ofr each article>
@@ -92,26 +89,26 @@ def get_data_from_blocks(response, xpaths, driver):
              when it catches an error
     """
     try:
-        soup = get_soup(response.url, driver)
+        soup = get_bs4_soup(response.url, driver)
         elements = xpaths["global"].split(",")
         raw = soup.find_all(elements[0], class_=elements[1])
         res = []
         for html in raw:
-            url = response.urljoin(scrape_url(html, xpaths["link"]))
-            title = get_text(html, xpaths["title"])
-            date = get_text(html, xpaths["posted_date"])
+            url = response.urljoin(get_bs4_url(html, xpaths["link"]))
+            title = get_text_bs4(html, xpaths["title"])
+            date = get_text_bs4(html, xpaths["posted_date"])
             res.append(dict(url=unquote(url), title=title, posted_date=date))
         return res
     except Exception:
         return None
 
 
-def get_data_from_response(response, data, xpaths, driver):
+def get_bs4_data_from_response(response, data, xpaths, driver):
     """
-    scrape the page content from response
+    Scrape the page content from response object.
 
     Args
-        response (response type):
+        response (response object):
             Request response content
         xpaths dict(json):
             xpaths {
@@ -134,33 +131,34 @@ def get_data_from_response(response, data, xpaths, driver):
         elements = xpaths["statement"].split(",")
         soup = remove_unwanted_tags(response.url, driver, xpaths)
         if soup is None:
-            soup = get_soup(response.url, driver)
+            soup = get_bs4_soup(response.url, driver)
         raw = soup.find_all(elements[0], class_=elements[1])
         text = []
         for txt in raw:
-            text.append(txt.get_text())
+            text.append(txt.get_bs4_text())
         text = "\n".join(text)
     except Exception:
         pass
     finally:
         if text is None:
-            text = html_utils.get_response_content(response, xpaths)
+            text = html_utils.get_bs4_response_content(response, xpaths)
 
         # ger date
         date = data["posted_date"]
         if date is None:
-            date = get_text(soup, xpaths["posted_date"])
+            date = get_bs4_text(soup, xpaths["posted_date"])
         else:
             date = dates_parser.get_date(data, response, xpaths)
         return html_utils.format_html_text(text), date
 
 
-def scrape_url(html, element):
-    """scrape  link URL from response content
+def get_bs4_url(html, element):
+    """
+    Scrape  link URL from response content.
 
     Args
-        html : response type
-                page html
+        html : html (Beautifulsoup object):
+               html content
         element : Beautifull soup element ID
 
     Returns
@@ -173,14 +171,14 @@ def scrape_url(html, element):
     """
     try:
         dispatcher = {
-            "html.a": html_a_,
-            "html.span": html_span_,
-            "html.h2.a": html_h2_a_,
-            "html": html_,
-            "html_h3_a": html_h3_a_,
-            "html_h6_a": html_h6_a_,
-            "html_li_a": html_li_a_,
-            "html_li": html_li_,
+            "html.a": href_html_a_bs4,
+            "html.span": href_html_span_bs4,
+            "html.h2.a": href_html_h2_a_bs4,
+            "html": href_html_bs4,
+            "html_h3_a": href_html_h3_a_bs4,
+            "html_h6_a": href_html_h6_a_bs4,
+            "html_li_a": href_html_li_a_bs4,
+            "html_li": href_html_li_bs4,
         }
 
         text = fire_me(dispatcher[element], html)
@@ -190,12 +188,13 @@ def scrape_url(html, element):
         pass
 
 
-def html_a_(html):
+def href_html_a_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html.a["href"]).
 
     Args
-        html ( string)
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -204,12 +203,13 @@ def html_a_(html):
     return html.a["href"]
 
 
-def html_span_(html):
+def href_html_span_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html.span["href"]).
 
     Args
-        html ( string)
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -218,12 +218,13 @@ def html_span_(html):
     return html.span["href"]
 
 
-def html_h2_a_(html):
+def href_html_h2_a_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html.h2.a["href"]).
 
     Args
-        html ( string)
+       html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -232,12 +233,13 @@ def html_h2_a_(html):
     return html.h2.a["href"]
 
 
-def html_(html):
+def href_html_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html["href"]).
 
     Args
-        html ( string)
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -246,12 +248,28 @@ def html_(html):
     return html["href"]
 
 
-def html_h3_a_(html):
+def href_html_li_a_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html.li.a["href"]).
 
     Args
-        html ( string)
+       html (Beautifulsoup object):
+            html content
+
+    Returns
+        text (string):
+            link url
+    """
+    return html.li.a["href"]
+
+
+def href_html_h3_a_bs4(html):
+    """
+    This function scrapes html from Beautifulsoup object using element(html.h3.a["href"]).
+
+    Args
+       html (Beautifulsoup object):
+            html content
 
     Returns
         text (string):
@@ -260,12 +278,13 @@ def html_h3_a_(html):
     return html.h3.a["href"]
 
 
-def html_h6_a_(html):
+def href_html_h6_a_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes html from Beautifulsoup object using element(html.h6.a["href"]).
 
     Args
-        html ( string)
+       html (Beautifulsoup object):
+            html content
 
     Returns
         text (string):
@@ -274,11 +293,13 @@ def html_h6_a_(html):
     return html.h6.a["href"]
 
 
-def html_li_a_(html):
-    """this function scrapes link from html
+def href_html_li_a_(html):
+    """
+    This function scrapes html from Beautifulsoup object using element(html.li.a["href"]).
 
     Args
-        html (string)
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text: string
@@ -287,12 +308,13 @@ def html_li_a_(html):
     return html.li.a["href"]
 
 
-def html_li_(html):
+def href_html_li_bs4(html):
     """
-    this function scrapes link from html
+    This function scrapes link  using element(html.li["href"]).
 
     Args
-        html ( string)
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -301,14 +323,15 @@ def html_li_(html):
     return html.li["href"]
 
 
-def get_text(html, element):
+def get_text_bs4(html, element):
     """
-    this function scrapes  html content
+    This function scrapes html from Beautifulsoup object.
 
     Args
-        html (response type):
-                page html
-        element : beautifull soup element ID
+        html (Beautifulsoup object):
+             html content
+
+        element : beautifull soup element Tag ID
 
     Returns
         text (string)
@@ -321,26 +344,26 @@ def get_text(html, element):
     """
     try:
         dispatcher = {
-            "html.text": html_text,
-            "html.a": html_a,
-            "html.a_span": html_a_span,
-            "html.span": html_span,
-            "html.h1": html_h1,
-            "html.h1_a": html_h1_a,
-            "html.h2": html_h2,
-            "html.h2_a": html_h2_a,
-            "html.h3": html_h3,
-            "html.h3_a": html_h3_a,
-            "html.h6_a": html_h6_a,
-            "html.h4": html_h4,
-            "html.h4_a": html_h4_a,
-            "strong": strong,
-            "html.strong": html_strong,
-            "html.time": html_time,
-            "html.div": html_div,
-            "html.small": html_small,
-            "html.li_a": html_li_a,
-            "html.li": html_li,
+            "html.text": html_text_bs4,
+            "html.a": html_a_bs4,
+            "html.a_span": html_a_span_bs4,
+            "html.span": html_span_bs4,
+            "html.h1": html_h1_bs4,
+            "html.h1_a": html_h1_a_bs4,
+            "html.h2": html_h2_bs4,
+            "html.h2_a": html_h2_a_bs4,
+            "html.h3": html_h3_bs4,
+            "html.h3_a": html_h3_a_bs4,
+            "html.h6_a": html_h6_a_bs4,
+            "html.h4": html_h4_bs4,
+            "html.h4_a": html_h4_a_bs4,
+            "strong": strong_bs4,
+            "html.strong": html_strong_bs4,
+            "html.time": html_time_bs4,
+            "html.div": html_div_bs4,
+            "html.small": html_small_bs4,
+            "html.li_a": html_li_a_bs4,
+            "html.li": html_li_bs4,
         }
 
         elements = element.split(",")
@@ -354,7 +377,7 @@ def get_text(html, element):
 
 def fire_me(func_name, html):
     """
-     call function based on func_name
+     Call function based on func_name.
 
     Args
         func_list : list of function to call
@@ -367,13 +390,13 @@ def fire_me(func_name, html):
 
 
 # below names of function
-def html_text(html):
+def html_text_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -382,13 +405,13 @@ def html_text(html):
     return html.text
 
 
-def html_a(html):
+def html_a_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[]..
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -397,13 +420,13 @@ def html_a(html):
     return html.a.text
 
 
-def html_a_span(html):
+def html_a_span_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[]..
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -412,13 +435,13 @@ def html_a_span(html):
     return html.a.span.text
 
 
-def html_span(html):
+def html_span_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[]..
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -427,13 +450,13 @@ def html_span(html):
     return html.span.text
 
 
-def html_h1(html):
+def html_h1_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[]..
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+               html content
 
     Returns
         text (string):
@@ -442,17 +465,28 @@ def html_h1(html):
     return html.h1.text
 
 
-def html_h1_a(html):
+def html_h1_a_bs4(html):
+    """
+    This function scrapes html from Beautifulsoup object using  elt[ html.h1.a.text].
+
+    Args
+         html (Beautifulsoup object):
+              html content
+
+    Returns
+        text (string):
+            html text
+    """
     return html.h1.a.text
 
 
 def html_h2(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[html.h2.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -461,13 +495,13 @@ def html_h2(html):
     return html.h2.text
 
 
-def html_h2_a(html):
+def html_h2_a_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[html.h2.a.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -476,13 +510,13 @@ def html_h2_a(html):
     return html.h2.a.text
 
 
-def html_h3(html):
+def html_h3_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[html.h3.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+               html content
 
     Returns
         text (string):
@@ -491,17 +525,17 @@ def html_h3(html):
     return html.h3.text
 
 
-def html_h3_a(html):
+def html_h3_a_bs4(html):
     return html.h3.a.text
 
 
-def html_h6_a(html):
+def html_h6_a_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[html.h3.a.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -510,12 +544,13 @@ def html_h6_a(html):
     return html.h6.a.text
 
 
-def html_h4(html):
+def html_h4_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup object using  elt[html.h4.text].
 
     Args
-        html : string
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text: string
@@ -524,13 +559,13 @@ def html_h4(html):
     return html.h4.text
 
 
-def html_h4_a(html):
+def html_h4_a_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.h4.a.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -539,13 +574,28 @@ def html_h4_a(html):
     return html.h4.a.text
 
 
-def strong(html):
+def strong_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.strong.text].
+
+     Args
+          html (Beautifulsoup object):
+               html content
+
+     Returns
+         text (string):
+             html text
+    """
+    return html.strong.text
+
+
+def html_strong_bs4(html):
+    """
+    This function scrapes html from Beautifulsoup  using  elt[html.strong.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+               html content
 
     Returns
         text (string):
@@ -554,28 +604,13 @@ def strong(html):
     return html.strong.text
 
 
-def html_strong(html):
+def html_time_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.time.text].
 
     Args
-        html (string):
-          statement content
-
-    Returns
-        text (string):
-            html text
-    """
-    return html.strong.text
-
-
-def html_time(html):
-    """
-    this function scrapes text from html
-
-    Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -584,13 +619,13 @@ def html_time(html):
     return html.time.text
 
 
-def html_div(html):
+def html_div_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.div.text].
 
     Args
-        html (string):
-          statement content
+         html (Beautifulsoup object):
+              html content
 
     Returns
         text (string):
@@ -599,12 +634,12 @@ def html_div(html):
     return html.div.text
 
 
-def html_small(html):
+def html_small_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[ html.small.text].
 
     Args
-        html (string):
+        html (Beautifulsoup object):
           statement content
 
     Returns
@@ -614,13 +649,13 @@ def html_small(html):
     return html.small.text
 
 
-def html_li_a(html):
+def html_li_a_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.li.a.text].
 
     Args
-        html (string):
-          statement content
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):
@@ -629,13 +664,13 @@ def html_li_a(html):
     return html.li.a.text
 
 
-def html_li(html):
+def html_li_bs4(html):
     """
-    this function scrapes text from html
+    This function scrapes html from Beautifulsoup  using  elt[html.li.text].
 
     Args
-        html (string):
-          statement content
+        html (Beautifulsoup object):
+             html content
 
     Returns
         text (string):

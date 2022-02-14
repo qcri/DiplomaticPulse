@@ -14,7 +14,7 @@ import urllib.parse
 import random
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
-from diplomaticpulse.utilities import cookies_utils, utils
+from diplomaticpulse.misc import cookies_utils, utils
 from diplomaticpulse.parsers import pdf_parser, html_parser, dates_parser
 from diplomaticpulse.website_status_tracker.status_tracker import WebsiteTracker
 from scrapy import signals
@@ -27,7 +27,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
     """
 
-    name = "mixed"
+    name = "html_doc"
 
     def __init__(self, url, *args, **kwargs):
         """
@@ -180,20 +180,6 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                 cb_kwargs=dict(data=_dict_data),
             )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             break
 
     def parse_static(self, response, data):
@@ -245,7 +231,9 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
             Item_loader = ItemLoader(item=StatementItem(), response=response)
             Item_loader.default_input_processor = MapCompose(str())
             Item_loader.default_output_processor = TakeFirst()
-            statement = html_parser.get_response_content(response, self.xpaths["statement"])
+            statement = html_parser.get_response_content(
+                response, self.xpaths["statement"]
+            )
             Item_loader.add_value("statement", statement)
             title = html_parser.get_title(data["title"], response, self.xpaths)
             Item_loader.add_value("title", title)
@@ -301,10 +289,12 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         item = StatementItem()
         raw = pdf_parser.parse_pdfminer(response.url, self.xpaths["ssl"])
         statement = raw["statement"] if raw else None
-        item["statement"] = ''.join(html_parser.format_html_text(statement))
+        item["statement"] = "".join(html_parser.format_html_text(statement))
         title = html_parser.get_title(data["title"], response, self.xpaths)
         item["title"] = title if title else item["statement"][:200]
-        posted_date = dates_parser.get_date_from_pdf(data['posted_date'], raw['posted_date'], item["statement"], title)
+        posted_date = dates_parser.get_date_from_pdf(
+            data["posted_date"], raw["posted_date"], item["statement"], title
+        )
         item["posted_date"] = posted_date
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")

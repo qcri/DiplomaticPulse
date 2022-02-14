@@ -9,7 +9,7 @@ from scrapy.spiders import CrawlSpider
 from scrapy.utils.project import get_project_settings
 from diplomaticpulse.items import StatementItem
 from diplomaticpulse.db.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.utilities import (
+from diplomaticpulse.misc import (
     errback_http,
     cookies_utils,
     utils,

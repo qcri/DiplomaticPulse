@@ -8,9 +8,9 @@ from urllib.parse import unquote
 import re
 
 
-def get_response_content(response, statement_xpath):
+def get_html_response_content(response, statement_xpath):
     """
-    reads body content from Request response using XPATH method
+    Reads body content from Request response using XPATH method.
 
     Args:
         response (Request object): response body
@@ -31,7 +31,7 @@ def get_response_content(response, statement_xpath):
 
 def format_html_text(html):
     """
-    format html content
+    Format html content.
 
     Args
         html (string):
@@ -70,9 +70,9 @@ def format_html_text(html):
         return html
 
 
-def format_pdf_text(html):
+def format_html_pdf_text(html):
     """
-    format PDF content
+    Format PDF content.
 
     Args
         html (string):
@@ -105,14 +105,14 @@ def format_pdf_text(html):
     return clean_text
 
 
-def scraped_block_links(response, xpaths):
+def get_html_block_links(response, xpaths):
     """
-    read Request response  html block for eacr article (URL)
+    Read Request response  html block for eacr article (URL).
 
     Args
         response (Request response):
               response content
-    xpaths : dic(json)
+        xpaths : dic(json)
             Python dict in the following format:
             xpaths{
                    'global' : <article global XPATH>
@@ -146,14 +146,14 @@ def scraped_block_links(response, xpaths):
 
 def get_title(title, response, xpaths):
     """
-    scrape article title
+    Scrape article title.
 
     Args
         title (string):
             article title
-    response (Request response):
+        response (Request response):
               response content
-    xpaths : dict(json)
+        xpaths : dict(json)
             Python dict in the following format:
             xpaths{
                 'title' : <article  title XPATH >
@@ -170,6 +170,3 @@ def get_title(title, response, xpaths):
         return title.strip()
     except:
         return title
-
-
-

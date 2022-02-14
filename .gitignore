@@ -10,7 +10,6 @@ __pycache__
 *.txt
 *.html
 *.png
-test*.*
 *.log
 proxy.py
 build/

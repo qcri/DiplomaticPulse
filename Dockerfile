@@ -8,6 +8,7 @@ RUN apt-get update \
             libxslt-dev \
             gcc \
             wget \
+            gnupg \
     && rm -rf /var/cache/apk/*
 
 # install google chrome

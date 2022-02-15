@@ -24,6 +24,7 @@ services:
 
   scrapyd:
     build: .
+    container_name: scrapyd
     command: ./run_scrapyd.sh
     volumes:
       - .:/code

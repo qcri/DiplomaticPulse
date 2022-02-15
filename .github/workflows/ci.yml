@@ -1,0 +1,21 @@
+name: Diplomaticpulse CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  ci-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build the stack
+      run: docker-compose up -d
+    - name: Test
+      run: docker exec scrapyd python3 /code/test_runner.py
+
+     

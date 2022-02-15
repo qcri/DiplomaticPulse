@@ -10,7 +10,6 @@ RUN apt-get update \
             wget \
             gnupg \
             curl \
-            
     && rm -rf /var/cache/apk/*
 
 # install google chrome

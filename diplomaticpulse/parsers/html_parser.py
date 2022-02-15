@@ -10,7 +10,7 @@ import re
 
 def get_html_response_content(response, statement_xpath):
     """
-    Reads body content from Request response using XPATH method.
+    This method reads body content from Request response using XPATH method.
 
     Args:
         response (Request object): response body
@@ -24,14 +24,14 @@ def get_html_response_content(response, statement_xpath):
 
     """
     try:
-        return format_html_text(" ".join(response.xpath(statement_xpath).getall()))
+        return format_html_text(' '.join(response.xpath(statement_xpath).getall()))
     except Exception:
         return None
 
 
 def format_html_text(html):
     """
-    Format html content.
+    This method formats html content.
 
     Args
         html (string):
@@ -50,21 +50,15 @@ def format_html_text(html):
     try:
         clean_text = re.findall(
             "<p[^>]*>([^<]+)",
-            re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)),
+            html
         )
         clean_text = re.sub(r"\n{2,}", "\n", "\n".join(clean_text))
         if clean_text is None:
             clean_text = re.sub(
                 "<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)
             )
-        clean_text = re.sub("\xa0 {2,}", "", clean_text)
-        clean_text = re.sub("\n\s*", "\n", clean_text)
-        clean_text = re.sub("\t", " ", clean_text)
-        clean_text = re.sub("\r", " ", clean_text)
-        clean_text = re.sub("\xa0", " ", clean_text)
-        if "\n" not in clean_text:
-            clean_text = clean_text.replace(".", "\n")
-        return clean_text, clean_text if len(clean_text) > 1 else html
+        clean_text = ''.join(clean_text)
+        return clean_text, clean_text if not None else html
     except Exception as ex:
         print("!!!!!!!!!!! ERROR", ex)
         return html
@@ -72,7 +66,7 @@ def format_html_text(html):
 
 def format_html_pdf_text(html):
     """
-    Format PDF content.
+    This method formats PDF content.
 
     Args
         html (string):
@@ -107,7 +101,7 @@ def format_html_pdf_text(html):
 
 def get_html_block_links(response, xpaths):
     """
-    Read Request response  html block for eacr article (URL).
+    This method reads Request response - html block for eacr article (URL).
 
     Args
         response (Request response):
@@ -146,7 +140,7 @@ def get_html_block_links(response, xpaths):
 
 def get_title(title, response, xpaths):
     """
-    Scrape article title.
+    This method scrapes article title.
 
     Args
         title (string):

@@ -3,6 +3,7 @@
 There are 3 ways you can contribute to Diplomatic Pulse:
 - Implementing new spiders;
 - Improving string date parsing to handle possible unhadled string dates;
+- Improving formating html text ;  
 - Contributing to the documentation;
 
 Follow these steps to submit your code contribution.

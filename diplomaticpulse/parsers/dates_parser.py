@@ -386,8 +386,7 @@ def get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
 
     """
     if posted_date is not None:
-        return posted_date
-
+        return parse_default_date_string(posted_date)
     try:
         posted_date = posted_date_in_raw
     except Exception:
@@ -414,93 +413,3 @@ def get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
 
     return posted_date
 
-
-if __name__ == "__main__":
-    dates_english = [
-        "2022/02/08",
-        "2020/12/01",
-        "12.10.2020  16:36",
-        "01.10.2020  14:09",
-        "09.07.2020",
-        "2020.07.09",
-        "1.3.2020",
-        "2020.3.1",
-        "2020/10/02",
-        "02/10/2020",
-        "17-09-11",
-        "Feb032022#MDY",
-        "09/24/2021#MMDDYYYY",
-        "2018/03/10#YYYYDDMM",
-        "17-09-11#YYDDMM",
-        "11-09-11#MMDDYY",
-        "Thursday, 20. August 2020",
-        "Friday, 4th September 2020",
-        "Monday, 9th November 2020",
-        "1 July 2020 - 17:40",
-        "Publication: 30-06-2020",
-        "July 6, 2020",
-        "Nov 17, 2020",
-        "Press release, 09/07.2020",
-        "4th March 2020",
-        "Thursday, March 16, 2017",
-        "July 10, 2020",
-        "04 July 2020",
-        "Date: 15/06/2020",
-        "Date: 2020/11/05",
-        "Date: 10/07/2020",
-        "Date: 15/06/2020",
-        "Date: 2020/06/02",
-        "Publication: 15/06/2020",
-        "Publication: 2020/11/05",
-        "Publication: 10/07/2020",
-        "Publication: 15/06/2020",
-        "Date: 2020/06/02",
-        "\r\n\t\tLast updated: \r\n\t\t10/25/2021 3:21 PM#MMDDYYYY",
-        "Published: 04/06/18 01:35:00 pm",
-        "05 Outubro de 2021  08h10",
-        "12:41 / 10.09.2021",
-        "12:41 / 10.09.2021",
-        '<p><a href="pr091016.pdf">Federated States of Micronesia Establishes Diplomatic Ties with the United Arab Emirates</a> (9/10/16)</p>',
-        '<p><a href="pubheal13.pdf">Public Service Announcement on Applying for the Pandemic Unemployment Assistance Program</a>, Palikir, June 17, 2020</p>',
-        "Statement by the Minister of Foreign Affairs of the Republic of Belarus, Vladimir Makei, at the OSCE 26th Ministerial Council (Bratislava, December 5, 2019)",
-        "Statement by the Press-Service of the Ministry of Foreign Affairs of the Republic of Belarus regarding terrorist attack in Istanbul (January 1, 2017, Minsk)",
-        "vCentral design  23/02/15 committee session Tuesday 10/04 6:30 pm",
-        "HIS MAJESTY THE SULTAN",
-        "Ambassador Kelly Craft Permanent Representative U.S. Mission to the United Nations New York, New York June 25, 2020",
-        "Statement by Minister of Foreign Affairs of Belarus V.Makei at the 24th Meeting of the OSCE Ministerial Council (December 7, 2017, Vienna)",
-        "EU-Albania Stabilisation and Association Agreement 12th SUBCOMMITTEE ON JUSTICE, FREEDOM AND SECURITY 30 June-1 July 2020",
-        "video conference 26 June 2020",
-        "1 October 2020  MESSAGE OF CONDOLENCE TO HIS HIGHNESS THE AMIR OF THE STATE OF KUWAIT ON THE RECENT PASSING OF HIS HIGHNESS",
-        "Statement by the Minister of Foreign Affairs of Belarus V.Makei at the General debate of the 74th session of the UN General Assembly (September 26 2019 New York)",
-        "Statement of the Ministry for Europe and Foreign Affairs of the Republic of Albania Tirana 28.10.2020",
-        "20201116121703",
-        "Statement by the Minister of Foreign Affairs of the Republic of Belarus, Vladimir Makei, at the OSCE 26th Ministerial Council (Bratislava, December 5, 2019) Source: https://mfa.gov.by/en/press/statements/dad9272a52869cef.html © When using the site materials reference to the source is required",
-        "Statement by Minister of Foreign Affairs of Belarus V.Makei at the 24th Meeting of the OSCE Ministerial Council (December 7, 2017, Vienna) Source: https://mfa.gov.by/en/press/statements/bc657b1107ac8f22.html © When using the site materials reference to the source is required.",
-        "04 ????? ?????? 2020",
-    ]
-
-    dates_non_english = [
-        "Mardi 01 Décembre 2020",
-        "MERCREDI 27 MAI 2020",
-        "3 mai, 2015",
-        "mai  3 2015",
-        "3 mayo, 2015",
-        "Mayo 4, 2018",
-        "AOut 4 2019",
-        "12-Mayo-2019",
-        " el 13 de julio, 2020",
-        "sam 14/07/2018 - 12:00",
-        "09 كانون الثاني 2022",
-    ]
-
-    # dates=[{'language':"Russian",'dt':'09.01.2022'}]
-    # dates=[{'language':"Russian",'dt':'09.01.2022'},{'language':"Arabic",'dt':'09 كانون الثاني 2022'}]
-
-    for st_dt in dates_english:
-        print(st_dt, "-------", parse_mydate(st_dt, "english"))
-    # # print("=================== no english")
-    for st_dt in dates_non_english:
-        print(st_dt, "-------", parse_mydate(st_dt, None))
-
-    # get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
-    print(get_date_from_pdf(None, None, None, "this is my date 2020-05-04"))

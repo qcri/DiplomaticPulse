@@ -72,7 +72,7 @@ class DpElasticsearch:
                  when it fails hash unique name
 
         """
-        index_name = settings["ELASTIC_INDEX_XPATH"]
+        index_name = os.environ["ELASTIC_INDEX_XPATH"]
         if not self.es:
             self.es = self.connect()
         unique_key = url
@@ -85,9 +85,11 @@ class DpElasticsearch:
 
         ID = hashlib.sha1(unique_key).hexdigest()
         search_object = {"query": {"match": {"_id": ID}}}
-
         res = self.es.search(index=index_name, body=search_object)
-        return res["hits"]["hits"]
+        if res["hits"]["hits"]:
+            return res["hits"]["hits"][0]["_source"]
+        else:
+            return None
 
     def search_urls_by_country_type(self, html_blocks, config):
         """

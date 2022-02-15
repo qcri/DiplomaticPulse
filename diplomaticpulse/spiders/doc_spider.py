@@ -22,11 +22,11 @@ from diplomaticpulse.website_status_tracker.status_tracker import WebsiteTracker
 from scrapy import signals
 
 
-class DocSpider(CrawlSpider):
+class PdfSpider(CrawlSpider):
     """
     This spider is a subclass of scrapy.spiders.Spider, which indirects its handling of
     the start_urls and subsequently extracted and followed URLs. It is designed to handle
-    PDF/Images website's content.
+    PDF/Images websites contents.
 
     Attributes
         url (string) : country's overview article page,e.g: https://www.foreignminister.gov.au/.
@@ -53,19 +53,21 @@ class DocSpider(CrawlSpider):
         """
         self.content_type = "doc"
         self.settings = get_project_settings()
-        self.logger.info("connecting to   %s ", self.settings["ELASTIC_HOST"])
+        self.logger.info("connecting to %s ", self.settings["ELASTIC_HOST"])
         self.start_urls = [url]
         self.extensions = [".pdf"]
+        self.url_website_status = {}
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        """This is the class method used by Scrapy to create your spiders.
+        """
+        This is the class method used by Scrapy framework to create a running spider.
 
         Args
             crawler (Crawler instance) :
-                crawler to which the spider will be bound
+                crawler to which the spider will be found.
             args (list) :
-                arguments passed to the __init__() method
+                arguments passed to the __init__() method.
             kwargs (dict) :
                 keyword arguments passed to the __init__() method:
 
@@ -81,7 +83,7 @@ class DocSpider(CrawlSpider):
 
     def spider_opened(self, spider):
         """
-        This is the class method used by Scrapy to create your spiders.
+        This is the class method used by Scrapy Framework to open running spider.
 
         Args
             crawler(spider (Spider object):
@@ -89,106 +91,103 @@ class DocSpider(CrawlSpider):
 
         Raises
              CloseSpider( raised from a spider callback):
-                when no data for running url
-
-        Returns:
-            spider :
-                instance of running spider
+                when no URL info found
 
         """
+
         self.dic_website_status = {}
         self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
-        self.xpath_configs = self.es.get_url_config(self.start_urls[0], self.settings)
-        if not self.xpath_configs:
+        self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
+        if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
-        self.xpaths = self.xpath_configs[0]["_source"]
+
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
         self.cookies_ = cookies_utils.get_cookies(self.xpaths)
 
     def spider_closed(self, spider):
         """
-        Called when the spider being running closes.
+        This method is called when the spider being running is closing.
 
         Args
             spider (spider (Spider object):
                 the spider for which this request is intended
 
+        Returns:
+            updates each url website status if any.
+
         """
-        self.tracker.update_website_status(self.dic_website_status)
+        status = {}
+        for url in self.url_website_status:
+            status[url] = dict(
+                code=self.url_website_status[url],
+                url=url,
+                name=self.xpaths["name"],
+                spider=self.content_type,
+                url_parent=self.start_urls[0],
+            )
+        self.tracker.update_website_status(status)
 
     def start_requests(self):
         """
         This method must return an iterable with the first Requests to crawl for this spider.
-        It is called by Scrapy when the spider is opened for scraping
+        It is called by Scrapy Framework after the spider is opened for scraping
 
         Returns:
             request: Iterable of Request
 
         """
         for url in self.start_urls:
-            self.logger.info("starting  url  %s ", url)
+            self.logger.info("starting url %s ", url)
             yield scrapy.Request(
-                url, callback=self.parse, headers=self.headers, cookies=self.cookies_
-            )
+                url, callback=self.parse, headers=self.headers, cookies=self.cookies_ )
 
     def parse(self, response):
         """
-        This is the default callback used by Scrapy to process downloaded responses,
-         when their requests don’t specify a callback.
-        Extract urls links from  start_urls and follow urls by sending request
+        This is the default callback used by Scrapy Framework to process downloaded responses.
+        It extracts links from all start_urls and follow each URL  by sending a request.
 
         Args:
-        response (response (Response object) – the response being process):
-                    content to parse
+            response (response (Response object) – the response being processed):
+                    html content to parse
 
         Returns:
             request :
                 Iterable of Requests
 
         """
-        self.logger.info("A response from %s just arrived!", response.url)
-        self.dic_website_status[response.url.strip("'/")] = dict(
-            code=200,
-            url=response.url,
-            name=self.xpaths["name"],
-            spider=self.content_type,
-            url_parent=self.start_urls[0],
-        )
-        dict_html_blocks = html_parser.scraped_block_links(response, self.xpaths)
+        self.logger.info("parsing url %s request response ", response.url)
+        url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
         first_time_seen_links = self.es.search_urls_by_country_type(
-            dict_html_blocks, self.xpaths
+            url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
-        _code = 10600 if not dict_html_blocks else 200
-        self.dic_website_status[response.url] = dict(
-            code=_code,
-            url=response.url,
-            name=self.xpaths["name"],
-            spider=self.content_type,
-            url_parent=self.start_urls[0],
-        )
+        self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         self.logger.info(
-            "scraped html blocks %s from starting page", len(dict_html_blocks)
+            "scraped html blocks %s from starting page", len(url_html_blocks)
         )
         for url in first_time_seen_links:
-            _dict_data = next(
-                (data for data in dict_html_blocks if data["url"] == url), None
+            article_info = next(
+                (data for data in url_html_blocks if data["url"] == url), None
             )
             if utils.get_url_extension(url) in self.extensions:
-                self.logger.info(" send request for url %s", url)
+                self.logger.info("sending request of url %s", url)
                 yield scrapy.Request(
                     url,
                     callback=self.parseitem,
-                    cb_kwargs=dict(data=_dict_data),
+                    cb_kwargs=dict(data=article_info),
                     headers=self.headers,
                     cookies=self.cookies_,
                     errback=errback_http.errback_httpbin,
                 )
 
+
+                break
+
     def parseitem(self, response, data):
-        """This is the specified callback used by Scrapy to process downloaded responses.
+        """
+        This is the specified callback used by Scrapy to process downloaded responses.
 
         Parameters:
             response : response (Response object) – the response being processed
@@ -215,29 +214,21 @@ class DocSpider(CrawlSpider):
               }
 
         """
-        self.logger.info("start parsing file  %s ", response.url)
+        self.logger.info("start parsing file %s ", response.url)
         item = StatementItem()
-        raw = pdf_parser.parse_pdfminer(response.url, None)
-        statement = raw["statement"] if raw else None
-        item["statement"] = html_parser.format_html_text(statement)
-        # item["statement"] = (statement)
-        title = html_parser.get_title(data["title"], response, self.xpaths)
-        item["title"] = title if title else item["statement"][:200]
-        posted_date = dates_parser.get_date_from_pdf(
-            data["posted_date"], raw, item["statement"], title
-        )
-        item["posted_date"] = posted_date
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]
-        item["url"] = utils.check_url(response.url)
         item["parent_url"] = self.start_urls[0]
-        _code = 200 if item["statement"] and item["title"] else 10700
-        self.dic_website_status[response.url] = dict(
-            code=_code,
-            url=response.url,
-            name=self.xpaths["name"],
-            spider=self.content_type,
-            url_parent=self.start_urls[0],
+        item["url"] = utils.check_url(response.url)
+        item["title"] = html_parser.get_title(data["title"], response, self.xpaths)
+        raw = pdf_parser.parse_pdfminer(response.url, None)
+        print('0000000', (statement))
+        statement = raw["statement"] if raw else None
+        print('111111', (statement))
+        item["statement"] = html_parser.format_html_text(statement)
+        item["posted_date"] = dates_parser.get_date_from_pdf(
+            data["posted_date"], raw, item["statement"], item["title"]
         )
+        self.url_website_status[response.url] = 200 if item["statement"] else 10700
         yield item

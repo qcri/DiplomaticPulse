@@ -23,5 +23,4 @@ curl -X PUT "localhost:9200/dppa.st?pretty"
 # upload data from json file
 curl -X PUT "localhost:9200/urlconfig/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @./init_indices/urlconfig.json
 curl -X PUT "localhost:9200/countries/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @./init_indices/countries.json
-curl -X PUT "localhost:9200/dppa.st/_bulk?pretty" -H 'Content-
-Type: application/x-ndjson' --data-binary @./init_indices/dppa.st.json
+curl -X PUT "localhost:9200/dppa.st/_bulk?pretty" -H 'Content-Type: application/x-ndjson' --data-binary @./init_indices/dppa.st.json

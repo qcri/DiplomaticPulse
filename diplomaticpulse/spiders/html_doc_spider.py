@@ -151,7 +151,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
             spider=self.content_type,
             url_parent=self.start_urls[0],
         )
-        dict_html_blocks = html_parser.scraped_block_links(response, self.xpaths)
+        dict_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
         self.logger.info(
             "---> scraped html blocks  %s  from starting page", len(dict_html_blocks)
         )
@@ -180,7 +180,6 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                 cb_kwargs=dict(data=_dict_data),
             )
 
-            break
 
     def parse_static(self, response, data):
         """
@@ -231,7 +230,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
             Item_loader = ItemLoader(item=StatementItem(), response=response)
             Item_loader.default_input_processor = MapCompose(str())
             Item_loader.default_output_processor = TakeFirst()
-            statement = html_parser.get_response_content(
+            statement = html_parser.get_html_response_content(
                 response, self.xpaths["statement"]
             )
             Item_loader.add_value("statement", statement)

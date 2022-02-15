@@ -1,8 +1,10 @@
 
 <h1  style="color:DeepSkyBlue;font-size:60px;"align="center">
-  <b>Diplomatic Pulse: Crawling, Indexing, and Storage System for United Nations states Member Press statements in Real Time.</b>
+  <b>Diplomatic Pulse</b>
 </h1>
-
+<p  style="color:DeepSkyBlue;font-size:40px;"align="center">
+  <b>Crawling, Indexing, and Storage System for United Nations states Members Press Statements in Real Time.</b>
+</p>
 #
 
 
@@ -32,7 +34,7 @@ saved and indexed using open source elasticsearch engine.
 The Diplomatic Pulse system is capable of detecting possible scraping detection errors,
 it automatically sends alerts via emails
 
-## Country Diplomatic website (Overview) page  
+## Country diplomatic website (Overview) page  
  There is at least one overview page for each country, e.g: Australian: `https://www.foreignminister.gov.au`. 
  One country may have one or many overview pages (multiple URLs).
 

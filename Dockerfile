@@ -7,6 +7,7 @@ RUN apt-get update \
             libxml2-dev \
             libxslt-dev \
             gcc \
+            wget \
     && rm -rf /var/cache/apk/*
 
 # install google chrome

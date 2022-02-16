@@ -232,7 +232,6 @@ class DpElasticsearch:
             output.append(data)
         return output
 
-
 def getUrlConfigs():
     es_servers = os.environ["ELASTIC_HOST"]
     dpes = DpElasticsearch(es_servers)

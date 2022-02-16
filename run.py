@@ -24,7 +24,7 @@ from datetime import datetime
 from types import SimpleNamespace
 import logging
 import schedule
-from diplomaticpulse.db.getUrlConfigs import getUrlConfigs
+from diplomaticpulse.db_elasticsearch.getUrlConfigs import getUrlConfigs
 from scrapyd_api import ScrapydAPI
 
 FORMAT = "%(message)s"

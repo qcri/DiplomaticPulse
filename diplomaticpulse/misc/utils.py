@@ -5,7 +5,7 @@ from urllib.parse import unquote
 import os
 import langid
 from scrapy.utils.project import get_project_settings
-
+from scrapy.exceptions import DropItem
 
 def get_language(text):
     """
@@ -28,8 +28,8 @@ def get_language(text):
     languages = settings["ARTICLES_LANGUAGE"]
     try:
         return languages[langid.classify(text)[0]]
-    except Exception:
-        return None
+    except :
+        raise DropItem("failed to detect text language")
 
 
 def get_url_extension(url):

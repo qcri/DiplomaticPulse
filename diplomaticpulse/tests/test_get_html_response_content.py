@@ -33,5 +33,5 @@ class TestHtmlUtils(unittest.TestCase):
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
         result = html_utils.get_html_response_content(response, xpaths["text"])
-        expected = "In a fast, simple, yet extensible way"
-        self.assertEqual(expected, result[0].strip())
+        expected = "<p>In a fast, simple, yet extensible way.</p>"
+        self.assertEqual(expected, result)

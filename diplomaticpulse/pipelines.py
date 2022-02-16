@@ -1,6 +1,5 @@
 """
-  Scrapy pipeline
-
+  This implements the Scrapy pipelines.
 """
 from scrapy.exceptions import DropItem, CloseSpider
 import hashlib
@@ -15,7 +14,7 @@ from typing import List, Any
 
 
 class ElasticSearchPipeline(object):
-    """pipeline to index items (from spiders) into elasticsearch"""
+    """pipeline to index items (from spiders) into elasticsearch."""
 
     settings = None
     es = None
@@ -24,7 +23,8 @@ class ElasticSearchPipeline(object):
 
     @classmethod
     def from_crawler(cls, crawler):
-        """This is the class method used by Scrapy to create your spiders.
+        """
+        This is the class method used by Scrapy to create running spider.
 
         Args
                 crawler (Crawler instance) :
@@ -37,7 +37,6 @@ class ElasticSearchPipeline(object):
         ext = cls()
         ext.settings = crawler.settings
         cls.validate_settings(ext.settings)
-        # cls.create_index(crawler.settings)
         ext.es = cls.init_es_client(crawler.settings)
         logging.info(
             "CLOSESPIDER_PAGECOUNT is  %s "
@@ -46,14 +45,15 @@ class ElasticSearchPipeline(object):
         return ext
 
     def open_spider(self, spider):
-        """This is the class method used by Scrapy to create your spiders.
+        """
+        This is the class method used by Scrapy Framework to open running spider.
 
         Args
-                spider :(Spider object) – the spider which was opened
-
+            crawler(spider (Spider object):
+             the spider for which this request is intended
 
         """
-        logging.info("the spider  %s is open " % spider.name)
+        logging.info("the spider %s is open ", spider.name)
         pass
 
     def close_spider(self, spider):
@@ -73,11 +73,13 @@ class ElasticSearchPipeline(object):
 
     def process_item(self, item, spider):
         """
-        This method is called for every item pipeline component
+        This method is called for every item pipeline component.
 
         Args
-              item (item object):
-                the scraped item
+              item dict():
+                {
+                "statement": <statement>
+                }
               spider (Spider object) :
                 the spider which scraped the item
 
@@ -113,16 +115,23 @@ class ElasticSearchPipeline(object):
     def init_es_client(cls, crawler_settings):
 
         """
-            Elasticsearch parameters from settings and make the connection
+            This methos initiates an elasticsearch connection.
 
         Args
-            crawler_settings (item object) :
-                the scraped item
+            crawler_settings dict() :
+                       {
+                       "ELASTIC_TIMEOUT": <elasticsearch time out>
+                       "ELASTIC_HOST": <host server name>
+                       "ELASTIC_USERNAME": <elasticsearch username>
+                       "ELASTIC_PASSWORD": <elasticsearch password>
+                       "ELASTIC_INDEX": <elasticsearch index>
+                       "ELASTIC_MAPPINGS": <elasticsearch index>
+                       }
 
         Returns
           es : elsticsearch object
 
-           Raises
+        Raises
              CloseSpider( raised from a spider callback):
                 when statement is detected to be empty
 
@@ -147,11 +156,11 @@ class ElasticSearchPipeline(object):
                 body=crawler_settings.get("ELASTIC_MAPPINGS"),
             )
 
-        if es.ping() is False:
+        if not es.ping() :
             raise CloseSpider(
                 "spider failed to connect  to elasticsearch on server %s", es_servers
             )
-        logging.info("eleasticsearch server %s  is up running  !!" % es_servers)
+        logging.info("eleasticsearch server %s  is up running  !!" , es_servers)
         return es
 
     def process_unique_key(self, unique_key):
@@ -165,7 +174,6 @@ class ElasticSearchPipeline(object):
         Return
           unique_key (string):
                generated unique key
-
 
         Raises
          Exception:
@@ -201,16 +209,14 @@ class ElasticSearchPipeline(object):
         return item_id
 
     def index_item(self, item):
-        """index buffer of items
+        """
+        This method adds  items to a buffer.
 
         Args
             item : dict(item object)
                item{
                   'statement' :<statement>
                }
-
-        Return
-          call send items
 
         Raises
          DropItem( raised from a spider callback):
@@ -226,10 +232,8 @@ class ElasticSearchPipeline(object):
         if self.settings["ELASTIC_UNIQ_KEY"] is not None:
             item_id = self.get_id(item)
             index_action["_id"] = item_id
-            logging.debug("Generated unique key %s" % item_id)
-        """
-           skip  if statement  already indexed
-        """
+            logging.debug("Generated unique key %s" , item_id)
+
         search_object_st = {"query": {"match_phrase": {"statement": item["statement"]}}}
         res = self.es.search(index=index_name, body=search_object_st)
         statement_seen = res["hits"]["hits"]
@@ -239,15 +243,14 @@ class ElasticSearchPipeline(object):
         index_action["_source"]["language"] = utils.get_language(
             index_action["_source"]["statement"]
         )
-        if not index_action["_source"]["language"]:
-            raise DropItem("failed to detect text language")
-        # parse date here
+        # parse the string date here
         index_action["_source"]["posted_date"] = dates_parser.parse_mydate(
             index_action["_source"]["posted_date"],
             index_action["_source"]["language"]
             if index_action["_source"]["language"] == "english"
             else None,
         )
+        #check date
         if not index_action["_source"]["posted_date"]:
             raise DropItem("failed to detect posted date")
         self.items_buffer.append(index_action)
@@ -257,11 +260,7 @@ class ElasticSearchPipeline(object):
 
     def send_items(self):
         """
-        index buffer of items
-
-
-        Return
-          call helpers.bulk to insert data in elasticsearch
+        This method indexes  items into elasticsearch.
 
         Raises
          Exception
@@ -274,115 +273,5 @@ class ElasticSearchPipeline(object):
             pass
 
 
-class DropItemPipeline(object):
-    """Drom item before save it in elasticsearch"""
-
-    def process_item(self, item, spider):
-        """process item
-
-        Args
-          item: object of item
-
-        Returns
-          item: object of item
-
-        Raises
-         DropItem
-           when short statement (less 100 characters)
-
-        """
-        try:
-            if not item["statement"] or len(item["statement"]) < 100:
-                raise DropItem("Item dropped statement is null or empty")
-            return item
-        except Exception:
-            pass
 
 
-class DuplicatesPipeline:
-
-    """
-    A filter that looks for duplicate items, and drops those items that
-    were already processed. Let’s say that our items have a unique id,
-    but our spider returns multiples items with the same id
-
-    Args
-        Spider (scrapy.spiders.Spider class):
-            instance of spider class
-
-    Returns
-          dict(Iterable of Items)
-
-    """
-
-    def __init__(self):
-        self.ids_seen = set()
-        self.es = None
-
-    @classmethod
-    def from_crawler(self, crawler):
-
-        self.es = self.init_es_client(crawler.settings)
-
-    @classmethod
-    def init_es_client(self, crawler_settings):
-        """
-        read Elasticsearch parameters from seeting and make the connection to
-
-        Args
-            crawler_settings
-
-        Returns
-            elasticsearch connection
-
-        """
-        # auth_type = crawler_settings.get('ELASTIC_AUTH')
-        es_timeout = crawler_settings.get("ELASTIC_TIMEOUT")
-        es_servers = crawler_settings.get("ELASTIC_HOST")
-        logging.info(" the elasticsearch host is  %s " % es_servers)
-        es_servers = es_servers if isinstance(es_servers, list) else [es_servers]
-        es_settings = dict()
-        es_settings["hosts"] = es_servers
-        es_settings["timeout"] = es_timeout
-        es_settings["verify_certs"] = False
-        es_settings["http_auth"] = (
-            crawler_settings.get("ELASTIC_USERNAME"),
-            crawler_settings.get("ELASTIC_PASSWORD"),
-        )
-        es = Elasticsearch(**es_settings)
-        if es.ping() is False:
-            raise CloseSpider(
-                "spider failed to connect  to elasticsearch on server %s", es_servers
-            )
-        logging.info("eleasticsearch server %s  is up running  !!" % es_servers)
-        return es
-
-    def process_item(self, item, spider):
-        try:
-            # res = self.url_indexed_already(item['url'])
-            # indexed_date = res['indexed_date']
-            # if indexed_date:
-            #     item['indexed_date'] = indexed_date
-            if item["url"] in self.ids_seen:
-                raise DropItem("Duplicate item found: %s" % item["url"])
-            else:
-                self.ids_seen.add(item["url"])
-                return item
-        except Exception:
-            return item
-
-    def url_indexed_already(self, url):
-        """
-        check if url exist then return the date posted
-
-        Args
-             urls (string):
-                 link url
-
-        Returns
-                list of url already seen in elasticsearch
-        """
-        res = self.es.search_siteconfig_by_url(url, self.settings["ELASTIC_INDEX"])
-        for v in res:
-            res = v["_source"]
-        return res

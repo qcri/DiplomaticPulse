@@ -11,8 +11,8 @@ NEWSPIDER_MODULE = "diplomaticpulse.spiders"
 # The integer values you assign to classes in this setting determine the order they run in- items go through pipelines from order number low to high.  you can set them  in the 0-1000 range
 ITEM_PIPELINES = {
     "diplomaticpulse.pipelines.ElasticSearchPipeline": 800,
-    "diplomaticpulse.pipelines.DuplicatesPipeline": 400,
-    "diplomaticpulse.pipelines.DropItemPipeline": 600,
+    "diplomaticpulse.duplicatepipeline.DuplicatesPipeline": 500,
+    "diplomaticpulse.droppipeline.DropItemPipeline": 400,
 }
 
 # the SPIDER_CONTRACTS is used for our custom Contracts, it is a dict containing the scrapy contracts enabled in your project, used for testing spiders.

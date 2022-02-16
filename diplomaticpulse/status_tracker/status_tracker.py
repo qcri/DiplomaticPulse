@@ -5,7 +5,7 @@ from elasticsearch import Elasticsearch, helpers
 import hashlib, os
 from six import string_types
 from datetime import datetime
-from diplomaticpulse.website_status_tracker.status_message import status_message
+from diplomaticpulse.status_tracker.status_message import status_message
 
 
 class WebsiteTracker:

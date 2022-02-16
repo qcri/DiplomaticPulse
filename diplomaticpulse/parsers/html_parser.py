@@ -24,7 +24,7 @@ def get_html_response_content(response, statement_xpath):
 
     """
     try:
-        return format_html_text(' '.join(response.xpath(statement_xpath).getall()))
+        return (' '.join(response.xpath(statement_xpath).getall()))
     except Exception:
         return None
 

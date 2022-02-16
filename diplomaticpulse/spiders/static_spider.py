@@ -1,42 +1,33 @@
-﻿"""
+"""
 This module implements a spider to use
-for scraping countries articles (PDF and Images html content).
-
-e.g: https://www.mofa.gov.lr/public2/2content.php?sub=23&related=7&third=23&pg=sp&pt=Speeches
+for scraping countries articles (static html content).
+e.g: https://www.foreignminister.gov.au/ .
 """
 import scrapy
-from scrapy.spiders import CrawlSpider
 from scrapy.utils.project import get_project_settings
-from diplomaticpulse.items import StatementItem
-from diplomaticpulse.db.getUrlConfigs import DpElasticsearch
+from scrapy.exceptions import CloseSpider
+from datetime import datetime
+from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
+import random
+from scrapy import signals
+from diplomaticpulse.parsers import dates_parser, html_parser
+from diplomaticpulse.item_loader import static_itemloader
 from diplomaticpulse.misc import (
     errback_http,
     cookies_utils,
-    utils,
+    utils
 )
-from diplomaticpulse.parsers import pdf_parser, dates_parser, html_parser
-import random
-from datetime import datetime
-from scrapy.exceptions import CloseSpider
-from diplomaticpulse.website_status_tracker.status_tracker import WebsiteTracker
-from scrapy import signals
 
-
-class PdfSpider(CrawlSpider):
+class HtmlSpider(scrapy.spiders.Spider):
     """
     This spider is a subclass of scrapy.spiders.Spider, which indirects its handling of
     the start_urls and subsequently extracted and followed URLs. It is designed to handle
-    PDF/Images websites contents.
-
-    Attributes
-        url (string) : country's overview article page,e.g: https://www.foreignminister.gov.au/.
-        args (list) : arguments passed to the __init__() method
-        kwargs (dict) : keyword arguments passed to the __init__() method:
-
+    static website's content.
     """
 
-    # spider name
-    name = "doc"
+    # spder name
+    name = "static"
 
     def __init__(self, url, *args, **kwargs):
         """
@@ -51,11 +42,9 @@ class PdfSpider(CrawlSpider):
                 keyword arguments passed to the __init__() method:
 
         """
-        self.content_type = "doc"
         self.settings = get_project_settings()
-        self.logger.info("connecting to %s ", self.settings["ELASTIC_HOST"])
         self.start_urls = [url]
-        self.extensions = [".pdf"]
+        self.content_type = "static"
         self.url_website_status = {}
 
     @classmethod
@@ -94,8 +83,6 @@ class PdfSpider(CrawlSpider):
                 when no URL info found
 
         """
-
-        self.dic_website_status = {}
         self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
         self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
@@ -104,7 +91,7 @@ class PdfSpider(CrawlSpider):
 
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
-        self.cookies_ = cookies_utils.get_cookies(self.xpaths)
+        self.cookies = cookies_utils.get_cookies(self.xpaths)
 
     def spider_closed(self, spider):
         """
@@ -138,10 +125,12 @@ class PdfSpider(CrawlSpider):
             request: Iterable of Request
 
         """
+
         for url in self.start_urls:
-            self.logger.info("starting url %s ", url)
+            self.logger.debug("starting url %s ", url)
             yield scrapy.Request(
-                url, callback=self.parse, headers=self.headers, cookies=self.cookies_ )
+                url, headers=self.headers, cookies=self.cookies, callback=self.parse
+            )
 
     def parse(self, response):
         """
@@ -157,78 +146,67 @@ class PdfSpider(CrawlSpider):
                 Iterable of Requests
 
         """
-        self.logger.info("parsing url %s request response ", response.url)
+        self.logger.debug("parsing url %s request response  ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
+        self.logger.debug(
+            "scraped html blocks  %s from starting page", len(url_html_blocks)
+        )
         first_time_seen_links = self.es.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
-        self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
+        self.logger.debug("first time seen urls  %s ", len(first_time_seen_links))
         self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
-        self.logger.info(
-            "scraped html blocks %s from starting page", len(url_html_blocks)
-        )
         for url in first_time_seen_links:
             article_info = next(
                 (data for data in url_html_blocks if data["url"] == url), None
             )
-            if utils.get_url_extension(url) in self.extensions:
-                self.logger.info("sending request of url %s", url)
-                yield scrapy.Request(
-                    url,
-                    callback=self.parseitem,
-                    cb_kwargs=dict(data=article_info),
-                    headers=self.headers,
-                    cookies=self.cookies_,
-                    errback=errback_http.errback_httpbin,
-                )
-
-
-                break
+            self.logger.debug("sending request of url %s", url)
+            yield scrapy.Request(
+                response.urljoin(url),
+                callback=self.parseitem,
+                cookies=self.cookies,
+                errback=errback_http.errback_httpbin,
+                headers=self.headers,
+                cb_kwargs=dict(data=article_info),
+            )
 
     def parseitem(self, response, data):
         """
         This is the specified callback used by Scrapy to process downloaded responses.
 
-        Parameters:
-            response : response (Response object) – the response being processed
+        Args:
+            response (response (Response object) – the response being processed)
+             content to parse
 
-            data  : dict(String)
-                    Python dict in the following format:
+            data : dict(String)
+                Python dict in the following format:
                    data{
                    'title' : <title of the article>
-                   'posted_date' : <article published date>
+                   'posted_date' : <published date of article >
                    }
 
         Returns:
-            Dict : ( Iterable of Items)
-            Python dict in the following format:
-              {
-                'link' : <article URL>
+            Dict : (Iterable of Items)
+                Python dict in the following format:
+                {
+                'link' : <link URL>
                 'title' : <title of the article>
-                'statement' : <article statement content>
-                'posted_date' :<article published date>
-                'indexed_date' :<article indexed date>
+                'statement' : <statement content of the article >
+                'posted_date' :< published date of the article>
+                'indexed_date' :<indexed date of the article >
                 'country' : <country name>
                 'parent_url' : <parent url (country overview page URL)>
                 'content_type' : response content type>
               }
 
         """
-        self.logger.info("start parsing file %s ", response.url)
-        item = StatementItem()
-        item["content_type"] = self.content_type
-        item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
-        item["country"] = self.xpaths["name"]
-        item["parent_url"] = self.start_urls[0]
-        item["url"] = utils.check_url(response.url)
-        item["title"] = html_parser.get_title(data["title"], response, self.xpaths)
-        raw = pdf_parser.parse_pdfminer(response.url, None)
-        print('0000000', (statement))
-        statement = raw["statement"] if raw else None
-        print('111111', (statement))
-        item["statement"] = html_parser.format_html_text(statement)
-        item["posted_date"] = dates_parser.get_date_from_pdf(
-            data["posted_date"], raw, item["statement"], item["title"]
+        self.logger.debug("start parsing  item from %s !", response.url)
+        # self.url_website_status[response.url] = 200 if statement else 10700
+        Item_loader =  static_itemloader.itemloader(response, data, self.xpaths)
+        Item_loader.add_value("country", self.xpaths["name"])
+        Item_loader.add_value("parent_url", self.start_urls[0])
+        Item_loader.add_value(
+            "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         )
-        self.url_website_status[response.url] = 200 if item["statement"] else 10700
-        yield item
+        Item_loader.add_value("content_type", self.content_type)
+        yield Item_loader.load_item()

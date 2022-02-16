@@ -16,5 +16,7 @@ jobs:
       run: docker-compose up -d
     - name: Test
       run: docker exec scrapyd python3 /code/test_runner.py
+    - name: run pylint
+      run: docker exec scrapyd pylint /code
 
      

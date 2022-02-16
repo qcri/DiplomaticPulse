@@ -148,19 +148,21 @@ class HtmlSpider(scrapy.spiders.Spider):
         """
         self.logger.debug("parsing url %s request response  ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
+        print('33333333', url_html_blocks)
         self.logger.debug(
             "scraped html blocks  %s from starting page", len(url_html_blocks)
         )
         first_time_seen_links = self.es.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
-        self.logger.debug("first time seen urls  %s ", len(first_time_seen_links))
+        self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
         self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         for url in first_time_seen_links:
             article_info = next(
                 (data for data in url_html_blocks if data["url"] == url), None
             )
             self.logger.debug("sending request of url %s", url)
+            # request
             yield scrapy.Request(
                 response.urljoin(url),
                 callback=self.parseitem,
@@ -209,4 +211,5 @@ class HtmlSpider(scrapy.spiders.Spider):
             "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         )
         Item_loader.add_value("content_type", self.content_type)
+        print('11111111111')
         yield Item_loader.load_item()

@@ -30,6 +30,7 @@ class TestHtmlUtils(unittest.TestCase):
         url = "http://www.google.com"
         options = Options()
         options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
         options.add_argument("--disable-gpu")  # Last I checked this was necessary.
         driver = webdriver.Chrome(chrome_options=options)
         result = util.get_soup(url, driver)

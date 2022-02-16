@@ -156,3 +156,4 @@ wsproto==1.0.0
 xlrd==1.2.0
 XlsxWriter==3.0.2
 zope.interface==5.4.0
+pylint==2.12.2

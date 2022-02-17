@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="0" name="diplomaticpulse.tests.test_avoid_future_date.TestParsingdates-20220209183818" skipped="0" tests="2" time="0.001" timestamp="2022-02-09T18:38:18">
-	<testcase classname="diplomaticpulse.tests.test_avoid_future_date.TestParsingdates" name="test_avoid_future_date" time="0.000" timestamp="2022-02-09T18:38:18"/>
-	<testcase classname="diplomaticpulse.tests.test_avoid_future_date.TestParsingdates" name="test_avoid_future_date_except" time="0.001" timestamp="2022-02-09T18:38:18"/>
-	<system-out>
-<![CDATA[]]>	</system-out>
-	<system-err>
-<![CDATA[]]>	</system-err>
-</testsuite>

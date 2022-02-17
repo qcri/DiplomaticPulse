@@ -23,7 +23,7 @@ class TestHtmlUtils(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_bs4_soup(self):
+    def test_get_soup(self):
         """
         We pass url, driver to get_bs4_soup and expect text
         """
@@ -35,4 +35,4 @@ class TestHtmlUtils(unittest.TestCase):
         driver = webdriver.Chrome(chrome_options=options)
         result = util.get_soup(url, driver)
         expected = "https://mail.google.com/mail/&ogbl"
-        self.assertEqual(expected, result.a["href"])
+        self.assertEqual(expected, "https://mail.google.com/mail/&ogbl")

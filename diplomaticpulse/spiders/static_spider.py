@@ -3,21 +3,18 @@ This module implements a spider to use
 for scraping countries articles (static html content).
 e.g: https://www.foreignminister.gov.au/ .
 """
+from datetime import datetime
+import random
 import scrapy
+from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
-from datetime import datetime
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
 from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
-import random
-from scrapy import signals
-from diplomaticpulse.parsers import dates_parser, html_parser
+from diplomaticpulse.parsers import html_parser
 from diplomaticpulse.item_loader import static_itemloader
-from diplomaticpulse.misc import (
-    errback_http,
-    cookies_utils,
-    utils
-)
+from diplomaticpulse.misc import errback_http, cookies_utils
+
 
 class HtmlSpider(scrapy.spiders.Spider):
     """
@@ -42,10 +39,16 @@ class HtmlSpider(scrapy.spiders.Spider):
                 keyword arguments passed to the __init__() method:
 
         """
-        self.settings = get_project_settings()
-        self.start_urls = [url]
+
+        self.settings = None
+        self.tracker = None
+        self.elasticsearch = None
+        self.xpaths = None
+        self.cookies = None
+        self.headers = None
         self.content_type = "static"
         self.url_website_status = {}
+        self.start_urls = [url]
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -70,6 +73,7 @@ class HtmlSpider(scrapy.spiders.Spider):
         crawler.signals.connect(spider.spider_opened, signal=signals.spider_opened)
         return spider
 
+
     def spider_opened(self, spider):
         """
         This is the class method used by Scrapy Framework to open running spider.
@@ -83,9 +87,12 @@ class HtmlSpider(scrapy.spiders.Spider):
                 when no URL info found
 
         """
-        self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
+        self.settings = get_project_settings()
+        self.elasticsearch = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
-        self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
+        self.xpaths = self.elasticsearch.get_url_config(
+            self.start_urls[0], self.settings
+        )
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
 
@@ -106,15 +113,16 @@ class HtmlSpider(scrapy.spiders.Spider):
 
         """
         status = {}
-        for url in self.url_website_status:
+        for url, code in self.url_website_status.items():
             status[url] = dict(
-                code=self.url_website_status[url],
+                code=code,
                 url=url,
                 name=self.xpaths["name"],
                 spider=self.content_type,
                 url_parent=self.start_urls[0],
             )
         self.tracker.update_website_status(status)
+
 
     def start_requests(self):
         """
@@ -148,11 +156,10 @@ class HtmlSpider(scrapy.spiders.Spider):
         """
         self.logger.debug("parsing url %s request response  ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
-        print('33333333', url_html_blocks)
         self.logger.debug(
             "scraped html blocks  %s from starting page", len(url_html_blocks)
         )
-        first_time_seen_links = self.es.search_urls_by_country_type(
+        first_time_seen_links = self.elasticsearch.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
@@ -204,12 +211,11 @@ class HtmlSpider(scrapy.spiders.Spider):
         """
         self.logger.debug("start parsing  item from %s !", response.url)
         # self.url_website_status[response.url] = 200 if statement else 10700
-        Item_loader =  static_itemloader.itemloader(response, data, self.xpaths)
+        Item_loader = static_itemloader.itemloader(response, data, self.xpaths)
         Item_loader.add_value("country", self.xpaths["name"])
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value(
             "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         )
         Item_loader.add_value("content_type", self.content_type)
-        print('11111111111')
         yield Item_loader.load_item()

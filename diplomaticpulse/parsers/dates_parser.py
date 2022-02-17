@@ -3,33 +3,12 @@ This module implements a string dates parser
 """
 import re
 import datetime
-import w3lib.html
 from datetime import date
+import w3lib.html
 import dateutil.parser as dparser
 import dateparser
+from scrapy.utils.project import get_project_settings
 
-
-exp_1 = (
-    r"(?:\d{1,2} (?:january|february|march|april|may|june|july|august|september|october|november|december) \d{2,4})|(?:\d{1,2} "
-    r"(?:jan|feb|march|april|may|june|july|august|sept|oct|nov|dec) \d{2,4})|(?:(?:january|february|march|april|may|june|july|"
-    r"august|september|october|november|december)[,]? \d{1,2} \d{2,4})|"
-    r"(?:(?:jan|feb|march|april|may|june|july|august|sept|oct|nov|dec)[,]? \d{1,2} \d{2,4})"
-)
-
-exp_2 = (
-    "[0-9]{2}/[0-9]{2}/[0-9]{4}|[0-9]{2}.[0-9]{2}.[0-9]{4}|[0-9]{2}/[0-9]{2}/[0-9]{2}|[0-9]{1}/[0-9]{2}/[0-9]{2}|[0-9]{2}-[0-9]{2}-"
-    "[0-9]{2}|[0-9]{4}.[0-9]{1}.[0-9]{1}|[0-9]{2}.[0-9]{1}.[0-9]{4}|[0-9]{4}.[0-9]{1}.[0-9]{1}|[0-9]{4}.[0-9]{2}.[0-9]{2}|[0-9]{1}."
-    "[0-9]{1}.[0-9]{4}|[0-9]{1}.[0-9]{2}.[0-9]{4}|[0-9]{2}.[0-9]{2}.[0-9]{2}|[0-9]{2}.[0-9]{1}.[0-9]{2}|"
-    r"(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2},"
-    r" \d{4}|(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), \d{1,2}th (?:January|February|March|April|May|"
-    r"June|July|August|September|October|November|December) "
-    r"\d{4}|(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), \d{1,2}. (?:January|February|March|April|May|"
-    r"June|July|August|September|October|November|December) \d{4}|\d{1,2} "
-    r"(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{4}|(?:Jan|Feb|Mar|"
-    r"April|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{1,2}, \d{4}|\d{1,2}th "
-    r"(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{4}|(?:January|"
-    r"February|March|April|May|June|July|August|September|October|November|December) \d{1,2} \d{4}"
-)
 
 
 def fire_me(func_name, date_string):
@@ -96,16 +75,8 @@ def parse_non_english_date_string(date_string):
     Returns
         date (string):
             parsed string date
-
-    Raises
-        Exception
-             when it catches an error
-
     """
-    try:
-        return avoid_future_date(dateparser.parse(date_string).strftime("%Y-%m-%d"))
-    except Exception:
-        return None
+    return avoid_future_date(dateparser.parse(date_string).strftime("%Y-%m-%d"))
 
 
 def parse_default_date_string(date_string):
@@ -135,7 +106,6 @@ def parse_default_date_string(date_string):
         st_dt = datetime.datetime.strptime(reg_st, "%d-%m-%Y").strftime("%Y-%m-%d")
     except Exception:
         st_dt = datetime.datetime.strptime(reg_st, "%Y-%m-%d").strftime("%Y-%m-%d")
-        pass
     finally:
         if st_dt is None:
             try:
@@ -147,10 +117,26 @@ def parse_default_date_string(date_string):
         return avoid_future_date(st_dt)
 
 
+
 def parse_date_with_US_format(date_string):
-    format = None
+    """
+    Function that parses a string date with US format
+
+    Args
+        date_string : string
+            string date
+
+    Returns
+        date: string
+            parsed string date according to the format
+    Raises
+        Exception
+             when it catches  error
+    """
+
+    date_string_format = None
     if len(date_string.split("#")) == 2:
-        format = date_string.split("#")[1]
+        date_string_format = date_string.split("#")[1]
     dispatcher = {
         "MDY": date_with_MDY_format,
         "MMDDYYYY": date_with_MMDDYYYY_format,
@@ -158,7 +144,7 @@ def parse_date_with_US_format(date_string):
         "YYDDMM": date_with_YYDDMM_format,
         "MMDDYY": date_with_MMDDYY_format,
     }
-    date_string = fire_me(dispatcher[format], date_string.split("#")[0])
+    date_string = fire_me(dispatcher[date_string_format], date_string.split("#")[0])
     return date_string
 
 
@@ -185,7 +171,8 @@ def date_with_MDY_format(date_string):
 
 
 def date_with_MMDDYYYY_format(date_string):
-    """parse a string date using user entry format  MMDDYYYY
+    """
+    parse a string date using user entry format  MMDDYYYY
 
     Args
         date_string : string
@@ -207,7 +194,8 @@ def date_with_MMDDYYYY_format(date_string):
 
 
 def date_with_YYYYDDMM_format(date_string):
-    """parse a string date using user entry format  YYYYDDMM
+    """
+    parse a string date using user entry format  YYYYDDMM
 
     Args
         date_string : string
@@ -230,7 +218,8 @@ def date_with_YYYYDDMM_format(date_string):
 
 
 def date_with_YYDDMM_format(date_string):
-    """parse a string date using user entry format  YYDDMM
+    """
+    parse a string date using user entry format  YYDDMM
 
     Args
         date_string : string
@@ -256,7 +245,8 @@ def date_with_YYDDMM_format(date_string):
 
 
 def date_with_MMDDYY_format(date_string):
-    """parse a string date using user entry format MMDDYY
+    """
+    parse a string date using user entry format MMDDYY
 
     Args
         date_string : string
@@ -281,7 +271,8 @@ def date_with_MMDDYY_format(date_string):
 
 
 def avoid_future_date(date_string):
-    """force to today date if it is future date +1 (i.e: Australia dates)
+    """
+    force to today date if it is future date +1 (i.e: Australia dates)
 
     Args
         date_string : string
@@ -292,11 +283,13 @@ def avoid_future_date(date_string):
     """
 
     try:
-        dt_s = datetime.datetime.strptime(date_string, "%Y-%m-%d")
-        if dt_s.date() > (date.today() + datetime.timedelta(days=1)):
-            return date.today().strftime("%Y-%m-%d")
+        st_date = datetime.datetime.strptime(date_string, "%Y-%m-%d")
+        if st_date.date() > (date.today() + datetime.timedelta(days=1)):
+            st_date =  date.today().strftime("%Y-%m-%d")
         else:
-            return dt_s.date().strftime("%Y-%m-%d")
+            st_date =  st_date.date().strftime("%Y-%m-%d")
+
+        return st_date
     except Exception:
         return date.today().strftime("%Y-%m-%d")
 
@@ -317,7 +310,9 @@ def to_reg_expression(st_date):
 
     """
     try:
-        reg_st = re.search(exp_2, st_date).group()
+        settings = get_project_settings()
+        reg_exp_2 = settings["REG_EXP_2"]
+        reg_st = re.search(reg_exp_2, st_date).group()
         return reg_st.replace("/", "-").replace(".", "-")
     except Exception:
         return st_date
@@ -388,7 +383,7 @@ def get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
     if posted_date is not None:
         return parse_default_date_string(posted_date)
     try:
-        posted_date = posted_date_in_raw
+        posted_date = posted_date_in_raw["posted_date"]
     except Exception:
         pass
 
@@ -412,4 +407,3 @@ def get_date_from_pdf(posted_date, posted_date_in_raw, text, title):
         posted_date = (datetime.datetime.now()).strftime("%Y-%m-%d")
 
     return posted_date
-

@@ -6,6 +6,7 @@ import hashlib
 from elasticsearch import Elasticsearch, helpers
 import logging
 
+
 class DuplicatesPipeline:
     """
     A filter that looks for duplicate items, and drops those items that
@@ -18,7 +19,7 @@ class DuplicatesPipeline:
 
     @classmethod
     def from_crawler(self, crawler):
-        """ from crawler"""
+        """from crawler"""
         self.es = self.init_es_client(crawler.settings)
 
     @classmethod
@@ -64,4 +65,3 @@ class DuplicatesPipeline:
                 return item
         except Exception:
             return item
-

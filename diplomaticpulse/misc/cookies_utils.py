@@ -25,10 +25,9 @@ def get_cookies(xpaths):
 
     """
     try:
-        if xpaths["cookies"]:
-            cookies = {}
-            for i in xpaths["cookies"].split(";"):
+        cookies = {}
+        for i in xpaths["cookies"].split(";"):
                 cookies[i.split("=")[0].strip()] = str(i.split("=")[1].strip())
-            return cookies
-    except Exception:
-        return None
+        return cookies
+    except KeyError:
+        return cookies

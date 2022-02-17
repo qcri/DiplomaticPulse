@@ -31,6 +31,6 @@ class TestHtmlUtils(unittest.TestCase):
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
-        result = True #html_utils.format_html_text(response))
-        expected = True # "<200 https://scrapy.org/>"
+        result = True  # html_utils.format_html_text(response))
+        expected = True  # "<200 https://scrapy.org/>"
         self.assertEqual(expected, result)

@@ -4,63 +4,79 @@ This module implements beautifulsoup object parsing
 from urllib.parse import unquote
 import time
 from bs4 import BeautifulSoup
-from diplomaticpulse.parsers import dates_parser,html_parser
+from diplomaticpulse.parsers import dates_parser, html_parser
 
-def get_info_from_html_block(response, xpaths, driver):
+
+def get_text_from_html_block(url, xpaths_html, driver):
     """
-    This method scrapes url, date posted and title for each article's link (as seen in page overview).
+    This method scrapes url html block info: URL,date posted,title for each link as seen in the page .
+    when it founds URL link, it scrapes the corresponding title and possible posted date.
 
     Args
         response (response object):
            html content
-        xpaths dict(json):
-            xpaths {
-                'global' : < URL html block XPATH for each article>
-                'title' : <article title XPATH>
-                'posted_date' : <article posted date XPATH>
+        xpaths_html dict(json):
+            xpaths_html {
+                'global' : <tag,id>
+                'title' : <title XPATH>
+                'posted_date' : <posted date XPATH>
                 }
         driver (selenium driver type):
             driver object
 
     Returns
-        url_info [dict(string)]:
-            url_info [
-                 dict(
+        url_info dict(json):
+            url_info
+                 {
                     url: <URL>
-                    posted_date: <date posted>
-                    title: <title>
-
-                 )
-            ]
+                    {
+                        posted_date: <date posted>
+                        title: <title>
+                    }
+                 }
 
     Raises
         Exception
              when it catches generic error
     """
+    url_info = {}
+    if "global" not in xpaths_html or "link" not in xpaths_html:
+        return url_info
+
+    # check global xpaths
+    elements = xpaths_html["global"].split(",")
+    if len(elements) < 2:
+        return url_info
+
+    # get soup
+    soup = get_soup(url, driver)
+    title = None
+    posted_date = None
     try:
-        soup = get_soup(response.url, driver)
-        elements = xpaths["global"].split(",")
-        raw = soup.find_all(elements[0], class_=elements[1])
-        url_info = []
-        for soup in raw:
-            url = response.urljoin(get_url_from_soup(soup, xpaths["link"]))
-            title = get_data(soup, xpaths["title"])
-            date = get_data(soup, xpaths["posted_date"])
-            url_info.append(dict(url=unquote(url), title=title, posted_date=date))
+        for rows in soup.find_all(elements[0], class_=elements[1]):
+            url = get_url_from_soup(rows, xpaths_html["link"])
+            if url is None:
+                continue
+            if "title" in xpaths_html:
+                title = get_text(rows, xpaths_html["title"])
+            if "posted_date" in xpaths_html:
+                posted_date = get_text(rows, xpaths_html["posted_date"])
+            url_info[unquote(url)] = dict(title=title, posted_date=posted_date)
+
         return url_info
     except Exception as ex:
-        print('Error:', ex)
-        return None
+        print("Error occured in get_info_from_html_block", ex)
+        return url_info
 
 
-def get_text_from_html_soup(response, xpath, driver):
+def get_text_from_html_soup(response, xpaths_html, driver):
     """
     This method scrapes the page content from soup object.
 
     Args
         response (response object):
             Request response content
-        xpaths (string): <page html XPATH >
+        xpaths_html (string): <page html XPATH >
         driver : selenium driver type
             driver object
 
@@ -73,19 +89,25 @@ def get_text_from_html_soup(response, xpath, driver):
              when it catches  error
     """
     try:
+        text = []
+
+        # check  global xpaths
+        elements = xpaths_html.split(",")
+        if len(elements) < 2:
+            return text
+
         soup = get_soup(response.url, driver)
-        tag_element = xpath.split(",")
-        raw = soup.find_all(tag_element[0], class_=tag_element[1])
-        html = []
-        for txt in raw:
-            html.append(txt.get_text())
-        html = " ".join(html)
-        return html if html is not None else html_parser.get_html_response_content(response, xpaths)
-    except Exception:
+        for rows in soup.find_all(elements[0], class_=elements[1]):
+            text.append(rows.get_text())
+        if text is None:
+            text = html_parser.get_html_response_content(response, xpaths_html)
+        return " ".join(text)
+    except Exception as ex:
+        print("Error occured in get_text_from_html_soup", ex)
         return None
 
 
-def get_date_from_html_soup(response, st_date, xpath,driver):
+def get_date_from_html_soup(response, data, xpath, driver):
     """
     This method scrapes the posted date from soup object.
 
@@ -103,17 +125,20 @@ def get_date_from_html_soup(response, st_date, xpath,driver):
         st_date (string):
             string date (posted date)
 
-    Raises
-        Exception
-             when it catches  error
     """
-    try:
-        if st_date is not None:
-            return st_date
-        soup = get_soup(response.url, driver)
-        st_date = get_data(soup, xpath)
-    finally:
-        return st_date if st_date is not None else  dates_parser.get_date(data, response, xpath)
+    str_date = None
+    if data and "posted_date" in data:
+        str_date = data["posted_date"]
+
+    if str_date is not None or response is None:
+        return str_date
+
+    soup = get_soup(response.url, driver)
+    str_date = get_text(soup, xpath)
+    if str_date is None:
+        str_date = dates_parser.get_date(data, response, xpath)
+
+    return str_date
 
 
 def get_title_from_html_soup(response, title, xpath, driver):
@@ -138,9 +163,10 @@ def get_title_from_html_soup(response, title, xpath, driver):
         if title is not None:
             return title
         soup = get_soup(response.url, driver)
-        return get_data(soup, xpath)
-    except:
+        return get_text(soup, xpath)
+    except Exception:
         return None
+
 
 def get_soup(url, driver):
     """
@@ -154,6 +180,9 @@ def get_soup(url, driver):
 
     Returns
         soup(object of beautifulsoup)
+
+    Raise:
+       Exception
 
     """
     try:
@@ -179,6 +208,9 @@ def remove_unwanted_tags(url, driver, xpaths):
          text (string):
             cleaned html text
 
+    Raise:
+       Exception
+
     """
     try:
         soup = get_soup(url, driver)
@@ -196,6 +228,7 @@ def remove_unwanted_tags(url, driver, xpaths):
     except Exception as e:
         print("WARNING in remove_unwanted_tags: ", str(e))
         return None
+
 
 def get_url_from_soup(html, element):
     """
@@ -225,12 +258,10 @@ def get_url_from_soup(html, element):
             "html_li_a": href_html_li_a_bs4,
             "html_li": href_html_li_bs4,
         }
-
         text = fire_me(dispatcher[element], html)
-
         return text
     except Exception:
-        pass
+        return None
 
 
 def href_html_a_bs4(html):
@@ -368,7 +399,7 @@ def href_html_li_bs4(html):
     return html.li["href"]
 
 
-def get_data(soup, element):
+def get_text(soup, element):
     """
     This function scrapes html from html Beautifulsoup object.
 
@@ -417,7 +448,7 @@ def get_data(soup, element):
         text = fire_me(dispatcher[element], soup)
         return text
     except Exception:
-        pass
+        return None
 
 
 def fire_me(func_name, html):
@@ -449,6 +480,7 @@ def html_text_bs4(html):
     """
     return html.text
 
+
 def html_h2_bs4(html):
     """
     This function scrapes html from Beautifulsoup object using  elt[html.h2].
@@ -462,6 +494,7 @@ def html_h2_bs4(html):
             html text
     """
     return html.h2.text
+
 
 def html_a_bs4(html):
     """

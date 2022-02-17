@@ -2,20 +2,22 @@
 This module implements a spider to use
 for scraping countries articles  of mixed (static and/or PDF/Images html content).
 
-e.g: https://www.permanentrepresentations.nl/documents/publications/2022/02/01/possibility-to-implement-more-ambitious-national-blending-mandates
+e.g:
+https://www.permanentrepresentations.nl/documents/publications/2022/02/01/possibility-to-implement-more-ambitious-national-blending-mandates
 """
+from datetime import datetime
+import random
+from scrapy import signals
 import scrapy
 from scrapy.exceptions import CloseSpider
 from scrapy.utils.project import get_project_settings
-from datetime import datetime
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
-import urllib.parse
-import random
 from diplomaticpulse.misc import cookies_utils, utils
-from diplomaticpulse.parsers import pdf_parser, html_parser
+from diplomaticpulse.parsers import html_parser
 from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
-from scrapy import signals
-from diplomaticpulse.item_loader import static_itemloader,pdf_itemloader
+
+from diplomaticpulse.item_loader import static_itemloader, pdf_itemloader
+
 
 class HtmlDocSpider(scrapy.spiders.CrawlSpider):
     """
@@ -39,11 +41,18 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                 keyword arguments passed to the __init__() method:
 
         """
-        self.settings = get_project_settings()
-        self.url = urllib.parse.unquote(url).replace('"', "")
         self.start_urls = [url]
+        self.settings = get_project_settings()
         self.content_type = "doc"
         self.url_website_status = {}
+        self.tracker = None
+        self.elasticsearch = None
+        self.xpaths = None
+        self.cookies = None
+        self.headers = None
+        self.dic_website_status = None
+        self.elasticsearch_cl = None
+        self.cookies_ = none
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -82,9 +91,9 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         self.dic_website_status = {}
-        self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
+        self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
-        self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
+        self.xpaths = self.elasticsearch_cl.get_url_config(self.start_urls[0], self.settings)
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
@@ -102,7 +111,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         status = {}
-        for url in self.url_website_status:
+        for url in self.url_website_status.items():
             status[url] = dict(
                 code=self.url_website_status[url],
                 url=url,
@@ -151,7 +160,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         self.logger.debug(
             "scraped html blocks %s from starting page", len(url_html_blocks)
         )
-        first_time_seen_links = self.es.search_urls_by_country_type(
+        first_time_seen_links = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
         self.logger.debug("first time seen urls  %s ", len(first_time_seen_links))
@@ -167,7 +176,6 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                 cookies=self.cookies_,
                 cb_kwargs=dict(data=article_info),
             )
-
 
     def parse_static(self, response, data):
         """
@@ -253,7 +261,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         self.logger.info("start parsing file %s ", response.url)
-        item =  pdf_itemloader.itemloader(response, data, self.xpaths)
+        item = pdf_itemloader.itemloader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]
@@ -261,4 +269,3 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         item["url"] = utils.check_url(response.url)
         self.url_website_status[response.url] = 200 if item["statement"] else 10700
         yield item
-

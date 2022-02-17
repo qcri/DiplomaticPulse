@@ -2,26 +2,24 @@
 This module implements a spider for scraping countries diplomatic statements.
 e.g: https://mfa.gov.il/MFA/PressRoom/2021/Pages/default.aspx
 """
+from datetime import datetime
+import random
+from scrapy import signals
 import scrapy
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
+from scrapy_selenium import SeleniumRequest
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from diplomaticpulse.items import StatementItem
-from datetime import datetime
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
 from diplomaticpulse.misc import (
     cookies_utils,
     utils,
 )
-from diplomaticpulse.parsers import pdf_parser, html_parser, beautifulsoup_parser
-import urllib.parse
-import urllib.request
-import random
-from scrapy_selenium import SeleniumRequest
-from scrapy import signals
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from diplomaticpulse.parsers import  beautifulsoup_parser
 from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
 
 class JavascriptSpider(scrapy.Spider):
@@ -43,10 +41,18 @@ class JavascriptSpider(scrapy.Spider):
             url (string) :
                 country's overview article page,e.g: https://www.foreignminister.gov.au/.
         """
-        self.content_type = "javascript"
-        self.settings = get_project_settings()
         self.start_urls = [url]
+        self.settings = get_project_settings()
+        self.content_type = "javascript"
         self.url_website_status = {}
+        self.tracker = None
+        self.elasticsearch = None
+        self.xpaths = None
+        self.cookies = None
+        self.headers = None
+        self.elasticsearch_cl = None
+        self.web_driver = None
+        self.options = None
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -85,9 +91,9 @@ class JavascriptSpider(scrapy.Spider):
 
         """
 
-        self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
+        self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
-        self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
+        self.xpaths = self.elasticsearch_cl.get_url_config(self.start_urls[0], self.settings)
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
@@ -96,7 +102,7 @@ class JavascriptSpider(scrapy.Spider):
         self.options.add_argument("--headless")
         self.options.add_argument("--disable-gpu")
         self.web_driver = webdriver.Chrome(chrome_options=self.options)
-        self.cookies_ = cookies_utils.get_cookies(self.xpaths)
+        self.cookies = cookies_utils.get_cookies(self.xpaths)
 
     def spider_closed(self, spider):
         """
@@ -111,7 +117,7 @@ class JavascriptSpider(scrapy.Spider):
 
         """
         status = {}
-        for url in self.url_website_status:
+        for url in self.url_website_status.items():
             status[url] = dict(
                 code=self.url_website_status[url],
                 url=url,
@@ -134,13 +140,12 @@ class JavascriptSpider(scrapy.Spider):
         for url in self.start_urls:
             self.logger.info("starting  url  %s ", url)
             yield SeleniumRequest(
-                    url=url,
-                    dont_filter=True,
-                    headers=self.headers,
-                    wait_time=10,
-                    callback=self.parse,
-                )
-
+                url=url,
+                dont_filter=True,
+                headers=self.headers,
+                wait_time=10,
+                callback=self.parse,
+            )
 
     def parse(self, response):
         """
@@ -157,25 +162,31 @@ class JavascriptSpider(scrapy.Spider):
 
         """
         self.logger.info("parsing url %s request response  ", response.url)
-        url_html_blocks = beautifulsoup_parser.get_info_from_html_block(
-            response, self.xpaths, self.web_driver
+        url_html_blocks = beautifulsoup_parser.get_text_from_html_block(
+            response.url, self.xpaths, self.web_driver
         )
         self.logger.info("links from overview page: %s ", len(url_html_blocks))
-        first_time_seen_urls = self.es.search_urls_by_country_type(
+        first_time_seen_urls = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls %s: ", len(first_time_seen_urls))
         self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         for url in first_time_seen_urls:
-            article_info = next((article_info for article_info in url_html_blocks if article_info["url"] == url), None )
+            article_info = next(
+                (
+                    article_info
+                    for article_info in url_html_blocks
+                    if article_info["url"] == url
+                ),
+                None,
+            )
             self.logger.info("sending request of url %s", response.urljoin(url))
             yield scrapy.Request(
-                    response.urljoin(url),
-                    callback=self.parseitem,
-                    headers=self.headers,
-                    cb_kwargs=dict(data=article_info),
-                )
-
+                response.urljoin(url),
+                callback=self.parseitem,
+                headers=self.headers,
+                cb_kwargs=dict(data=article_info),
+            )
 
     def parseitem(self, response, data):
         """
@@ -212,13 +223,27 @@ class JavascriptSpider(scrapy.Spider):
         Item_loader.default_input_processor = MapCompose(str())
         Item_loader.default_output_processor = TakeFirst()
         Item_loader.add_value("parent_url", self.start_urls[0])
-        Item_loader.add_value("indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S"))
+        Item_loader.add_value(
+            "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
+        )
         Item_loader.add_value("content_type", self.content_type)
         Item_loader.add_value("country", self.xpaths["name"])
-        statement = beautifulsoup_parser.get_text_from_html_soup(response, self.xpaths['statement'], self.web_driver )
+        statement = beautifulsoup_parser.get_text_from_html_soup(
+            response, self.xpaths["statement"], self.web_driver
+        )
         Item_loader.add_value("statement", statement)
         Item_loader.add_value("url", utils.check_url(response.url))
-        Item_loader.add_value("title", beautifulsoup_parser.get_title_from_html_soup(response, data['title'],self.xpaths['title'], self.web_driver))
-        Item_loader.add_value("posted_date", beautifulsoup_parser.get_date_from_html_soup(response, data['posted_date'], self.xpaths, self.web_driver))
+        Item_loader.add_value(
+            "title",
+            beautifulsoup_parser.get_title_from_html_soup(
+                response, data["title"], self.xpaths["title"], self.web_driver
+            ),
+        )
+        Item_loader.add_value(
+            "posted_date",
+            beautifulsoup_parser.get_date_from_html_soup(
+                response, data, self.xpaths, self.web_driver
+            ),
+        )
         self.url_website_status[response.url] = 200 if statement else 10700
         yield Item_loader.load_item()

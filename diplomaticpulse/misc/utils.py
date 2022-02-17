@@ -6,6 +6,7 @@ import os
 import langid
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import DropItem
+import langid
 
 def get_language(text):
     """
@@ -28,9 +29,8 @@ def get_language(text):
     languages = settings["ARTICLES_LANGUAGE"]
     try:
         return languages[langid.classify(text)[0]]
-    except :
+    except Exception:
         raise DropItem("failed to detect text language")
-
 
 def get_url_extension(url):
     """
@@ -49,9 +49,8 @@ def get_url_extension(url):
     """
     try:
         return os.path.splitext(unquote(url))[1]
-    except Exception:
+    except Exception as ex:
         return None
-
 
 def check_url(url):
     """
@@ -63,6 +62,10 @@ def check_url(url):
 
     Returns
         url (string)
+
+    Raises
+        Exception
+             when it catches  error
 
     """
     try:

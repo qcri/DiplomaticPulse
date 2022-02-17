@@ -88,7 +88,9 @@ class ElasticSearchPipeline(object):
                when NO statement (empty)
 
         """
-        if item and item.get("statement"):
+        if item is None:
+            raise DropItem("statement  %s is null" % item)
+        if item.get("statement"):
             if isinstance(item, types.GeneratorType) or isinstance(item, list):
                 for each in item:
                     self.process_item(each, spider)
@@ -99,7 +101,7 @@ class ElasticSearchPipeline(object):
                 )
                 return item
         else:
-            raise DropItem("statement  %s is null or empty" % item)
+            raise DropItem("statement  %s is empty" % item)
 
     @classmethod
     def validate_settings(cls, settings):
@@ -156,11 +158,11 @@ class ElasticSearchPipeline(object):
                 body=crawler_settings.get("ELASTIC_MAPPINGS"),
             )
 
-        if not es.ping() :
+        if not es.ping():
             raise CloseSpider(
                 "spider failed to connect  to elasticsearch on server %s", es_servers
             )
-        logging.info("eleasticsearch server %s  is up running  !!" , es_servers)
+        logging.info("eleasticsearch server %s  is up running  !!", es_servers)
         return es
 
     def process_unique_key(self, unique_key):
@@ -232,7 +234,7 @@ class ElasticSearchPipeline(object):
         if self.settings["ELASTIC_UNIQ_KEY"] is not None:
             item_id = self.get_id(item)
             index_action["_id"] = item_id
-            logging.debug("Generated unique key %s" , item_id)
+            logging.debug("Generated unique key %s", item_id)
 
         search_object_st = {"query": {"match_phrase": {"statement": item["statement"]}}}
         res = self.es.search(index=index_name, body=search_object_st)
@@ -250,7 +252,7 @@ class ElasticSearchPipeline(object):
             if index_action["_source"]["language"] == "english"
             else None,
         )
-        #check date
+        # check date
         if not index_action["_source"]["posted_date"]:
             raise DropItem("failed to detect posted date")
         self.items_buffer.append(index_action)
@@ -271,7 +273,3 @@ class ElasticSearchPipeline(object):
             helpers.bulk(self.es, self.items_buffer)
         except Exception:
             pass
-
-
-
-

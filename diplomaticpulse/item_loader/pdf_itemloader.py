@@ -1,15 +1,9 @@
 """
 This module implements generic Item_loader builder.
 """
-import scrapy
-from scrapy.spiders import CrawlSpider
-from scrapy.utils.project import get_project_settings
 from diplomaticpulse.items import StatementItem
-from diplomaticpulse.misc import (
-    cookies_utils,
-    utils,
-)
 from diplomaticpulse.parsers import pdf_parser, dates_parser, html_parser
+
 
 def itemloader(response, data, xpaths):
     """
@@ -43,11 +37,8 @@ def itemloader(response, data, xpaths):
     item = StatementItem()
     item["title"] = html_parser.get_title(data["title"], response, xpaths)
     raw = pdf_parser.parse_pdfminer(response.url, None)
-    statement = raw["statement"] if raw else None
-    item["statement"] = html_parser.format_html_text(statement)
+    item["statement"] = raw["statement"] if raw else None
     item["posted_date"] = dates_parser.get_date_from_pdf(
         data["posted_date"], raw, item["statement"], item["title"]
     )
     return item
-
-

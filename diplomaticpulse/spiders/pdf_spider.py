@@ -1,25 +1,22 @@
 ﻿"""
-This module implements a spider to use for scraping countries articles (PDF and Images html content).
+This module implements a spider to use for scraping countries articles
+(PDF and Images html content).
 
 e.g: https://www.mofa.gov.lr/public2/2content.php?sub=23&related=7&third=23&pg=sp&pt=Speeches
 """
+from datetime import datetime
+import random
 import scrapy
 from scrapy.spiders import CrawlSpider
-from scrapy.utils.project import get_project_settings
-from diplomaticpulse.items import StatementItem
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.misc import (
-    errback_http,
-    cookies_utils,
-    utils,
-)
-from diplomaticpulse.parsers import pdf_parser, dates_parser, html_parser
-import random
-from datetime import datetime
-from scrapy.exceptions import CloseSpider
-from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
 from scrapy import signals
+from scrapy.utils.project import get_project_settings
+from scrapy.exceptions import CloseSpider
+from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
+from diplomaticpulse.parsers import html_parser
 from diplomaticpulse.item_loader import pdf_itemloader
+from diplomaticpulse.misc import errback_http, cookies_utils, utils
+
 
 class PdfSpider(CrawlSpider):
     """
@@ -50,12 +47,18 @@ class PdfSpider(CrawlSpider):
                 keyword arguments passed to the __init__() method:
 
         """
-        self.content_type = "doc"
-        self.settings = get_project_settings()
-        self.logger.info("connecting to %s ", self.settings["ELASTIC_HOST"])
         self.start_urls = [url]
-        self.extensions = [".pdf"]
+        self.settings = get_project_settings()
+        self.content_type = "doc"
         self.url_website_status = {}
+        self.tracker = None
+        self.elasticsearch = None
+        self.xpaths = None
+        self.cookies = None
+        self.headers = None
+        self.elasticsearch_cl = None
+        self.extensions = [".pdf"]
+        self.dic_website_status = {}
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -94,16 +97,17 @@ class PdfSpider(CrawlSpider):
 
         """
 
-        self.dic_website_status = {}
-        self.es = DpElasticsearch(self.settings["ELASTIC_HOST"])
+        self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
         self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
-        self.xpaths = self.es.get_url_config(self.start_urls[0], self.settings)
+        self.xpaths = self.elasticsearch_cl.get_url_config(
+            self.start_urls[0], self.settings
+        )
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
 
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
-        self.cookies_ = cookies_utils.get_cookies(self.xpaths)
+        self.cookies = cookies_utils.get_cookies(self.xpaths)
 
     def spider_closed(self, spider):
         """
@@ -118,7 +122,7 @@ class PdfSpider(CrawlSpider):
 
         """
         status = {}
-        for url in self.url_website_status:
+        for url in self.url_website_status.items():
             status[url] = dict(
                 code=self.url_website_status[url],
                 url=url,
@@ -140,7 +144,8 @@ class PdfSpider(CrawlSpider):
         for url in self.start_urls:
             self.logger.info("starting url %s ", url)
             yield scrapy.Request(
-                url, callback=self.parse, headers=self.headers, cookies=self.cookies_ )
+                url, callback=self.parse, headers=self.headers, cookies=self.cookies
+            )
 
     def parse(self, response):
         """
@@ -158,7 +163,7 @@ class PdfSpider(CrawlSpider):
         """
         self.logger.info("parsing url %s request response ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
-        first_time_seen_links = self.es.search_urls_by_country_type(
+        first_time_seen_links = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
@@ -177,7 +182,7 @@ class PdfSpider(CrawlSpider):
                     callback=self.parseitem,
                     cb_kwargs=dict(data=article_info),
                     headers=self.headers,
-                    cookies=self.cookies_,
+                    cookies=self.cookies,
                     errback=errback_http.errback_httpbin,
                 )
 
@@ -211,7 +216,7 @@ class PdfSpider(CrawlSpider):
 
         """
         self.logger.info("start parsing file %s ", response.url)
-        item =  pdf_itemloader.itemloader(response, data, self.xpaths)
+        item = pdf_itemloader.itemloader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]

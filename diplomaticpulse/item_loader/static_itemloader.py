@@ -1,12 +1,11 @@
 """
 This module implements generic Item_loader builder.
 """
-import scrapy
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
 from diplomaticpulse.items import StatementItem
 from diplomaticpulse.parsers import dates_parser, html_parser
-from diplomaticpulse.misc import  utils
+from diplomaticpulse.misc import utils
 
 
 def itemloader(response, data, xpaths):
@@ -41,9 +40,9 @@ def itemloader(response, data, xpaths):
     Item_loader.add_value("posted_date", dates_parser.get_date(data, response, xpaths))
     Item_loader.add_value("url", utils.check_url(response.url))
 
-    Item_loader.add_value("title", html_parser.get_title(data["title"], response, xpaths))
-    statement = html_parser.get_html_response_content(
-        response, xpaths["statement"]
+    Item_loader.add_value(
+        "title", html_parser.get_title(data["title"], response, xpaths)
     )
+    statement = html_parser.get_html_response_content(response, xpaths["statement"])
     Item_loader.add_value("statement", statement)
-    return  Item_loader
+    return Item_loader

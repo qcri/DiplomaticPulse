@@ -3,11 +3,13 @@
 """
 from scrapy.exceptions import DropItem
 
+
 class DropItemPipeline(object):
     """
     This class drops an empty item before being saved into elasticsearch.
 
     """
+
     @classmethod
     def process_item(self, item, spider):
         """
@@ -30,4 +32,3 @@ class DropItemPipeline(object):
             return item
         except Exception:
             pass
-

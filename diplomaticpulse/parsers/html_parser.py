@@ -3,10 +3,9 @@ This module implements a spider to use
 for scraping countries articles (static html content),
 e.g: https://www.foreignminister.gov.au/ .
 """
-from scrapy.selector import Selector
 from urllib.parse import unquote
 import re
-
+from scrapy.selector import Selector
 
 def get_html_response_content(response, statement_xpath):
     """
@@ -24,7 +23,7 @@ def get_html_response_content(response, statement_xpath):
 
     """
     try:
-        return (' '.join(response.xpath(statement_xpath).getall()))
+        return " ".join(response.xpath(statement_xpath).getall())
     except Exception:
         return None
 
@@ -48,16 +47,13 @@ def format_html_text(html):
     """
 
     try:
-        clean_text = re.findall(
-            "<p[^>]*>([^<]+)",
-            html
-        )
+        clean_text = re.findall("<p[^>]*>([^<]+)", html)
         clean_text = re.sub(r"\n{2,}", "\n", "\n".join(clean_text))
         if clean_text is None:
             clean_text = re.sub(
                 "<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)
             )
-        clean_text = ''.join(clean_text)
+        clean_text = "".join(clean_text)
         return clean_text, clean_text if not None else html
     except Exception as ex:
         print("!!!!!!!!!!! ERROR", ex)
@@ -162,5 +158,5 @@ def get_title(title, response, xpaths):
         if title is None:
             title = response.xpath(xpaths["title"]).get()
         return title.strip()
-    except:
+    except Exception:
         return title

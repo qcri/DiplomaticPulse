@@ -28,6 +28,7 @@ class TestHtmlUtils(unittest.TestCase):
         """
         We pass url, driver, xpaths to remove_unwanted_tags and expect text
         """
+
         url = "http://www.google.com"
         options = Options()
         options.add_argument("--headless")

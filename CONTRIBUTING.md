@@ -2,7 +2,7 @@
 
 There are 3 ways you can contribute to Diplomatic Pulse:
 - Implementing new spiders;
-- Improving string date parsing to handle possible unhadled string dates;
+- Improving string dates parsing to handle possible unhandled string dates;
 - Improving formating html text ;  
 - Contributing to the documentation;
 
@@ -65,10 +65,6 @@ Make sure you have `qa-requirements.txt` and `requirements.txt` installed, so yo
 
 ### Step 2. Make code changes
 
-Make sure that your environment is set from the previous section. You can create your own custom operator by following the [Custom Operators](https://tasrif.qcri.org/custom-operators.html) section in the tutorial.
-
-After making the changes, check if you have pylint or darglint errors. The [CI pipeline](https://github.com/qcrisw/diplomaticpulse/actions) checks those errors by default. However, it is preferable to check the errors locally by running
-
 ```python
 (diplomaticpulse-env) pylint --rcfile=.pylintrc path/to/changed/file
 ```
@@ -101,5 +97,3 @@ Before waiting for a reviewer to see the pull request, please look into the [CI 
 Once the pull request is approved, a `ready to pull` tag will be added to the
 pull request. A team member will take care of the merging.
 
-Here is an [example pull request](https://github.com/qcri/diplomaticpulse/pull/5)
-for your reference.

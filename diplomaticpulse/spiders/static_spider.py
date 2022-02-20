@@ -99,11 +99,7 @@ class HtmlSpider(scrapy.spiders.Spider):
     def start_requests(self):
         """
         This method must return an iterable with the first Requests to crawl for this spider.
-        It is called by Scrapy Framework after the spider is opened for scraping
-
-        Returns:
-            request: Iterable of Request
-
+        It is called by Scrapy Framework after the spider is opened for scraping.
         """
 
         for url in self.start_urls:
@@ -120,10 +116,6 @@ class HtmlSpider(scrapy.spiders.Spider):
         Args:
             response (response (Response object) – the response being processed):
                     html content to parse
-
-        Returns:
-            request :
-                Iterable of Requests
 
         """
         self.logger.debug("parsing url %s request response  ", response.url)
@@ -165,7 +157,7 @@ class HtmlSpider(scrapy.spiders.Spider):
                    'posted_date' : <published date of article >
                    }
 
-        Returns:
+        yield:
             Dict : (Iterable of items)
                 Python dict in the following format:
                 {

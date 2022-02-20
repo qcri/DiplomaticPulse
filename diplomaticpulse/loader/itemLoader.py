@@ -41,6 +41,5 @@ def itemloader(response, data, xpaths):
         "title", html_parser.get_title(data["title"], response, xpaths['title'])
     )
     statement = html_parser.get_html_response_content(response, xpaths["statement"])
-
     Item_loader.add_value("statement", statement)
     return Item_loader

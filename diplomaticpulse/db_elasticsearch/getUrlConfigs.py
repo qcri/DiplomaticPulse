@@ -216,7 +216,7 @@ class DpElasticsearch:
             self.es_cl = self.connect()
 
         search_object = {"query": {"match": {"status": "complete"}}}
-        res = self.es.search(index=index_name, body=search_object, size=10000)
+        res = self.es_cl.search(index=index_name, body=search_object, size=10000)
         countries = res["hits"]["hits"]
         should = [{"match": {"name": v["_source"]["name"]}} for v in countries]
         index_name = os.environ["ELASTIC_INDEX_XPATH"]

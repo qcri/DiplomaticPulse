@@ -23,7 +23,7 @@ def get_html_response_content(response, xpath):
 
     """
     try:
-        return ' '.join(response.xpath(xpath).getall())
+        return format_html_text(' '.join(response.xpath(xpath).getall()))
     except Exception:
         return None
 
@@ -47,15 +47,22 @@ def format_html_text(html):
     """
 
     try:
-        clean_text = re.findall("<p[^>]*>([^<]+)", html)
-        clean_text = re.sub(r"\n{2,}", "\n", "\n".join(clean_text))
-        if clean_text is None:
-            clean_text = re.sub(
-                "<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)
-            )
-        clean_text = "".join(clean_text)
-        return clean_text, clean_text if not None else html
-    except Exception:
+        clean_text = re.findall("<p[^>]*>([^<]+)", re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)))
+        clean_text = re.sub(r"\n{2,}", "\n", '\n'.join(clean_text))
+        if not clean_text:
+            # xheck if <p> exist
+            clean_text = re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html))
+        clean_text = re.sub("\xa0 {2,}", '', clean_text)
+        clean_text = re.sub("\n\s*", '\n', clean_text)
+        clean_text = re.sub("\t", " ", clean_text)
+        clean_text = re.sub("\r", " ", clean_text)
+        clean_text = re.sub("\xa0", " ", clean_text)
+        if '\n' not in clean_text:
+            clean_text = clean_text.replace('.', '\n')
+
+        return clean_text
+    except Exception as ex:
+        print('========', ex)
         return html
 
 

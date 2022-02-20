@@ -39,16 +39,16 @@ def get_text_from_html_block(url, xpaths_html, driver):
         Exception
              when it catches generic error
     """
-    url_info = {}
-    if "global" not in xpaths_html or "link" not in xpaths_html:
-        return url_info
 
-    # check global xpaths
+    if "global" not in xpaths_html or "link" not in xpaths_html:
+        return None
+
     elements = xpaths_html["global"].split(",")
     if len(elements) < 2:
-        return url_info
+        return None
 
     # get soup
+    url_info = []
     soup = get_soup(url, driver)
     title = None
     posted_date = None
@@ -61,8 +61,7 @@ def get_text_from_html_block(url, xpaths_html, driver):
                 title = get_text(rows, xpaths_html["title"])
             if "posted_date" in xpaths_html:
                 posted_date = get_text(rows, xpaths_html["posted_date"])
-            url_info[unquote(url)] = dict(title=title, posted_date=posted_date)
-
+            url_info.append(dict(url=unquote(url), title=title, posted_date=posted_date))
         return url_info
     except Exception as ex:
         print("Error occured in get_info_from_html_block", ex)

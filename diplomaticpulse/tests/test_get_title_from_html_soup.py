@@ -4,8 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from urllib.request import Request, urlopen
 from scrapy.http import HtmlResponse
-from urllib.request import Request, urlopen
-from scrapy.http import HtmlResponse
 
 # following is just to ignore https certificate issues
 import ssl
@@ -22,13 +20,12 @@ class TestHtmlUtils(unittest.TestCase):
     """
 
     def setUp(self):
-
         options = Options()
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-gpu")  # Last I checked this was necessary.
         self.driver = webdriver.Chrome(chrome_options=options)
-        pass
+
 
     def tearDown(self):
         pass

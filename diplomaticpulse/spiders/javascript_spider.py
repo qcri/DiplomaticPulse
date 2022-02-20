@@ -16,11 +16,10 @@ from selenium.webdriver.chrome.options import Options
 from diplomaticpulse.items import StatementItem
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
 from diplomaticpulse.misc import (
-    cookies_utils,
-    utils,
+    cookies_utils
 )
 from diplomaticpulse.parsers import  beautifulsoup_parser
-from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
+
 
 class JavascriptSpider(scrapy.Spider):
     """
@@ -44,8 +43,6 @@ class JavascriptSpider(scrapy.Spider):
         self.start_urls = [url]
         self.settings = get_project_settings()
         self.content_type = "javascript"
-        self.url_website_status = {}
-        self.tracker = None
         self.elasticsearch = None
         self.xpaths = None
         self.cookies = None
@@ -92,7 +89,6 @@ class JavascriptSpider(scrapy.Spider):
         """
 
         self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
-        self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
         self.xpaths = self.elasticsearch_cl.get_url_config(self.start_urls[0], self.settings)
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
@@ -116,16 +112,6 @@ class JavascriptSpider(scrapy.Spider):
             updates each url website status if any.
 
         """
-        status = {}
-        for url in self.url_website_status.items():
-            status[url] = dict(
-                code=self.url_website_status[url],
-                url=url,
-                name=self.xpaths["name"],
-                spider=self.content_type,
-                url_parent=self.start_urls[0],
-            )
-        self.tracker.update_website_status(status)
         self.web_driver.quit()
 
     def start_requests(self):
@@ -170,7 +156,6 @@ class JavascriptSpider(scrapy.Spider):
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls %s: ", len(first_time_seen_urls))
-        self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         for url in first_time_seen_urls:
             article_info = next(
                 (
@@ -232,7 +217,7 @@ class JavascriptSpider(scrapy.Spider):
             response, self.xpaths["statement"], self.web_driver
         )
         Item_loader.add_value("statement", statement)
-        Item_loader.add_value("url", utils.check_url(response.url))
+        Item_loader.add_value("url", response.url)
         Item_loader.add_value(
             "title",
             beautifulsoup_parser.get_title_from_html_soup(
@@ -245,5 +230,4 @@ class JavascriptSpider(scrapy.Spider):
                 response, data, self.xpaths, self.web_driver
             ),
         )
-        self.url_website_status[response.url] = 200 if statement else 10700
         yield Item_loader.load_item()

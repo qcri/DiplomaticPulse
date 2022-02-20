@@ -23,7 +23,7 @@ from diplomaticpulse.misc import utils
 
 def parse_pdfminer(url, ignore_ssl_certficate):
     """
-    parse pdf content
+    This method parses pdf/image content
 
     Args
         url (string):
@@ -44,18 +44,10 @@ def parse_pdfminer(url, ignore_ssl_certficate):
              when it catches  error
 
     """
-    try:
-        if ignore_ssl_certficate == "true":
-            try:
-                _create_unverified_https_context = ssl._create_unverified_context
-            except AttributeError:
-                # Legacy Python that doesn't verify HTTPS certificates by default
-                pass
-            else:
-                # Handle target environment that doesn't support HTTPS verification
-                ssl._create_default_https_context = _create_unverified_https_context
-    except Exception:
-        pass
+    # following is just to ignore https certificate issues
+
+
+    ssl._create_default_https_context = ssl._create_unverified_context
 
     try:
         skip_extensions = [".doc", ".docx", ".img", ".jpg"]
@@ -112,23 +104,22 @@ def parse_pdfminer(url, ignore_ssl_certficate):
             device.close()
             retstr.close()
     except Exception:
-        body["statement"] = None
+        pass
+
+    try:
+        if body["statement"] is None:
+            body["statement"] = text_from_image(tmpPdffile)
+    except Exception:
+            dict({body["statement"] : None})
     finally:
-        try:
-            if body["statement"] is None:
-                body["statement"] = text_from_image(tmpPdffile)
-            if pathlib.Path(tmpPdffile).exists():
-                os.remove(tmpPdffile)
-            return dict(body)
-        except Exception:
-            body = {}
-            body["statement"] = None
-            dict(body)
+        if pathlib.Path(tmpPdffile).exists():
+            os.remove(tmpPdffile)
+        return dict(body)
 
 
 def get_text_from_pdf_image(file_):
     """
-    parse pdf image content
+    This method scrapes pdf/image text from file
 
     Args
         file_(string):
@@ -152,12 +143,12 @@ def get_text_from_pdf_image(file_):
             for img in doc.getPageImageList(i):
                 xref = img[0]
                 pix = fitz.Pixmap(doc, xref)
-                if pix.n < 5:  # this is GRAY or RGB
+                if pix.n < 5:
                     pix.writePNG("p%s-%s.png" % (i, xref))
                     img = Image.open("p%s-%s.png" % (i, xref))
                     content.append(pytesseract.image_to_string(img))
                     tmp_png_files.append("p%s-%s.png" % (i, xref))
-                else:  # CMYK: convert to RGB first
+                else:
                     pix1 = fitz.Pixmap(fitz.csRGB, pix)
                     pix1.writePNG("p%s-%s.png" % (i, xref))
                     img = Image.open("p%s-%s.png" % (i, xref))
@@ -166,10 +157,9 @@ def get_text_from_pdf_image(file_):
     except Exception:
         if pathlib.Path(file_).exists():
             os.remove(file_)
-    finally:
-        try:
-            for f in tmp_png_files:
-                os.remove(f)
-        except Exception:
-            pass
-        return "\n".join(content)
+    try:
+        for f in tmp_png_files:
+            os.remove(f)
+    except Exception:
+        pass
+    return "\n".join(content)

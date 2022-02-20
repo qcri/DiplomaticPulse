@@ -5,9 +5,9 @@ This module implements cookies
 
 def get_cookies(xpaths):
     """
-    Get request cookies.
+    This methpd reads request cookies.
 
-    crawler_settings
+    Args:
         xpaths dict(json):
                xpaths{
                    'cookies' :<cookies>
@@ -26,8 +26,8 @@ def get_cookies(xpaths):
     """
     try:
         cookies = {}
-        for i in xpaths["cookies"].split(";"):
-                cookies[i.split("=")[0].strip()] = str(i.split("=")[1].strip())
+        for ck in xpaths["cookies"].split(";"):
+                cookies[ck.split("=")[0].strip()] = str(ck.split("=")[1].strip())
         return cookies
-    except KeyError:
-        return cookies
+    except Exception:
+        return None

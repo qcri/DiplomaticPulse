@@ -1,6 +1,5 @@
 import unittest
-import diplomaticpulse.parsers.dates_parser as dates_parser
-
+from diplomaticpulse.parsers import dates_parser
 
 class TestParsingdates(unittest.TestCase):
     """
@@ -20,22 +19,21 @@ class TestParsingdates(unittest.TestCase):
         """
         We pass dic(string date) to get_date and expect it to return date in YYYY-MM-DD.
         """
-        data = dict()
-        data["posted_date"] = "2020-01-01"
+        data = dict({"posted_date" :"2020-01-01"})
         response = "aaaa bbbb"
         xpaths = {"us_date_format": "MMDDYYYY"}
         expected = "2020-01-01#MMDDYYYY"
         result = dates_parser.get_date(data, response, xpaths)
         self.assertEqual(expected, result)
 
+
     def test_get_date2(self):
         """
         We pass dic(string date) to get_date and expect it to return date in YYYY-MM-DD.
         """
-        data = dict()
-        data["posted_date"] = "2020-01-01"
+        data = None
         response = "aaaa bbbb"
-        xpaths = dict(us_date_format="MMDDYYYY")
-        expected = "2020-01-01#MMDDYYYY"
-        result = dates_parser.get_date(data, response, xpaths)
+        xpaths = dict({'us_date_format':"MMDDYYYY"})
+        expected =  None
+        result = dates_parser.get_date( data, response, xpaths)
         self.assertEqual(expected, result)

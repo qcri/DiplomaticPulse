@@ -10,9 +10,8 @@ from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.item_loader import static_itemloader
+from diplomaticpulse.loader import itemLoader
 from diplomaticpulse.misc import errback_http, cookies_utils
 
 
@@ -41,13 +40,11 @@ class HtmlSpider(scrapy.spiders.Spider):
         """
 
         self.settings = None
-        self.tracker = None
         self.elasticsearch = None
         self.xpaths = None
         self.cookies = None
         self.headers = None
         self.content_type = "static"
-        self.url_website_status = {}
         self.start_urls = [url]
 
     @classmethod
@@ -69,7 +66,6 @@ class HtmlSpider(scrapy.spiders.Spider):
 
         """
         spider = super().from_crawler(crawler, *args, **kwargs)
-        crawler.signals.connect(spider.spider_closed, signal=signals.spider_closed)
         crawler.signals.connect(spider.spider_opened, signal=signals.spider_opened)
         return spider
 
@@ -89,7 +85,6 @@ class HtmlSpider(scrapy.spiders.Spider):
         """
         self.settings = get_project_settings()
         self.elasticsearch = DpElasticsearch(self.settings["ELASTIC_HOST"])
-        self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
         self.xpaths = self.elasticsearch.get_url_config(
             self.start_urls[0], self.settings
         )
@@ -99,29 +94,6 @@ class HtmlSpider(scrapy.spiders.Spider):
         self.xpaths["index_name"] = self.settings["ELASTIC_INDEX"]
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
         self.cookies = cookies_utils.get_cookies(self.xpaths)
-
-    def spider_closed(self, spider):
-        """
-        This method is called when the spider being running is closing.
-
-        Args
-            spider (spider (Spider object):
-                the spider for which this request is intended
-
-        Returns:
-            updates each url website status if any.
-
-        """
-        status = {}
-        for url, code in self.url_website_status.items():
-            status[url] = dict(
-                code=code,
-                url=url,
-                name=self.xpaths["name"],
-                spider=self.content_type,
-                url_parent=self.start_urls[0],
-            )
-        self.tracker.update_website_status(status)
 
 
     def start_requests(self):
@@ -163,7 +135,6 @@ class HtmlSpider(scrapy.spiders.Spider):
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
-        self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         for url in first_time_seen_links:
             article_info = next(
                 (data for data in url_html_blocks if data["url"] == url), None
@@ -210,8 +181,7 @@ class HtmlSpider(scrapy.spiders.Spider):
 
         """
         self.logger.debug("start parsing  item from %s !", response.url)
-        # self.url_website_status[response.url] = 200 if statement else 10700
-        Item_loader = static_itemloader.itemloader(response, data, self.xpaths)
+        Item_loader = itemLoader.itemloader(response, data, self.xpaths)
         Item_loader.add_value("country", self.xpaths["name"])
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value(

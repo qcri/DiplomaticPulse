@@ -26,9 +26,6 @@ class DropItemPipeline(object):
            when statement is None
 
         """
-        try:
-            if not item["statement"]:
-                raise DropItem("Item dropped because the statement is NULL or EMPTY")
-            return item
-        except Exception:
-            pass
+        if not item["statement"]:
+            raise DropItem("Item dropped because the statement is NULL or EMPTY")
+        return item

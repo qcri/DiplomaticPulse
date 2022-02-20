@@ -12,10 +12,9 @@ from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.item_loader import pdf_itemloader
 from diplomaticpulse.misc import errback_http, cookies_utils, utils
+from diplomaticpulse.loader import statementItem
 
 
 class PdfSpider(CrawlSpider):
@@ -50,7 +49,6 @@ class PdfSpider(CrawlSpider):
         self.start_urls = [url]
         self.settings = get_project_settings()
         self.content_type = "doc"
-        self.url_website_status = {}
         self.tracker = None
         self.elasticsearch = None
         self.xpaths = None
@@ -58,7 +56,6 @@ class PdfSpider(CrawlSpider):
         self.headers = None
         self.elasticsearch_cl = None
         self.extensions = [".pdf"]
-        self.dic_website_status = {}
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -79,7 +76,6 @@ class PdfSpider(CrawlSpider):
 
         """
         spider = super().from_crawler(crawler, *args, **kwargs)
-        crawler.signals.connect(spider.spider_closed, signal=signals.spider_closed)
         crawler.signals.connect(spider.spider_opened, signal=signals.spider_opened)
         return spider
 
@@ -98,7 +94,6 @@ class PdfSpider(CrawlSpider):
         """
 
         self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
-        self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
         self.xpaths = self.elasticsearch_cl.get_url_config(
             self.start_urls[0], self.settings
         )
@@ -109,28 +104,6 @@ class PdfSpider(CrawlSpider):
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
         self.cookies = cookies_utils.get_cookies(self.xpaths)
 
-    def spider_closed(self, spider):
-        """
-        This method is called when the spider being running is closing.
-
-        Args
-            spider (spider (Spider object):
-                the spider for which this request is intended
-
-        Returns:
-            updates each url website status if any.
-
-        """
-        status = {}
-        for url in self.url_website_status.items():
-            status[url] = dict(
-                code=self.url_website_status[url],
-                url=url,
-                name=self.xpaths["name"],
-                spider=self.content_type,
-                url_parent=self.start_urls[0],
-            )
-        self.tracker.update_website_status(status)
 
     def start_requests(self):
         """
@@ -167,7 +140,6 @@ class PdfSpider(CrawlSpider):
             url_html_blocks, self.xpaths
         )
         self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
-        self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         self.logger.info(
             "scraped html blocks %s from starting page", len(url_html_blocks)
         )
@@ -216,11 +188,10 @@ class PdfSpider(CrawlSpider):
 
         """
         self.logger.info("start parsing file %s ", response.url)
-        item = pdf_itemloader.itemloader(response, data, self.xpaths)
+        item = statementItem.itemloader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]
         item["parent_url"] = self.start_urls[0]
-        item["url"] = utils.check_url(response.url)
-        self.url_website_status[response.url] = 200 if item["statement"] else 10700
+        item["url"] = response.url
         yield item

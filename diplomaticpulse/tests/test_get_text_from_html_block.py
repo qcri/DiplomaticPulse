@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.options import Options
 
 # following is just to ignore https certificate issues
 import ssl
-
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
@@ -35,12 +34,10 @@ class TestHtmlUtils(unittest.TestCase):
         xpaths = {"global": "div,container", "link": "html.a", "posted_date": "li.a"}
 
         result = util.get_text_from_html_block(url, xpaths, self.driver)
-        expected = {
-            "https://scrapy.org": {"title": None, "posted_date": None},
-            "https://www.zyte.com/": {"title": None, "posted_date": None},
-            "https://www.zyte.com/scrapy-cloud/": {"title": None, "posted_date": None},
-            "https://github.com/scrapy/scrapy": {"title": None, "posted_date": None},
-        }
+        expected = [{'url': 'https://scrapy.org', 'title': None, 'posted_date': None},
+                    {'url': 'https://www.zyte.com/', 'title': None, 'posted_date': None},
+                    {'url': 'https://www.zyte.com/scrapy-cloud/', 'title': None, 'posted_date': None},
+                    {'url': 'https://github.com/scrapy/scrapy', 'title': None, 'posted_date': None}]
         self.assertEqual(expected, result)
 
     def test_get_text_from_html_block2(self):
@@ -55,10 +52,8 @@ class TestHtmlUtils(unittest.TestCase):
             "posted_date": "li.a",
         }
         result = util.get_text_from_html_block(url, xpaths, self.driver)
-        expected = {
-            "https://scrapy.org": {"title": None, "posted_date": None},
-            "https://www.zyte.com/": {"title": None, "posted_date": None},
-            "https://www.zyte.com/scrapy-cloud/": {"title": None, "posted_date": None},
-            "https://github.com/scrapy/scrapy": {"title": None, "posted_date": None},
-        }
+        expected = [{'url': 'https://scrapy.org', 'title': None, 'posted_date': None},
+                    {'url': 'https://www.zyte.com/', 'title': None, 'posted_date': None},
+                    {'url': 'https://www.zyte.com/scrapy-cloud/', 'title': None, 'posted_date': None},
+                    {'url': 'https://github.com/scrapy/scrapy', 'title': None, 'posted_date': None}]
         self.assertEqual(expected, result)

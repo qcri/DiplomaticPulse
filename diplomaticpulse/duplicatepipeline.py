@@ -2,10 +2,8 @@
   This implements Scrapy pipeline duplicate.
 """
 from scrapy.exceptions import DropItem, CloseSpider
-import hashlib
-from elasticsearch import Elasticsearch, helpers
+from elasticsearch import Elasticsearch
 import logging
-
 
 class DuplicatesPipeline:
     """
@@ -36,9 +34,9 @@ class DuplicatesPipeline:
         """
         es_timeout = crawler_settings.get("ELASTIC_TIMEOUT")
         es_servers = crawler_settings.get("ELASTIC_HOST")
-        logging.info(" the elasticsearch host is  %s " % es_servers)
+        logging.info(" the elasticsearch host is  %s " , es_servers)
         es_servers = es_servers if isinstance(es_servers, list) else [es_servers]
-        es_settings = dict()
+        es_settings = {}
         es_settings["hosts"] = es_servers
         es_settings["timeout"] = es_timeout
         es_settings["verify_certs"] = False
@@ -49,9 +47,9 @@ class DuplicatesPipeline:
         es = Elasticsearch(**es_settings)
         if es.ping() is False:
             raise CloseSpider(
-                "spider failed to connect  to elasticsearch on server %s", es_servers
+                "spider failed to connect  to elasticsearch on server"
             )
-        logging.info("eleasticsearch server %s  is up running  !!" % es_servers)
+        logging.info("eleasticsearch server %s  is up running  !!" , es_servers)
         return es
 
     @classmethod
@@ -59,9 +57,8 @@ class DuplicatesPipeline:
         """process an item"""
         try:
             if item["url"] in self.ids_seen:
-                raise DropItem("Duplicate item found: %s" % item["url"])
-            else:
-                self.ids_seen.add(item["url"])
-                return item
+                raise DropItem("Duplicate item found")
+            self.ids_seen.add(item["url"])
+            return item
         except Exception:
             return item

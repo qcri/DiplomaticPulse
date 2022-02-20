@@ -1,6 +1,5 @@
 import unittest
-import diplomaticpulse.parsers.dates_parser as dates_parser
-
+from diplomaticpulse.parsers import dates_parser as date_dp
 
 class TestParsingdates(unittest.TestCase):
     """
@@ -19,23 +18,23 @@ class TestParsingdates(unittest.TestCase):
     def test_parse_mydate1(self):
         date_string = "2020/02/09"
         expected = "2020-02-09"
-        result = dates_parser.parse_mydate(date_string, "english")
+        result = date_dp.parse_mydate(date_string, "english")
         self.assertEqual(expected, result)
 
     def test_parse_mydate2(self):
         date_string = "02/09/2020"
         expected = "2020-09-02"
-        result = dates_parser.parse_mydate(date_string, "english")
+        result = date_dp.parse_mydate(date_string, "english")
         self.assertEqual(expected, result)
 
     def test_parse_mydate3(self):
         date_string = "03 Mai 1989"
         expected = "1989-05-03"
-        result = dates_parser.parse_mydate(date_string, None)
+        result = date_dp.parse_mydate(date_string, None)
         self.assertEqual(expected, result)
 
     def test_parse_mydate4(self):
         date_string = "2020/02/09#YYYYDDMM"
         expected = "2020-09-02"
-        result = dates_parser.parse_mydate(date_string, None)
+        result = date_dp.parse_mydate(date_string, None)
         self.assertEqual(expected, result)

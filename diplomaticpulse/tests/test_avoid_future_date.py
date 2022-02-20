@@ -1,7 +1,6 @@
 import unittest
 from datetime import date
-import diplomaticpulse.parsers.dates_parser as dates_parser
-
+from diplomaticpulse.parsers import dates_parser as date_dp
 
 class TestParsingdates(unittest.TestCase):
     """
@@ -21,7 +20,15 @@ class TestParsingdates(unittest.TestCase):
         """
         We pass today's date to avoid_future_date and expect it to return the same.
         """
-        result = dates_parser.avoid_future_date(date.today())
+        result = date_dp.avoid_future_date(date.today())
+        expected = date.today().strftime("%Y-%m-%d")
+        self.assertEqual(expected, result)
+
+    def test_avoid_future_date2(self):
+        """
+        We pass today's date to avoid_future_date and expect it to return the same.
+        """
+        result = date_dp.avoid_future_date("01-02-2030")
         expected = date.today().strftime("%Y-%m-%d")
         self.assertEqual(expected, result)
 
@@ -29,6 +36,6 @@ class TestParsingdates(unittest.TestCase):
         """
         This should cause an exception and return today's date
         """
-        expected = dates_parser.avoid_future_date("An invalid date")
+        expected = date_dp.avoid_future_date("An invalid date")
         result = date.today().strftime("%Y-%m-%d")
         self.assertEqual(expected, result)

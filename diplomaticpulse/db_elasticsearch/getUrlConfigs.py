@@ -1,11 +1,12 @@
 """
 Implements  elasticsearch client.
 """
+
+import os
+import hashlib
 from six import string_types
 from elasticsearch import Elasticsearch
-import hashlib
-import os
-from scrapy.exceptions import DropItem, CloseSpider
+from scrapy.exceptions import  CloseSpider
 
 
 class DpElasticsearch:
@@ -13,7 +14,7 @@ class DpElasticsearch:
     Class to serve as elasticsearch client.
     """
 
-    def __init__(self, es_servers):
+    def __init__(self, _es_servers):
         """
         Create an instance of DpElasticsearch
 
@@ -22,8 +23,8 @@ class DpElasticsearch:
                 object of running elasticsearch
 
         """
-        self.es_servers = es_servers
-        self.es = self.connect()
+        self.es_servers = _es_servers
+        self.es_cl = self.connect()
 
     def connect(self):
         """
@@ -40,7 +41,7 @@ class DpElasticsearch:
 
         """
         print("es_servers", self.es_servers)
-        es_settings = dict()
+        es_settings = {}
         es_settings["hosts"] = self.es_servers
         es_settings["timeout"] = 60
         es_settings["verify_certs"] = False
@@ -73,8 +74,8 @@ class DpElasticsearch:
 
         """
         index_name = os.environ["ELASTIC_INDEX_XPATH"]
-        if not self.es:
-            self.es = self.connect()
+        if not self.es_cl:
+            self.es_cl = self.connect()
         unique_key = url
         if isinstance(unique_key, (list, tuple)):
             unique_key = unique_key[0].encode("utf-8")
@@ -85,11 +86,11 @@ class DpElasticsearch:
 
         ID = hashlib.sha1(unique_key).hexdigest()
         search_object = {"query": {"match": {"_id": ID}}}
-        res = self.es.search(index=index_name, body=search_object)
+        res = self.es_cl.search(index=index_name, body=search_object)
         if res["hits"]["hits"]:
             return res["hits"]["hits"][0]["_source"]
-        else:
-            return None
+
+        return None
 
     def search_urls_by_country_type(self, html_blocks, config):
         """
@@ -116,8 +117,8 @@ class DpElasticsearch:
 
         """
 
-        if not self.es:
-            self.es = self.connect()
+        if not self.es_cl:
+            self.es_cl = self.connect()
         try:
             search_object = {
                 "query": {
@@ -129,7 +130,7 @@ class DpElasticsearch:
                     }
                 }
             }
-            res = self.es.search(
+            res = self.es_cl.search(
                 index=config["index_name"], body=search_object, size=10000
             )
             tags = res["hits"]["hits"]
@@ -169,8 +170,8 @@ class DpElasticsearch:
         """
 
         try:
-            if not self.es:
-                self.es = self.connect()
+            if not self.es_cl:
+                self.es_cl = self.connect()
             country = config["name"]
             index_name = settings["ELASTIC_INDEX"]
             search_object = {
@@ -188,10 +189,10 @@ class DpElasticsearch:
             should = [{"match": v["_source"][key]} for v in tags]
             for v in should:
                 url_seen.append(v["match"])
-        except Exception as ex:
-            print("ERROR:", ex)
-            pass
-        return url_seen
+            return url_seen
+        except Exception:
+            return url_seen
+
 
     def getUrlConfigs(self):
         """
@@ -211,8 +212,8 @@ class DpElasticsearch:
 
         """
         index_name = os.environ["ELASTIC_INDEX_COUNTRIES"]
-        if not self.es:
-            self.es = self.connect()
+        if not self.es_cl:
+            self.es_cl = self.connect()
 
         search_object = {"query": {"match": {"status": "complete"}}}
         res = self.es.search(index=index_name, body=search_object, size=10000)
@@ -220,7 +221,7 @@ class DpElasticsearch:
         should = [{"match": {"name": v["_source"]["name"]}} for v in countries]
         index_name = os.environ["ELASTIC_INDEX_XPATH"]
         query = {"query": {"bool": {"should": should}}}
-        res = self.es.search(index=index_name, body=query, size=10000)
+        res = self.es_cl.search(index=index_name, body=query, size=10000)
         tags = res["hits"]["hits"]
         output = []
         for v in tags:

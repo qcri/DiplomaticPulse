@@ -10,8 +10,6 @@ import logging
 from diplomaticpulse.misc import utils
 from diplomaticpulse.parsers import dates_parser
 import urllib3
-from typing import List, Any
-
 
 class ElasticSearchPipeline(object):
     """pipeline to index items (from spiders) into elasticsearch."""
@@ -40,7 +38,7 @@ class ElasticSearchPipeline(object):
         ext.es = cls.init_es_client(crawler.settings)
         logging.info(
             "CLOSESPIDER_PAGECOUNT is  %s "
-            % crawler.settings.get("CLOSESPIDER_PAGECOUNT")
+            ,crawler.settings.get("CLOSESPIDER_PAGECOUNT")
         )
         return ext
 
@@ -54,7 +52,6 @@ class ElasticSearchPipeline(object):
 
         """
         logging.info("the spider %s is open ", spider.name)
-        pass
 
     def close_spider(self, spider):
         """
@@ -67,8 +64,8 @@ class ElasticSearchPipeline(object):
             call send Items
 
         """
-        logging.info("the spider %s is closed" % spider.name)
-        if len(self.items_buffer):
+        logging.info("the spider %s is closed" , spider.name)
+        if self.items_buffer is not None:
             self.send_items()
 
     def process_item(self, item, spider):
@@ -89,7 +86,7 @@ class ElasticSearchPipeline(object):
 
         """
         if item is None:
-            raise DropItem("statement  %s is null" % item)
+            raise DropItem("statement is null" )
         if item.get("statement"):
             if isinstance(item, types.GeneratorType) or isinstance(item, list):
                 for each in item:
@@ -97,17 +94,17 @@ class ElasticSearchPipeline(object):
             else:
                 self.index_item(item)
                 logging.debug(
-                    "Item sent to Elastic Search %s" % self.settings["ELASTIC_INDEX"]
+                    "Item sent to Elastic Search %s" , self.settings["ELASTIC_INDEX"]
                 )
                 return item
         else:
-            raise DropItem("statement  %s is empty" % item)
+            raise DropItem("statement  %s is empty" , item)
 
     @classmethod
     def validate_settings(cls, settings):
         def validate_setting(setting_key):
             if settings[setting_key] is None:
-                raise Exception("%s is not defined in settings.py" % setting_key)
+                raise Exception("%s is not defined in settings.py", setting_key)
 
         required_settings = {"ELASTIC_INDEX", "ELASTIC_TYPE"}
         for required_setting in required_settings:
@@ -141,9 +138,9 @@ class ElasticSearchPipeline(object):
         # auth_type = crawler_settings.get('ELASTIC_AUTH')
         es_timeout = crawler_settings.get("ELASTIC_TIMEOUT")
         es_servers = crawler_settings.get("ELASTIC_HOST")
-        logging.info(" the elasticsearch host is  %s " % es_servers)
+        logging.info(" the elasticsearch host is  %s " , es_servers)
         es_servers = es_servers if isinstance(es_servers, list) else [es_servers]
-        es_settings = dict()
+        es_settings = {}
         es_settings["hosts"] = es_servers
         es_settings["timeout"] = es_timeout
         es_settings["verify_certs"] = False
@@ -160,7 +157,7 @@ class ElasticSearchPipeline(object):
 
         if not es.ping():
             raise CloseSpider(
-                "spider failed to connect  to elasticsearch on server %s", es_servers
+                "spider failed to connect  to elasticsearch on server "
             )
         logging.info("eleasticsearch server %s  is up running  !!", es_servers)
         return es

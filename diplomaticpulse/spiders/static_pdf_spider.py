@@ -12,12 +12,9 @@ import scrapy
 from scrapy.exceptions import CloseSpider
 from scrapy.utils.project import get_project_settings
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
-from diplomaticpulse.misc import cookies_utils, utils
+from diplomaticpulse.misc import cookies_utils
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.status_tracker.status_tracker import WebsiteTracker
-
-from diplomaticpulse.item_loader import static_itemloader, pdf_itemloader
-
+from diplomaticpulse.loader import itemLoader, statementItem
 
 class HtmlDocSpider(scrapy.spiders.CrawlSpider):
     """
@@ -44,15 +41,12 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         self.start_urls = [url]
         self.settings = get_project_settings()
         self.content_type = "doc"
-        self.url_website_status = {}
-        self.tracker = None
         self.elasticsearch = None
         self.xpaths = None
         self.cookies = None
         self.headers = None
-        self.dic_website_status = None
         self.elasticsearch_cl = None
-        self.cookies_ = none
+        self.cookies_ = None
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -73,7 +67,6 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         spider = super().from_crawler(crawler, *args, **kwargs)
-        crawler.signals.connect(spider.spider_closed, signal=signals.spider_closed)
         crawler.signals.connect(spider.spider_opened, signal=signals.spider_opened)
         return spider
 
@@ -90,9 +83,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                 when no URL info found
 
         """
-        self.dic_website_status = {}
         self.elasticsearch_cl = DpElasticsearch(self.settings["ELASTIC_HOST"])
-        self.tracker = WebsiteTracker(self.settings["ELASTIC_HOST"])
         self.xpaths = self.elasticsearch_cl.get_url_config(self.start_urls[0], self.settings)
         if not self.xpaths:
             raise CloseSpider("No xpaths indexed for the url")
@@ -101,25 +92,6 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         self.headers = {"User-Agent": random.choice(self.settings["USER_AGENT_LIST"])}
         self.cookies_ = cookies_utils.get_cookies(self.xpaths)
 
-    def spider_closed(self, spider):
-        """
-        This method must return an iterable with the first Requests to crawl for this spider.
-        It is called by Scrapy Framework after the spider is opened for scraping
-
-        Returns:
-            request: Iterable of Request
-
-        """
-        status = {}
-        for url in self.url_website_status.items():
-            status[url] = dict(
-                code=self.url_website_status[url],
-                url=url,
-                name=self.xpaths["name"],
-                spider=self.content_type,
-                url_parent=self.start_urls[0],
-            )
-        self.tracker.update_website_status(status)
 
     def start_requests(self):
         """
@@ -156,9 +128,8 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
         """
         self.logger.debug("a response arrived from %s ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
-        self.url_website_status[response.url] = 10600 if not url_html_blocks else 200
         self.logger.debug(
-            "scraped html blocks %s from starting page", len(url_html_blocks)
+            "scraped html blocks %s from starting page", (url_html_blocks)
         )
         first_time_seen_links = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
@@ -221,8 +192,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
             )
         else:
             self.logger.debug("start parsing  item from %s !", response.url)
-            # self.url_website_status[response.url] = 200 if statement else 10700
-            Item_loader = static_itemloader.itemloader(response, data, self.xpaths)
+            Item_loader = itemLoader.itemloader(response, data, self.xpaths)
             Item_loader.add_value("country", self.xpaths["name"])
             Item_loader.add_value("parent_url", self.start_urls[0])
             Item_loader.add_value(
@@ -260,12 +230,11 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
               }
 
         """
-        self.logger.info("start parsing file %s ", response.url)
-        item = pdf_itemloader.itemloader(response, data, self.xpaths)
+        self.logger.debug("start parsing file %s ", response.url)
+        item = statementItem.itemloader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]
         item["parent_url"] = self.start_urls[0]
-        item["url"] = utils.check_url(response.url)
-        self.url_website_status[response.url] = 200 if item["statement"] else 10700
+        item["url"] = response.url
         yield item

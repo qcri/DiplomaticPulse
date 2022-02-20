@@ -2,7 +2,6 @@ import unittest
 import diplomaticpulse.parsers.beautifulsoup_parser as util
 from bs4 import BeautifulSoup
 
-
 class TestBeautifulParser(unittest.TestCase):
     """
     Class containing the test suite for html_span_bs4().

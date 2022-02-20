@@ -5,8 +5,6 @@ from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
 from diplomaticpulse.items import StatementItem
 from diplomaticpulse.parsers import dates_parser, html_parser
-from diplomaticpulse.misc import utils
-
 
 def itemloader(response, data, xpaths):
     """
@@ -38,7 +36,7 @@ def itemloader(response, data, xpaths):
     Item_loader.default_input_processor = MapCompose(str())
     Item_loader.default_output_processor = TakeFirst()
     Item_loader.add_value("posted_date", dates_parser.get_date(data, response, xpaths))
-    Item_loader.add_value("url", utils.check_url(response.url))
+    Item_loader.add_value("url", response.url)
 
     Item_loader.add_value(
         "title", html_parser.get_title(data["title"], response, xpaths)

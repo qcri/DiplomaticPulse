@@ -1,7 +1,6 @@
 import unittest
-import diplomaticpulse.parsers.beautifulsoup_parser as util
 from bs4 import BeautifulSoup
-
+import diplomaticpulse.parsers.beautifulsoup_parser as util
 
 class TestBeautifulParser(unittest.TestCase):
     """

@@ -1,6 +1,5 @@
 import unittest
-import diplomaticpulse.misc.utils as utils
-
+from  diplomaticpulse.misc import utils as util
 
 class TestPDFParser(unittest.TestCase):
     """
@@ -18,8 +17,17 @@ class TestPDFParser(unittest.TestCase):
 
     def test_get_language(self):
         """
-        We pass string text to get_language and expect it to return laguage name
+        We pass string text to get_language and expect it to return get_language name
         """
-        result = utils.get_language("le monde est fou")
+        result = util.get_language("le monde est fou")
         expected = "French"
+        self.assertEqual(expected, result)
+
+
+    def test_get_language_exception(self):
+        """
+        We pass None to get_language and expect it to return get_language name
+        """
+        result  = util.get_language(None)
+        expected = None
         self.assertEqual(expected, result)

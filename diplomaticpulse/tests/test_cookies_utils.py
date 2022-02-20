@@ -4,7 +4,7 @@ import diplomaticpulse.misc.cookies_utils as ck_util
 
 class TestBeautifullsoupParser(unittest.TestCase):
     """
-    Class containing the test suite for check_url().
+    Class containing the test suite for test_get_cookies().
 
     Tests are programmed as prescribed the pythons unittest's package.
 
@@ -16,7 +16,7 @@ class TestBeautifullsoupParser(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_check_url(self):
+    def test_get_cookies(self):
         """
         We pass dict(cookies) to get_cookies .
         """

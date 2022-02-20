@@ -2,6 +2,7 @@
 
 There are 3 ways you can contribute to Diplomatic Pulse:
 - Implementing new spiders;
+- Implementing scraping content types: ".doc", ".img", ".jpg"
 - Improving string dates parsing to handle possible unhandled string dates;
 - Improving formating html text ;  
 - Contributing to the documentation;

@@ -35,3 +35,15 @@ class TestHtmlUtils(unittest.TestCase):
         result = html_utils.get_html_response_content(response, xpaths["text"])
         expected = "<p>In a fast, simple, yet extensible way.</p>"
         self.assertEqual(expected, result)
+
+    def test_get_html_response_content_exception(self):
+        """
+        We pass response object and text xpath text to get_html_response_content and text.
+        """
+        url = "https://???/"
+        xpaths = {"text": "/html/body/div[2]/div/div[1]/div/div[1]/p[2]"}
+        page = None
+        response = HtmlResponse(url, body=page)
+        result = html_utils.get_html_response_content(response, xpaths["text"])
+        expected = ''
+        self.assertEqual(expected, result)

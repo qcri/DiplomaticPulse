@@ -1,3 +1,4 @@
+tmp/
 Makefile
 .idea/
 __pycache__

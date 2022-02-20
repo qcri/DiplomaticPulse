@@ -34,6 +34,7 @@ def itemloader(response, data, xpaths):
           }
 
     """
+
     item = StatementItem()
     item["title"] = html_parser.get_title(data["title"], response, xpaths)
     raw = pdf_parser.parse_pdfminer(response.url, None)

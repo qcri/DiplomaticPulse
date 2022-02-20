@@ -61,8 +61,7 @@ def format_html_text(html):
             clean_text = clean_text.replace('.', '\n')
 
         return clean_text
-    except Exception as ex:
-        print('========', ex)
+    except Exception:
         return html
 
 

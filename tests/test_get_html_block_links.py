@@ -28,12 +28,12 @@ class TestHtmlUtils(unittest.TestCase):
         We pass response and xpath, to get_html_response_content and expect text
         """
         url = "https://scrapy.org/"
-        xpaths = {"text": '//*[@id="link-logo"]'}
+        xpaths = {"text": '//div[has-class("first-row")]//p'}
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
         result = html_utils.get_html_response_content(response, xpaths["text"])
         expected = (
-            '<a href="https://scrapy.org" id="link-logo"><div class="logo"></div></a>'
+            'An open source and collaborative framework for extracting the data you need from'
         )
-        self.assertEqual(expected, result)
+        self.assertEqual(expected, result[:80])

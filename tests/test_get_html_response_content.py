@@ -33,8 +33,8 @@ class TestHtmlUtils(unittest.TestCase):
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
         result = html_utils.get_html_response_content(response, xpaths["text"])
-        expected = "<p>In a fast, simple, yet extensible way.</p>"
-        self.assertEqual(expected, result)
+        expected = "In a fast, simple, yet extensible way"
+        self.assertEqual(expected, result.strip())
 
     def test_get_html_response_content_exception(self):
         """

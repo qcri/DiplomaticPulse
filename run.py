@@ -1,27 +1,15 @@
-
-""" run.py
-
+"""
+run.py
 This script reads spider configurations from freebase, and distribute crawling
 jobs to multiple scrapyd servers. It will run continuously and repeat at
 given interval. It requires python-scrapyd-api, schedule packages.
-
-e.g. python run.py --every 10 http://127.0.0.1:6800,http://127.0.0.2:6800
-   # run all spiders on 127.0.0.1 and 127.0.0.2 every 10 minutes
-
-
-- Yifan Zhang (yzhang@hbku.edu.qa)
-
 """
-
 import sys
 import urllib.parse
 import argparse
 import time
-import email
-import smtplib
 from collections import Counter
 from datetime import datetime
-from types import SimpleNamespace
 import logging
 import schedule
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import getUrlConfigs
@@ -39,12 +27,10 @@ def domain(url):
     return o.netloc
 
 def takeJobsBalancingSplash(jobs, splashJobs):
-    """ spread slow splash spiders evenly 
-    Kader: Yifan Assumes always that splashJobs is not empty!
+    """
+    spread slow splash spiders evenly
     """
     logging.info("TJB: %s, %s" % (len(jobs), len(splashJobs)))
-    # Kader: added max(1, x) to deal with empty/zero splashJobs
-
     step = max(1, int(len(jobs) / max(1, len(splashJobs))))
     for i, job in enumerate(jobs):
         if i % step == 0:
@@ -56,27 +42,9 @@ def takeJobsBalancingSplash(jobs, splashJobs):
 
         yield job
 
-    # Kader: consider case where we have more splashJobs than jobs
     # This loops through the remaining splash jobs and executes them.
     for i, sjob in enumerate(splashJobs):
         yield sjob
-    
-
-def emailUser(subject, content):
-    password='x6@hdC=2'
-    sender='dpulse@QCRI.org'
-    recipients = []# ['dpulse@QCRI.org', 'alattab@hbku.edu.qa', 'iweber@hbku.edu.qa', 'yzhang@hbku.edu.qa']
-    #recipients = ['yzhang@hbku.edu.qa']
-    smtp_server = 'smtp.office365.com'
-    smtp_port = 587
-    msg = email.message.EmailMessage()
-    msg.set_content(content)
-    msg['Subject'] = subject
-    msg['From'] = sender
-    msg['To'] = ','.join(recipients)
-
-    with smtplib.SMTP_SSL(host=smtp_server, port=smtp_port) as smtp:
-        smtp.send_message(msg)
 
 def submitJobs(options):
     configs = getUrlConfigs()
@@ -90,14 +58,12 @@ def submitJobs(options):
 
     for i, scrapydUrl in enumerate(scrapyds):
         logging.info('for scrapyd url: %s', scrapydUrl)
-        logging.info('{:10.10} {}'.format('Spider', 'Url')) 
-
+        logging.info('{:10.10} {}'.format('Spider', 'Url'))
         if not options.dry_run:
             api = ScrapydAPI(scrapydUrl)
             numRunningJobs = len(api.list_jobs(options.project).get('pending', []))
             logging.info("found %d pending job for url %s", numRunningJobs, scrapydUrl)
             if numRunningJobs > 0:
-                #emailUser(JobRaceNotification.subject, JobRaceNotification.content)
                 logging.warning("Skipped this run! Please scale up vm or increase the interval between job runs")
                 continue
 
@@ -124,7 +90,6 @@ def submitJobs(options):
             logging.info('{:10.10} {}'.format(spider, url))
             if not options.dry_run:
                 api.schedule(project=project, spider=spider, url=url, jobid=jobid)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

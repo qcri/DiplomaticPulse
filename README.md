@@ -10,7 +10,8 @@
 
 This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
 contents with very little effort.
-On launching our Diplomatic pulse scrapy crawlers, the Diplomatic Pulse clones our backend date: xpaths of each country to scrape its web content. 
+On launching our Diplomatic pulse scrapy crawlers, the Diplomatic Pulse clones our backend data: xpaths of each country website
+to crawl and scrape website contents. 
 
 The websites contents of each country consist of: 
 
@@ -34,29 +35,28 @@ saved and indexed using open source elasticsearch engine.
 The Diplomatic Pulse system is capable of detecting possible scraping detection errors,
 it automatically sends alerts via emails
 
-## Country diplomatic website (Overview) page  
+## Country website (Overview) page  
  There is at least one overview page for each country, e.g: Australian: `https://www.foreignminister.gov.au`. 
  One country may have one or many overview pages (multiple URLs).
 
 The crawler visits the country's overview page then scrapes the existing articles links, then follows each link to extract  
-its content (title, date posted, statement); the content is saved into an elasticsearch database 
+its content (title, date posted, statement); the content is saved into an elasticsearch database.
 
 ##Diplomatic Pulse Spiders (Crawlers)
-The Diplomatic Pulse contains a number of five scrapy spiders (one for each content type) to extract contents from various websites, you can use command `scrapy list` to list all spiders.  
+The Diplomatic Pulse contains five scrapy spiders (one for each content type) to extract contents from various websites, you can use command `scrapy list` to list all spiders.  
 they are:
 
-- `html`  handles static html content 
-- `Javascript`  handles dynamic content 
-- `doc`  handles PDF and Images contents
-- `json` handles json content
-- `html_doc` handles mixed html & PDF/Images contents
+- `static`  handles static html content. 
+- `javascript`  handles dynamic content. 
+- `pdf`  handles PDF and Images contents.
+- `static_pdf` handles mixed static html & PDF/Images contents.
 
- One could easily implement a new spider for new content type.
-
+ One could easily implements a new spider for new content type.
 
 
 
-## Country website XPATHs
+
+## Website's XPATH configuration
 
 On launching Diplomatic Pulse containers, the script `setup.sh` creates three Elasticsearch indexes on the fly: `countries`, `urlconfig`, `dppa.st`;
 the indicies names are shown in `.env` file abd could be easlily renamed, they are:
@@ -66,7 +66,7 @@ the indicies names are shown in `.env` file abd could be easlily renamed, they a
 
 the elasticsearch index `countries` contains:
 - `name`: name of the country, for example: Australia.
-- `status`: complete if all country xpath are valid, else pending.
+- `status`: complete if all country's xpaths are valid, else pending.
 - `URL counter`: total number of indexed URLs for the country.
 
 the elasticsearch index `urlconfig` contains:
@@ -104,8 +104,7 @@ the elasticsearch index `dppa.st` contains:
 - `url`:  URL of the article.
 
 ## How to start Diplomatic Pulse  
-A docker-compose.yml file is used, once you have Docker installed and started, change to the project directory and follow:
-- This is a Scrapy project, so first you need a working Scrapy installation: https://docs.scrapy.org/en/latest/intro/install.html. 
+A docker-compose.yml file is used, once you have Docker installed and started, change to the project directory and follow: 
 -  clone Diplomatic Pulse code `git@github.com:qcri/DiplomaticPulse.git`
 - `docker-compose up`- launch Diplomatic Pulse containers. 
 - `docker-compose down` stop running containers. 
@@ -126,7 +125,7 @@ DOWNLOADER_MIDDLEWARES =
 `
   
 ## Browsing extracted indexed data
-Each visited country webpage, the content is extracted and indexed into our elasticsearch index `dppa.st`. 
+Each visited country's webpage, the content is extracted and indexed into elasticsearch index `dppa.st`. 
 
 The indexed data can be browsed using the  `Dejavu` (free and open source web UI for Elasticsearch).
 
@@ -153,12 +152,7 @@ To observe  each crawler job history and status, we use the Scrapy UI which runn
 
 -`http://localhost:6800`
 
-## Prequisites
 
-A running Python and Scrapy installation is mandatory for this project
-- `Ubuntu  >= 14.04 `
--` Python3.X, pip3`
-- `Scrapy >= 2.xx`
 
 
 

@@ -4,9 +4,9 @@ This module implements generic Item_loader builder.
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst, MapCompose
 from diplomaticpulse.items.items import StatementItem
-from diplomaticpulse.parsers import dates_parser, html_parser
+from diplomaticpulse.parsers import dates_parser, beautifulsoup_parser, html_parser
 
-def itemloader(response, data, xpaths):
+def bs4loader(response, data, xpaths, driver):
     """
     This method builds an Item object (static content).
 
@@ -27,6 +27,7 @@ def itemloader(response, data, xpaths):
                'statement' : <xpath of the statement>
 
                }
+        driver:
 
     Returns:
         Item_loader
@@ -37,10 +38,11 @@ def itemloader(response, data, xpaths):
     Item_loader.default_output_processor = TakeFirst()
     Item_loader.add_value("posted_date", dates_parser.get_date(data, response, xpaths))
     Item_loader.add_value("url", response.url)
-    Item_loader.add_value(
-        "title", html_parser.get_title(data["title"], response, xpaths['title'])
-    )
-    statement = html_parser.get_html_response_content(response, xpaths["statement"])
-
+    statement =   beautifulsoup_parser.get_text_from_html_soup(
+                response, xpaths['statement'], driver
+            )
     Item_loader.add_value("statement", statement)
+    Item_loader.add_value(
+        "title", html_parser.get_title(data["title"], response, xpaths)
+    )
     return Item_loader

@@ -7,15 +7,12 @@ BOT_NAME = "diplomaticpulse"
 SPIDER_MODULES = ["diplomaticpulse.spiders"]
 NEWSPIDER_MODULE = "diplomaticpulse.spiders"
 
-# To activate an Item Pipeline component we must add its class to the ITEM_PIPELINES setting
-# The integer values you assign to classes in this setting determine the order they run in- items go through pipelines from order number low to high.  you can set them  in the 0-1000 range
 ITEM_PIPELINES = {
-    "diplomaticpulse.pipelines.ElasticSearchPipeline": 800,
-    "diplomaticpulse.duplicatepipeline.DuplicatesPipeline": 500,
-    "diplomaticpulse.droppipeline.DropItemPipeline": 400,
+    "diplomaticpulse.pipelines.pipelines.ElasticSearchPipeline": 800,
+    "diplomaticpulse.pipelines.duplicatepipeline.DuplicatesPipeline": 500,
+    "diplomaticpulse.pipelines.droppipeline.DropItemPipeline": 400,
 }
 
-# the SPIDER_CONTRACTS is used for our custom Contracts, it is a dict containing the scrapy contracts enabled in your project, used for testing spiders.
 SPIDER_CONTRACTS = {
     "diplomaticpulse.contracts.test_contracts.HasLinkContract": 500,
 }
@@ -25,15 +22,12 @@ EXTENSIONS = {
     "scrapy.extensions.closespider.CloseSpider": 400,
 }
 DOWNLOADER_MIDDLEWARES = {
-    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
-    # 'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
     "rotating_proxies.middlewares.BanDetectionMiddleware": 620,
     "scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware": 350,
     "scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware": 810,
 }
 CLOSESPIDER_ITEMCOUNT = 20
 CLOSESPIDER_TIMEOUT = 120
-# The maximum depth that will be allowed to crawl for any site. If zero, no limit will be imposed.
 DEPTH_LIMIT = 0
 # Debug mode conguration
 LOG_LEVEL = "INFO"

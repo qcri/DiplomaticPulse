@@ -6,14 +6,12 @@ from datetime import datetime
 import random
 from scrapy import signals
 import scrapy
-from scrapy.loader import ItemLoader
-from scrapy.loader.processors import TakeFirst, MapCompose
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
 from scrapy_selenium import SeleniumRequest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from diplomaticpulse.items import StatementItem
+from diplomaticpulse.loader import bs4Loader
 from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
 from diplomaticpulse.misc import (
     cookies_utils
@@ -173,6 +171,8 @@ class JavascriptSpider(scrapy.Spider):
                 cb_kwargs=dict(data=article_info),
             )
 
+
+
     def parseitem(self, response, data):
         """
         This is the specified callback used by Scrapy to process downloaded responses.
@@ -189,7 +189,7 @@ class JavascriptSpider(scrapy.Spider):
                    }
 
         Returns:
-            Dict : (Iterable of Items)
+            Dict : (Iterable of items)
                 Python dict in the following format:
                 {
                 'link' : <link URL>
@@ -204,30 +204,11 @@ class JavascriptSpider(scrapy.Spider):
 
         """
         self.logger.info("start building item object of url %s ", response.url)
-        Item_loader = ItemLoader(item=StatementItem(), response=response)
-        Item_loader.default_input_processor = MapCompose(str())
-        Item_loader.default_output_processor = TakeFirst()
+        Item_loader =  bs4Loader.bs4loader(response, data, self.xpaths, self.web_driver)
         Item_loader.add_value("parent_url", self.start_urls[0])
-        Item_loader.add_value(
-            "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
-        )
         Item_loader.add_value("content_type", self.content_type)
         Item_loader.add_value("country", self.xpaths["name"])
-        statement = beautifulsoup_parser.get_text_from_html_soup(
-            response, self.xpaths["statement"], self.web_driver
-        )
-        Item_loader.add_value("statement", statement)
-        Item_loader.add_value("url", response.url)
         Item_loader.add_value(
-            "title",
-            beautifulsoup_parser.get_title_from_html_soup(
-                response, data["title"], self.xpaths["title"], self.web_driver
-            ),
-        )
-        Item_loader.add_value(
-            "posted_date",
-            beautifulsoup_parser.get_date_from_html_soup(
-                response, data, self.xpaths, self.web_driver
-            ),
+            "indexed_date", (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         )
         yield Item_loader.load_item()

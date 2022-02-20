@@ -166,7 +166,7 @@ class HtmlSpider(scrapy.spiders.Spider):
                    }
 
         Returns:
-            Dict : (Iterable of Items)
+            Dict : (Iterable of items)
                 Python dict in the following format:
                 {
                 'link' : <link URL>

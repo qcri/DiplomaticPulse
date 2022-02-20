@@ -1,7 +1,7 @@
 """
 This module implements generic Item_loader builder.
 """
-from diplomaticpulse.items import StatementItem
+from diplomaticpulse.items.items import StatementItem
 from diplomaticpulse.parsers import pdf_parser, dates_parser, html_parser
 
 
@@ -20,7 +20,7 @@ def itemloader(response, data, xpaths):
                }
 
     Returns:
-        Dict : ( Iterable of Items)
+        Dict : ( Iterable of items)
         Python dict in the following format:
           {
             'link' : <article URL>

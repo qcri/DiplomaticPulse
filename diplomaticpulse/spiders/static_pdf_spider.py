@@ -164,7 +164,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                    }
 
         Returns:
-            Dict : (Iterable of Items)
+            Dict : (Iterable of items)
                 Python dict in the following format:
                 {
                 'link' : <link URL>
@@ -216,7 +216,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
                    }
 
         Returns:
-            Dict : { Iterable of Items}
+            Dict : { Iterable of items}
             Python dict in the following format:
               {
                 'link' : <article URL>

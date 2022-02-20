@@ -43,7 +43,7 @@ class TestHtmlUtils(unittest.TestCase):
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
-        xpaths = {"title": '//h3[has-class("header-title")]//span//text()'}
+        xpaths = '//h3[has-class("header-title")]//span//text()'
         expected = "UNITED ARAB EMIRATES CONTRIBUTES 500,000 DOSES OF COVID-19 VACCINE TO MALAYSIA"
         result = html_utils.get_title(title, response, xpaths)
         self.assertEqual(expected, result)
@@ -54,6 +54,6 @@ class TestHtmlUtils(unittest.TestCase):
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
-        xpaths = {"title": "//wrong-xpath/span//text()"}
+        xpaths =  "//wrong-xpath/span//text()"
         result = html_utils.get_title(title, response, xpaths)
         self.assertEqual(None, result)

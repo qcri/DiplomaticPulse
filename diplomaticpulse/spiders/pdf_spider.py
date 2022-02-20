@@ -115,7 +115,6 @@ class PdfSpider(CrawlSpider):
 
         """
         for url in self.start_urls:
-            self.logger.info("starting url %s ", url)
             yield scrapy.Request(
                 url, callback=self.parse, headers=self.headers, cookies=self.cookies
             )
@@ -173,7 +172,7 @@ class PdfSpider(CrawlSpider):
                    }
 
         Returns:
-            Dict : ( Iterable of Items)
+            Dict : ( Iterable of items)
             Python dict in the following format:
               {
                 'link' : <article URL>

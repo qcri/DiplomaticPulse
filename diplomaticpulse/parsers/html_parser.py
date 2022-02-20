@@ -159,7 +159,7 @@ def get_title(title, response, xpaths):
     """
     try:
         if title is None:
-            title = response.xpath(xpaths["title"]).get()
-        return title
+            title = response.xpath(xpaths).get()
+        return title.strip()
     except Exception:
         return title

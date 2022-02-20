@@ -61,7 +61,7 @@ class ElasticSearchPipeline(object):
             spider (Spider object) – the spider which was closed
 
         Returns
-            call send Items
+            call send items
 
         """
         logging.info("the spider %s is closed" , spider.name)

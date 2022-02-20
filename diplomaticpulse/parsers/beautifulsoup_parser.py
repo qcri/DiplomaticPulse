@@ -68,14 +68,14 @@ def get_text_from_html_block(url, xpaths_html, driver):
         return url_info
 
 
-def get_text_from_html_soup(response, xpaths_html, driver):
+def get_text_from_html_soup(response, xpaths, driver):
     """
     This method scrapes the page content from soup object.
 
     Args
         response (response object):
             Request response content
-        xpaths_html (string): <page html XPATH >
+        xpaths (string): <page html XPATH >
         driver : selenium driver type
             driver object
 
@@ -91,7 +91,7 @@ def get_text_from_html_soup(response, xpaths_html, driver):
         text = []
 
         # check  global xpaths
-        elements = xpaths_html.split(",")
+        elements = xpaths.split(",")
         if len(elements) < 2:
             return text
 
@@ -99,7 +99,7 @@ def get_text_from_html_soup(response, xpaths_html, driver):
         for rows in soup.find_all(elements[0], class_=elements[1]):
             text.append(rows.get_text())
         if text is None:
-            text = html_parser.get_html_response_content(response, xpaths_html)
+            text = html_parser.get_html_response_content(response, xpaths)
         return " ".join(text)
     except Exception as ex:
         print("Error occured in get_text_from_html_soup", ex)
@@ -445,7 +445,7 @@ def get_text(soup, element):
         if len(elements) > 1:
             return (soup.find(elements[0], class_=elements[1]).text).strip()
         text = fire_me(dispatcher[element], soup)
-        return text
+        return text.strip()
     except Exception:
         return None
 

@@ -50,7 +50,7 @@ class HtmlSpider(scrapy.spiders.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         """
-        This is the class method used by Scrapy framework to create a running spider.
+        This method creates running spider instance.
 
         Args
             crawler (Crawler instance) :
@@ -75,12 +75,12 @@ class HtmlSpider(scrapy.spiders.Spider):
         This is the class method used by Scrapy Framework to open running spider.
 
         Args
-            crawler(spider (Spider object):
+            spider(spider (Spider object):
              the spider for which this request is intended
 
         Raises
              CloseSpider( raised from a spider callback):
-                when no URL info found
+                when no URL configuration found
 
         """
         self.settings = get_project_settings()
@@ -98,8 +98,8 @@ class HtmlSpider(scrapy.spiders.Spider):
 
     def start_requests(self):
         """
-        This method must return an iterable with the first Requests to crawl for this spider.
-        It is called by Scrapy Framework after the spider is opened for scraping.
+        This method returns an iterable with the first Requests to crawl for this spider. It is called by
+        Scrapy when the spider is opened for scraping.
         """
 
         for url in self.start_urls:

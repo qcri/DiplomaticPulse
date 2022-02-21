@@ -60,7 +60,7 @@ class PdfSpider(CrawlSpider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         """
-        This is the class method used by Scrapy framework to create a running spider.
+        This method creates running spider instance.
 
         Args
             crawler (Crawler instance) :
@@ -84,12 +84,12 @@ class PdfSpider(CrawlSpider):
         This is the class method used by Scrapy Framework to open running spider.
 
         Args
-            crawler(spider (Spider object):
+            spider(spider (Spider object):
              the spider for which this request is intended
 
         Raises
              CloseSpider( raised from a spider callback):
-                when no URL info found
+                when no URL configuration found
 
         """
 
@@ -107,12 +107,8 @@ class PdfSpider(CrawlSpider):
 
     def start_requests(self):
         """
-        This method must return an iterable with the first Requests to crawl for this spider.
-        It is called by Scrapy Framework after the spider is opened for scraping
-
-        Returns:
-            request: Iterable of Request
-
+        This method returns an iterable with the first Requests to crawl for this spider. It is called by
+        Scrapy when the spider is opened for scraping.
         """
         for url in self.start_urls:
             yield scrapy.Request(

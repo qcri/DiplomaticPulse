@@ -1,8 +1,7 @@
 ## How to contribute to Diplomatic Pulse code
 
-There are 3 ways you can contribute to Diplomatic Pulse:
-- Implementing new spiders;
-- Implementing scraping content types: ".doc", ".img", ".jpg"
+There are 4 ways you can contribute to Diplomatic Pulse project:
+- Implementing new spiders to scrape  ".doc", ".img", ".jpg" contents.
 - Improving string dates parsing to handle possible unhandled string dates;
 - Improving formating html text ;  
 - Contributing to the documentation;
@@ -15,12 +14,6 @@ If the changes are minor (simple bug fix or documentation fix), then feel free
 to open a PR without discussion. Otherwise, we recommend opening an issue (if one doesn't already
 exist) and discuss your proposed changes. This way, we can give you feedback
 and validate the proposed changes. Here is a template
-
-
-Motivation first:
-
-Is it related to a problem/frustration with the library? If so, please explain why. Providing a code snippet that demonstrates the problem is best.
-Is it related to something you would need for a project?
 
 
 Write a full paragraph describing the feature;
@@ -57,24 +50,17 @@ source diplomaticpulse-env/bin/activate
 (diplomaticpulse-env) pip install -e .
 ```
 
-Make sure you have `qa-requirements.txt` and `requirements.txt` installed, so you can use `pylint` and `darglint` modules
+Make sure you have `requirements.txt` installed, so you can use `pylint`.
 
 ```python
 (diplomaticpulse-env) pip install -r requirements.txt
-(diplomaticpulse-env) pip install -r qa-requirements.txt
+
 ```
 
 ### Step 2. Make code changes
 
 ```python
 (diplomaticpulse-env) pylint --rcfile=.pylintrc path/to/changed/file
-```
-
-or in docker
-
-```python
-docker build . -t diplomaticpulse
-docker run -it diplomaticpulse:latest pylint diplomaticpulse
 ```
 
 And darglint by

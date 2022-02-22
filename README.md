@@ -5,9 +5,9 @@
 <p  style="color:DeepSkyBlue;font-size:40px;"align="center">
   <b>Crawling, Indexing, and Storage System for United Nations states Members Press Statements in Real Time.</b>
 </p>
-#
 
 
+##Overview
 This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
 contents with very little effort.
 On launching our Diplomatic pulse scrapy crawlers, the Diplomatic Pulse clones our backend data: xpaths of each country website
@@ -24,6 +24,11 @@ The websites contents of each country consist of:
  -`Statement: `the content of the article
  
 The scraped data is saved into Elasticsearch database.
+
+
+##Requirements
+- Python 3.6+
+- Works on Linux
 
 ##Why Diplomatic Pulse
 United Nations states Member Press statements are a primary sources on issues of debate in the UN’s peace and security context.
@@ -154,7 +159,8 @@ To observe  each crawler job history and status, we use the Scrapy UI which runn
 
 
 
-
+##Who are using Diplomatic pulse
+The 193 United Nations states Members states, and the United Nations Department of Political and Peacebuilding Affairs (DPPA).
 
 
 

@@ -1,12 +1,12 @@
 
-<h1  style="color:DeepSkyBlue;font-size:60px;"align="center">
+<h1  style="font-size:60px;"align="center">
   <b>Diplomatic Pulse</b>
 </h1>
-<p  style="color:DeepSkyBlue;font-size:40px;"align="center">
+<p  style="font-size:40px;"align="center">
   <b>Crawling, Indexing, and Storage System for United Nations states Members Press Statements in Real Time.</b>
 </p>
 
-
+#
 ##Overview
 This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
 contents with very little effort.

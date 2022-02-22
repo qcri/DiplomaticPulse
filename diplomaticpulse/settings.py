@@ -1,4 +1,9 @@
-# -*- coding: utf-8 -*-
+
+"""
+This module contains the default values for all settings used by Scrapy.
+for more info, see https://docs.scrapy.org/en/latest/topics/settings.html?highlight=settings
+
+"""
 
 import os
 
@@ -13,11 +18,7 @@ ITEM_PIPELINES = {
     "diplomaticpulse.pipelines.droppipeline.DropItemPipeline": 400,
 }
 
-SPIDER_CONTRACTS = {
-    "diplomaticpulse.contracts.test_contracts.HasLinkContract": 500,
-}
-
-# extension
+# Scrapy extension
 EXTENSIONS = {
     "scrapy.extensions.closespider.CloseSpider": 400,
 }
@@ -27,45 +28,62 @@ DOWNLOADER_MIDDLEWARES = {
     "scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware": 810,
 }
 CLOSESPIDER_ITEMCOUNT = 20
+
 CLOSESPIDER_TIMEOUT = 120
+
 DEPTH_LIMIT = 0
-# Debug mode conguration
+
+
 LOG_LEVEL = "INFO"
+
 # Maximum number of concurrent items (per response) to process in parallel in the Item Processor, default is 100
 CONCURRENT_ITEMS = 10
+
 # This param is used at an empty ES index
 CLOSESPIDER_PAGECOUNT = 50
+
 # The amount of time (in secs) that the downloader should wait before downloading consecutive pages, default is 0
 DOWNLOAD_DELAY = 2
+
 # The maximum number of concurrent (ie. simultaneous) requests that will be performed by the Scrapy downloader. (default: 16)
 CONCURRENT_REQUESTS = 8
+
 # The maximum number of concurrent (ie. simultaneous) requests that will be performed to any single domain. default is 8
 CONCURRENT_REQUESTS_PER_DOMAIN = 8
+
 # The maximum number of concurrent (ie. simultaneous) requests that will be performed to any single IP. If non-zero, the CONCURRENT_REQUESTS_PER_DOMAIN s
 # etting is ignored, and this one is used instead. In other words, concurrency limits will be applied per IP, not per domain, default is 0
 CONCURRENT_REQUESTS_PER_IP = 16
+
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = True
+
 # Enable and configure the AutoThrottle extension (disabled by default) See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 AUTOTHROTTLE_ENABLED = True
+
 # The initial download delay
 AUTOTHROTTLE_START_DELAY = 5
+
 # The maximum download delay to be set in case of high latencies
 AUTOTHROTTLE_MAX_DELAY = 60
+
 # AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0  # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = True
+
+#Maximum number of items to index
 ELASTIC_BUFFER_LENGTH = 50
+
 ELASTIC_TIMEOUT = 60
-ELASTIC_UNIQ_KEY = "url"
-ELASTIC_TYPE = "_doc"
 
 # Elastic search Configuration#
+ELASTIC_UNIQ_KEY = "url"
+ELASTIC_TYPE = "_doc"
 ELASTIC_HOST = os.environ["ELASTIC_HOST"]
 ELASTIC_USERNAME = os.environ["ELASTIC_USERNAME"]
 ELASTIC_PASSWORD = os.environ["ELASTIC_PASSWORD"]
 ELASTIC_INDEX = os.environ[
     "ELASTIC_INDEX"
-]  # os.environ.get('ELASTIC_INDEX', 'dppa.st')
+]
 ELASTIC_INDEX_SITECONFIG = os.environ["ELASTIC_INDEX_XPATH"]
 ELASTIC_INDEX_COUNTRY = os.environ["ELASTIC_INDEX_COUNTRIES"]
 
@@ -89,7 +107,7 @@ ELASTIC_MAPPINGS = {
     },
 }
 
-# user agent list
+# Hearders USER AGENT list
 USER_AGENT_LIST = [
     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0",
@@ -98,7 +116,7 @@ USER_AGENT_LIST = [
     "Mozilla/5.0 (Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
 ]
 
-# languages
+# Text languages
 ARTICLES_LANGUAGE = {
     "aa": "Afar",
     "ab": "Abkhazian",
@@ -287,6 +305,7 @@ ARTICLES_LANGUAGE = {
     "zu": "Zulu",
 }
 
+#Regular expression
 REG_EXP_1 = (
     r"(?:\d{1,2} (?:january|february|march|april|may|june|july|august|september|october|november|december) \d{2,4})|(?:\d{1,2} "
     r"(?:jan|feb|march|april|may|june|july|august|sept|oct|nov|dec) \d{2,4})|(?:(?:january|february|march|april|may|june|july|"

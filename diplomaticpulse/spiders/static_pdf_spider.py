@@ -227,7 +227,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         self.logger.debug("start parsing file %s ", response.url)
-        item = statementItem.itemloader(response, data, self.xpaths)
+        item = statementItem.loader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]

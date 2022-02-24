@@ -1,24 +1,44 @@
-.. diplomatic pulse documentation master file, created by
-   sphinx-quickstart on Tue Feb 22 11:30:44 2022.
+.. Diplomatic Pulse documentation master file, created by
+   sphinx-quickstart on Wed Feb 23 14:01:20 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to diplomatic pulse's documentation!
-============================================
-
-
-United Nations states Member Press statements are a primary sources on issues of debate in the UN’s peace and security context.
-We have developed the “Diplomatic Pulse” system as search engine service for press statements of the UN’s 193 Member States,
-including their Foreign Ministries and Permanent Missions to the UN.
- Diplomatic Pulse crawls and scrapes all UN Member States websites contents in real time. It is built using free open source
-website crawling technologies ; Scrapy web crawling and web scarping framework to automate data scraping. The scraped contents are
-saved and indexed using open source elasticsearch engine.
+Welcome to Diplomatic Pulse's |version| documentation!
+======================================================
+Diplomatic pulse is a crawling, indexing and storage system offor United Nations Members States press statements  in Real Time.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
+   :hidden:
 
+   overview
+   installation
+   xpaths-data
+   indexed-data
+   spiders
+   browsing-data
+   proxies
+   modules
+   contributing
 
+:doc:`overview`
+
+:doc:`installation`
+
+:doc:`xpaths-data`
+
+:doc:`indexed-data`
+
+:doc:`spiders`
+
+:doc:`browsing-data`
+
+:doc:`proxies`
+
+:doc:`modules`
+
+:doc:`contributing`
 
 Indices and tables
 ==================

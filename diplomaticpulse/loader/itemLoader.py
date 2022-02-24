@@ -6,7 +6,7 @@ from scrapy.loader.processors import TakeFirst, MapCompose
 from diplomaticpulse.items.items import StatementItem
 from diplomaticpulse.parsers import dates_parser, html_parser
 
-def itemloader(response, data, xpaths):
+def loader(response, data, xpaths):
     """
     This method builds an Item object (static content).
 

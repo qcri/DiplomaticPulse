@@ -64,7 +64,7 @@ def get_text_from_html_block(url, xpaths_html, driver):
             url_info.append(dict(url=unquote(url), title=title, posted_date=posted_date))
         return url_info
     except Exception as ex:
-        print("Error occured in get_info_from_html_block", ex)
+        print("Error occured in get_text_from_html_block", ex)
         return url_info
 
 

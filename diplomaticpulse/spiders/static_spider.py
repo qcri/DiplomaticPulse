@@ -173,7 +173,7 @@ class HtmlSpider(scrapy.spiders.Spider):
 
         """
         self.logger.debug("start parsing  item from %s !", response.url)
-        Item_loader = itemLoader.itemloader(response, data, self.xpaths)
+        Item_loader = itemLoader.loader(response, data, self.xpaths)
         Item_loader.add_value("country", self.xpaths["name"])
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value(

@@ -157,7 +157,7 @@ class ElasticSearchPipeline(object):
 
         if not es.ping():
             raise CloseSpider(
-                "spider failed to connect  to elasticsearch on server "
+                "spider failed to connect to elasticsearch on server "
             )
         logging.info("eleasticsearch server %s  is up running  !!", es_servers)
         return es

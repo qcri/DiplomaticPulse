@@ -200,7 +200,7 @@ class JavascriptSpider(scrapy.Spider):
 
         """
         self.logger.info("start building item object of url %s ", response.url)
-        Item_loader =  bs4Loader.bs4loader(response, data, self.xpaths, self.web_driver)
+        Item_loader =  bs4Loader.loader(response, data, self.xpaths, self.web_driver)
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value("content_type", self.content_type)
         Item_loader.add_value("country", self.xpaths["name"])

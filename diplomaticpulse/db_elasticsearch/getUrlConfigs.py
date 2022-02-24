@@ -1,7 +1,6 @@
 """
-Implements  elasticsearch client.
+ Implements  elasticsearch client.
 """
-
 import os
 import hashlib
 from six import string_types
@@ -10,8 +9,7 @@ from scrapy.exceptions import  CloseSpider
 
 
 class DpElasticsearch:
-    """
-    Class to serve as elasticsearch client.
+    """Class to serve as elasticsearch client.
     """
 
     def __init__(self, _es_servers):
@@ -195,8 +193,7 @@ class DpElasticsearch:
 
 
     def getUrlConfigs(self):
-        """
-        Search countries name with 'complete' status
+        """ Search countries name with complete status
 
         Returns
             output (dict(string)
@@ -206,8 +203,6 @@ class DpElasticsearch:
                  country: <country>
                  content_type: <content_type>
               }
-              .
-              .
             ]
 
         """
@@ -235,6 +230,8 @@ class DpElasticsearch:
 
 
 def getUrlConfigs():
+    """getUrlConfigs"""
+
     es_servers = os.environ["ELASTIC_HOST"]
     dpes = DpElasticsearch(es_servers)
     return dpes.getUrlConfigs()

@@ -5,7 +5,7 @@ from diplomaticpulse.items.items import StatementItem
 from diplomaticpulse.parsers import pdf_parser, dates_parser, html_parser
 
 
-def itemloader(response, data, xpaths):
+def loader(response, data, xpaths):
     """
     This is the specified callback used by Scrapy to process downloaded responses.
 

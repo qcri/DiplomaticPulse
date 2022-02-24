@@ -7,7 +7,7 @@
 </p>
 
 
-##Overview
+## Overview
 
 This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
 contents with very little effort.
@@ -15,7 +15,7 @@ On launching our Diplomatic pulse scrapy crawlers, the Diplomatic Pulse clones o
 website layout to crawl and scrape the html contents. 
 
 
-##Requirements
+## Requirements
 - Python 3.6+
 - Works on Linux
 
@@ -27,10 +27,10 @@ A docker-compose.yml file is used, once you have Docker installed and started, c
 See the install section in the documentation at https://diplomaticpulse.qcri.org/docs/installation.html for more details
 
 
-##Documentation
+## Documentation
 Documentation is available online at  https://diplomaticpulse.qcri.org/docs and in the docs directory.
 
-##Contributing
+## Contributing
 See https://diplomaticpulse.qcri.org/docs/contributing.html for details.
 
 

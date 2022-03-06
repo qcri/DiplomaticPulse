@@ -23,18 +23,15 @@ class TestHtmlUtils(unittest.TestCase):
         options.add_argument("--disable-gpu")  # Last I checked this was necessary.
         self.driver = webdriver.Chrome(chrome_options=options)
 
-    def tearDown(self):
-        pass
-
     def test_get_text_from_html_block1(self):
         """
         We pass url, xpaths, driver to get_text_from_html_block( and expect text
         """
-        url = "https://scrapy.org/"
+        url = "http://localhost/scrapy.html"
         xpaths = {"global": "div,container", "link": "html.a", "posted_date": "li.a"}
 
         result = util.get_text_from_html_block(url, xpaths, self.driver)
-        expected = [{'url': 'https://scrapy.org', 'title': None, 'posted_date': None},
+        expected = [{'url': 'https://scrapy.org/', 'title': None, 'posted_date': None},
                     {'url': 'https://www.zyte.com/', 'title': None, 'posted_date': None},
                     {'url': 'https://www.zyte.com/scrapy-cloud/', 'title': None, 'posted_date': None},
                     {'url': 'https://github.com/scrapy/scrapy', 'title': None, 'posted_date': None}]
@@ -44,7 +41,7 @@ class TestHtmlUtils(unittest.TestCase):
         """
         We pass url, xpaths, driver to get_info_from_html_block and expect text
         """
-        url = "https://scrapy.org/"
+        url = "http://localhost/scrapy.html"
         xpaths = {
             "global": "div,container",
             "link": "html.a",
@@ -52,7 +49,7 @@ class TestHtmlUtils(unittest.TestCase):
             "posted_date": "li.a",
         }
         result = util.get_text_from_html_block(url, xpaths, self.driver)
-        expected = [{'url': 'https://scrapy.org', 'title': None, 'posted_date': None},
+        expected = [{'url': 'https://scrapy.org/', 'title': None, 'posted_date': None},
                     {'url': 'https://www.zyte.com/', 'title': None, 'posted_date': None},
                     {'url': 'https://www.zyte.com/scrapy-cloud/', 'title': None, 'posted_date': None},
                     {'url': 'https://github.com/scrapy/scrapy', 'title': None, 'posted_date': None}]

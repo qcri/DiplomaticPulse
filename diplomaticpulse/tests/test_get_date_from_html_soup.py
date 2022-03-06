@@ -6,12 +6,6 @@ from urllib.request import Request, urlopen
 from scrapy.http import HtmlResponse
 
 
-# following is just to ignore https certificate issues
-import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
-
-
 class TestHtmlUtils(unittest.TestCase):
     """
     Class containing the test suite for test_get_date_from_html_soup().
@@ -36,7 +30,7 @@ class TestHtmlUtils(unittest.TestCase):
         We pass url, driver to test_get_date_from_html_soup and expect text
         """
 
-        url = "https://scrapy.org/"
+        url = "http://localhost/scrapy.html"
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)

@@ -11,12 +11,6 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_date_from_pdf1(self):
         """
         We pass string date to get_date_from_pdf and expect it to return same date in YYYY-MM-DD.

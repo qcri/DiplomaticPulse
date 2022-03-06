@@ -10,12 +10,6 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_avoid_future_date(self):
         """
         We pass today's date to avoid_future_date and expect it to return the same.

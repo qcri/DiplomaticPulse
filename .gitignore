@@ -10,6 +10,8 @@ __pycache__
 *.xls*
 *.txt
 *.html
+dbs/
+__pycache__
 *.png
 *.log
 test_env_variables.sh

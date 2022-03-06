@@ -9,12 +9,6 @@ class TestPDFParser(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_language(self):
         """
         We pass string text to get_language and expect it to return get_language name

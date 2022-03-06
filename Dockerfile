@@ -10,6 +10,7 @@ RUN apt-get update \
             wget \
             gnupg \
             curl \
+            nginx \
     && rm -rf /var/cache/apk/*
 
 # install google chrome
@@ -30,6 +31,7 @@ RUN pip3 install -U --no-cache-dir pip
 
 WORKDIR /code
 COPY . /code
+COPY diplomaticpulse/tests/fixtures /var/www/html/
 RUN python3 -m pip install -r requirements.txt && pip3 install --upgrade pymupdf && python3 -m pip install  scrapyd scrapyd-client
 
 EXPOSE 6800

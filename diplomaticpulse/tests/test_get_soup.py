@@ -15,12 +15,6 @@ class TestHtmlUtils(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_soup(self):
         """
         We pass url, driver to get_bs4_soup and expect text

@@ -9,25 +9,25 @@ import scrapy
 from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.db_elasticsearch.db_es import DpElasticsearch
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.loader import itemLoader
-from diplomaticpulse.misc import errback_http, cookies_utils
+from diplomaticpulse.dp_loader import item_loader
+from diplomaticpulse.misc import cookies_utils
 
 
-class HtmlSpider(scrapy.spiders.Spider):
+class StaticSpider(scrapy.spiders.Spider):
     """
     This spider is a subclass of scrapy.spiders.Spider, which indirects its handling of
     the start_urls and subsequently extracted and followed URLs. It is designed to handle
     static website's content.
     """
 
-    # spder name
+    # spider name
     name = "static"
 
     def __init__(self, url, *args, **kwargs):
         """
-        Create a new instance of  HtmlSpider
+        Create a new instance of  PdfSpider
 
         Args
             url (string) :
@@ -137,7 +137,6 @@ class HtmlSpider(scrapy.spiders.Spider):
                 response.urljoin(url),
                 callback=self.parseitem,
                 cookies=self.cookies,
-                errback=errback_http.errback_httpbin,
                 headers=self.headers,
                 cb_kwargs=dict(data=article_info),
             )
@@ -173,7 +172,7 @@ class HtmlSpider(scrapy.spiders.Spider):
 
         """
         self.logger.debug("start parsing  item from %s !", response.url)
-        Item_loader = itemLoader.loader(response, data, self.xpaths)
+        Item_loader = item_loader.loader(response, data, self.xpaths, None)
         Item_loader.add_value("country", self.xpaths["name"])
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value(

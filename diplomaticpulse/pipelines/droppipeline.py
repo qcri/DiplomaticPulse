@@ -1,5 +1,5 @@
 """
-  This implements Scrapy pipeline DropItemPipeline
+  This implements Scrapy pipeline DropItemPipeline.
 """
 from scrapy.exceptions import DropItem
 
@@ -13,7 +13,7 @@ class DropItemPipeline(object):
     @classmethod
     def process_item(self, item, spider):
         """
-        This method checck if teh statement in the item is NOT None.
+        This method throws an excpetion when the statement in the item is NULL.
 
         Args
           item: object of item
@@ -27,5 +27,5 @@ class DropItemPipeline(object):
 
         """
         if not item["statement"]:
-            raise DropItem("Item dropped because the statement is NULL or EMPTY")
+            raise DropItem("Item dropped because the statement is None or empty")
         return item

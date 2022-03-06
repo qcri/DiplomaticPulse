@@ -2,23 +2,23 @@ Website's XPATHs configuration
 ************************************
 Country website (Overview) page
 ===============================
-There is at least one overview page for each country, e.g: Australian: https://www.foreignminister.gov.aux
-One country may have one or many overview pages (multiple URLs).
+There maybe at least one overview page for each country, e.g: Australian: https://www.foreignminister.gov.au
+A country may have more than one overview page (multiple URLs).
 The crawler visits the country's overview page then scrapes the existing articles links, then follows each link to extract
 its content (title, date posted, statement); the content is saved into an `elasticsearch`_ database.
 
 .. _elasticsearch: https://www.elastic.co/guide/index.html
 
-XPATHs Configuration Data
+Build XPATHs Configuration Data
 =========================
-On launching the Diplomatic Pulse containers, the script ``setup.sh`` creates two Elasticsearch indexes on the fly: `countries`_
-and `urlconfig`_; the indicies names are shown in ``.env`` file and could be easily renamed.
+On launching the Diplomatic pulse containers, the script ``setup.sh`` creates two Elasticsearch indexes on the fly: `countries`_
+and `urlconfig`_; each index name is shown in  file ``.env``.
 
 .. _countries:
 
-countries
+countries index
 ---------
-The elasticsearch index: `countries`_ contains the  list names of countries. It is populated with the json data in `countries.json`_.
+The elasticsearch index: `countries`_ contains the  list of names of countries. It is populated with the json data in `countries.json`_.
 
 Metadata
 
@@ -28,7 +28,7 @@ Metadata
 
 .. _urlconfig:
 
-urlconfig
+urlconfig index
 ---------
 The eleasticsearch index: `urlconfig`_ contains the list of URL's xpath configuration. It is populated with the data
 `urlconfig.json`_.

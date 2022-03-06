@@ -1,5 +1,5 @@
 """
-This module implements  string dates parsing.
+This module implements  string dates parsing codes.
 """
 import datetime
 from datetime import date
@@ -8,9 +8,9 @@ import dateutil.parser as dparser
 import dateparser
 from diplomaticpulse.misc import utils
 
-def parse_mydate(str_date, language):
+def parse_mydate(index_action):
     """
-    This function parses any type of string date, it handles US dates formats.
+    This function parses any string date.
 
     Args
         str_date (string):
@@ -19,15 +19,21 @@ def parse_mydate(str_date, language):
             text language, eg: english
 
     Returns
-        date (string):
+        date (string)
 
     """
-    if len(str_date.split("#")) > 1:
-        func_name = "date_with_us_format"
-    elif language is None:
+    language = None
+    if 'language' in index_action:
+        language = index_action['language']
+    str_date = None
+    if 'posted_date' in index_action:
+        str_date = index_action['posted_date']
+
+    func_name = "default"
+    if language is not None and language.lower() != 'english':
         func_name = "non_english"
-    else:
-        func_name = "default"
+    elif str_date is not None and  len(str_date.split("#")) > 1:
+            func_name = "date_with_us_format"
 
     dispatcher = {
         "default": parse_default_string_date,
@@ -39,7 +45,7 @@ def parse_mydate(str_date, language):
 
 def fire_me(func_name, str_date):
     """
-    Call function based on func_name.
+    Call function is based on func_name.
 
     Args
         func_name (string:
@@ -67,23 +73,24 @@ def parse_non_english_string_date(str_date):
     """
     try:
         return dateparser.parse(str_date).strftime("%Y-%m-%d")
-    except Exception:
+    except Exception as ex:
+        print(ex)
         return None
 
 
 def parse_default_string_date(str_date):
     """
-    This function parses string date, format YYYYMMDD and DDMMYYYY.
+    This function parses string date, format: YYYYMMDD and DDMMYYYY.
 
     Args
         str_date  (string):
             string date to be parsed
 
     Returns
-        date (string):
+        date (string)
 
     Raises
-        ValueError
+        Exception
              when it catches an error
 
     """
@@ -91,13 +98,13 @@ def parse_default_string_date(str_date):
     try:
         #check DD-MM-YYYY
         return (datetime.datetime.strptime(reg_st, "%d-%m-%Y").strftime("%Y-%m-%d"))
-    except ValueError:
+    except Exception:
         pass
 
     try:
         # check YYYY-MM-DD
         return datetime.datetime.strptime(reg_st, "%Y-%m-%d").strftime("%Y-%m-%d")
-    except ValueError:
+    except Exception:
         parsed_st_dt=None
 
     if parsed_st_dt is None:
@@ -106,22 +113,21 @@ def parse_default_string_date(str_date):
             parsed_st_dt = dparser.parse(
                     reg_st, fuzzy=True, dayfirst=True, yearfirst=False
                 ).strftime("%Y-%m-%d")
-        except ValueError:
+        except Exception:
             parsed_st_dt=None
-
     return parsed_st_dt
 
 
 def parse_date_with_US_format(string_date):
     """
-    This function parses string date with US format, YYYYDDMM, MMDDYYYY
+    This function parses string date , format: YYYYDDMM, MMDDYYYY
 
     Args
         string_date (string):
             string date
 
     Returns
-        date: string
+        date(string)
 
     Raises
         ValueError
@@ -145,7 +151,7 @@ def parse_date_with_US_format(string_date):
 
 def date_with_MDY_format(str_date):
     """
-     This function parses a string date , format  Feb032022
+     This function parses a string date, format:  Feb032022
 
     Args
         str_date (string):
@@ -166,7 +172,7 @@ def date_with_MDY_format(str_date):
 
 def date_with_MMDDYYYY_format(str_date):
     """
-    This method parses string date, format  MMDDYYYY
+    This method parses string date, format: MMDDYYYY
 
     Args
         str_date (string)
@@ -186,7 +192,7 @@ def date_with_MMDDYYYY_format(str_date):
 
 def date_with_YYYYDDMM_format(str_date):
     """
-    This function parse a string date using user entry format YYYYDDMM.
+    This function parse a string date using user entry format: YYYYDDMM.
 
     Args
         str_date ( string)
@@ -207,7 +213,7 @@ def date_with_YYYYDDMM_format(str_date):
 
 def date_with_YYDDMM_format(str_date):
     """
-    This method parses string date, format  YYDDMM.
+    This method parses string date, format: YYDDMM.
 
     Args
         str_date (string)
@@ -233,7 +239,7 @@ def date_with_YYDDMM_format(str_date):
 
 def date_with_MMDDYY_format(str_date):
     """
-    This method parses string date, format MMDDYY
+    This method parses string date, format:MMDDYY
 
     Args
         str_date (string):
@@ -258,14 +264,15 @@ def date_with_MMDDYY_format(str_date):
 
 def avoid_future_date(str_date):
     """
-    This method forces dates to today's date if it is [future date +1] (i.e: Australia dates)
+    This method forces today's date if it is [future date +1] (i.e: Australia dates)
 
     Args
         str_date ( string):
             string date
 
     Returns
-        date (string):
+        date (string)
+
     """
 
     try:
@@ -299,7 +306,7 @@ def get_date(data, response, xpaths):
                     }
 
     Returns
-            date (string):
+            date (string)
 
     """
 
@@ -307,7 +314,6 @@ def get_date(data, response, xpaths):
     if data and 'posted_date' in data:
         str_date = data["posted_date"]
 
-    #try response content
     if str_date is None and "posted_date" in xpaths:
         str_date = response.xpath(xpaths["posted_date"]).get()
 
@@ -319,12 +325,12 @@ def get_date(data, response, xpaths):
     if str_date and  xpaths['us_date_format']:
         str_date = str_date + "#" + xpaths["us_date_format"]
 
-    return str_date
+    return str_date if str_date is not None  else avoid_future_date(str_date)
 
 
 def get_date_from_pdf(str_date, posted_date_in_raw, text, title):
     """
-    read published articledate
+    read published article date.
 
     Args
             data dict(json):
@@ -341,29 +347,32 @@ def get_date_from_pdf(str_date, posted_date_in_raw, text, title):
              when it catches  error
 
     """
-
-    if str_date is not None:
-        return parse_default_string_date(str_date)
-
     try:
-        str_date = posted_date_in_raw["posted_date"]
-    except Exception:
-        pass
+        if str_date is not None:
+            return parse_default_string_date(str_date)
 
-    if str_date is None and title is not None:
-        # try date from raw title
-        str_date = parse_default_string_date(title)
-
-    if str_date is None and text is not None:
-        # try date from statement body
         try:
-            st = w3lib.html.remove_tags(text).replace("\r\n", "")
-            str_date = parse_default_string_date(st[-100:])
+            str_date = posted_date_in_raw["posted_date"]
         except Exception:
             pass
 
-    if str_date is None:
-        # use today's date
-        str_date = (datetime.datetime.now()).strftime("%Y-%m-%d")
+        if str_date is None and title is not None:
+            # try date from raw title
+            str_date = parse_default_string_date(title)
 
-    return str_date
+        if str_date is None and text is not None:
+            # try date from statement body
+            try:
+                st = w3lib.html.remove_tags(text).replace("\r\n", "")
+                str_date = parse_default_string_date(st[-100:])
+            except Exception:
+                pass
+
+        if str_date is None:
+            # use today's date
+            str_date = (datetime.datetime.now()).strftime("%Y-%m-%d")
+
+        return str_date
+
+    except Exception:
+        return None

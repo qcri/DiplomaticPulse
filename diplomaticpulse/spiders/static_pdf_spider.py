@@ -11,18 +11,19 @@ from scrapy import signals
 import scrapy
 from scrapy.exceptions import CloseSpider
 from scrapy.utils.project import get_project_settings
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.db_elasticsearch.db_es import DpElasticsearch
 from diplomaticpulse.misc import cookies_utils
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.loader import itemLoader, statementItem
+from diplomaticpulse.dp_loader import item_loader, statementitem_loader
 
-class HtmlDocSpider(scrapy.spiders.CrawlSpider):
+class StaticPdfSpider(scrapy.spiders.CrawlSpider):
     """
     This spider is a subclass of scrapy.spiders.Spider, which indirects its handling of
     the start_urls and subsequently extracted and followed URLs. It is designed to handle combined PDF/Static contents.
 
     """
 
+    #spider name
     name = "static_pdf"
 
     def __init__(self, url, *args, **kwargs):
@@ -188,7 +189,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
             )
         else:
             self.logger.debug("start parsing  item from %s !", response.url)
-            Item_loader = itemLoader.itemloader(response, data, self.xpaths)
+            Item_loader = item_loader.loader(response, data, self.xpaths,None)
             Item_loader.add_value("country", self.xpaths["name"])
             Item_loader.add_value("parent_url", self.start_urls[0])
             Item_loader.add_value(
@@ -227,7 +228,7 @@ class HtmlDocSpider(scrapy.spiders.CrawlSpider):
 
         """
         self.logger.debug("start parsing file %s ", response.url)
-        item = statementItem.loader(response, data, self.xpaths)
+        item = statementitem_loader.loader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]

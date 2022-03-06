@@ -17,12 +17,6 @@ class TestHtmlUtils(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_title1(self):
         """
         We pass text  to get_title and  expect to return text.
@@ -39,7 +33,7 @@ class TestHtmlUtils(unittest.TestCase):
         We pass url response object  to get_title and  expect to return text (title).
         """
         title = None
-        url = "https://www.kln.gov.my/web/guest/-/united-arab-emirates-contributes-500-000-doses-of-covid-19-vaccine-to-malaysia"
+        url = "http://localhost/uae-500.html"
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)
@@ -50,7 +44,7 @@ class TestHtmlUtils(unittest.TestCase):
 
     def test_get_title3(self):
         title = None
-        url = "https://www.kln.gov.my/web/guest/press-releases"
+        url = "http://localhost/press-release.html"
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)

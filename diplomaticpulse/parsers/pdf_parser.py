@@ -1,5 +1,5 @@
 """
-  implements pdf/images content parsing
+  implements pdf/images content parsing.
 """
 import urllib.parse
 import urllib.request
@@ -12,24 +12,20 @@ from io import BytesIO
 import pathlib
 import hashlib
 import os
-import ssl
-import logging
 import urllib3
 from PIL import Image
 import fitz
 import pytesseract
-from diplomaticpulse.misc import utils
+from diplomaticpulse.dp_settings import read_settings
 
 
-def parse_pdfminer(url, ignore_ssl_certficate):
+def parse_pdfminer(url):
     """
-    This method parses pdf/image content
+    This method parses pdf/image content from page.
 
     Args
         url (string):
             link URL
-        ignore_ssl_certficate : string
-            True (ignore ssl certificate)
 
     Returns
         dict(json):
@@ -44,74 +40,54 @@ def parse_pdfminer(url, ignore_ssl_certficate):
              when it catches  error
 
     """
-    # following is just to ignore https certificate issues
-
-
-    ssl._create_default_https_context = ssl._create_unverified_context
-
+    body={}
     try:
-        skip_extensions = [".doc", ".docx", ".img", ".jpg"]
-        body = {}
-        if utils.get_url_extension(url) not in skip_extensions:
-            logging.propagate = False
-            logging.getLogger().setLevel(logging.ERROR)
-            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-            tmpPdffile = "/tmp/" + hashlib.sha1(url.encode("utf-8")).hexdigest()
-            opener = urllib.request.build_opener()
-            opener.addheaders = [
-                (
-                    "User-agent",
-                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
-                )
-            ]
-            urllib.request.install_opener(opener)
-            urllib.request.urlretrieve(url, tmpPdffile)
-            rsrcmgr = PDFResourceManager()
-            retstr = BytesIO()
-            codec = "utf-8"
-            laparams = LAParams()
-            device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
-            fp = open(tmpPdffile, "rb")
-            interpreter = PDFPageInterpreter(rsrcmgr, device)
-            pagenos = set()
-            for page in PDFPage.get_pages(
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        tmpPdffile = read_settings.settings["TMP_DIR"] + "/" + hashlib.sha1(url.encode("utf-8")).hexdigest()
+        opener = urllib.request.build_opener()
+        opener.addheaders = [
+            (
+                "User-agent",
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
+            )
+        ]
+        urllib.request.install_opener(opener)
+        urllib.request.urlretrieve(url, tmpPdffile)
+        rsrcmgr = PDFResourceManager()
+        bIo = BytesIO()
+        codec = "utf-8"
+        laparams = LAParams()
+        device = TextConverter(rsrcmgr, bIo, codec=codec, laparams=laparams)
+        fp = open(tmpPdffile, "rb")
+        interpreter = PDFPageInterpreter(rsrcmgr, device)
+        pagenos = set()
+        for page in PDFPage.get_pages(
                 fp,
                 pagenos,
                 maxpages=10,
                 password="",
                 caching=True,
                 check_extractable=True,
-            ):
-                interpreter.process_page(page)
-            text = retstr.getvalue()
-            text = text.decode("utf-8")
-            body["statement"] = ""
-            if text:
-                body["statement"] = text.strip()
-                if "".join(body["statement"]).strip():
-                    pdfReader = PdfFileReader(fp)
-                    posted_date = (
-                        pdfReader.getDocumentInfo()["/CreationDate"].replace("D:", "")
-                    )[:8]
-                    body["posted_date"] = (
-                        posted_date[:4]
-                        + "-"
-                        + posted_date[4:6]
-                        + "-"
-                        + posted_date[6:8]
-                    )
-            fp.close()
-            device.close()
-            retstr.close()
-    except Exception:
-        pass
+        ):
+            interpreter.process_page(page)
+        text = bIo.getvalue()
+        text = text.decode("utf-8")
+        content=''
+        if text:
+            content = text.strip()
+            if ''.join(content).strip():
+                pdfReader = PdfFileReader(fp)
+                str_date = (pdfReader.getDocumentInfo()["/CreationDate"].replace("D:", ""))[:8]
+                body["posted_date"] = str_date[:4] + "-" + str_date[4:6] + "-" + str_date[6:8]
+        if content is None:
+            content = text_from_image(tmpPdffile)
 
-    try:
-        if body["statement"] is None:
-            body["statement"] = text_from_image(tmpPdffile)
-    except Exception:
-            dict({body["statement"] : None})
+        body["statement"]= content.strip()
+        fp.close()
+        device.close()
+        bIo.close()
     finally:
+
         if pathlib.Path(tmpPdffile).exists():
             os.remove(tmpPdffile)
         return dict(body)
@@ -124,7 +100,6 @@ def get_text_from_pdf_image(file_):
     Args
         file_(string):
             pdf filename
-
 
     Returns
         text (string):

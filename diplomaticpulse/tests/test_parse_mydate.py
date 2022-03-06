@@ -9,32 +9,27 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_parse_mydate1(self):
-        date_string = "2020/02/09"
         expected = "2020-02-09"
-        result = date_dp.parse_mydate(date_string, "english")
+        data =({"posted_date": "2020/02/09", "language":"English"})
+        result = date_dp.parse_mydate(data)
         self.assertEqual(expected, result)
 
     def test_parse_mydate2(self):
-        date_string = "02/09/2020"
+        data = ({"posted_date": "02/09/2020", "language": "English"})
         expected = "2020-09-02"
-        result = date_dp.parse_mydate(date_string, "english")
+        result = date_dp.parse_mydate(data)
         self.assertEqual(expected, result)
 
     def test_parse_mydate3(self):
-        date_string = "03 Mai 1989"
+
+        data = ({"posted_date": "03 May 1989", "language": None})
         expected = "1989-05-03"
-        result = date_dp.parse_mydate(date_string, None)
+        result = date_dp.parse_mydate(data)
         self.assertEqual(expected, result)
 
     def test_parse_mydate4(self):
-        date_string = "2020/02/09#YYYYDDMM"
+        data =({"posted_date": "2020/02/09#YYYYDDMM", "language":None})
         expected = "2020-09-02"
-        result = date_dp.parse_mydate(date_string, None)
+        result = date_dp.parse_mydate(data)
         self.assertEqual(expected, result)

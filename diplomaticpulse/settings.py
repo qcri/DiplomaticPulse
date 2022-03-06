@@ -1,6 +1,6 @@
 
 """
-This module contains the default values for all settings used by Scrapy.
+This module contains the default values for all dp_settings used by Scrapy.
 for more info, see https://docs.scrapy.org/en/latest/topics/settings.html?highlight=settings
 
 """
@@ -88,7 +88,7 @@ ELASTIC_INDEX_SITECONFIG = os.environ["ELASTIC_INDEX_XPATH"]
 ELASTIC_INDEX_COUNTRY = os.environ["ELASTIC_INDEX_COUNTRIES"]
 
 ELASTIC_MAPPINGS = {
-    "settings": {
+    "dp_settings": {
         "index": {
             "number_of_shards": 5,
             "number_of_replicas": 1,
@@ -327,3 +327,6 @@ REG_EXP_2 = (
     r"(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{4}|(?:January|"
     r"February|March|April|May|June|July|August|September|October|November|December) \d{1,2} \d{4}"
 )
+
+SKIP_URL_EXTENSION = [".doc", ".docx", ".img", ".jpg"]
+TMP_DIR = '/tmp'

@@ -1,5 +1,5 @@
 """
-This module implements beautifulsoup object parsing
+This module implements text parsing with beautifulsoup.
 """
 from urllib.parse import unquote
 import time
@@ -9,7 +9,7 @@ from diplomaticpulse.parsers import dates_parser, html_parser
 
 def get_text_from_html_block(url, xpaths_html, driver):
     """
-    This method scrapes url html block info: URL,date posted,title for each link as seen in the page .
+    This method scrapes html block info for seen URL: URL,date posted,title for each link as seen in the page .
     when it founds URL link, it scrapes the corresponding title and possible posted date.
 
     Args
@@ -37,7 +37,7 @@ def get_text_from_html_block(url, xpaths_html, driver):
 
     Raises
         Exception
-             when it catches generic error
+             when it catches an error
     """
 
     if "global" not in xpaths_html or "link" not in xpaths_html:
@@ -63,8 +63,7 @@ def get_text_from_html_block(url, xpaths_html, driver):
                 posted_date = get_text(rows, xpaths_html["posted_date"])
             url_info.append(dict(url=unquote(url), title=title, posted_date=posted_date))
         return url_info
-    except Exception as ex:
-        print("Error occured in get_text_from_html_block", ex)
+    except Exception:
         return url_info
 
 
@@ -101,8 +100,7 @@ def get_text_from_html_soup(response, xpaths, driver):
         if text is None:
             text = html_parser.get_html_response_content(response, xpaths)
         return " ".join(text)
-    except Exception as ex:
-        print("Error occured in get_text_from_html_soup", ex)
+    except Exception:
         return None
 
 
@@ -169,7 +167,7 @@ def get_title_from_html_soup(response, title, xpath, driver):
 
 def get_soup(url, driver):
     """
-    This methof gets Beautifulsoup soup object of an URL.
+    This methof gets Beautifulsoup soup object.
 
     Args
         url (string):
@@ -189,14 +187,13 @@ def get_soup(url, driver):
         time.sleep(5)
         soup = BeautifulSoup(driver.page_source, "html.parser")
         return soup
-    except Exception as e:
-        print("Warming: failed to get Beatifulsoup object for ", e)
+    except Exception:
         return None
 
 
 def remove_unwanted_tags(url, driver, xpaths):
     """
-    Remove unwanted tags element from html content.
+    Remove unwanted tags elements from html content.
 
     Args
         url (string):link URL
@@ -224,8 +221,7 @@ def remove_unwanted_tags(url, driver, xpaths):
                 for tag in tags_to_delete:
                     tag.extract()
         return soup
-    except Exception as e:
-        print("WARNING in remove_unwanted_tags: ", str(e))
+    except Exception:
         return None
 
 
@@ -240,7 +236,6 @@ def get_url_from_soup(html, element):
 
     Returns
         text (string)
-            link URL
     Raises
         Exception
              when it catches  error
@@ -269,7 +264,6 @@ def href_html_a_bs4(html):
 
     Args
         html (Beautifulsoup object):
-             html content
 
     Returns
         text (string):
@@ -284,7 +278,6 @@ def href_html_span_bs4(html):
 
     Args
         html (Beautifulsoup object):
-             html content
 
     Returns
         text (string):
@@ -299,7 +292,6 @@ def href_html_h2_a_bs4(html):
 
     Args
        html (Beautifulsoup object):
-             html content
 
     Returns
         text (string):
@@ -400,7 +392,7 @@ def href_html_li_bs4(html):
 
 def get_text(soup, element):
     """
-    This function scrapes html from html Beautifulsoup object.
+    This function scrapes html from Beautifulsoup object.
 
     Args
         soup (Beautifulsoup object):
@@ -486,7 +478,6 @@ def html_h2_bs4(html):
 
     Args
          html (Beautifulsoup object):
-              html content
 
     Returns
         text (string):
@@ -527,7 +518,7 @@ def html_a_span_bs4(html):
 
 def html_span_bs4(html):
     """
-    This function scrapes html from Beautifulsoup object using  elt[html.span]..
+    This function scrapes html from Beautifulsoup object using  elt[html.span].
 
     Args
          html (Beautifulsoup object):

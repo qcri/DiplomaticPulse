@@ -5,7 +5,7 @@
 
 Welcome to Diplomatic Pulse's |version| documentation!
 ======================================================
-Diplomatic pulse is a crawling, indexing and storage system offor United Nations Members States press statements  in Real Time.
+Diplomatic pulse is a crawling, indexing and storage system for United Nations Member States: press statements in Real Time.
 
 .. toctree::
    :maxdepth: 2

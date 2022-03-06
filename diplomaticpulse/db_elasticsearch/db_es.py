@@ -1,5 +1,5 @@
 """
- Implements  elasticsearch client.
+ Implements  Elasticsearch client.
 """
 import os
 import hashlib
@@ -9,7 +9,7 @@ from scrapy.exceptions import  CloseSpider
 
 
 class DpElasticsearch:
-    """Class to serve as elasticsearch client.
+    """Class to serve as Elasticsearch client.
     """
 
     def __init__(self, _es_servers):
@@ -18,7 +18,7 @@ class DpElasticsearch:
 
         Args
             es_servers (string):
-                object of running elasticsearch
+                object of running Elasticsearch
 
         """
         self.es_servers = _es_servers
@@ -26,19 +26,16 @@ class DpElasticsearch:
 
     def connect(self):
         """
-        Connect to elasticsearch.
-
-        Args
+        Connect to Elasticsearch.
 
         Returns
-            es (instance of running elasticsearch)
+            es: (instance of running Elasticsearch)
 
         Raises
             Exception
-                 when it fails to connect to elasticsearch
+                 when it fails to connect to Elasticsearch
 
         """
-        print("es_servers", self.es_servers)
         es_settings = {}
         es_settings["hosts"] = self.es_servers
         es_settings["timeout"] = 60
@@ -47,7 +44,6 @@ class DpElasticsearch:
             os.environ["ELASTIC_USERNAME"],
             os.environ["ELASTIC_PASSWORD"],
         )
-        print(es_settings)
         es = Elasticsearch(**es_settings)
         if not es.ping():
             raise CloseSpider("ES! it could not connect !!!!!")
@@ -60,11 +56,11 @@ class DpElasticsearch:
         Args
             url(string):
                 page url
-            settings dict(string):
-                elasticsearch index name
+            dp_settings dict(string):
+                Elasticsearch index name
 
         Returns
-            es (instance of running elasticsearch)
+            es (instance of running Elasticsearch)
 
         Raises
             Exception
@@ -92,7 +88,7 @@ class DpElasticsearch:
 
     def search_urls_by_country_type(self, html_blocks, config):
         """
-        Search indexed data by country and content type
+        Search indexed data by country and content type.
 
         Args
             html_blocks dict(string):
@@ -107,7 +103,7 @@ class DpElasticsearch:
                 }
 
         Returns
-            es (instance of running elasticsearch)
+            es (instance of running Elasticsearch)
 
         Raises
             Exception
@@ -145,7 +141,7 @@ class DpElasticsearch:
 
     def search_urls_by_country(self, config, settings):
         """
-        Search indexed data by country
+        Search indexed data by country.
 
         Args
             config dict(string):
@@ -153,13 +149,13 @@ class DpElasticsearch:
                 name: <country name>
                 index_name: <index_name>
                 }
-            settings dict(string):
+            dp_settings dict(string):
                 {
                  index_name: <index_name>
                 }
 
         Returns
-            es (instance of running elasticsearch)
+            es (instance of running Elasticsearch)
 
         Raises
             Exception
@@ -179,7 +175,7 @@ class DpElasticsearch:
             tags = res["hits"]["hits"]
             key = (
                 "parent_url"
-                if config["link_follow"] and config["content_type"] != "html"
+                if config["link_follow"] and config["content_type"] != "static"
                 else "url"
             )
 
@@ -192,8 +188,8 @@ class DpElasticsearch:
             return url_seen
 
 
-    def getUrlConfigs(self):
-        """ Search countries name with complete status
+    def get_url_configs(self):
+        """ Search countries name with status is complete.
 
         Returns
             output (dict(string)
@@ -229,12 +225,11 @@ class DpElasticsearch:
         return output
 
 
-def getUrlConfigs():
-    """getUrlConfigs"""
-
+def get_url_configs():
+    """get_url_configs"""
     es_servers = os.environ["ELASTIC_HOST"]
     dpes = DpElasticsearch(es_servers)
-    return dpes.getUrlConfigs()
+    return dpes.get_url_configs()
 
 
 if __name__ == "__main__":

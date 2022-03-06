@@ -12,7 +12,7 @@ from diplomaticpulse.parsers import dates_parser
 import urllib3
 
 class ElasticSearchPipeline(object):
-    """pipeline to index items (from spiders) into elasticsearch."""
+    """pipeline to index items (from spiders) into Elasticsearch."""
 
     settings = None
     es = None
@@ -22,7 +22,7 @@ class ElasticSearchPipeline(object):
     @classmethod
     def from_crawler(cls, crawler):
         """
-        This is the class method used by Scrapy to create running spider.
+        This method is used by Scrapy to create running spider.
 
         Args
                 crawler (Crawler instance) :
@@ -44,7 +44,7 @@ class ElasticSearchPipeline(object):
 
     def open_spider(self, spider):
         """
-        This is the class method used by Scrapy Framework to open running spider.
+        This method used is used by Scrapy Framework to open running spider.
 
         Args
             crawler(spider (Spider object):
@@ -104,7 +104,7 @@ class ElasticSearchPipeline(object):
     def validate_settings(cls, settings):
         def validate_setting(setting_key):
             if settings[setting_key] is None:
-                raise Exception("%s is not defined in settings.py", setting_key)
+                raise Exception("%s is not defined in dp_settings.py", setting_key)
 
         required_settings = {"ELASTIC_INDEX", "ELASTIC_TYPE"}
         for required_setting in required_settings:
@@ -114,17 +114,17 @@ class ElasticSearchPipeline(object):
     def init_es_client(cls, crawler_settings):
 
         """
-            This methos initiates an elasticsearch connection.
+            This methos initiates an Elasticsearch connection.
 
         Args
             crawler_settings dict() :
                        {
-                       "ELASTIC_TIMEOUT": <elasticsearch time out>
+                       "ELASTIC_TIMEOUT": <Elasticsearch time out>
                        "ELASTIC_HOST": <host server name>
-                       "ELASTIC_USERNAME": <elasticsearch username>
-                       "ELASTIC_PASSWORD": <elasticsearch password>
-                       "ELASTIC_INDEX": <elasticsearch index>
-                       "ELASTIC_MAPPINGS": <elasticsearch index>
+                       "ELASTIC_USERNAME": <Elasticsearch username>
+                       "ELASTIC_PASSWORD": <Elasticsearch password>
+                       "ELASTIC_INDEX": <Elasticsearch index>
+                       "ELASTIC_MAPPINGS": <Elasticsearch index>
                        }
 
         Returns
@@ -138,7 +138,7 @@ class ElasticSearchPipeline(object):
         # auth_type = crawler_settings.get('ELASTIC_AUTH')
         es_timeout = crawler_settings.get("ELASTIC_TIMEOUT")
         es_servers = crawler_settings.get("ELASTIC_HOST")
-        logging.info(" the elasticsearch host is  %s " , es_servers)
+        logging.info(" the Elasticsearch host is  %s " , es_servers)
         es_servers = es_servers if isinstance(es_servers, list) else [es_servers]
         es_settings = {}
         es_settings["hosts"] = es_servers
@@ -157,14 +157,14 @@ class ElasticSearchPipeline(object):
 
         if not es.ping():
             raise CloseSpider(
-                "spider failed to connect to elasticsearch on server "
+                "spider failed to connect to Elasticsearch on server "
             )
-        logging.info("eleasticsearch server %s  is up running  !!", es_servers)
+        logging.info("Elasticsearch server %s  is up running  !!", es_servers)
         return es
 
     def process_unique_key(self, unique_key):
         """
-        generate a unique key
+        generate a unique key.
 
         Args
             unique_key (string):
@@ -188,7 +188,7 @@ class ElasticSearchPipeline(object):
         return unique_key
 
     def get_id(self, item):
-        """generate a hash key from url
+        """generate a hash key from url.
 
         Args
             item (array of item object):
@@ -244,10 +244,7 @@ class ElasticSearchPipeline(object):
         )
         # parse the string date here
         index_action["_source"]["posted_date"] = dates_parser.parse_mydate(
-            index_action["_source"]["posted_date"],
-            index_action["_source"]["language"]
-            if index_action["_source"]["language"] == "english"
-            else None,
+            index_action["_source"]
         )
         # check date
         if not index_action["_source"]["posted_date"]:
@@ -259,7 +256,7 @@ class ElasticSearchPipeline(object):
 
     def send_items(self):
         """
-        This method indexes  items into elasticsearch.
+        This method inserts items into elasticsearch.
 
         Raises
          Exception

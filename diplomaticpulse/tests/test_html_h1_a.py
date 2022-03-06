@@ -10,12 +10,6 @@ class TestBeautifulParser(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_html_h1_bs4(self):
         """
         We pass url to Beautifullsoup object to html_h1_bs4 and expect it to return text.

@@ -1,11 +1,12 @@
 """
-This module implements general parsing.
+This module implements general some text parsing.
 """
 import re
 from urllib.parse import unquote
 import os
 import langid
-from scrapy.utils.project import get_project_settings
+
+from diplomaticpulse.dp_settings import read_settings
 
 def get_language(text):
     """
@@ -17,20 +18,14 @@ def get_language(text):
 
     Returns
         language( string):
-            content language
 
     Raises
-        TypeError
-             when it catches  error
         DropItem (Scrapy Exception)
 
     """
 
     try:
-        settings = get_project_settings()
-        languages = {}
-        if settings and "ARTICLES_LANGUAGE" in settings:
-            languages = settings["ARTICLES_LANGUAGE"]
+        languages = read_settings.get_languages()
         return languages[langid.classify(text)[0]]
     except TypeError:
         return None
@@ -58,14 +53,13 @@ def get_url_extension(url):
 
 def to_reg_expression(text):
     """
-    This method cleans string date using to regular expression.
+    This method cleans string date using regular expression.
 
     Args
         text (string)
-            text that may contain string date
 
     Returns
-       date (string
+       date (string)
 
     Raises
         Exception
@@ -89,6 +83,5 @@ def to_reg_expression(text):
         )
         reg_st = re.search(reg_exp_2, text).group()
         return reg_st.replace("/", "-").replace(".", "-")
-    except Exception as ex:
-        print('Error occured in to_reg_expression', ex)
+    except Exception:
         return text

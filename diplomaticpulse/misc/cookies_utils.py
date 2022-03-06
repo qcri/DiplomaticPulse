@@ -1,11 +1,9 @@
 """
-This module implements cookies
+This module implements cookies.
 """
-
-
 def get_cookies(xpaths):
     """
-    This methpd reads request cookies.
+    This method reads request cookies.
 
     Args:
         xpaths dict(json):

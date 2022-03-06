@@ -10,17 +10,11 @@ class TestPDFParser(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_url_extension1(self):
         """
         We pass url  to get_url_extension and  expect to return url.extension.
         """
-        url = "http://www.cubadiplomatica.cu/en/articulo/genocidal-blockade-signing-executive-order-3447.html"
+        url = "http://localhost/scrapy.html"
         result = util.get_url_extension(url)
         expected = ".html"
         self.assertEqual(expected, result)
@@ -29,7 +23,7 @@ class TestPDFParser(unittest.TestCase):
         """
         We pass url  to get_url_extension and  expect to return url.extension.
         """
-        url = "http://www.cubadiplomatica.cu/en/articulo/genocidal-blockade-signing-executive-order-3447"
+        url = "http://localhost/scrapy"
         result = util.get_url_extension(url)
         expected = ""
         self.assertEqual(expected, result)

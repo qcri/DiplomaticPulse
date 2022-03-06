@@ -13,12 +13,6 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_date_with_MMDDYY_format1(self):
         """
         We pass string date to date_with_MMDDYY_format, format MMDDYY and expect it returns YYYY-MM-DD date.

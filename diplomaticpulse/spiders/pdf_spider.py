@@ -11,10 +11,10 @@ from scrapy.spiders import CrawlSpider
 from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import CloseSpider
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.db_elasticsearch.db_es import DpElasticsearch
 from diplomaticpulse.parsers import html_parser
-from diplomaticpulse.misc import errback_http, cookies_utils, utils
-from diplomaticpulse.loader import statementItem
+from diplomaticpulse.misc import cookies_utils, utils
+from diplomaticpulse.dp_loader import statementitem_loader
 
 
 class PdfSpider(CrawlSpider):
@@ -35,7 +35,7 @@ class PdfSpider(CrawlSpider):
 
     def __init__(self, url, *args, **kwargs):
         """
-        Create a new instance of  HtmlSpider
+        Create a new instance of  PdfSpider
 
         Args
             url (string) :
@@ -129,13 +129,14 @@ class PdfSpider(CrawlSpider):
                 Iterable of Requests
 
         """
-        self.logger.info("parsing url %s request response ", response.url)
+
+        self.logger.debug("parsing url %s request response ", response.url)
         url_html_blocks = html_parser.get_html_block_links(response, self.xpaths)
         first_time_seen_links = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
-        self.logger.info("first time seen urls  %s ", len(first_time_seen_links))
-        self.logger.info(
+        self.logger.debug("first time seen urls  %s ", len(first_time_seen_links))
+        self.logger.debug(
             "scraped html blocks %s from starting page", len(url_html_blocks)
         )
         for url in first_time_seen_links:
@@ -143,14 +144,13 @@ class PdfSpider(CrawlSpider):
                 (data for data in url_html_blocks if data["url"] == url), None
             )
             if utils.get_url_extension(url) in self.extensions:
-                self.logger.info("sending request of url %s", url)
+                self.logger.debug("sending request of url %s", url)
                 yield scrapy.Request(
                     url,
                     callback=self.parseitem,
                     cb_kwargs=dict(data=article_info),
                     headers=self.headers,
-                    cookies=self.cookies,
-                    errback=errback_http.errback_httpbin,
+                    cookies=self.cookies
                 )
 
     def parseitem(self, response, data):
@@ -182,8 +182,8 @@ class PdfSpider(CrawlSpider):
               }
 
         """
-        self.logger.info("start parsing file %s ", response.url)
-        item = statementItem.loader(response, data, self.xpaths)
+        self.logger.debug("start parsing file %s ", response.url)
+        item = statementitem_loader.loader(response, data, self.xpaths)
         item["content_type"] = self.content_type
         item["indexed_date"] = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
         item["country"] = self.xpaths["name"]

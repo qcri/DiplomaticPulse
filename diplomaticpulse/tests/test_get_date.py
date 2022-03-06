@@ -1,5 +1,6 @@
 import unittest
 from diplomaticpulse.parsers import dates_parser
+from datetime import date
 
 class TestParsingdates(unittest.TestCase):
     """
@@ -8,12 +9,6 @@ class TestParsingdates(unittest.TestCase):
     Tests are programmed as prescribed the pythons unittest's package.
 
     """
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
     def test_get_date1(self):
         """
@@ -34,6 +29,6 @@ class TestParsingdates(unittest.TestCase):
         data = None
         response = "aaaa bbbb"
         xpaths = dict({'us_date_format':"MMDDYYYY"})
-        expected =  None
+        expected =  date.today().strftime("%Y-%m-%d")
         result = dates_parser.get_date( data, response, xpaths)
         self.assertEqual(expected, result)

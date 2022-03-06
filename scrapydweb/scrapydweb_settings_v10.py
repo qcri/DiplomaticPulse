@@ -36,7 +36,7 @@ JOBS_SNAPSHOT_INTERVAL = 300
 
 ############################## Run Spider #####################################
 # The default is False, set it to True to automatically
-# expand the 'settings & arguments' section in the Run Spider page.
+# expand the 'dp_settings & arguments' section in the Run Spider page.
 SCHEDULE_EXPAND_SETTINGS_ARGUMENTS = False
 
 # The default is 'Mozilla/5.0', set it a non-empty string to customize the default value of `custom`

@@ -3,11 +3,6 @@ from urllib.request import Request, urlopen
 from scrapy.http import HtmlResponse
 import diplomaticpulse.parsers.html_parser as html_utils
 
-# following is just to ignore https certificate issues
-import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
-
 
 class TestHtmlUtils(unittest.TestCase):
     """
@@ -17,17 +12,11 @@ class TestHtmlUtils(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    def test_scraped_block_links(self):
+    def test_get_html_response_content(self):
         """
         We pass response and xpath, to get_html_response_content and expect text
         """
-        url = "https://scrapy.org/"
+        url = "http://localhost/scrapy.html"
         xpaths = {"text": '//div[has-class("first-row")]//p'}
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()

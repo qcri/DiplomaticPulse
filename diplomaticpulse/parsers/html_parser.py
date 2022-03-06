@@ -50,22 +50,22 @@ def format_html_text(html):
         clean_text = re.findall("<p[^>]*>([^<]+)", re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)))
         clean_text = re.sub(r"\n{2,}", "\n", '\n'.join(clean_text))
         if not clean_text:
-            # xheck if <p> exist
+            # check if the element <p> present in html
             clean_text = re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html))
         clean_text = re.sub("\xa0 {2,}", '', clean_text)
         clean_text = re.sub("\n\s*", '\n', clean_text)
-        clean_text = re.sub("\t", " ", clean_text)
-        clean_text = re.sub("\r", " ", clean_text)
-        clean_text = re.sub("\xa0", " ", clean_text)
+        clean_text = re.sub("\t", "", clean_text)
+        clean_text = re.sub("\r", "", clean_text)
+        clean_text = re.sub("\xa0", "", clean_text)
         if '\n' not in clean_text:
             clean_text = clean_text.replace('.', '\n')
 
-        return clean_text
+        return clean_text.strip()
     except Exception:
         return html
 
 
-def format_html_pdf_text(html):
+def format_html_pdf_text(raw_html):
     """
     This method formats PDF content.
 
@@ -79,36 +79,21 @@ def format_html_pdf_text(html):
 
     """
     try:
-        clean_text = re.findall(
-            "<p[^>]*>([^<]+)",
-            re.sub("<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)),
-        )
-        if clean_text is None:
-            # check html has  <p>
-            clean_text = re.sub(
-                "<br>(\\n){0,}", "\n", re.sub("<[/]*[^pb][^>]+>", " ", html)
-            )
-        if clean_text is None:
-            clean_text = html
+        CLEANR = re.compile('<.*?>')
+        html = re.sub(CLEANR, '', raw_html)
+        html = re.sub('[\n]+', '\n', html)
+        html = re.sub('[\t]+', '', html)
+        html = re.sub('[\r]+', '', html)
+        html = re.sub('[\xa0]+', '', html)
+        return html.strip()
 
-        clean_text = re.sub(r"(\. +)", r" ENDOFPARAGRAPH ", html)
-        clean_text = re.sub(r"( *\n *)", r" ", clean_text)
-        clean_text = re.sub(r"( *\r *)", r" ", clean_text)
-        clean_text = re.sub(r"( *\t *)", r" ", clean_text)
-        clean_text = re.sub(r"[0-9]+ +\x0c", "", clean_text)
-        clean_text = clean_text.replace("\f", "")
-        clean_text = re.sub(r"ENDOFPARAGRAPH", ".\n", clean_text)
-        return clean_text
-
-    except Exception as ex:
-        print(ex)
-        return html
-
+    except Exception:
+        return raw_html
 
 
 def get_html_block_links(response, xpaths):
     """
-    This method reads Request response - html block for eacr article (URL).
+    This method reads Request response - html block for each article (URL).
 
     Args
         response (Request response):
@@ -116,15 +101,17 @@ def get_html_block_links(response, xpaths):
         xpaths : dic(json)
             Python dict in the following format:
             xpaths{
-                   'global' : <article global XPATH>
-                   'link' : <article URL XPATH>>
-                   'title' : <article  title XPATH >
-                   'posted_date' : <article  date posted XPATH >
+                   'global' : <URL global XPATH>
+                   'link' : <URL XPATH>>
+                   'title' : <title XPATH >
+                   'posted_date' : <date posted XPATH >
             }
 
     Returns
-    data : []
-        data[<url>,<title>,<posted_date>,]
+    data : [string]
+        data[
+            <url>,<title>,<posted_date>
+        ]
 
     """
     try:
@@ -145,7 +132,7 @@ def get_html_block_links(response, xpaths):
 
 def get_title(title, response, xpaths):
     """
-    This method scrapes article title.
+    This method scrapes article's title.
 
     Args
         title (string):
@@ -160,7 +147,7 @@ def get_title(title, response, xpaths):
 
     Returns
         title : string
-             article title
+             title
 
     """
     try:

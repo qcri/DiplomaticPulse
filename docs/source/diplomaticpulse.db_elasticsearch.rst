@@ -7,7 +7,7 @@ Submodules
 diplomaticpulse.db\_elasticsearch.getUrlConfigs module
 ------------------------------------------------------
 
-.. automodule:: diplomaticpulse.db_elasticsearch.getUrlConfigs
+.. automodule:: diplomaticpulse.db_elasticsearch.get_url_configs
    :members:
    :undoc-members:
    :show-inheritance:

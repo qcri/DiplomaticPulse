@@ -7,8 +7,7 @@ import logging
 
 class DuplicatesPipeline:
     """
-    A filter that looks for duplicate items, and drops those items that
-    were already processed.
+    A filter that looks for duplicate items, and drops those items that were already processed.
     """
 
     def __init__(self):
@@ -23,10 +22,7 @@ class DuplicatesPipeline:
     @classmethod
     def init_es_client(self, crawler_settings):
         """
-        This methos creates an elasticsearch connection.
-
-        Args
-            crawler_settings
+        This methods creates  elasticsearch connection.
 
         Returns
             elasticsearch connection
@@ -49,7 +45,7 @@ class DuplicatesPipeline:
             raise CloseSpider(
                 "spider failed to connect  to elasticsearch on server"
             )
-        logging.info("eleasticsearch server %s  is up running  !!" , es_servers)
+        logging.debug("eleasticsearch server %s  is up running  !!" , es_servers)
         return es
 
     @classmethod

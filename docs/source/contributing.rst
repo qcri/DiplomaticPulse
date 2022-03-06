@@ -1,20 +1,26 @@
-How to contribute to Diplomatic Pulse code
+How to contribute to Diplomatic pulse code
 ==========================================
 
-There are 4 ways you can contribute to Diplomatic Pulse project:
+There are 4 ways you can contribute to Diplomatic pulse project:
 -----------------------------------------------------------------
 
 * Implementing new spiders to scrape ".doc", ".img", ".jpg" contents.
 * Improving string dates parsing to handle possible unhandled string dates;
 * Improving formating html text ;
 * Contributing to the documentation;
-* Follow these steps to submit your code contribution.
+
+
+Follow these steps to submit your code contribution:
+-----------------------------------------------------
 
 Step 1. Open an issue
 --------------------------
-If the changes are minor (simple bug fix or documentation fix), then feel free to open a PR without discussion. Otherwise, we recommend opening an issue (if one doesn't already exist) and discuss your proposed changes. This way, we can give you feedback and validate the proposed changes. Here is a template
+If the changes are minor (simple bug fix or documentation fix), then feel free to open a PR without discussion. Otherwise, we recommend opening an issue (if one doesn't already exist) and discuss your proposed changes. This way, we can give you feedback and validate the proposed changes. Here is a template.
 
-Write a full paragraph describing the feature; Provide a code snippet that demonstrates its future use; In case this is related to a paper, please attach a link; Attach any additional information (drawings, screenshots, etc.) you think may help.
+Write a full paragraph describing the feature;
+Provide a code snippet that demonstrates its future use;
+In case this is related to a paper, please attach a link;
+Attach any additional information (drawings, screenshots, etc.) you think may help.
 
 Fork the repository by clicking on the 'Fork' button on the repository's page. This creates a copy of the code under your GitHub user account.
 

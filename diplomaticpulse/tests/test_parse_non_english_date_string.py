@@ -10,12 +10,6 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_parse_non_english_date_string1(self):
         date_string = "mai  3 2015"
         expected = "2015-05-03"

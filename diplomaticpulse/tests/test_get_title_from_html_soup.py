@@ -27,15 +27,12 @@ class TestHtmlUtils(unittest.TestCase):
         self.driver = webdriver.Chrome(chrome_options=options)
 
 
-    def tearDown(self):
-        pass
-
     def test_get_title_from_html_soup(self):
         """
         We pass url, driver to get_title_from_html_soup and expect text
         """
 
-        url = "https://scrapy.org/"
+        url = "http://localhost/scrapy.html"
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
         page = urlopen(req).read()
         response = HtmlResponse(url, body=page)

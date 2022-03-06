@@ -1,9 +1,9 @@
 
 <h1  style="font-size:60px;"align="center">
-  <b>Diplomatic Pulse</b>
+  <b>Diplomatic pulse</b>
 </h1>
 <p  style="font-size:40px;"align="center">
-  <b>Crawling, Indexing, and Storage System for United Nations states Members Press Statements in Real Time.</b>
+  <b>Crawling, Indexing, and Storage System for United Nations Member states Press Statements in Real Time.</b>
 </p>
 
 
@@ -11,7 +11,7 @@
 
 This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
 contents with very little effort.
-On launching our Diplomatic pulse scrapy crawlers, the Diplomatic Pulse clones our backend data: XPATHs of each country's
+On launching our Diplomatic pulse scrapy crawlers, the Diplomatic pulse clones our backend data: XPATHs of each country's
 website layout to crawl and scrape the html contents. 
 
 

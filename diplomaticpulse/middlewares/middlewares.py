@@ -19,7 +19,7 @@ class DiplomaticpulseSpiderMiddleware(object):
     @classmethod
     def from_crawler(cls, crawler):
         """
-        This is the class method used by Scrapy to create your spiders.
+        This class method is used by Scrapy to create running spider.
 
         Args
             crawler (Crawler instance) :
@@ -35,7 +35,8 @@ class DiplomaticpulseSpiderMiddleware(object):
 
     def process_spider_input(self, response, spider):
         """
-        This method is called for each response that goes through the spider middleware and into the spider, for processing.
+        This method is called for each response that goes through the spider middleware and into the spider, for processing
+        request response.
 
         Args
             response(response (Response object)):
@@ -52,7 +53,7 @@ class DiplomaticpulseSpiderMiddleware(object):
 
     def process_spider_output(self, response, result, spider):
         """
-        This method is called with the results returned from the Spider, after it has processed the response.
+        This method is called with the results from the Spider, after it has processed the request response.
 
         Args
             response (response (Response object) ;
@@ -69,13 +70,15 @@ class DiplomaticpulseSpiderMiddleware(object):
             yield i
 
     def process_spider_exception(self, response, exception, spider):
-        # Called when a spider or process_spider_input() method
-        # (from other spider middleware) raises an exception.
+        """
+          Called when a spider or process_spider_input() method
+          (from other spider middleware) raises an exception.
 
-        # Should return either None or an iterable of Request, dict
-        # or Item objects.
+          Should return either None or an iterable of Request, dict
+          or Item objects.:
+        """
+
         return []
-        # pass
 
     def process_start_requests(self, start_requests, spider):
         """
@@ -93,9 +96,8 @@ class DiplomaticpulseSpiderMiddleware(object):
 
 
 class DiplomaticpulseDownloaderMiddleware(object):
-    """The downloader middleware is a framework of hooks into Scrapy’s request/response processing.
-    It’s a light, low-level system for globally altering Scrapy’s requests and responses.
-
+    """
+    The downloader middleware is a framework of hooks into Scrapy’s request/response processing.
     Args
         object (scrapy.spiders.Spider class):
             instance of spider being processed
@@ -105,7 +107,7 @@ class DiplomaticpulseDownloaderMiddleware(object):
     @classmethod
     def from_crawler(cls, crawler):
         """
-        This is the class method used by Scrapy to create your spiders.
+        This method is used by Scrapy to create your running spider.
 
         Args
                 crawler (Crawler instance) :
@@ -120,7 +122,7 @@ class DiplomaticpulseDownloaderMiddleware(object):
         return s
 
     def process_request(self, request, spider):
-        """This is the class method used by Scrapy to create your spiders.
+        """This method is used by Scrapy to process request.
 
         Args
                 request (Request object) :
@@ -136,10 +138,9 @@ class DiplomaticpulseDownloaderMiddleware(object):
 
 
 class CustomProxyMiddleware(object):
-    """This is the class method used to handle proxies"""
+    """This class is  used to handle proxies"""
 
     def process_request(self, request, spider):
-        # request.meta["proxy"]= "https://???:???@23.105.5.249:29842"
         pass
 
     def process_response(self, request, response, spider):

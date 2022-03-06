@@ -9,14 +9,14 @@ Diplomatic pulse requires Python 3.6+.
 
 Installing Diplomatic pulse
 ===========================
-To start Diplomatic pulse using Docker containers, run:
+To start Diplomatic pulse using Docker containers:
 
 ::
 
    git clone git@github.com:qcri/DiplomaticPulse.git
    docker-compose up
 
-Alternatively, if you can run a specific spider locally :
+Alternatively, you can run any spider locally :
 
 ::
 
@@ -46,8 +46,11 @@ Platform specific installation notes
 ====================================
 Ubuntu 14.04 or above
 ---------------------
-Diplomatic pulse is currently with Ubuntu 14.04.
+Diplomatic pulse runs in Ubuntu 14.04.
 
+
+install Scrapy
+---------------------
 To install Scrapy on Ubuntu (or Ubuntu-based) systems, you need to install these dependencies:
 
 ``sudo apt-get install python3 python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev``

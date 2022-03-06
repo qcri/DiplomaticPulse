@@ -10,12 +10,6 @@ class TestBeautifullsoupParser(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_get_cookies(self):
         """
         We pass dict(cookies) to get_cookies .

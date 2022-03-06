@@ -12,7 +12,7 @@ from collections import Counter
 from datetime import datetime
 import logging
 import schedule
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import getUrlConfigs
+from diplomaticpulse.db_elasticsearch.db_es import get_url_configs
 from scrapyd_api import ScrapydAPI
 
 FORMAT = "%(message)s"
@@ -47,7 +47,7 @@ def takeJobsBalancingSplash(jobs, splashJobs):
         yield sjob
 
 def submitJobs(options):
-    configs = getUrlConfigs()
+    configs = get_url_configs()
     counts = Counter([c['country'] for c in configs])
     logging.info('found %d configs from %d countries in database', len(configs), len(counts))
 
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     parser.add_argument('--project', type=str, default='diplomaticpulse',
                         help='the name of project on scrapyd server')
     parser.add_argument('scrapyd', type=str, nargs='+',
-                        help='scrapyd url (can be multiple separated with sapce)')
+                        help='scrapyd url (can be multiple separated with space)')
     options = parser.parse_args()
 
     scrapyds = options.scrapyd

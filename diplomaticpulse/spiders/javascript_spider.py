@@ -11,8 +11,8 @@ from scrapy.exceptions import CloseSpider
 from scrapy_selenium import SeleniumRequest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from diplomaticpulse.loader import bs4Loader
-from diplomaticpulse.db_elasticsearch.getUrlConfigs import DpElasticsearch
+from diplomaticpulse.dp_loader import item_loader
+from diplomaticpulse.db_elasticsearch.db_es import DpElasticsearch
 from diplomaticpulse.misc import (
     cookies_utils
 )
@@ -95,6 +95,7 @@ class JavascriptSpider(scrapy.Spider):
         self.options = Options()
         self.options.add_argument("--headless")
         self.options.add_argument("--disable-gpu")
+        self.options.add_argument("--no-sandbox")
         self.web_driver = webdriver.Chrome(chrome_options=self.options)
         self.cookies = cookies_utils.get_cookies(self.xpaths)
 
@@ -141,11 +142,11 @@ class JavascriptSpider(scrapy.Spider):
                 Iterable of Requests
 
         """
-        self.logger.info("parsing url %s request response  ", response.url)
+        self.logger.debug("parsing url %s request response  ", response.url)
         url_html_blocks = beautifulsoup_parser.get_text_from_html_block(
             response.url, self.xpaths, self.web_driver
         )
-        self.logger.info("links from overview page: %s ", len(url_html_blocks))
+        self.logger.debug("links from overview page: %s ", len(url_html_blocks))
         first_time_seen_urls = self.elasticsearch_cl.search_urls_by_country_type(
             url_html_blocks, self.xpaths
         )
@@ -159,7 +160,7 @@ class JavascriptSpider(scrapy.Spider):
                 ),
                 None,
             )
-            self.logger.info("sending request of url %s", response.urljoin(url))
+            self.logger.debug("sending request of url %s", response.urljoin(url))
             yield scrapy.Request(
                 response.urljoin(url),
                 callback=self.parseitem,
@@ -199,8 +200,8 @@ class JavascriptSpider(scrapy.Spider):
               }
 
         """
-        self.logger.info("start building item object of url %s ", response.url)
-        Item_loader =  bs4Loader.loader(response, data, self.xpaths, self.web_driver)
+        self.logger.debug("start building item object of url %s ", response.url)
+        Item_loader =  item_loader.loader(response, data, self.xpaths, self.web_driver)
         Item_loader.add_value("parent_url", self.start_urls[0])
         Item_loader.add_value("content_type", self.content_type)
         Item_loader.add_value("country", self.xpaths["name"])

@@ -1,4 +1,5 @@
 import unittest
+import diplomaticpulse.parsers.html_parser as util
 
 class TestHtmlUtils(unittest.TestCase):
     """
@@ -8,20 +9,11 @@ class TestHtmlUtils(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_format_html_text(self):
         """
-        We pass urlto get_response_content and expect it to formated html.
+        We pass html text  to test_format_html_text and we expect formated html.
         """
-        # url = "https://scrapy.org/"
-        # req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        # page = urlopen(req).read()
-        # response = HtmlResponse(url, body=page)
-        result = True  # util.format_html_text(response))
-        expected = True  # "<200 https://scrapy.org/>"
+        text =  '<br> An open source and collaborative \tframework for extracting the data you need from websites.\n\n </br>'
+        result =  util.format_html_text(text)
+        expected =  'An open source and collaborative framework for extracting the data you need from websites.'
         self.assertEqual(expected, result)

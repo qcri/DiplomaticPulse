@@ -1,9 +1,16 @@
+"""Module to setup the library. All library dependencies are added here.
+"""
 from setuptools import setup, find_packages
 
-setup(name='diplomaticpulse',
+setup(name="diplomaticpulse",
+      author="QCRI",
+      author_email="alattab@hbku.edu.qa",
+      long_description="long_description",
+      long_description_content_type="text/markdown",
+      url="https://github.com/qcri/DiplomaticPulse",
       version='1.0.0',
-      license='Apache License, Version 2.0',
-      description='Scrapy pipeline which allow you to store scrapy items in Elastic Search.',
+      license=" BSD-3-Clause",
+      description='Scrapy crawlers which allow you to crawl, scrape and store html contents in Elasticsearch.',
       packages=find_packages(),
       include_package_data=True,
       package_data = {
@@ -18,3 +25,4 @@ setup(name='diplomaticpulse',
                       'Operating System :: OS Independent',
                       'Programming Language :: Python']
       )
+

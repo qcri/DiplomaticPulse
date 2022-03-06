@@ -10,12 +10,6 @@ class TestParsingdates(unittest.TestCase):
 
     """
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_parse_default_string_date1(self):
         #scrapes date from text
         st_date = "Statement of the Ministry for Europe and Foreign Affairs of the Republic of Albania Tirana 28.10.2020"

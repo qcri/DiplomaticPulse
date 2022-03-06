@@ -3,7 +3,6 @@ import unittest
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 from diplomaticpulse.spiders.static_spider import StaticSpider
-from diplomaticpulse.spiders.javascript_spider import JavascriptSpider
 from diplomaticpulse.spiders.pdf_spider import PdfSpider
 from diplomaticpulse.spiders.static_pdf_spider import StaticPdfSpider
 from elasticsearch import Elasticsearch

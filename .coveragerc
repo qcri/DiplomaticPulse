@@ -1,0 +1,11 @@
+[run]
+omit = diplomaticpulse/tests/*
+		diplomaticpulse/db_elasticsearch/__init__.py
+		diplomaticpulse/__init__.py
+		diplomaticpulse/loader/__init__.py
+		diplomaticpulse/spiders/__init__.py
+		diplomaticpulse/misc/__init__.py
+		diplomaticpulse/parsers/__init__.py
+		diplomaticpulse/pipelines/__init__.py
+[report]
+show_missing=True

@@ -19,5 +19,5 @@ jobs:
     - name: Test
       run: docker exec scrapyd pytest -s --cov-config=.coveragerc --cov=diplomaticpulse diplomaticpulse/tests
     - name: run pylint
-      run: docker exec scrapyd pylint /code
+      run: docker exec scrapyd pylint /code/diplomaticpulse
 

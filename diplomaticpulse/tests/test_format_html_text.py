@@ -1,4 +1,6 @@
 import unittest
+from urllib.request import Request, urlopen
+from scrapy.http import HtmlResponse
 import diplomaticpulse.parsers.html_parser as util
 
 class TestHtmlUtils(unittest.TestCase):

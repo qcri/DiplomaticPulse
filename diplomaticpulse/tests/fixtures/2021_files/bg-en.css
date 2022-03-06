@@ -1,0 +1,31 @@
+#header {
+    /*background-image: url(../img/Backgroud-header.jpg);*/
+	/*background-image : url(../img/bg-top-en.png);*/
+	background-image : url('../img/entete.jpg');
+    height: 160px;
+	background-repeat: repeat-x;
+}
+
+.bottom-menu ul li a {
+	color : #000;
+}
+
+.address {
+    color: #000;
+    font-family: Calibri;
+    font-size: 17px;
+	margin-top: 10px;
+}
+.bottom-menu {
+    border-right: solid 1px #000;
+    margin-right: 30px;
+}
+
+#bottom-content {
+    background-color: #282828;
+    padding: 35px;
+    margin-top: 20px;
+	/*background-image : url(../img/bg-bottom-en.png);*/
+	background-image : url(../img/footer-bg.jpg);
+	background-repeat: repeat-x;
+}

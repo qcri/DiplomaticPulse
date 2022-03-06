@@ -781,15 +781,8 @@
 {"index": {"_id": "f4157fc79dc329a35ee0c55cc8ed0f745007404e"}}
 {"tag": null, "posted_date": "nill", "global": "//a[has-class(\"tabs-content__item\")]", "url": "http://localhost/belarus.html", "link_follow": null, "name": "Belarus", "us_date_format": null, "title": "//h2/text()", "link": "//@href", "statement": "//section[has-class(\"content-page\")]", "content_type": "static"}
 
-{"index": {"_id": "e57107051b0403efc01024558e703baebfcb93c9"}}
-{"tag": null, "posted_date": "nill", "global": "//a[has-class(\"tabs-content__item\")]", "url": "http://localhost/belarus1.html", "link_follow": null, "name": "Belarus", "us_date_format": null, "title": "//h2/text()", "link": "//@href", "statement": "//section[has-class(\"content-page\")]", "content_type": "javascript"}
-
 {"index": {"_id": "c124df151f52a7c0dae2e58f9657540cea7fba40"}}
 {"name": "Timor-Leste", "content_type": "pdf", "title": "//a//text()", "link": "//a//@href", "us_date_format": null, "url": "http://localhost/timor.html", "posted_date": "//div[has-class(\"docs_details\")]//span//text()", "tag": null, "link_follow": null, "global": "//div[has-class(\"docs_details\")]", "statement": null}
 
-{"index": {"_id": "9be685078af526566f2035f8f107a6e6c2dc6900"}}
-{"name": "Timor-Leste", "content_type": "static_pdf", "title": "//a//text()", "link": "//a//@href", "us_date_format": null, "url": "http://localhost/timor1.html", "posted_date": "//div[has-class(\"docs_details\")]//span//text()", "tag": null, "link_follow": null, "global": "//div[has-class(\"docs_details\")]", "statement": null}
-
-
-{"index": {"_id": "34eeabec7ede6481c06f85b2ffc8cb3a6bd92e93"}}
-{"url": "https://mfa.uz/en/press/news", "statement": "div,base-content", "link": "html.a", "tag": null, "name": "Uzbekistan", "global": "div,medium-news__caption", "bs_element": "html.a,html.a,nill", "ssl": null, "us_date_format": "", "content_type": "javascript", "link_follow": "", "posted_date": "div,news-meta__date", "title": "html.a"}
+{"index": {"_id": "5fd919a6a14095f520edd6b478d0a2747c4f8506"}}
+{"ssl": "true", "us_date_format": "", "tag": null, "name": "Cameroon", "global": "//div[has-class(\"post-style1\")]", "posted_date": "//span[has-class(\"date-display-single\")]//text()", "statement": null, "url": "http://localhost/cameron.html", "bs_element": null, "link": "//h3//@href", "title": "//h3//text()", "link_follow": "//span[has-class(\"file\")]//@href", "content_type": "static_pdf"}

@@ -14,9 +14,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the stack
       run: docker-compose up -d
+    - name: start nginx
+      run: docker exec scrapyd service nginx start
     - name: Test
-      run: docker exec scrapyd python3 /code/test_runner.py
+      run: docker exec scrapyd pytest -s --cov-config=.coveragerc --cov=diplomaticpulse diplomaticpulse/tests
     - name: run pylint
       run: docker exec scrapyd pylint /code
 
-     

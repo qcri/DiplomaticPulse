@@ -5,16 +5,14 @@ __pycache__
 *.pyc
 .idea/
 .env
-*.json
 *.csv
 *.xls*
 *.txt
-*.html
 dbs/
 __pycache__
 *.png
 *.log
-test_env_variables.sh
+test_env_variables.sh   
 proxy.py
 build/
 dist/

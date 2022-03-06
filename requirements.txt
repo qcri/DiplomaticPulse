@@ -58,3 +58,4 @@ PyMuPDF==1.18.17
 pytesseract==0.3.8
 unittest-xml-reporting==2.2.0
 pylint==2.12.2
+pytest-cov==3.0.0

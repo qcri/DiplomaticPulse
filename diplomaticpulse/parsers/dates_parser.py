@@ -73,8 +73,7 @@ def parse_non_english_string_date(str_date):
     """
     try:
         return dateparser.parse(str_date).strftime("%Y-%m-%d")
-    except Exception as ex:
-        print(ex)
+    except Exception:
         return None
 
 

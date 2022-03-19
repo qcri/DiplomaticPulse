@@ -9,10 +9,10 @@
 
 ## Overview
 
-This repository should provide much of the structure and parsing code needed to crawl and scrape various countries's Ministry of Foreign Affairs (MFA) web pages
-contents with very little effort.
-On launching our Diplomatic pulse scrapy crawlers, the Diplomatic pulse clones our backend data: XPATHs of each country's
-website layout to crawl and scrape the html contents. 
+This repository should provide much of the structure and parsing code needed to crawl and scrape various
+countries Ministry of Foreign Affairs (MFA) web pages contents with very little effort. On launching our
+Diplomatic pulse Scrapy crawlers, the Diplomatic pulse clones our back end data: XPATHs of each country's website 
+layout to crawl and scrape the html contents. 
 
 
 ## Requirements

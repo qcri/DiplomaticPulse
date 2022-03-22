@@ -34,7 +34,7 @@ See the install section in the documentation at https://diplomaticpulse.qcri.org
 ## Browsing extracted indexed data
 
 In each visited country's webpage, the content is extracted and indexed into elasticsearch index ``dppa.st``.
-The indexed data can be browsed using the `Dejavu`_ (free and open source web UI for Elasticsearch).
+The indexed data can be browsed using the `Dejavu` (free and open source web UI for Elasticsearch).
 
 Assuming all containers are running on your local machine, go to:
 

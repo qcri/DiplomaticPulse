@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website’s XPATHs configuration &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Indexing data" href="indexed-data.html" />
+    <link rel="prev" title="Installation Guide" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Diplomatic Pulse
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Website’s XPATHs configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#country-website-overview-page">Country website (Overview) page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-xpaths-configuration-data">Build XPATHs Configuration Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#countries-index">countries index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urlconfig-index">urlconfig index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#countries-json">countries.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urlconfig-json">urlconfig.json</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="indexed-data.html">Indexing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute to Diplomatic pulse code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diplomatic Pulse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Website’s XPATHs configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/xpaths-data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="website-s-xpaths-configuration">
+<h1>Website’s XPATHs configuration<a class="headerlink" href="#website-s-xpaths-configuration" title="Permalink to this headline"></a></h1>
+<section id="country-website-overview-page">
+<h2>Country website (Overview) page<a class="headerlink" href="#country-website-overview-page" title="Permalink to this headline"></a></h2>
+<p>There maybe at least one overview page for each country, e.g: Australian: <a class="reference external" href="https://www.foreignminister.gov.au">https://www.foreignminister.gov.au</a>
+A country may have more than one overview page (multiple URLs).
+The crawler visits the country’s overview page then scrapes the existing articles links, then follows each link to extract
+its content (title, date posted, statement); the content is saved into an <a class="reference external" href="https://www.elastic.co/guide/index.html">elasticsearch</a> database.</p>
+</section>
+<section id="build-xpaths-configuration-data">
+<h2>Build XPATHs Configuration Data<a class="headerlink" href="#build-xpaths-configuration-data" title="Permalink to this headline"></a></h2>
+<p>On launching the Diplomatic pulse containers, the script <code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> creates two Elasticsearch indexes on the fly: <a class="reference internal" href="#countries">countries</a>
+and <a class="reference internal" href="#urlconfig">urlconfig</a>; each index name is shown in  file <code class="docutils literal notranslate"><span class="pre">.env</span></code>.</p>
+<section id="countries-index">
+<span id="countries"></span><h3>countries index<a class="headerlink" href="#countries-index" title="Permalink to this headline"></a></h3>
+<p>The elasticsearch index: <a class="reference internal" href="#countries">countries</a> contains the  list of names of countries. It is populated with the json data in <a class="reference internal" href="#countries-json">countries.json</a>.</p>
+<p>Metadata</p>
+<ul class="simple">
+<li><p>name, name of the country, for example: Australia.</p></li>
+<li><p>status, complete if all country’s xpaths are valid, else pending.</p></li>
+<li><p>URL counter, total number of indexed URLs for the country.</p></li>
+</ul>
+</section>
+<section id="urlconfig-index">
+<span id="urlconfig"></span><h3>urlconfig index<a class="headerlink" href="#urlconfig-index" title="Permalink to this headline"></a></h3>
+<p>The eleasticsearch index: <a class="reference internal" href="#urlconfig">urlconfig</a> contains the list of URL’s xpath configuration. It is populated with the data
+<a class="reference internal" href="#urlconfig-json">urlconfig.json</a>.</p>
+<p>Metadata</p>
+<ul class="simple">
+<li><p>name, name of the country:</p></li>
+<li><p>URL, country’s overview page link.</p></li>
+<li><p>posted date, published article’s xpath.</p></li>
+<li><p>content_type, content type (spider name) .</p></li>
+<li><p>global,  html block (which contains title &amp; article link, date posted) xpaths (extracted from overview page).</p></li>
+<li><p>link, article’s link xpath (URL).</p></li>
+<li><p>title, acticle’s title xpath.</p></li>
+<li><p>tag, Unawanted html element tag’s xpath.</p></li>
+<li><p>us_date_format, US date format if exist.</p></li>
+</ul>
+</section>
+<section id="countries-json">
+<span id="id1"></span><h3>countries.json<a class="headerlink" href="#countries-json" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;index&quot;:</span> <span class="pre">{&quot;_id&quot;:</span> <span class="pre">&quot;5cb4c9d828175ed3931ec52305b32f47173a8e04&quot;}}</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;Belgium&quot;}</span></code></p>
+</section>
+<section id="urlconfig-json">
+<span id="id2"></span><h3>urlconfig.json<a class="headerlink" href="#urlconfig-json" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;index&quot;:</span> <span class="pre">{&quot;_id&quot;:</span> <span class="pre">&quot;4917fefc12484a580347ebab907cfa05d3cd8132&quot;}}</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;content_type&quot;:</span> <span class="pre">&quot;static&quot;,</span> <span class="pre">&quot;global&quot;:</span> <span class="pre">&quot;//div[has-class(\&quot;node-feed-item\&quot;)]&quot;,</span> <span class="pre">&quot;url&quot;:</span> <span class="pre">&quot;https://newyorkun.diplomatie.belgium.be&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;us_date_format&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;posted_date&quot;:</span> <span class="pre">&quot;//div[has-class(\&quot;meta</span> <span class="pre">submitted\&quot;)]//text()&quot;,</span> <span class="pre">&quot;link&quot;:</span> <span class="pre">&quot;//h3/a/&#64;href&quot;,</span> <span class="pre">&quot;tag&quot;:</span> <span class="pre">null,</span></code>
+<code class="docutils literal notranslate"><span class="pre">&quot;title&quot;:</span> <span class="pre">&quot;//h3/a/text()&quot;,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;Belgium&quot;,</span> <span class="pre">&quot;link_follow&quot;:</span> <span class="pre">null,</span> <span class="pre">&quot;statement&quot;:</span> <span class="pre">&quot;//div[has-class(\&quot;field-item</span> <span class="pre">even\&quot;)]&quot;}</span></code></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="indexed-data.html" class="btn btn-neutral float-right" title="Indexing data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, QCRI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

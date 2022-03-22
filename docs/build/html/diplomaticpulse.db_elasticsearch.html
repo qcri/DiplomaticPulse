@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Diplomatic Pulse’s 0.0.1 documentation! &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+  <title>diplomaticpulse.db_elasticsearch package &mdash; Diplomatic Pulse 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="overview.html" /> 
+    <link rel="next" title="diplomaticpulse.loader package" href="diplomaticpulse.loader.html" />
+    <link rel="prev" title="diplomaticpulse package" href="diplomaticpulse.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,7 +27,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> Diplomatic Pulse
+            <a href="index.html" class="icon icon-home"> Diplomatic Pulse
           </a>
               <div class="version">
                 0.0.1
@@ -40,7 +41,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xpaths-data.html">Website’s XPATHs configuration</a></li>
@@ -49,7 +50,25 @@
 <li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
 <li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diplomaticpulse.html">diplomaticpulse package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="diplomaticpulse.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">diplomaticpulse.db_elasticsearch package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.loader.html">diplomaticpulse.loader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.misc.html">diplomaticpulse.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.parsers.html">diplomaticpulse.parsers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.pipelines.html">diplomaticpulse.pipelines package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.spiders.html">diplomaticpulse.spiders package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.tests.html">diplomaticpulse.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#diplomaticpulse-settings-module">diplomaticpulse.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#module-diplomaticpulse">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute to Diplomatic pulse code</a></li>
 </ul>
 
@@ -59,17 +78,19 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Diplomatic Pulse</a>
+          <a href="index.html">Diplomatic Pulse</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to Diplomatic Pulse’s 0.0.1 documentation!</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Reference</a> &raquo;</li>
+          <li><a href="diplomaticpulse.html">diplomaticpulse package</a> &raquo;</li>
+      <li>diplomaticpulse.db_elasticsearch package</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/diplomaticpulse.db_elasticsearch.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,35 +98,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-diplomatic-pulse-s-version-documentation">
-<h1>Welcome to Diplomatic Pulse’s 0.0.1 documentation!<a class="headerlink" href="#welcome-to-diplomatic-pulse-s-version-documentation" title="Permalink to this headline"></a></h1>
-<p>Diplomatic pulse is a crawling, indexing and storage system for United Nations Member States: press statements in Real Time.</p>
-<div class="toctree-wrapper compound">
-</div>
-<p><a class="reference internal" href="overview.html"><span class="doc">Overview</span></a></p>
-<p><a class="reference internal" href="installation.html"><span class="doc">Installation Guide</span></a></p>
-<p><a class="reference internal" href="xpaths-data.html"><span class="doc">Website’s XPATHs configuration</span></a></p>
-<p><a class="reference internal" href="indexed-data.html"><span class="doc">Indexing data</span></a></p>
-<p><a class="reference internal" href="spiders.html"><span class="doc">Spiders</span></a></p>
-<p><a class="reference internal" href="browsing-data.html"><span class="doc">Browsing extracted indexed data</span></a></p>
-<p><a class="reference internal" href="proxies.html"><span class="doc">How to use Rotating Proxies</span></a></p>
-<p><a class="reference internal" href="modules.html"><span class="doc">API Reference</span></a></p>
-<p><a class="reference internal" href="contributing.html"><span class="doc">How to contribute to Diplomatic pulse code</span></a></p>
+  <section id="diplomaticpulse-db-elasticsearch-package">
+<h1>diplomaticpulse.db_elasticsearch package<a class="headerlink" href="#diplomaticpulse-db-elasticsearch-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
 </section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<section id="diplomaticpulse-db-elasticsearch-geturlconfigs-module">
+<h2>diplomaticpulse.db_elasticsearch.getUrlConfigs module<a class="headerlink" href="#diplomaticpulse-db-elasticsearch-geturlconfigs-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.db_elasticsearch">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-diplomaticpulse.db_elasticsearch" title="Permalink to this headline"></a></h2>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="diplomaticpulse.html" class="btn btn-neutral float-left" title="diplomaticpulse package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="diplomaticpulse.loader.html" class="btn btn-neutral float-right" title="diplomaticpulse.loader package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

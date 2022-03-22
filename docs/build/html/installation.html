@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Guide &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Website’s XPATHs configuration" href="xpaths-data.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Diplomatic Pulse
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-python-versions">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-diplomatic-pulse">Installing Diplomatic pulse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-virtual-environment-recommended">Using a virtual environment (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#platform-specific-installation-notes">Platform specific installation notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu-14-04-or-above">Ubuntu 14.04 or above</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-scrapy">install Scrapy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xpaths-data.html">Website’s XPATHs configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexed-data.html">Indexing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute to Diplomatic pulse code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diplomatic Pulse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline"></a></h1>
+<section id="supported-python-versions">
+<h2>Supported Python versions<a class="headerlink" href="#supported-python-versions" title="Permalink to this headline"></a></h2>
+<p>Diplomatic pulse requires Python 3.6+.</p>
+</section>
+<section id="installing-diplomatic-pulse">
+<h2>Installing Diplomatic pulse<a class="headerlink" href="#installing-diplomatic-pulse" title="Permalink to this headline"></a></h2>
+<p>To start Diplomatic pulse using Docker containers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">qcri</span><span class="o">/</span><span class="n">DiplomaticPulse</span><span class="o">.</span><span class="n">git</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span>
+</pre></div>
+</div>
+<p>Alternatively, you can run any spider locally :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scrapy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">scrapy</span> <span class="n">crawl</span> <span class="o">&lt;</span><span class="n">spider</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">a</span> <span class="n">url</span><span class="o">=&lt;</span><span class="n">page</span> <span class="n">url</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>We strongly recommend that you install Scrapy in <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html#tut-venv">a dedicated virtualenv</a>, to avoid conflicting with your system packages.</p>
+</section>
+<section id="using-a-virtual-environment-recommended">
+<h2>Using a virtual environment (recommended)<a class="headerlink" href="#using-a-virtual-environment-recommended" title="Permalink to this headline"></a></h2>
+<p>We recommend installing Diplomatic pulse inside a virtual environment on all platforms.</p>
+<p>Instead, we recommend that you install Diplomatic pulse within a so-called “virtual environment” (<strong>venv</strong>). Virtual environments allow
+you to not conflict with already-installed Python system packages (which could break some of your system tools and scripts), and
+still install packages normally with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (without <code class="docutils literal notranslate"><span class="pre">sudo</span></code> and the likes).</p>
+<p>See <a href="#id2"><span class="problematic" id="id3">`Virtual Environments and Packages`_</span></a> on how to create your virtual environment.</p>
+</section>
+<section id="platform-specific-installation-notes">
+<span id="id1"></span><h2>Platform specific installation notes<a class="headerlink" href="#platform-specific-installation-notes" title="Permalink to this headline"></a></h2>
+<section id="ubuntu-14-04-or-above">
+<h3>Ubuntu 14.04 or above<a class="headerlink" href="#ubuntu-14-04-or-above" title="Permalink to this headline"></a></h3>
+<p>Diplomatic pulse runs in Ubuntu 14.04.</p>
+</section>
+<section id="install-scrapy">
+<h3>install Scrapy<a class="headerlink" href="#install-scrapy" title="Permalink to this headline"></a></h3>
+<p>To install Scrapy on Ubuntu (or Ubuntu-based) systems, you need to install these dependencies:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3</span> <span class="pre">python3-dev</span> <span class="pre">python3-pip</span> <span class="pre">libxml2-dev</span> <span class="pre">libxslt1-dev</span> <span class="pre">zlib1g-dev</span> <span class="pre">libffi-dev</span> <span class="pre">libssl-dev</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python3-dev,</span> <span class="pre">zlib1g-dev,</span> <span class="pre">libxml2-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libxslt1-dev</span></code> are required for <code class="docutils literal notranslate"><span class="pre">lxml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libssl-dev</span></code> and <code class="docutils literal notranslate"><span class="pre">libffi-dev</span></code> are required for <code class="docutils literal notranslate"><span class="pre">cryptography</span></code></p></li>
+</ul>
+<p>Inside a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html#tut-venv">virtualenv</a>, you can install Scrapy with <code class="docutils literal notranslate"><span class="pre">pip</span></code> after that:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scrapy</span></code></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="xpaths-data.html" class="btn btn-neutral float-right" title="Website’s XPATHs configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, QCRI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

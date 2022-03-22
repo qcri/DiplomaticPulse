@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+  <title>Spiders &mdash; Diplomatic Pulse 0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,10 +16,10 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Browsing extracted indexed data" href="browsing-data.html" />
+    <link rel="prev" title="Indexing data" href="indexed-data.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +33,7 @@
                 0.0.1
               </div>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -41,13 +41,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xpaths-data.html">Website’s XPATHs configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="indexed-data.html">Indexing data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#succesfull-running-spiders">Succesfull running spiders</a></li>
 <li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a></li>
@@ -68,8 +68,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>Spiders</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/spiders.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,22 +78,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <section id="spiders">
+<h1>Spiders<a class="headerlink" href="#spiders" title="Permalink to this headline"></a></h1>
+<p>We have developed 4 Scrapy spiders for Diplomatic pulse  (one for each content type) to extract contents from various websites, you can easily implements a new spider for a new html content type.</p>
+<p>To view all spider,you can use command: <code class="docutils literal notranslate"><span class="pre">scapy</span> <span class="pre">list</span></code> they are:</p>
+<ul class="simple">
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">diplomaticpulse.spiders.static_spider</span></code>, for static html content.</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">diplomaticpulse.spiders.javascript_spider</span></code>, for dynamic content.</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">diplomaticpulse.spiders.static_pdf_spider</span></code>, for static and PDF/Images contents.</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">diplomaticpulse.spiders.pdf_spider</span></code>, for PDF/Images contents.</p></li>
+</ul>
+<p>There maybe at least one overview (<a class="reference external" href="https://www.foreignminister.gov.au">https://www.foreignminister.gov.au</a> ) page for each country. Though, a country may have more than one
+overview page (multiple URLs).</p>
+<p>The crawler (spider) visits the country’s overview page then scrapes the existing links, then follows each link to extract
+its content (title, date posted, statement); the content is saved into an <a class="reference external" href="https://github.com/elastic/elasticsearch">elasticsearch</a> database.</p>
+</section>
+<section id="succesfull-running-spiders">
+<h1>Succesfull running spiders<a class="headerlink" href="#succesfull-running-spiders" title="Permalink to this headline"></a></h1>
+<p>Our Diplomatic pulse spiders depend on the underlying format and structure of each websites’s page, and when the website’s layout changes  or wrong
+our spiders tend to break. So succesfull running spiders depends heavily on a correct website’s XPATH configuration,
+therfore if country’s website updates its templates then correct XPATHs should be updated respectively.</p>
+</section>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="indexed-data.html" class="btn btn-neutral float-left" title="Indexing data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="browsing-data.html" class="btn btn-neutral float-right" title="Browsing extracted indexed data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -114,14 +128,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

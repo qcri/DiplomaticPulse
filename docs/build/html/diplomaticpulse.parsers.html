@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diplomaticpulse.parsers package &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="diplomaticpulse.pipelines package" href="diplomaticpulse.pipelines.html" />
+    <link rel="prev" title="diplomaticpulse.misc package" href="diplomaticpulse.misc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Diplomatic Pulse
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpaths-data.html">Website’s XPATHs configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexed-data.html">Indexing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diplomaticpulse.html">diplomaticpulse package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="diplomaticpulse.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.db_elasticsearch.html">diplomaticpulse.db_elasticsearch package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.loader.html">diplomaticpulse.loader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.misc.html">diplomaticpulse.misc package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">diplomaticpulse.parsers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.pipelines.html">diplomaticpulse.pipelines package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.spiders.html">diplomaticpulse.spiders package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.tests.html">diplomaticpulse.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#diplomaticpulse-settings-module">diplomaticpulse.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#module-diplomaticpulse">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute to Diplomatic pulse code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diplomatic Pulse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Reference</a> &raquo;</li>
+          <li><a href="diplomaticpulse.html">diplomaticpulse package</a> &raquo;</li>
+      <li>diplomaticpulse.parsers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/diplomaticpulse.parsers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diplomaticpulse-parsers-package">
+<h1>diplomaticpulse.parsers package<a class="headerlink" href="#diplomaticpulse-parsers-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-parsers-beautifulsoup-parser-module">
+<h2>diplomaticpulse.parsers.beautifulsoup_parser module<a class="headerlink" href="#diplomaticpulse-parsers-beautifulsoup-parser-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-parsers-dates-parser-module">
+<h2>diplomaticpulse.parsers.dates_parser module<a class="headerlink" href="#diplomaticpulse-parsers-dates-parser-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.parsers.html_parser">
+<span id="diplomaticpulse-parsers-html-parser-module"></span><h2>diplomaticpulse.parsers.html_parser module<a class="headerlink" href="#module-diplomaticpulse.parsers.html_parser" title="Permalink to this headline"></a></h2>
+<p>This module implements a spider to use
+for scraping countries articles (static html content),
+e.g: <a class="reference external" href="https://www.foreignminister.gov.au/">https://www.foreignminister.gov.au/</a> .</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="diplomaticpulse.parsers.html_parser.format_html_pdf_text">
+<span class="sig-prename descclassname"><span class="pre">diplomaticpulse.parsers.html_parser.</span></span><span class="sig-name descname"><span class="pre">format_html_pdf_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_html</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/parsers/html_parser.html#format_html_pdf_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.parsers.html_parser.format_html_pdf_text" title="Permalink to this definition"></a></dt>
+<dd><p>This method formats PDF content.</p>
+<dl class="simple">
+<dt>Args</dt><dd><dl class="simple">
+<dt>html (string):</dt><dd><p>PDF article content</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns</dt><dd><dl class="simple">
+<dt>text (string):</dt><dd><p>formated html text</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diplomaticpulse.parsers.html_parser.format_html_text">
+<span class="sig-prename descclassname"><span class="pre">diplomaticpulse.parsers.html_parser.</span></span><span class="sig-name descname"><span class="pre">format_html_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/parsers/html_parser.html#format_html_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.parsers.html_parser.format_html_text" title="Permalink to this definition"></a></dt>
+<dd><p>This method formats html content.</p>
+<dl class="simple">
+<dt>Args</dt><dd><dl class="simple">
+<dt>html (string):</dt><dd><p>article content</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns</dt><dd><dl class="simple">
+<dt>text (string):</dt><dd><p>formated html text</p>
+</dd>
+</dl>
+</dd>
+<dt>Raises</dt><dd><dl class="simple">
+<dt>Exception</dt><dd><p>when it catches  error</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diplomaticpulse.parsers.html_parser.get_html_block_links">
+<span class="sig-prename descclassname"><span class="pre">diplomaticpulse.parsers.html_parser.</span></span><span class="sig-name descname"><span class="pre">get_html_block_links</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xpaths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/parsers/html_parser.html#get_html_block_links"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.parsers.html_parser.get_html_block_links" title="Permalink to this definition"></a></dt>
+<dd><p>This method reads Request response - html block for each article (URL).</p>
+<dl>
+<dt>Args</dt><dd><dl>
+<dt>response (Request response):</dt><dd><p>response content</p>
+</dd>
+<dt>xpaths<span class="classifier">dic(json)</span></dt><dd><p>Python dict in the following format:
+xpaths{</p>
+<blockquote>
+<div><p>‘global’ : &lt;URL global XPATH&gt;
+‘link’ : &lt;URL XPATH&gt;&gt;
+‘title’ : &lt;title XPATH &gt;
+‘posted_date’ : &lt;date posted XPATH &gt;</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Returns
+data : [string]</p>
+<blockquote>
+<div><dl class="simple">
+<dt>data[</dt><dd><p>&lt;url&gt;,&lt;title&gt;,&lt;posted_date&gt;</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diplomaticpulse.parsers.html_parser.get_html_response_content">
+<span class="sig-prename descclassname"><span class="pre">diplomaticpulse.parsers.html_parser.</span></span><span class="sig-name descname"><span class="pre">get_html_response_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/parsers/html_parser.html#get_html_response_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.parsers.html_parser.get_html_response_content" title="Permalink to this definition"></a></dt>
+<dd><p>This method reads body content from Request response using XPATH method.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>response (Request object): response body
+xpath(string): article xpath</p>
+</dd>
+<dt>Returns</dt><dd><p>text(string): formated html text</p>
+</dd>
+<dt>Raises</dt><dd><p>Exception: when it catches  error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="diplomaticpulse.parsers.html_parser.get_title">
+<span class="sig-prename descclassname"><span class="pre">diplomaticpulse.parsers.html_parser.</span></span><span class="sig-name descname"><span class="pre">get_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xpaths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/parsers/html_parser.html#get_title"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.parsers.html_parser.get_title" title="Permalink to this definition"></a></dt>
+<dd><p>This method scrapes article’s title.</p>
+<dl>
+<dt>Args</dt><dd><dl>
+<dt>title (string):</dt><dd><p>article title</p>
+</dd>
+<dt>response (Request response):</dt><dd><p>response content</p>
+</dd>
+<dt>xpaths<span class="classifier">dict(json)</span></dt><dd><p>Python dict in the following format:
+xpaths{</p>
+<blockquote>
+<div><p>‘title’ : &lt;article  title XPATH &gt;
+}</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt>Returns</dt><dd><dl class="simple">
+<dt>title<span class="classifier">string</span></dt><dd><p>title</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-parsers-pdf-parser-module">
+<h2>diplomaticpulse.parsers.pdf_parser module<a class="headerlink" href="#diplomaticpulse-parsers-pdf-parser-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.parsers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-diplomaticpulse.parsers" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="diplomaticpulse.misc.html" class="btn btn-neutral float-left" title="diplomaticpulse.misc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="diplomaticpulse.pipelines.html" class="btn btn-neutral float-right" title="diplomaticpulse.pipelines package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, QCRI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

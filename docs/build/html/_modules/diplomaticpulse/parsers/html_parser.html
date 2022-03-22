@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diplomaticpulse.parsers.html_parser &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Diplomatic Pulse
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../xpaths-data.html">Website’s XPATHs configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../indexed-data.html">Indexing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../browsing-data.html">Browsing extracted indexed data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../proxies.html">How to use Rotating Proxies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">How to contribute to Diplomatic pulse code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Diplomatic Pulse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>diplomaticpulse.parsers.html_parser</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for diplomaticpulse.parsers.html_parser</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module implements a spider to use</span>
+<span class="sd">for scraping countries articles (static html content),</span>
+<span class="sd">e.g: https://www.foreignminister.gov.au/ .</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="kn">import</span> <span class="n">Selector</span>
+
+<div class="viewcode-block" id="get_html_response_content"><a class="viewcode-back" href="../../../diplomaticpulse.parsers.html#diplomaticpulse.parsers.html_parser.get_html_response_content">[docs]</a><span class="k">def</span> <span class="nf">get_html_response_content</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">xpath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method reads body content from Request response using XPATH method.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        response (Request object): response body</span>
+<span class="sd">        xpath(string): article xpath</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">        text(string): formated html text</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">        Exception: when it catches  error</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">format_html_text</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpath</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">()))</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="format_html_text"><a class="viewcode-back" href="../../../diplomaticpulse.parsers.html#diplomaticpulse.parsers.html_parser.format_html_text">[docs]</a><span class="k">def</span> <span class="nf">format_html_text</span><span class="p">(</span><span class="n">html</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method formats html content.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">        html (string):</span>
+<span class="sd">                article content</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">        text (string):</span>
+<span class="sd">            formated html text</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">        Exception</span>
+<span class="sd">            when it catches  error</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;&lt;p[^&gt;]*&gt;([^&lt;]+)&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&lt;br&gt;(</span><span class="se">\\</span><span class="s2">n){0,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&lt;[/]*[^pb][^&gt;]+&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">html</span><span class="p">)))</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\n{2,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clean_text</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">clean_text</span><span class="p">:</span>
+            <span class="c1"># check if the element &lt;p&gt; present in html</span>
+            <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&lt;br&gt;(</span><span class="se">\\</span><span class="s2">n){0,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;&lt;[/]*[^pb][^&gt;]+&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">html</span><span class="p">))</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0</span><span class="s2"> {2,}&quot;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">\s*&quot;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+        <span class="n">clean_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">clean_text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clean_text</span><span class="p">:</span>
+            <span class="n">clean_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">clean_text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">html</span></div>
+
+
+<div class="viewcode-block" id="format_html_pdf_text"><a class="viewcode-back" href="../../../diplomaticpulse.parsers.html#diplomaticpulse.parsers.html_parser.format_html_pdf_text">[docs]</a><span class="k">def</span> <span class="nf">format_html_pdf_text</span><span class="p">(</span><span class="n">raw_html</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method formats PDF content.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">        html (string):</span>
+<span class="sd">            PDF article content</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">        text (string):</span>
+<span class="sd">            formated html text</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">CLEANR</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">CLEANR</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">raw_html</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[</span><span class="se">\n</span><span class="s1">]+&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[</span><span class="se">\t</span><span class="s1">]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[</span><span class="se">\r</span><span class="s1">]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[</span><span class="se">\xa0</span><span class="s1">]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">raw_html</span></div>
+
+
+<div class="viewcode-block" id="get_html_block_links"><a class="viewcode-back" href="../../../diplomaticpulse.parsers.html#diplomaticpulse.parsers.html_parser.get_html_block_links">[docs]</a><span class="k">def</span> <span class="nf">get_html_block_links</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">xpaths</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method reads Request response - html block for each article (URL).</span>
+
+<span class="sd">    Args</span>
+<span class="sd">        response (Request response):</span>
+<span class="sd">              response content</span>
+<span class="sd">        xpaths : dic(json)</span>
+<span class="sd">            Python dict in the following format:</span>
+<span class="sd">            xpaths{</span>
+<span class="sd">                   &#39;global&#39; : &lt;URL global XPATH&gt;</span>
+<span class="sd">                   &#39;link&#39; : &lt;URL XPATH&gt;&gt;</span>
+<span class="sd">                   &#39;title&#39; : &lt;title XPATH &gt;</span>
+<span class="sd">                   &#39;posted_date&#39; : &lt;date posted XPATH &gt;</span>
+<span class="sd">            }</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    data : [string]</span>
+<span class="sd">        data[</span>
+<span class="sd">            &lt;url&gt;,&lt;title&gt;,&lt;posted_date&gt;</span>
+<span class="sd">        ]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">html_blocks</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpaths</span><span class="p">[</span><span class="s2">&quot;global&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">getall</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">html</span> <span class="ow">in</span> <span class="n">html_blocks</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">html</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpaths</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">html</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpaths</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">_date</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">html</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpaths</span><span class="p">[</span><span class="s2">&quot;posted_date&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">unquote</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">posted_date</span><span class="o">=</span><span class="n">_date</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="get_title"><a class="viewcode-back" href="../../../diplomaticpulse.parsers.html#diplomaticpulse.parsers.html_parser.get_title">[docs]</a><span class="k">def</span> <span class="nf">get_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">xpaths</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method scrapes article&#39;s title.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">        title (string):</span>
+<span class="sd">            article title</span>
+<span class="sd">        response (Request response):</span>
+<span class="sd">              response content</span>
+<span class="sd">        xpaths : dict(json)</span>
+<span class="sd">            Python dict in the following format:</span>
+<span class="sd">            xpaths{</span>
+<span class="sd">                &#39;title&#39; : &lt;article  title XPATH &gt;</span>
+<span class="sd">                }</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">        title : string</span>
+<span class="sd">             title</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpaths</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">title</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">title</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, QCRI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

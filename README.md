@@ -17,24 +17,50 @@ layout to crawl and scrape the html contents.
 
 ## Requirements
 - Python 3.6+
-- Works on Linux
+- Docker version >=19.03.12
 
-## Install  
+## Installing and executing 
 A docker-compose.yml file is used, once you have Docker installed and started, change to the project directory and follow: 
--  `clone git@github.com:qcri/DiplomaticPulse.git`
-- `docker-compose up`
+```bash
+git clone git@github.com:qcri/DiplomaticPulse.git
+cd DiplomaticPulse
+docker-compose up
+```
 
 See the install section in the documentation at https://diplomaticpulse.qcri.org/docs/installation.html for more details
 
 
-## Documentation
+
+##Browsing extracted indexed data
+
+In each visited country's webpage, the content is extracted and indexed into elasticsearch index ``dppa.st``.
+The indexed data can be browsed using the `Dejavu`_ (free and open source web UI for Elasticsearch).
+
+Assuming all containers are running on your local machine, go to:
+
+* http://localhost:1358
+* connect to index ``dppa.st`` with ``http://localhost:9200``
+
+<p align="center">
+  <img width="95%" src="https://diplomaticpulse.qcri.org/static/dejavue-image.png" alt="Tasrif">
+</p>
+
+
+
+
+##Monitoring of Diplomatic pulse
+
+Diplomatic pulse uses the Scrapy UI , the role is to observe each crawler job history and status.
+
+you can access UI here:
+
+http://localhost:5000/1/jobs/
+
+## Full Documentation
 Documentation is available online at  https://diplomaticpulse.qcri.org/docs and in the docs directory.
 
 ## Contributing
 See https://diplomaticpulse.qcri.org/docs/contributing.html for details.
-
-
-
 
 
 

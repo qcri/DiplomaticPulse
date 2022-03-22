@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diplomaticpulse.tests package &mdash; Diplomatic Pulse 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to contribute to Diplomatic pulse code" href="contributing.html" />
+    <link rel="prev" title="diplomaticpulse.spiders package" href="diplomaticpulse.spiders.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Diplomatic Pulse
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xpaths-data.html">Website’s XPATHs configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indexed-data.html">Indexing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html#succesfull-running-spiders">Succesfull running spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="browsing-data.html">Browsing extracted indexed data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proxies.html">How to use Rotating Proxies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="diplomaticpulse.html">diplomaticpulse package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="diplomaticpulse.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.db_elasticsearch.html">diplomaticpulse.db_elasticsearch package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.loader.html">diplomaticpulse.loader package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.misc.html">diplomaticpulse.misc package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.parsers.html">diplomaticpulse.parsers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.pipelines.html">diplomaticpulse.pipelines package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diplomaticpulse.spiders.html">diplomaticpulse.spiders package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">diplomaticpulse.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#diplomaticpulse-settings-module">diplomaticpulse.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="diplomaticpulse.html#module-diplomaticpulse">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute to Diplomatic pulse code</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Diplomatic Pulse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Reference</a> &raquo;</li>
+          <li><a href="diplomaticpulse.html">diplomaticpulse package</a> &raquo;</li>
+      <li>diplomaticpulse.tests package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/diplomaticpulse.tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diplomaticpulse-tests-package">
+<h1>diplomaticpulse.tests package<a class="headerlink" href="#diplomaticpulse-tests-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-avoid-future-date-module">
+<h2>diplomaticpulse.tests.test_avoid_future_date module<a class="headerlink" href="#diplomaticpulse-tests-test-avoid-future-date-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_cookies_utils">
+<span id="diplomaticpulse-tests-test-cookies-utils-module"></span><h2>diplomaticpulse.tests.test_cookies_utils module<a class="headerlink" href="#module-diplomaticpulse.tests.test_cookies_utils" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_cookies_utils.TestBeautifullsoupParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_cookies_utils.</span></span><span class="sig-name descname"><span class="pre">TestBeautifullsoupParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_cookies_utils.html#TestBeautifullsoupParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_cookies_utils.TestBeautifullsoupParser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for test_get_cookies().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_cookies_utils.TestBeautifullsoupParser.test_get_cookies">
+<span class="sig-name descname"><span class="pre">test_get_cookies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_cookies_utils.html#TestBeautifullsoupParser.test_get_cookies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_cookies_utils.TestBeautifullsoupParser.test_get_cookies" title="Permalink to this definition"></a></dt>
+<dd><p>We pass dict(cookies) to get_cookies .</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-date-mdy-module">
+<h2>diplomaticpulse.tests.test_date_MDY module<a class="headerlink" href="#diplomaticpulse-tests-test-date-mdy-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-date-with-mmddyyyy-format-module">
+<h2>diplomaticpulse.tests.test_date_with_MMDDYYYY_format module<a class="headerlink" href="#diplomaticpulse-tests-test-date-with-mmddyyyy-format-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-date-with-mmddyy-format-module">
+<h2>diplomaticpulse.tests.test_date_with_MMDDYY_format module<a class="headerlink" href="#diplomaticpulse-tests-test-date-with-mmddyy-format-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-date-with-yyyyddmm-format-module">
+<h2>diplomaticpulse.tests.test_date_with_YYYYDDMM_format module<a class="headerlink" href="#diplomaticpulse-tests-test-date-with-yyyyddmm-format-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_format_html_text">
+<span id="diplomaticpulse-tests-test-format-html-text-module"></span><h2>diplomaticpulse.tests.test_format_html_text module<a class="headerlink" href="#module-diplomaticpulse.tests.test_format_html_text" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_format_html_text.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_format_html_text.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_format_html_text.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_format_html_text.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for format_html_text().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_format_html_text.TestHtmlUtils.test_format_html_text">
+<span class="sig-name descname"><span class="pre">test_format_html_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_format_html_text.html#TestHtmlUtils.test_format_html_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_format_html_text.TestHtmlUtils.test_format_html_text" title="Permalink to this definition"></a></dt>
+<dd><p>We pass html text  to test_format_html_text and we expect formated html.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diplomaticpulse.tests.test_format_pdf_text">
+<span id="diplomaticpulse-tests-test-format-pdf-text-module"></span><h2>diplomaticpulse.tests.test_format_pdf_text module<a class="headerlink" href="#module-diplomaticpulse.tests.test_format_pdf_text" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_format_pdf_text.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_format_pdf_text.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_format_pdf_text.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_format_pdf_text.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for format_html_text().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_format_pdf_text.TestHtmlUtils.test_format_html_pdf_text">
+<span class="sig-name descname"><span class="pre">test_format_html_pdf_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_format_pdf_text.html#TestHtmlUtils.test_format_html_pdf_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_format_pdf_text.TestHtmlUtils.test_format_html_pdf_text" title="Permalink to this definition"></a></dt>
+<dd><p>We pass html text  to format_html_pdf_text and we expect formated html.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-get-bs4-url-module">
+<h2>diplomaticpulse.tests.test_get_bs4_url module<a class="headerlink" href="#diplomaticpulse-tests-test-get-bs4-url-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-data-from-blocks-module">
+<h2>diplomaticpulse.tests.test_get_data_from_blocks module<a class="headerlink" href="#diplomaticpulse-tests-test-get-data-from-blocks-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-date-module">
+<h2>diplomaticpulse.tests.test_get_date module<a class="headerlink" href="#diplomaticpulse-tests-test-get-date-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-date-from-html-soup-module">
+<h2>diplomaticpulse.tests.test_get_date_from_html_soup module<a class="headerlink" href="#diplomaticpulse-tests-test-get-date-from-html-soup-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-date-from-pdf-module">
+<h2>diplomaticpulse.tests.test_get_date_from_pdf module<a class="headerlink" href="#diplomaticpulse-tests-test-get-date-from-pdf-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_get_html_block_links">
+<span id="diplomaticpulse-tests-test-get-html-block-links-module"></span><h2>diplomaticpulse.tests.test_get_html_block_links module<a class="headerlink" href="#module-diplomaticpulse.tests.test_get_html_block_links" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_html_block_links.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_get_html_block_links.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_html_block_links.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_html_block_links.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for get_html_response_content()</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_html_block_links.TestHtmlUtils.test_get_html_response_content">
+<span class="sig-name descname"><span class="pre">test_get_html_response_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_html_block_links.html#TestHtmlUtils.test_get_html_response_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_html_block_links.TestHtmlUtils.test_get_html_response_content" title="Permalink to this definition"></a></dt>
+<dd><p>We pass response and xpath, to get_html_response_content and expect text</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diplomaticpulse.tests.test_get_html_response_content">
+<span id="diplomaticpulse-tests-test-get-html-response-content-module"></span><h2>diplomaticpulse.tests.test_get_html_response_content module<a class="headerlink" href="#module-diplomaticpulse.tests.test_get_html_response_content" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_get_html_response_content.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_html_response_content.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for get_html_response_content().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils.test_get_html_response_content">
+<span class="sig-name descname"><span class="pre">test_get_html_response_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_html_response_content.html#TestHtmlUtils.test_get_html_response_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils.test_get_html_response_content" title="Permalink to this definition"></a></dt>
+<dd><p>We pass response object and text xpath text to get_html_response_content and text.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils.test_get_html_response_content_exception">
+<span class="sig-name descname"><span class="pre">test_get_html_response_content_exception</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_html_response_content.html#TestHtmlUtils.test_get_html_response_content_exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_html_response_content.TestHtmlUtils.test_get_html_response_content_exception" title="Permalink to this definition"></a></dt>
+<dd><p>We pass response object and text xpath text to get_html_response_content and text.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-get-language-module">
+<h2>diplomaticpulse.tests.test_get_language module<a class="headerlink" href="#diplomaticpulse-tests-test-get-language-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_get_soup">
+<span id="diplomaticpulse-tests-test-get-soup-module"></span><h2>diplomaticpulse.tests.test_get_soup module<a class="headerlink" href="#module-diplomaticpulse.tests.test_get_soup" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_soup.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_get_soup.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_soup.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_soup.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for get_bs4_soup().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_soup.TestHtmlUtils.test_get_soup">
+<span class="sig-name descname"><span class="pre">test_get_soup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_soup.html#TestHtmlUtils.test_get_soup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_soup.TestHtmlUtils.test_get_soup" title="Permalink to this definition"></a></dt>
+<dd><p>We pass url, driver to get_bs4_soup and expect text</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-get-text-from-html-block-module">
+<h2>diplomaticpulse.tests.test_get_text_from_html_block module<a class="headerlink" href="#diplomaticpulse-tests-test-get-text-from-html-block-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-text-from-html-soup-module">
+<h2>diplomaticpulse.tests.test_get_text_from_html_soup module<a class="headerlink" href="#diplomaticpulse-tests-test-get-text-from-html-soup-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_get_title">
+<span id="diplomaticpulse-tests-test-get-title-module"></span><h2>diplomaticpulse.tests.test_get_title module<a class="headerlink" href="#module-diplomaticpulse.tests.test_get_title" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_title.TestHtmlUtils">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_get_title.</span></span><span class="sig-name descname"><span class="pre">TestHtmlUtils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_title.html#TestHtmlUtils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_title.TestHtmlUtils" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for get_title().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title1">
+<span class="sig-name descname"><span class="pre">test_get_title1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_title.html#TestHtmlUtils.test_get_title1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title1" title="Permalink to this definition"></a></dt>
+<dd><p>We pass text  to get_title and  expect to return text.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title2">
+<span class="sig-name descname"><span class="pre">test_get_title2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_title.html#TestHtmlUtils.test_get_title2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title2" title="Permalink to this definition"></a></dt>
+<dd><p>We pass url response object  to get_title and  expect to return text (title).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title3">
+<span class="sig-name descname"><span class="pre">test_get_title3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_get_title.html#TestHtmlUtils.test_get_title3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_get_title.TestHtmlUtils.test_get_title3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-get-title-from-html-soup-module">
+<h2>diplomaticpulse.tests.test_get_title_from_html_soup module<a class="headerlink" href="#diplomaticpulse-tests-test-get-title-from-html-soup-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-get-url-extension-module">
+<h2>diplomaticpulse.tests.test_get_url_extension module<a class="headerlink" href="#diplomaticpulse-tests-test-get-url-extension-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-href-html-a-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_a_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-a-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_href_html_bs4">
+<span id="diplomaticpulse-tests-test-href-html-bs4-module"></span><h2>diplomaticpulse.tests.test_href_html_bs4 module<a class="headerlink" href="#module-diplomaticpulse.tests.test_href_html_bs4" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_href_html_bs4.TestBeautifulParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_href_html_bs4.</span></span><span class="sig-name descname"><span class="pre">TestBeautifulParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_href_html_bs4.html#TestBeautifulParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_href_html_bs4.TestBeautifulParser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for href_html_bs4().</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_href_html_bs4.TestBeautifulParser.test_href_html_bs4">
+<span class="sig-name descname"><span class="pre">test_href_html_bs4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_href_html_bs4.html#TestBeautifulParser.test_href_html_bs4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_href_html_bs4.TestBeautifulParser.test_href_html_bs4" title="Permalink to this definition"></a></dt>
+<dd><p>We pass url to Beautifullsoup object to href_html_bs4 and expect it to return url link.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diplomaticpulse-tests-test-href-html-h2-a-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_h2_a_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-h2-a-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-href-html-h3-a-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_h3_a_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-h3-a-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-href-html-h6-a-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_h6_a_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-h6-a-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-href-html-li-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_li_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-li-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-href-html-span-bs4-module">
+<h2>diplomaticpulse.tests.test_href_html_span_bs4 module<a class="headerlink" href="#diplomaticpulse-tests-test-href-html-span-bs4-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-html-a-span-module">
+<h2>diplomaticpulse.tests.test_html_a_span module<a class="headerlink" href="#diplomaticpulse-tests-test-html-a-span-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-html-h1-module">
+<h2>diplomaticpulse.tests.test_html_h1 module<a class="headerlink" href="#diplomaticpulse-tests-test-html-h1-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-html-h1-a-module">
+<h2>diplomaticpulse.tests.test_html_h1_a module<a class="headerlink" href="#diplomaticpulse-tests-test-html-h1-a-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-html-li-a-module">
+<h2>diplomaticpulse.tests.test_html_li_a module<a class="headerlink" href="#diplomaticpulse-tests-test-html-li-a-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-html-span-module">
+<h2>diplomaticpulse.tests.test_html_span module<a class="headerlink" href="#diplomaticpulse-tests-test-html-span-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-parse-default-date-string-module">
+<h2>diplomaticpulse.tests.test_parse_default_date_string module<a class="headerlink" href="#diplomaticpulse-tests-test-parse-default-date-string-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-parse-mydate-module">
+<h2>diplomaticpulse.tests.test_parse_mydate module<a class="headerlink" href="#diplomaticpulse-tests-test-parse-mydate-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="diplomaticpulse-tests-test-parse-non-english-date-string-module">
+<h2>diplomaticpulse.tests.test_parse_non_english_date_string module<a class="headerlink" href="#diplomaticpulse-tests-test-parse-non-english-date-string-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-diplomaticpulse.tests.test_pdf_parser">
+<span id="diplomaticpulse-tests-test-pdf-parser-module"></span><h2>diplomaticpulse.tests.test_pdf_parser module<a class="headerlink" href="#module-diplomaticpulse.tests.test_pdf_parser" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_pdf_parser.TestPDFParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diplomaticpulse.tests.test_pdf_parser.</span></span><span class="sig-name descname"><span class="pre">TestPDFParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_pdf_parser.html#TestPDFParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_pdf_parser.TestPDFParser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Class containing the test suite for parse_pdfminer()</p>
+<p>Tests are programmed as prescribed the pythons unittest’s package</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_pdf_parser.TestPDFParser.test_parse_pdfminer">
+<span class="sig-name descname"><span class="pre">test_parse_pdfminer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_pdf_parser.html#TestPDFParser.test_parse_pdfminer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_pdf_parser.TestPDFParser.test_parse_pdfminer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diplomaticpulse.tests.test_pdf_parser.TestPDFParser.test_text_from_image">
+<span class="sig-name descname"><span class="pre">test_text_from_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diplomaticpulse/tests/test_pdf_parser.html#TestPDFParser.test_text_from_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diplomaticpulse.tests.test_pdf_parser.TestPDFParser.test_text_from_image" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diplomaticpulse.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-diplomaticpulse.tests" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="diplomaticpulse.spiders.html" class="btn btn-neutral float-left" title="diplomaticpulse.spiders package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="How to contribute to Diplomatic pulse code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, QCRI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

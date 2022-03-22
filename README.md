@@ -31,7 +31,7 @@ See the install section in the documentation at https://diplomaticpulse.qcri.org
 
 
 
-##Browsing extracted indexed data
+## Browsing extracted indexed data
 
 In each visited country's webpage, the content is extracted and indexed into elasticsearch index ``dppa.st``.
 The indexed data can be browsed using the `Dejavu`_ (free and open source web UI for Elasticsearch).
@@ -48,7 +48,7 @@ Assuming all containers are running on your local machine, go to:
 
 
 
-##Monitoring of Diplomatic pulse
+## Monitoring of Diplomatic pulse
 
 Diplomatic pulse uses the Scrapy UI , the role is to observe each crawler job history and status.
 

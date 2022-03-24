@@ -52,11 +52,8 @@ Assuming all containers are running on your local machine, go to:
 
 Diplomatic pulse uses the Scrapy UI, which can be used to observe each crawler job history and status. 
 
-You can access UI at [http://localhost:5000/1/jobs/] using the username and password [SCRAPY_WEB_USERNAME,SCRAPY_WEB_PASSWORD] shown in the .env file.
+You can access UI at [ http://localhost:5000/1/jobs/ ] using the username and password [SCRAPY_WEB_USERNAME,SCRAPY_WEB_PASSWORD] shown in the .env file.
 
-you can access UI here:
-
-http://localhost:5000/1/jobs/
 
 ## Full Documentation
 Documentation is available online at  https://diplomaticpulse.qcri.org/docs and in the docs directory.

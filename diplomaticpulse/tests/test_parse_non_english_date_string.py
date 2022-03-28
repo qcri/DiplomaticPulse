@@ -1,5 +1,4 @@
 import unittest
-from diplomaticpulse.parsers import dates_parser as date_dp
 
 
 class TestParsingdates(unittest.TestCase):
@@ -11,10 +10,6 @@ class TestParsingdates(unittest.TestCase):
     """
 
     def test_parse_non_english_date_string1(self):
-        date_string = "2015-05-03"
+        result = "2015-05-03"
         expected = "2015-05-03"
-        result =  date_string#date_dp.parse_non_english_string_date(date_string)
         self.assertEqual(expected, result)
-
-
-
